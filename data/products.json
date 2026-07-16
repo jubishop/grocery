@@ -4,6 +4,18 @@
     "capturedAt": "2026-07-16T15:56:00-07:00",
     "capturedAtLabel": "July 16, 2026 at 3:56 PM PDT",
     "deliveryAddress": "Seattle, WA",
+    "storeLocations": [
+      {
+        "name": "PCC Community Markets — West Seattle",
+        "address": "2749 California Ave SW, Seattle, WA 98116",
+        "url": "https://www.pccmarkets.com/stores/west-seattle/"
+      },
+      {
+        "name": "Metropolitan Market — West Seattle (Admiral)",
+        "address": "2320 42nd Ave SW, Seattle, WA 98116",
+        "url": "https://www.metropolitan-market.com/locations/west-seattle"
+      }
+    ],
     "source": "Instacart",
     "methodology": "Exact products matched by Instacart product ID. Current displayed prices were captured for the same delivery address. Weighted produce is compared at the displayed per-pound rate; all other rows compare one listed unit. Sale prices are included and flagged.",
     "caveat": "Prices and availability can change by location, fulfillment method, promotion, and time."

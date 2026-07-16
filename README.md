@@ -2,6 +2,8 @@
 
 An interactive ChatGPT Site backed by a July 16, 2026 Instacart snapshot of 298 exact product matches at PCC Community Markets and Metropolitan Market in Seattle.
 
+Store locations: PCC Community Markets — West Seattle, 2749 California Ave SW, Seattle, WA 98116; and Metropolitan Market — West Seattle (Admiral), 2320 42nd Ave SW, Seattle, WA 98116. The delivery location is disclosed only as Seattle, WA.
+
 ## Local development
 
 ```bash

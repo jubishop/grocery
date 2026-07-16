@@ -941,6 +941,29 @@ input {
   margin: 0 0 16px;
 }
 
+.store-locations {
+  display: grid;
+  gap: 8px;
+  margin: 24px 0 12px;
+}
+
+.store-locations strong {
+  color: var(--ink);
+}
+
+.footer-copy .store-locations a {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.footer-copy .store-locations a span:first-child {
+  color: var(--ink);
+  font-weight: 800;
+}
+
 .footer-copy a {
   display: inline-flex;
   align-items: center;
@@ -1164,4 +1187,3 @@ input {
     transition-duration: 0.01ms !important;
   }
 }
-

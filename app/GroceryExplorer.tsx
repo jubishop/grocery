@@ -43,6 +43,11 @@ export type Dataset = {
   metadata: {
     capturedAtLabel: string;
     deliveryAddress: string;
+    storeLocations: Array<{
+      name: string;
+      address: string;
+      url: string;
+    }>;
     methodology: string;
     caveat: string;
   };
@@ -385,6 +390,15 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <div className="footer-copy">
           <p>{data.metadata.methodology}</p>
           <p>{data.metadata.caveat} Delivery address used: {data.metadata.deliveryAddress}.</p>
+          <div className="store-locations">
+            <strong>Stores compared</strong>
+            {data.metadata.storeLocations.map((store) => (
+              <a key={store.name} href={store.url} target="_blank" rel="noreferrer">
+                <span>{store.name}</span>
+                <span>{store.address}</span>
+              </a>
+            ))}
+          </div>
           <a href="/pcc-vs-metro-prices.csv" download>Download all 298 rows as CSV <ArrowIcon /></a>
         </div>
       </footer>

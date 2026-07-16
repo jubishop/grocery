@@ -2,6 +2,8 @@
 
 Price snapshot captured from Instacart on July 16, 2026 at 3:56 PM PDT for delivery in Seattle, WA.
 
+Stores compared: **PCC Community Markets — West Seattle**, 2749 California Ave SW, Seattle, WA 98116; and **Metropolitan Market — West Seattle (Admiral)**, 2320 42nd Ave SW, Seattle, WA 98116.
+
 ## Result
 
 Across 298 exact product matches, a one-of-each basket costs **$1,991.88 at PCC** and **$2,217.04 at Metropolitan Market**. PCC is **$225.16 cheaper (10.2%)**.
