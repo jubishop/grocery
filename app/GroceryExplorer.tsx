@@ -206,7 +206,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
 
   return (
     <main>
-      <header className="hero">
+      <header className="hero" id="top">
         <nav className="topbar" aria-label="Page navigation">
           <a className="brand" href="#top" aria-label="Price check home">
             <span className="brand-mark">P<span>:</span>M</span>
@@ -219,7 +219,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           </div>
         </nav>
 
-        <section className="hero-grid" id="top">
+        <section className="hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">Seattle · Instacart snapshot · 298 exact matches</p>
             <h1>For this basket,<br /><em>PCC comes out ahead.</em></h1>
@@ -252,14 +252,14 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
             </div>
           </div>
         </section>
-
-        <div className="score-strip">
-          <div><strong>{data.summary.pccWins}</strong><span>PCC wins</span></div>
-          <div><strong>{data.summary.metroWins}</strong><span>Metro wins</span></div>
-          <div><strong>{data.summary.ties}</strong><span>Exact ties</span></div>
-          <div><strong>{data.summary.medianPercentDifference}%</strong><span>Median PCC advantage</span></div>
-        </div>
       </header>
+
+      <div className="score-strip">
+        <div><strong>{data.summary.pccWins}</strong><span>PCC wins</span></div>
+        <div><strong>{data.summary.metroWins}</strong><span>Metro wins</span></div>
+        <div><strong>{data.summary.ties}</strong><span>Exact ties</span></div>
+        <div><strong>{data.summary.medianPercentDifference}%</strong><span>Median PCC advantage</span></div>
+      </div>
 
       <section className="content-section takeaway-section" aria-labelledby="takeaway-heading">
         <div className="section-intro">

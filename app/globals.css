@@ -357,7 +357,7 @@ input {
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-bottom: -49px;
+  margin-top: -49px;
   color: var(--ink);
   background: white;
   border-radius: 18px;
@@ -1032,7 +1032,7 @@ input {
 
   .score-strip {
     grid-template-columns: 1fr 1fr;
-    margin-bottom: -72px;
+    margin-top: -72px;
   }
 
   .score-strip div:nth-child(3),
