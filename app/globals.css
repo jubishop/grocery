@@ -112,8 +112,9 @@ input {
 }
 
 .brand-mark {
-  display: grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -123,6 +124,7 @@ input {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 0.86rem;
   letter-spacing: 0;
+  line-height: 1;
 }
 
 .brand-mark span {
@@ -1062,7 +1064,69 @@ input {
   }
 
   .category-table {
-    overflow-x: auto;
+    display: grid;
+    gap: 12px;
+    margin-top: 36px;
+    overflow: visible;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .category-header {
+    display: none;
+  }
+
+  .category-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px 18px;
+    min-width: 0;
+    min-height: 0;
+    padding: 18px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+
+  .category-row + .category-row {
+    border-top: 1px solid var(--line);
+  }
+
+  .category-name {
+    min-width: 0;
+    font-size: 1rem;
+  }
+
+  .category-count {
+    justify-self: end;
+    color: var(--muted);
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .category-price {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 1.08rem;
+    font-weight: 750;
+  }
+
+  .category-price::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .category-price + .category-price {
+    align-items: flex-end;
+  }
+
+  .category-result {
+    grid-column: 1 / -1;
   }
 
   .filter-panel {

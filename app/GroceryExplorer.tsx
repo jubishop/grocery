@@ -305,10 +305,10 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           {data.categories.map((entry) => (
             <div className="category-row" role="row" key={entry.category}>
               <span className="category-name" role="cell">{entry.category}</span>
-              <span role="cell">{entry.count}</span>
-              <span role="cell">{money.format(entry.pccTotal)}</span>
-              <span role="cell">{money.format(entry.metroTotal)}</span>
-              <span className={entry.winner === "PCC" ? "category-win-pcc" : "category-win-metro"} role="cell">
+              <span className="category-count" role="cell">{entry.count} items</span>
+              <span className="category-price" data-label="PCC basket" role="cell">{money.format(entry.pccTotal)}</span>
+              <span className="category-price" data-label="Metro basket" role="cell">{money.format(entry.metroTotal)}</span>
+              <span className={`category-result ${entry.winner === "PCC" ? "category-win-pcc" : "category-win-metro"}`} role="cell">
                 {entry.winner === "PCC" ? "PCC" : "Metro"} by {money.format(Math.abs(entry.difference))}
               </span>
             </div>
