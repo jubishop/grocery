@@ -1,0 +1,34 @@
+{
+  "name": "pcc-vs-metropolitan-market",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vinext dev",
+    "build": "vinext build && node scripts/prepare-site-build.mjs",
+    "start": "vinext start",
+    "lint": "tsc --noEmit",
+    "data:refine": "node scripts/refine-dataset.mjs",
+    "data:csv": "node scripts/generate-csv.mjs",
+    "images": "node scripts/download-images.mjs"
+  },
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^6.0.3",
+    "@vitejs/plugin-rsc": "^0.5.27",
+    "react-server-dom-webpack": "^19.2.7",
+    "typescript": "^5.8.0",
+    "vinext": "^0.2.1",
+    "vite": "^8.1.5"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
+  }
+}
