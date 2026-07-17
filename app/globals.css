@@ -320,3 +320,11 @@ a.store-price:hover { background: white; box-shadow: inset 0 0 0 1px var(--store
   .store-price { padding: 10px; }
   .store-locations { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 360px) {
+  .basket-totals,
+  .category-prices,
+  .product-prices { grid-template-columns: 1fr; }
+  .basket-totals > div { padding: 14px; }
+  .basket-totals strong { font-size: 1.35rem; }
+}
