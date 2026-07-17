@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PCC vs. Metropolitan Market — 298-item price check",
+  title: "Seattle Grocery Price Index — PCC, Metro, Safeway & QFC",
   description:
-    "A July 2026 Instacart price comparison of 298 exact products at PCC Community Markets and Metropolitan Market in Seattle.",
+    "A July 2026 Instacart comparison of 1,381 exact-match products across PCC Community Markets, Metropolitan Market, Safeway, and QFC in Seattle.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

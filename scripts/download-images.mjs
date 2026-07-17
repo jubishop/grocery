@@ -3,11 +3,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const data = JSON.parse(await readFile(path.join(root, "data/products.json"), "utf8"));
+const data = JSON.parse(await readFile(path.join(root, "data/site-data.json"), "utf8"));
 const outputDir = path.join(root, "public/images");
 await mkdir(outputDir, { recursive: true });
 
-const queue = [...data.items];
+const queue = [...data.products];
 let downloaded = 0;
 let skipped = 0;
 const failures = [];
@@ -30,7 +30,8 @@ async function download(item) {
   const temporary = `${filename}.part`;
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
-      const response = await fetch(item.imageUrl, {
+      const sourceUrl = item.imageUrl.replace("/1028x1028/", "/320x320/");
+      const response = await fetch(sourceUrl, {
         headers: {
           Accept: "image/avif,image/webp,image/png,image/jpeg,*/*",
           Referer: "https://www.instacart.com/",
@@ -66,4 +67,3 @@ await Promise.all(Array.from({ length: 10 }, worker));
 
 console.log(JSON.stringify({ downloaded, skipped, failures }, null, 2));
 if (failures.length) process.exitCode = 1;
-

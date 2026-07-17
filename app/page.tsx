@@ -1,5 +1,5 @@
 import GroceryExplorer, { type Dataset } from "./GroceryExplorer";
-import dataset from "../data/products.json";
+import dataset from "../data/site-data.json";
 
 export default function Home() {
   return <GroceryExplorer data={dataset as Dataset} />;

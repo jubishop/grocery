@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const data = JSON.parse(await readFile(path.join(root, "data/products.json"), "utf8"));
+const data = JSON.parse(await readFile(path.join(root, "data/site-data.json"), "utf8"));
 
 const columns = [
   ["instacart_product_id", "id"],
@@ -11,18 +11,17 @@ const columns = [
   ["size", "size"],
   ["category", "category"],
   ["price_basis", "priceBasis"],
-  ["pcc_price", "pccPrice"],
-  ["metropolitan_market_price", "metroPrice"],
-  ["pcc_original_price", "pccOriginal"],
-  ["metropolitan_market_original_price", "metroOriginal"],
-  ["winner", "winner"],
-  ["metro_minus_pcc", "difference"],
-  ["percent_difference_vs_metro", "percentDifference"],
-  ["pcc_instacart_url", "pccUrl"],
-  ["metropolitan_market_instacart_url", "metroUrl"],
+  ["stores_available", "storeCount"],
   ["local_image", "imagePath"],
   ["source_image_url", "imageUrl"],
 ];
+
+for (const store of data.stores) {
+  columns.push([`${store.id}_price`, `prices.${store.id}.price`]);
+  columns.push([`${store.id}_original_price`, `prices.${store.id}.originalPrice`]);
+  columns.push([`${store.id}_sale`, `prices.${store.id}.sale`]);
+  columns.push([`${store.id}_instacart_url`, `prices.${store.id}.url`]);
+}
 
 function cell(value) {
   if (value === null || value === undefined) return "";
@@ -32,11 +31,13 @@ function cell(value) {
 
 const lines = [
   columns.map(([heading]) => heading).join(","),
-  ...data.items.map((item) => columns.map(([, key]) => cell(item[key])).join(",")),
+  ...data.products.map((item) => columns.map(([, key]) => {
+    const value = key.split(".").reduce((current, part) => current?.[part], item);
+    return cell(value);
+  }).join(",")),
 ];
 const csv = `${lines.join("\n")}\n`;
 
 await writeFile(path.join(root, "data/products.csv"), csv);
-await writeFile(path.join(root, "public/pcc-vs-metro-prices.csv"), csv);
-console.log(`Wrote ${data.items.length} rows to data/products.csv and public/pcc-vs-metro-prices.csv`);
-
+await writeFile(path.join(root, "public/seattle-grocery-prices.csv"), csv);
+console.log(`Wrote ${data.products.length} rows to data/products.csv and public/seattle-grocery-prices.csv`);
