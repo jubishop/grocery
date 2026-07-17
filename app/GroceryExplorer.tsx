@@ -1,6 +1,12 @@
 "use client";
 
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import {
+  compareBasketByStore,
+  MAX_BASKET_QUANTITY,
+  sanitizeBasket,
+  type BasketQuantities,
+} from "./basket";
 
 type StoreId = "pcc" | "metro" | "safeway" | "qfc" | "wholefoods";
 
@@ -155,6 +161,7 @@ const priceSourceLabels: Record<string, { label: string; action: string }> = {
   "qfc.com": { label: "QFC.com", action: "View direct price" },
   amazon_whole_foods: { label: "Amazon.com", action: "View pickup price" },
 };
+const basketStorageKey = "west-seattle-grocery-basket-v1";
 
 function ArrowIcon() {
   return (
@@ -191,7 +198,19 @@ function lowestStores(product: Product, selected: StoreId[]) {
   return prices.filter((entry) => entry.price === minimum).map((entry) => entry.storeId);
 }
 
-function ProductCard({ product, stores, selected }: { product: Product; stores: Store[]; selected: StoreId[] }) {
+function ProductCard({
+  product,
+  stores,
+  selected,
+  basketQuantity,
+  onAddToBasket,
+}: {
+  product: Product;
+  stores: Store[];
+  selected: StoreId[];
+  basketQuantity: number;
+  onAddToBasket: (productId: string) => void;
+}) {
   const available = productPrices(product, selected);
   const winners = lowestStores(product, selected);
   const spread = spreadFor(product, selected);
@@ -260,8 +279,22 @@ function ProductCard({ product, stores, selected }: { product: Product; stores: 
       </div>
 
       <div className="product-result">
-        <span>{winnerLabel}</span>
-        <strong>{spread > 0 ? `${money.format(spread)} spread` : "Exact tie"}</strong>
+        <div className="product-result-copy">
+          <span>{winnerLabel}</span>
+          <strong>{spread > 0 ? `${money.format(spread)} spread` : "Exact tie"}</strong>
+        </div>
+        <button
+          className={`basket-add-button ${basketQuantity > 0 ? "active" : ""}`}
+          type="button"
+          onClick={() => onAddToBasket(product.id)}
+          disabled={basketQuantity >= MAX_BASKET_QUANTITY}
+          aria-label={basketQuantity > 0
+            ? `Add another ${product.name} to basket. Current quantity ${basketQuantity}`
+            : `Add ${product.name} to basket`}
+        >
+          <span aria-hidden="true">{basketQuantity > 0 ? basketQuantity : "+"}</span>
+          {basketQuantity > 0 ? "Add another" : "Add to basket"}
+        </button>
       </div>
     </article>
   );
@@ -276,8 +309,12 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
   const [saleOnly, setSaleOnly] = useState(false);
   const [sort, setSort] = useState<SortKey>("spread");
   const [visibleCount, setVisibleCount] = useState(48);
+  const [basket, setBasket] = useState<BasketQuantities>({});
+  const [basketLoaded, setBasketLoaded] = useState(false);
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
   const storeMap = useMemo(() => new Map(data.stores.map((store) => [store.id, store])), [data.stores]);
+  const productMap = useMemo(() => new Map(data.products.map((product) => [product.id, product])), [data.products]);
+  const validProductIds = useMemo(() => new Set(data.products.map((product) => product.id)), [data.products]);
 
   useEffect(() => {
     const targetId = decodeURIComponent(window.location.hash.slice(1));
@@ -286,6 +323,26 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
   }, []);
 
   useEffect(() => setVisibleCount(48), [selected, requireAll, deferredQuery, category, winner, saleOnly, sort]);
+
+  useEffect(() => {
+    try {
+      const storedBasket = window.localStorage.getItem(basketStorageKey);
+      if (storedBasket) setBasket(sanitizeBasket(JSON.parse(storedBasket), validProductIds));
+    } catch {
+      // Ignore malformed or unavailable device storage and start with an empty basket.
+    } finally {
+      setBasketLoaded(true);
+    }
+  }, [validProductIds]);
+
+  useEffect(() => {
+    if (!basketLoaded) return;
+    try {
+      window.localStorage.setItem(basketStorageKey, JSON.stringify(basket));
+    } catch {
+      // The basket still works for this visit when browser storage is unavailable.
+    }
+  }, [basket, basketLoaded]);
 
   const allSelectedProducts = useMemo(() => data.products.filter((product) => {
     const count = selected.filter((storeId) => product.prices[storeId]).length;
@@ -318,17 +375,42 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
     });
   }, [allSelectedProducts, category, deferredQuery, saleOnly, selected, sort, winner]);
 
-  const basketTotals = useMemo(() => Object.fromEntries(selected.map((storeId) => [
+  const snapshotBasketTotals = useMemo(() => Object.fromEntries(selected.map((storeId) => [
     storeId,
     strictCommonProducts.reduce((total, product) => total + product.prices[storeId]!.price, 0),
   ])) as Record<StoreId, number>, [selected, strictCommonProducts]);
 
-  const basketRanking = [...selected].sort((a, b) => basketTotals[a] - basketTotals[b]);
-  const basketLeader = basketRanking[0];
-  const basketSavings = basketRanking.length > 1 ? basketTotals[basketRanking.at(-1)!] - basketTotals[basketLeader] : 0;
+  const snapshotBasketRanking = [...selected].sort((a, b) => snapshotBasketTotals[a] - snapshotBasketTotals[b]);
+  const snapshotBasketLeader = snapshotBasketRanking[0];
+  const snapshotBasketSavings = snapshotBasketRanking.length > 1
+    ? snapshotBasketTotals[snapshotBasketRanking.at(-1)!] - snapshotBasketTotals[snapshotBasketLeader]
+    : 0;
   const selectedPairs = data.pairwise.filter((pair) => pair.stores.every((storeId) => selected.includes(storeId)));
   const minimumPairCount = Math.min(...data.pairwise.map((pair) => pair.count));
   const bestPerformance = data.storePerformance[0];
+
+  const basketItems = useMemo(() => Object.entries(basket).flatMap(([productId, quantity]) => {
+    const product = productMap.get(productId);
+    return product ? [{ product, quantity }] : [];
+  }), [basket, productMap]);
+  const basketUnitCount = basketItems.reduce((total, item) => total + item.quantity, 0);
+  const basketComparisons = useMemo(() => compareBasketByStore(
+    basketItems.map(({ product, quantity }) => ({
+      id: product.id,
+      name: product.name,
+      quantity,
+      prices: product.prices,
+    })),
+    selected,
+  ), [basketItems, selected]);
+  const completeBasketComparisons = basketComparisons.filter((comparison) => comparison.complete);
+  const cheapestBasketTotal = completeBasketComparisons[0]?.total;
+  const cheapestBasketComparisons = cheapestBasketTotal === undefined
+    ? []
+    : completeBasketComparisons.filter((comparison) => comparison.total === cheapestBasketTotal);
+  const nextCheapestBasket = cheapestBasketTotal === undefined
+    ? undefined
+    : completeBasketComparisons.find((comparison) => comparison.total > cheapestBasketTotal);
 
   const dynamicCategories = useMemo(() => {
     const names = [...new Set(strictCommonProducts.map((product) => product.category))];
@@ -350,6 +432,18 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
     setWinner("all");
   }
 
+  function changeBasketQuantity(productId: string, amount: number) {
+    setBasket((current) => {
+      const nextQuantity = Math.min(MAX_BASKET_QUANTITY, (current[productId] ?? 0) + amount);
+      if (nextQuantity <= 0) {
+        const next = { ...current };
+        delete next[productId];
+        return next;
+      }
+      return { ...current, [productId]: nextQuantity };
+    });
+  }
+
   function resetFilters() {
     setQuery("");
     setCategory("All categories");
@@ -359,6 +453,33 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
   }
 
   const hasFilters = query || category !== "All categories" || winner !== "all" || saleOnly || sort !== "spread";
+  let basketVerdict: React.ReactNode = null;
+
+  if (basketItems.length > 0) {
+    if (completeBasketComparisons.length === 0) {
+      basketVerdict = <>No selected store has every item. Captured subtotals are shown, but they are not treated as a fair basket total.</>;
+    } else if (selected.length === 1) {
+      const comparison = completeBasketComparisons[0];
+      basketVerdict = <>Your basket totals <strong>{money.format(comparison.total)}</strong> at {storeMap.get(comparison.storeId)!.name}.</>;
+    } else if (completeBasketComparisons.length === 1) {
+      const comparison = completeBasketComparisons[0];
+      basketVerdict = <><strong>{storeMap.get(comparison.storeId)!.name}</strong> is the only selected store with every item, totaling <strong>{money.format(comparison.total)}</strong>.</>;
+    } else if (cheapestBasketComparisons.length > 1) {
+      const storeNames = cheapestBasketComparisons.map((comparison) => storeMap.get(comparison.storeId)!.shortName).join(" + ");
+      basketVerdict = <><strong>{storeNames}</strong> tie for the lowest complete basket at <strong>{money.format(cheapestBasketTotal!)}</strong>.</>;
+    } else {
+      const cheapest = cheapestBasketComparisons[0];
+      const nextStore = nextCheapestBasket ? storeMap.get(nextCheapestBasket.storeId)! : null;
+      basketVerdict = (
+        <>
+          <strong>{storeMap.get(cheapest.storeId)!.name}</strong> is cheapest at <strong>{money.format(cheapest.total)}</strong>
+          {nextCheapestBasket && nextStore
+            ? <>, saving <strong>{money.format(nextCheapestBasket.total - cheapest.total)}</strong> versus {nextStore.shortName}.</>
+            : "."}
+        </>
+      );
+    }
+  }
 
   return (
     <main id="top">
@@ -368,6 +489,10 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <div className="nav-links">
             <a href="#compare">Compare stores</a>
             <a href="#products">Products</a>
+            <a className="basket-nav" href="#basket">
+              My basket
+              {basketUnitCount > 0 && <span>{basketUnitCount}</span>}
+            </a>
             <a className="download-link" href="/west-seattle-grocery-prices.csv" download>CSV</a>
           </div>
         </nav>
@@ -380,7 +505,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
               PCC, Metropolitan Market, Safeway, QFC, and Whole Foods compared product by product. Every two-store pairing currently has at least <strong>{integer.format(minimumPairCount)} confidently matched items</strong>—and you can choose the matchup.
             </p>
             <div className="hero-actions">
-              <a className="primary-button" href="#compare">Build a comparison <ArrowIcon /></a>
+              <a className="primary-button" href="#basket">Build your basket <ArrowIcon /></a>
               <span>Captured {data.metadata.capturedAtLabel}</span>
             </div>
           </div>
@@ -441,20 +566,138 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           </div>
         )}
 
+        <section className="custom-basket" id="basket" aria-labelledby="basket-heading">
+          <div className="custom-basket-intro">
+            <div>
+              <p className="eyebrow">Your shopping list</p>
+              <h2 id="basket-heading">Build the basket you’ll actually buy.</h2>
+            </div>
+            <p>Add exact products from the catalog below, choose quantities, and compare a complete checkout at every selected store. Your basket stays on this device.</p>
+          </div>
+
+          {basketItems.length === 0 ? (
+            <div className="custom-basket-empty">
+              <span aria-hidden="true">+</span>
+              <div>
+                <h3>Your basket is empty</h3>
+                <p>Browse the matched products, then use “Add to basket” on anything you intend to buy.</p>
+              </div>
+              <a href="#products">Browse products <ArrowIcon /></a>
+            </div>
+          ) : (
+            <div className="custom-basket-workspace">
+              <article className="basket-list-card">
+                <div className="basket-list-heading">
+                  <div>
+                    <span>My list</span>
+                    <strong>{basketItems.length} {basketItems.length === 1 ? "product" : "products"} · {basketUnitCount} {basketUnitCount === 1 ? "item" : "items"}</strong>
+                  </div>
+                  <button type="button" onClick={() => setBasket({})}>Clear basket</button>
+                </div>
+
+                <ul className="basket-item-list">
+                  {basketItems.map(({ product, quantity }) => {
+                    const availableStoreCount = selected.filter((storeId) => product.prices[storeId]).length;
+                    return (
+                      <li key={product.id}>
+                        <div className="basket-item-image">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={product.imagePath || product.imageUrl}
+                            alt=""
+                            loading="lazy"
+                            width="58"
+                            height="58"
+                            onError={(event) => {
+                              if (event.currentTarget.src !== product.imageUrl) event.currentTarget.src = product.imageUrl;
+                              else event.currentTarget.style.visibility = "hidden";
+                            }}
+                          />
+                        </div>
+                        <div className="basket-item-copy">
+                          <strong>{product.name}</strong>
+                          <span>{product.size || product.priceBasis}</span>
+                          <small>
+                            {availableStoreCount === selected.length
+                              ? `At all ${selected.length} selected ${selected.length === 1 ? "store" : "stores"}`
+                              : `At ${availableStoreCount} of ${selected.length} selected stores`}
+                          </small>
+                        </div>
+                        <div className="quantity-stepper" role="group" aria-label={`Quantity for ${product.name}`}>
+                          <button type="button" onClick={() => changeBasketQuantity(product.id, -1)} aria-label={`Remove one ${product.name}`}>−</button>
+                          <output aria-label={`${quantity} in basket`}>{quantity}</output>
+                          <button
+                            type="button"
+                            onClick={() => changeBasketQuantity(product.id, 1)}
+                            disabled={quantity >= MAX_BASKET_QUANTITY}
+                            aria-label={`Add one ${product.name}`}
+                          >
+                            +
+                          </button>
+                        </div>
+                        <button className="basket-remove" type="button" onClick={() => changeBasketQuantity(product.id, -quantity)} aria-label={`Remove ${product.name} from basket`}>Remove</button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </article>
+
+              <article className="basket-results-card">
+                <div className="basket-results-heading">
+                  <div>
+                    <span>Selected-store totals</span>
+                    <h3>{completeBasketComparisons.length > 0 ? "Cheapest complete basket" : "No complete basket yet"}</h3>
+                  </div>
+                  <span>{selected.length} {selected.length === 1 ? "store" : "stores"} compared</span>
+                </div>
+
+                <div className="custom-basket-totals">
+                  {basketComparisons.map((comparison) => {
+                    const store = storeMap.get(comparison.storeId)!;
+                    const isCheapest = comparison.complete && cheapestBasketComparisons.some((entry) => entry.storeId === comparison.storeId);
+                    const missingNames = comparison.missingItems.slice(0, 2).map((item) => item.name).join(", ");
+                    const remainingMissing = comparison.missingItems.length - 2;
+                    return (
+                      <div
+                        className={`${comparison.complete ? "complete" : "incomplete"} ${isCheapest ? "cheapest" : ""}`}
+                        key={comparison.storeId}
+                        style={{ "--store-color": store.color } as React.CSSProperties}
+                      >
+                        <div>
+                          <span>{store.shortName}</span>
+                          {isCheapest && <b>{cheapestBasketComparisons.length > 1 ? "Lowest tie" : "Cheapest"}</b>}
+                        </div>
+                        <strong>{money.format(comparison.total)}</strong>
+                        <p>{comparison.complete ? "Complete total" : `Captured subtotal · ${comparison.missingItems.length} unavailable`}</p>
+                        {!comparison.complete && (
+                          <small>{missingNames}{remainingMissing > 0 ? ` + ${remainingMissing} more` : ""}</small>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <p className="basket-verdict" aria-live="polite">{basketVerdict}</p>
+                <p className="basket-total-note">Only stores with every basket product are eligible to be called cheapest. Displayed sale and member prices are included; checkout fees, tips, and clip-once coupons are not.</p>
+              </article>
+            </div>
+          )}
+        </section>
+
         <div className="comparison-overview">
           <article className="basket-card">
-            <div className="card-heading"><span>Fair one-of-each basket</span><span>{strictCommonProducts.length} products at every selected store</span></div>
+            <div className="card-heading"><span>Snapshot-wide one-of-each basket</span><span>{strictCommonProducts.length} products at every selected store</span></div>
             <div className="basket-totals">
-              {basketRanking.map((storeId, index) => {
+              {snapshotBasketRanking.map((storeId, index) => {
                 const store = storeMap.get(storeId)!;
                 return (
                   <div className={index === 0 ? "basket-leader" : ""} key={storeId} style={{ "--store-color": store.color } as React.CSSProperties}>
-                    <span>{store.shortName}</span><strong>{money.format(basketTotals[storeId])}</strong>{index === 0 && <small>lowest basket</small>}
+                    <span>{store.shortName}</span><strong>{money.format(snapshotBasketTotals[storeId])}</strong>{index === 0 && <small>lowest basket</small>}
                   </div>
                 );
               })}
             </div>
-            {selected.length > 1 && <p><strong>{storeMap.get(basketLeader)!.name}</strong> is {money.format(basketSavings)} below the highest total on the strict shared basket.</p>}
+            {selected.length > 1 && <p><strong>{storeMap.get(snapshotBasketLeader)!.name}</strong> is {money.format(snapshotBasketSavings)} below the highest total on the strict shared basket.</p>}
           </article>
 
           <article className="coverage-card">
@@ -621,8 +864,8 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       <section className="products-section" id="products" aria-labelledby="products-heading">
         <div className="content-section products-inner">
           <div className="section-intro split-intro">
-            <div><p className="eyebrow">The full corpus</p><h2 id="products-heading">Every item. Every captured price.</h2></div>
-            <p>PCC and Metro use Instacart catalogs; Safeway and QFC use their direct pickup sites; Whole Foods uses Amazon. Cross-source links require the same brand, variant, and package quantity. A blank price means no confident current match was captured.</p>
+            <div><p className="eyebrow">Build your basket</p><h2 id="products-heading">Find it. Price it. Add it.</h2></div>
+            <p>Add the exact products you plan to buy, then use the basket shortcut to compare complete totals. Cross-source links require the same brand, variant, and package quantity; a blank price means no confident current match was captured.</p>
           </div>
 
           <div className="filter-panel">
@@ -639,12 +882,31 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           </div>
 
           <div className="product-list">
-            {filtered.slice(0, visibleCount).map((product) => <ProductCard product={product} stores={data.stores} selected={selected} key={product.id} />)}
+            {filtered.slice(0, visibleCount).map((product) => (
+              <ProductCard
+                product={product}
+                stores={data.stores}
+                selected={selected}
+                basketQuantity={basket[product.id] ?? 0}
+                onAddToBasket={(productId) => changeBasketQuantity(productId, 1)}
+                key={product.id}
+              />
+            ))}
             {filtered.length === 0 && <div className="empty-state"><h3>No products match</h3><p>Try clearing a filter or using a broader product name.</p><button type="button" onClick={resetFilters}>Show all products</button></div>}
           </div>
           {visibleCount < filtered.length && <button className="load-more" type="button" onClick={() => setVisibleCount((count) => count + 72)}>Show 72 more products</button>}
         </div>
       </section>
+
+      {basketUnitCount > 0 && (
+        <a className="basket-jump" href="#basket" aria-label={`View basket with ${basketUnitCount} ${basketUnitCount === 1 ? "item" : "items"} and compare totals`}>
+          <span aria-hidden="true">{basketUnitCount}</span>
+          <div>
+            <small>My basket</small>
+            <strong>See cheapest total</strong>
+          </div>
+        </a>
+      )}
 
       <footer className="site-footer">
         <div><p className="eyebrow">Methodology</p><h2>Exact products, dated observations, honest caveats.</h2></div>
