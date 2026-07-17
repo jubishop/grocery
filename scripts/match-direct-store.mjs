@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
 const aliasesPath = path.join(root, "data/instacart-aliases.json");
+const overridesPath = path.join(root, "data/direct-store-match-overrides.json");
 const storeId = process.argv[2] ?? "safeway";
 const configs = {
   safeway: {
@@ -23,10 +24,11 @@ const configs = {
 const config = configs[storeId];
 if (!config) throw new Error(`Unsupported direct store: ${storeId}`);
 
-const [instacart, direct, aliases] = await Promise.all([
+const [instacart, direct, aliases, overrides] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
   readFile(config.directPath, "utf8").then(JSON.parse),
   readFile(aliasesPath, "utf8").then(JSON.parse),
+  readFile(overridesPath, "utf8").then(JSON.parse),
 ]);
 
 const unitAliases = new Map([
@@ -228,6 +230,10 @@ const directWithQuantity = direct.records
   })
   .filter((record) => record.quantity);
 const directById = new Map(directWithQuantity.map((record) => [record.id, record]));
+const directByAnyId = new Map(direct.records.map((record) => [record.id, {
+  ...record,
+  quantity: quantity(record.title) ?? quantity(record.size),
+}]));
 const resultIdsByQuery = new Map();
 const resultIdsByProduct = new Map();
 for (const query of direct.queries) {
@@ -248,6 +254,44 @@ const review = [];
 const exactReview = [];
 for (const item of storeItems) {
   if (!item.quantity) continue;
+  const manualOverride = overrides[storeId]?.accepted?.find((candidate) => (
+    candidate.productId === item.productId || item.sourceProductIds.includes(candidate.productId)
+  ));
+  if (manualOverride) {
+    const record = directByAnyId.get(manualOverride.directId);
+    if (!record) {
+      throw new Error(`Missing ${storeId} direct product ${manualOverride.directId} for override ${manualOverride.productId}`);
+    }
+    const priceDifference = Number((item.instacartPrice - record.price).toFixed(2));
+    accepted.push({
+      productId: item.productId,
+      sourceProductIds: item.sourceProductIds,
+      storeIds: item.storeIds,
+      storeCount: item.storeCount,
+      instacartName: item.name,
+      instacartSize: item.size,
+      instacartPrice: item.instacartPrice,
+      instacartUrl: item.instacartUrl,
+      directId: record.id,
+      directTitle: record.title,
+      directSize: storeId === "safeway" ? (record.quantity?.display ?? record.size ?? item.size) : record.size,
+      directPrice: record.price,
+      directOriginalPrice: record.originalPrice,
+      directUrl: record.productUrl,
+      capturedAt: record.capturedAt,
+      capturedQuery: record.query,
+      matchMethod: "human_reviewed_brand_variant_size",
+      matchScore: 1,
+      matchMargin: 1,
+      sizeEvidence: record.quantity && quantitiesAgree(item.quantity, record.quantity)
+        ? `${item.quantity.display} = ${record.quantity.display}`
+        : `${item.quantity.display} = retailer package ${record.size || record.quantity?.display || "verified in title"}`,
+      manualReviewNote: manualOverride.note,
+      priceDifference,
+      instacartMarkupPercent: Number(((item.instacartPrice / record.price - 1) * 100).toFixed(1)),
+    });
+    continue;
+  }
   const expectedQueryKey = queryKey(`${item.name} ${item.size}`.trim());
   const targetedResultIds = resultIdsByProduct.get(item.productId);
   const exactResultIds = targetedResultIds ?? resultIdsByQuery.get(expectedQueryKey);

@@ -284,7 +284,7 @@ const instacartRunId = `instacart-west-seattle-${localDate(instacartStartedAt)}`
 const wholeFoodsRunId = `amazon-whole-foods-west-seattle-${localDate(wholeFoodsStartedAt)}`;
 const safewayRunId = `safeway-direct-west-seattle-${localDate(safewayStartedAt)}`;
 const qfcRunId = `qfc-direct-west-seattle-${localDate(qfcStartedAt)}`;
-const methodology = "Current prices come from four explicit corpora: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, and Whole Foods West Seattle pickup on Amazon.com. Instacart identical IDs are joined directly; retailer-specific aliases and every cross-source match require equivalent brand, variant, and package quantity. Ambiguous matches are excluded. Historical Instacart observations for Safeway and QFC remain in SQLite but are never used in the current comparison.";
+const methodology = "Current prices come from four explicit corpora: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, and Whole Foods West Seattle pickup on Amazon.com. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. Clip-once and buy-multiple coupons are not applied to a one-of-each basket. Instacart identical IDs are joined directly; retailer-specific aliases and every cross-source match require equivalent brand, variant, and package quantity. Ambiguous matches are excluded. Historical Instacart observations for Safeway and QFC remain in SQLite but are never used in the current comparison.";
 
 await rm(databasePath, { force: true });
 const database = new DatabaseSync(databasePath);
@@ -626,7 +626,7 @@ const siteData = {
     captureStartedAt: [instacartStartedAt, wholeFoodsStartedAt, safewayStartedAt, qfcStartedAt].sort()[0],
     deliveryArea: "West Seattle, Seattle, WA",
     methodology,
-    caveat: "Catalog prices can differ from in-store shelf prices, vary by fulfillment method, and change at any time. Loyalty-only coupons were not substituted unless the catalog itself displayed the price as the current price.",
+    caveat: "Catalog prices can differ from in-store shelf prices, vary by fulfillment method, and change at any time. Displayed member, club, and sale prices are used. Clip-once digital coupons and quantity-dependent offers are excluded from the one-of-each baskets.",
     locationNote: "PCC and Metropolitan Market use Instacart catalogs for the selected West Seattle delivery area. Safeway and QFC use direct pickup prices from the listed West Seattle stores. Amazon was set to Seattle 98116 with Whole Foods West Seattle selected for pickup.",
   },
   stores,

@@ -1,0 +1,211 @@
+{
+  "methodology": "Human-reviewed same-SKU overrides. Each pair must agree on brand, flavor or variant, and package quantity; retailer wording and equivalent package descriptions may differ.",
+  "safeway": {
+    "accepted": [
+      {
+        "productId": "3219916",
+        "directId": "960231760",
+        "note": "Milkadamia unsweetened macadamia milk, 32 fl oz"
+      },
+      {
+        "productId": "17283614",
+        "directId": "960287585",
+        "note": "Dave's Killer Bread White Bread Done Right thin-sliced, 20.5 oz"
+      },
+      {
+        "productId": "29327",
+        "directId": "960038589",
+        "note": "Chobani plain nonfat Greek yogurt, 32 oz"
+      },
+      {
+        "productId": "24060",
+        "directId": "117100132",
+        "note": "King Arthur unbleached bread flour, 5 lb"
+      },
+      {
+        "productId": "126819",
+        "directId": "121300034",
+        "note": "Cento certified San Marzano whole peeled tomatoes with basil leaf, 28 oz"
+      },
+      {
+        "productId": "2262218",
+        "directId": "960128222",
+        "note": "La Panzanella rosemary mini croccantini, 6 oz"
+      },
+      {
+        "productId": "116580",
+        "directId": "960052897",
+        "note": "King Arthur gluten-free pancake mix, 15 oz"
+      },
+      {
+        "productId": "17926482",
+        "directId": "970008328",
+        "note": "Oatly Barista Edition chilled oatmilk, 32 fl oz"
+      },
+      {
+        "productId": "20149380",
+        "directId": "960536091",
+        "note": "Oatly full-fat oatmilk, 64 fl oz"
+      },
+      {
+        "productId": "26936264",
+        "directId": "970328537",
+        "note": "Primal Kitchen squeeze mayonnaise made with avocado oil, 17 fl oz; card title abbreviates the unit as oz"
+      },
+      {
+        "productId": "30845593",
+        "directId": "971151053",
+        "note": "Synergy Honeycrisp Apple kombucha, 16 fl oz"
+      },
+      {
+        "productId": "36582810",
+        "directId": "971006382",
+        "note": "Spindrift Island Punch sparkling water, 8 x 12 fl oz"
+      },
+      {
+        "productId": "56140",
+        "directId": "970084030",
+        "note": "Organic Valley three-cheese Mexican blend shreds, 6 oz; retailer title is abbreviated"
+      },
+      {
+        "productId": "73517",
+        "directId": "136050131",
+        "note": "Organic Valley 2% reduced-fat milk, half gallon or 64 fl oz"
+      },
+      {
+        "productId": "24678",
+        "directId": "960055387",
+        "note": "Pacific Foods low-sodium organic free-range chicken broth, 32 fl oz"
+      },
+      {
+        "productId": "193626",
+        "directId": "960182102",
+        "note": "King Arthur gluten-free classic yellow cake mix, 22 oz; retailer title is abbreviated"
+      },
+      {
+        "productId": "16355028",
+        "directId": "960071218",
+        "note": "Synergy Gingerberry kombucha, 16 fl oz"
+      },
+      {
+        "productId": "40439735",
+        "directId": "970784648",
+        "note": "Synergy Pomelo Pink Lemonade kombucha, 16 fl oz"
+      },
+      {
+        "productId": "2588658",
+        "directId": "960322723",
+        "note": "MALK vanilla almond milk, 28 fl oz; current Safeway title specifies unsweetened vanilla"
+      },
+      {
+        "productId": "252796",
+        "directId": "960128428",
+        "note": "Chosen Foods pure avocado cooking oil, 16.9 fl oz"
+      },
+      {
+        "productId": "16293381",
+        "directId": "111200024",
+        "note": "CLIF Bar crunchy peanut butter single energy bar; Safeway card size truncates the decimal package weight"
+      },
+      {
+        "productId": "16529929",
+        "directId": "960532658",
+        "note": "Cobram Estate Classic California extra virgin olive oil, 750 ml or 25.4 fl oz; retailer title is abbreviated"
+      },
+      {
+        "productId": "21146617",
+        "directId": "970009910",
+        "note": "Chosen Foods avocado-oil Caesar dressing and marinade, 8 fl oz; Instacart labels the same product Steakhouse Caesar"
+      }
+    ]
+  },
+  "qfc": {
+    "accepted": [
+      {
+        "productId": "26110427",
+        "directId": "0081509902164",
+        "note": "Late July sea salt and lime tortilla chips, 10.1 oz"
+      },
+      {
+        "productId": "29271",
+        "directId": "0089470001006",
+        "note": "Chobani peach on the bottom nonfat Greek yogurt, 5.3 oz"
+      },
+      {
+        "productId": "39577",
+        "directId": "0007283000561",
+        "note": "Tillamook kosher medium cheddar block, 8 oz"
+      },
+      {
+        "productId": "7260",
+        "directId": "0089470001001",
+        "note": "Chobani plain nonfat Greek yogurt, 5.3 oz"
+      },
+      {
+        "productId": "2262218",
+        "directId": "0065900040600",
+        "note": "La Panzanella rosemary mini croccantini, 6 oz"
+      },
+      {
+        "productId": "17187315",
+        "directId": "0001376402801",
+        "note": "Dave's Killer Bread Plain Awesome organic bagels, 5 count; QFC structured size is 16.75 oz"
+      },
+      {
+        "productId": "116580",
+        "directId": "0007101207503",
+        "note": "King Arthur gluten-free pancake mix, 15 oz"
+      },
+      {
+        "productId": "20941372",
+        "directId": "0081829001698",
+        "note": "Chobani original oat milk, 52 fl oz"
+      },
+      {
+        "productId": "2915435",
+        "directId": "0085777700423",
+        "note": "RXBAR chocolate sea salt protein bar, 1.8 oz"
+      },
+      {
+        "productId": "16293381",
+        "directId": "0072225210120",
+        "note": "CLIF Bar crunchy peanut butter single energy bar; QFC structured size is one count"
+      },
+      {
+        "productId": "26936264",
+        "directId": "0085000463985",
+        "note": "Primal Kitchen squeeze mayonnaise made with avocado oil, 17 fl oz"
+      },
+      {
+        "productId": "29774",
+        "directId": "0002190850935",
+        "note": "Larabar peanut butter chocolate chip fruit and nut bar, 1.6 oz"
+      },
+      {
+        "productId": "73517",
+        "directId": "0009396651500",
+        "note": "Organic Valley 2% reduced-fat milk, half gallon or 64 fl oz"
+      },
+      {
+        "productId": "172751",
+        "directId": "0085556900302",
+        "note": "Perfect Bar refrigerated peanut butter protein bar, single 2.5 oz bar; QFC structured size is one count"
+      },
+      {
+        "productId": "29430",
+        "directId": "0063803161215",
+        "note": "Field Roast Italian garlic and fennel plant-based sausages, 12.95 oz or 368 g"
+      },
+      {
+        "productId": "41098",
+        "directId": "0005160000001",
+        "note": "Lea & Perrins original Worcestershire sauce, 10 fl oz"
+      },
+      {
+        "productId": "21146617",
+        "directId": "0081507402249",
+        "note": "Chosen Foods avocado-oil Caesar dressing and marinade, 8 fl oz; Instacart labels the same product Steakhouse Caesar"
+      }
+    ]
+  }
+}
