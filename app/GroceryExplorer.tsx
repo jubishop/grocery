@@ -525,7 +525,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <div className="direct-audit" aria-labelledby="direct-audit-heading">
             <div className="direct-audit-heading">
               <div><p className="eyebrow">Where we can measure it</p><h3 id="direct-audit-heading">Instacart versus the native store site.</h3></div>
-              <p>These are exact-product basket comparisons from the captured catalogs—not a claim about checkout fees, tips, loyalty coupons, or PCC and Metro.</p>
+              <p>These are exact-product basket comparisons from the captured catalogs—not a claim about checkout fees, tips, clip-once coupons, or PCC and Metro. Displayed member and club prices are included.</p>
             </div>
             <div className="direct-audit-grid">
               {data.pricingResearch.directAudit.map((audit) => {
