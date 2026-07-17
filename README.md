@@ -1,8 +1,8 @@
 # West Seattle Grocery Index
 
-An interactive public site backed by a July 16, 2026 Instacart snapshot of PCC Community Markets, Metropolitan Market, Safeway, and QFC in West Seattle.
+An interactive public comparison of PCC Community Markets, Metropolitan Market, Safeway, QFC, and Whole Foods Market using a July 16, 2026 West Seattle price snapshot.
 
-The main corpus contains **1,381 products found at two or more stores**, matched by identical Instacart product ID. Every two-store pairing has at least 349 exact matches; 334 products appear at three stores and 175 appear at all four.
+The current corpus contains **2,712 products found at two or more stores** and **15,146 dated price observations**. The strict intersection contains **115 products found at all five stores**. The site supports any subset of stores, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
 
 Live site: <https://west-seattle-grocery-prices.jubishop.chatgpt.site/#top>
 
@@ -17,29 +17,27 @@ Then open <http://localhost:3000/#top>.
 
 ## Data pipeline
 
-- `data/capture-checkpoint.json` is the durable raw browser capture: 3,835 distinct products and 5,900 store-price rows.
+- `data/capture-checkpoint.json` is the durable Instacart browser capture for PCC, Metropolitan Market, Safeway, and QFC.
+- `data/whole-foods-capture-checkpoint.json` is the durable Amazon Whole Foods capture.
+- `data/whole-foods-matches.json` is the generated conservative cross-source product crosswalk.
+- `data/whole-foods-match-overrides.json` is the small auditable list of human-reviewed same-SKU matches.
+- `data/instacart-aliases.json` records high-confidence retailer-specific Instacart ID aliases for diagnostics.
 - `data/schema.sql` defines the historical-ready relational schema.
 - `data/grocery-prices.sqlite` is the populated SQLite database committed with the site.
-- `data/site-data.json` is the generated four-store payload used by the app.
-- `data/products.csv` and `public/west-seattle-grocery-prices.csv` contain the 1,381 comparable products in wide CSV form.
-- `public/images/` contains one local thumbnail for every comparable product.
+- `data/site-data.json` is the generated five-store payload used by the app.
+- `data/products.csv` and `public/west-seattle-grocery-prices.csv` contain the comparable products in wide CSV form.
+- `public/images/` contains downloaded thumbnails from the earlier PCC/Metro capture; newer products use their captured source image URLs.
 - `data/products.json` is the original 298-item PCC/Metro snapshot retained as a legacy source artifact.
 
-Rebuild the database, site payload, and CSV:
+Rebuild the match data, SQLite database, site payload, and CSV:
 
 ```bash
 npm run data:build
 ```
 
-Re-fetch any missing local thumbnails:
-
-```bash
-npm run images
-```
-
 ## SQLite model
 
-The schema separates stable `stores` and `products` from dated `capture_runs`, row-level `price_observations`, and `capture_queries`. Each observation records its timestamp, store, product ID, current and original prices, promotion flag, price basis, source URL, and capture query. Future snapshots can be inserted as additional capture runs without changing the product model.
+The schema separates stable `stores` and `products` from source-specific `product_identifiers`, audited `product_matches`, dated `capture_runs`, row-level `price_observations`, and `capture_queries`. Every observation records its source, external product ID, observation date and timestamp, store, current and original prices, promotion state, price basis, product URL, and capture query. Future snapshots can be inserted as additional capture runs for historical price analysis.
 
 ## Store context
 
@@ -47,9 +45,14 @@ The schema separates stable `stores` and `products` from dated `capture_runs`, r
 - Metropolitan Market: 2320 42nd Ave SW, Seattle, WA 98116
 - Safeway: 2622 California Ave SW, Seattle, WA 98116
 - QFC: 4550 42nd Ave SW, Seattle, WA 98116
+- Whole Foods Market: 4755 Fauntleroy Way SW Ste 190, Seattle, WA 98116
 
-Instacart exposes a delivery catalog rather than a guaranteed fulfillment branch. The West Seattle addresses are included for geographic context; the captured delivery area is identified as West Seattle, Seattle, WA.
+The four Instacart catalogs use the selected West Seattle delivery area. Amazon was set to Seattle 98116 with Whole Foods West Seattle selected for pickup. Catalog selection does not guarantee fulfillment from a particular branch.
 
-## Price methodology
+## Price and matching methodology
 
-Products are exact Instacart product-ID matches. Current displayed prices are used, including promotions when shown; original prices are retained separately. Loyalty-only discounts are not substituted for the regular displayed price. The snapshot is not a claim about current in-store shelf prices, and Instacart prices or availability may vary by address and time.
+Current displayed prices are used, including promotions when shown; original prices are retained separately. Loyalty-only discounts are not substituted for the regular displayed price.
+
+The four Instacart retailers are joined by identical Instacart product ID. Whole Foods products are linked conservatively by brand, product or flavor tokens, and equivalent package quantity. An audited override file admits only human-reviewed same-SKU title variations. Ambiguous matches are excluded.
+
+The requested 300-item strict five-store intersection was not reached: the exhaustive exact-product queue produced 115 defensible five-way matches. The site reports that shortfall directly and does not pad it with merely similar products.

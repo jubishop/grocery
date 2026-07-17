@@ -6,7 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const data = JSON.parse(await readFile(path.join(root, "data/site-data.json"), "utf8"));
 
 const columns = [
-  ["instacart_product_id", "id"],
+  ["canonical_product_id", "id"],
   ["product", "name"],
   ["size", "size"],
   ["category", "category"],
@@ -20,7 +20,8 @@ for (const store of data.stores) {
   columns.push([`${store.id}_price`, `prices.${store.id}.price`]);
   columns.push([`${store.id}_original_price`, `prices.${store.id}.originalPrice`]);
   columns.push([`${store.id}_sale`, `prices.${store.id}.sale`]);
-  columns.push([`${store.id}_instacart_url`, `prices.${store.id}.url`]);
+  columns.push([`${store.id}_source`, `prices.${store.id}.source`]);
+  columns.push([`${store.id}_catalog_url`, `prices.${store.id}.url`]);
 }
 
 function cell(value) {

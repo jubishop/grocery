@@ -2,7 +2,7 @@
 
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
-type StoreId = "pcc" | "metro" | "safeway" | "qfc";
+type StoreId = "pcc" | "metro" | "safeway" | "qfc" | "wholefoods";
 
 type Store = {
   id: StoreId;
@@ -11,7 +11,8 @@ type Store = {
   shortName: string;
   address: string;
   storeUrl: string;
-  instacartUrl: string;
+  catalogSource: string;
+  catalogUrl: string;
   color: string;
 };
 
@@ -21,6 +22,7 @@ type Price = {
   sale: boolean;
   priceBasis: string;
   url: string;
+  source: string;
   observedAt: string;
 };
 
@@ -63,10 +65,11 @@ export type Dataset = {
     capturedProducts: number;
     observationCount: number;
     comparableProducts: number;
-    allFourProducts: number;
-    threeStoreProducts: number;
-    twoStoreProducts: number;
+    allStoreProducts: number;
+    storeCount: number;
+    distribution: Record<string, number>;
     queryCount: number;
+    acceptedCrossSourceMatches: number;
   };
   storePerformance: Array<{
     storeId: StoreId;
@@ -79,7 +82,7 @@ export type Dataset = {
     priceIndex: number;
   }>;
   pairwise: PairSummary[];
-  categories: Array<{ category: string; count: number; allFourCount: number }>;
+  categories: Array<{ category: string; count: number; allStoreCount: number }>;
   products: Product[];
 };
 
@@ -141,7 +144,7 @@ function ProductCard({ product, stores, selected }: { product: Product; stores: 
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className="product-image"
-            src={product.imagePath}
+            src={product.imagePath || product.imageUrl}
             alt=""
             loading="lazy"
             width="96"
@@ -185,7 +188,7 @@ function ProductCard({ product, stores, selected }: { product: Product; stores: 
             >
               <span>{store.shortName}</span>
               <div><strong>{money.format(price.price)}</strong>{price.originalPrice !== null && <s>{money.format(price.originalPrice)}</s>}</div>
-              <small>{price.sale ? "sale shown" : "View on Instacart"}</small>
+              <small>{price.sale ? "sale shown · " : ""}{price.source === "amazon_whole_foods" ? "View on Amazon" : "View on Instacart"}</small>
             </a>
           );
         })}
@@ -300,10 +303,10 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
 
         <section className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">West Seattle · Instacart snapshot · {integer.format(data.summary.comparableProducts)} exact-match products</p>
-            <h1>Four stores.<br /><em>One honest price map.</em></h1>
+            <p className="eyebrow">West Seattle · Instacart + Amazon snapshot · {integer.format(data.summary.comparableProducts)} comparable products</p>
+            <h1>Five stores.<br /><em>One honest price map.</em></h1>
             <p className="hero-deck">
-              PCC, Metropolitan Market, Safeway, and QFC compared product by product. Every two-store pairing has at least <strong>{integer.format(minimumPairCount)} identical items</strong>—and you can choose the matchup.
+              PCC, Metropolitan Market, Safeway, QFC, and Whole Foods compared product by product. Every two-store pairing currently has at least <strong>{integer.format(minimumPairCount)} confidently matched items</strong>—and you can choose the matchup.
             </p>
             <div className="hero-actions">
               <a className="primary-button" href="#compare">Build a comparison <ArrowIcon /></a>
@@ -330,7 +333,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
 
       <div className="score-strip">
         <div><strong>{integer.format(data.summary.comparableProducts)}</strong><span>comparable products</span></div>
-        <div><strong>{integer.format(data.summary.allFourProducts)}</strong><span>at all four stores</span></div>
+        <div><strong>{integer.format(data.summary.allStoreProducts)}</strong><span>at all five stores</span></div>
         <div><strong>{integer.format(data.summary.observationCount)}</strong><span>dated price rows</span></div>
         <div><strong>{minimumPairCount}+</strong><span>in every pair</span></div>
       </div>
@@ -338,7 +341,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       <section className="content-section compare-section" id="compare" aria-labelledby="compare-heading">
         <div className="section-intro split-intro">
           <div><p className="eyebrow">Interactive comparison</p><h2 id="compare-heading">Choose your stores.</h2></div>
-          <p>With two stores selected, every result is an exact shared product. With three or four, choose broad pairwise coverage or require the item at every selected store.</p>
+          <p>With two stores selected, every result is a shared product. With three to five, choose broad pairwise coverage or require the item at every selected store.</p>
         </div>
 
         <div className="store-selector" aria-label="Stores to compare">
@@ -400,7 +403,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
               const leader = pair.cheaperStore ? storeMap.get(pair.cheaperStore)! : null;
               return (
                 <article className="pair-card" key={pair.stores.join("-")}>
-                  <div><strong>{first.shortName} vs. {second.shortName}</strong><span>{pair.count} exact matches</span></div>
+                  <div><strong>{first.shortName} vs. {second.shortName}</strong><span>{pair.count} matched products</span></div>
                   <p>{leader ? <><b>{leader.shortName}</b> lower by {money.format(pair.savings)} ({pair.percentDifference}%)</> : "Exact basket tie"}</p>
                   <small>{first.shortName} {money.format(pair.totals[first.id]!)} · {second.shortName} {money.format(pair.totals[second.id]!)}</small>
                 </article>
@@ -435,7 +438,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <div className="content-section products-inner">
           <div className="section-intro split-intro">
             <div><p className="eyebrow">The full corpus</p><h2 id="products-heading">Every item. Every captured price.</h2></div>
-            <p>Matches use the identical Instacart product ID. A blank price means that item was not captured in that selected store&apos;s catalog; open a listed price to see its Instacart page.</p>
+            <p>Instacart retailers use identical product IDs. Whole Foods products are linked conservatively by brand, product name, flavor, and package quantity. A blank price means no confident match was captured for that store.</p>
           </div>
 
           <div className="filter-panel">
@@ -460,7 +463,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       </section>
 
       <footer className="site-footer">
-        <div><p className="eyebrow">Methodology</p><h2>Exact IDs, dated observations, honest caveats.</h2></div>
+        <div><p className="eyebrow">Methodology</p><h2>Exact products, dated observations, honest caveats.</h2></div>
         <div className="footer-copy">
           <p>{data.metadata.methodology}</p>
           <p>{data.metadata.caveat}</p>

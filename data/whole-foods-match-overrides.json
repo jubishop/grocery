@@ -1,0 +1,23 @@
+{
+  "methodology": "Human-reviewed same-SKU overrides. Each pair must agree on brand, flavor or variant, and package quantity; marketing-only title differences are allowed.",
+  "accepted": [
+    { "productId": "2691990", "asin": "B000VTWD64", "note": "FAGE 0% plain Greek yogurt, 5.3 oz" },
+    { "productId": "18718109", "asin": "B07C9KRVNT", "note": "Bob's Red Mill gluten-free old fashioned rolled oats, 32 oz" },
+    { "productId": "16292127", "asin": "B00FTC1XWI", "note": "Food for Life Ezekiel 4:9 bread, 24 oz" },
+    { "productId": "26110427", "asin": "B09GZSQMM3", "note": "Late July sea salt and lime tortilla chips, 10.1 oz" },
+    { "productId": "126819", "asin": "B007K5EUWC", "note": "Cento certified San Marzano tomatoes, 28 oz" },
+    { "productId": "29327", "asin": "B008U5OSTQ", "note": "Chobani plain nonfat Greek yogurt, 32 oz" },
+    { "productId": "24496", "asin": "B000WD5UKU", "note": "Amy's split pea soup, 14.1 oz" },
+    { "productId": "25508", "asin": "B000VK2L74", "note": "Nature's Path Heritage Flakes cereal, 13.25 oz" },
+    { "productId": "44204", "asin": "B000O6EFL0", "note": "Amy's macaroni and cheese, 9 oz" },
+    { "productId": "3349400", "asin": "B07HM58L4H", "note": "Amy's spinach ravioli bowl, nominal 8.4 to 8.5 oz" },
+    { "productId": "36582810", "asin": "B0DKQS8ZV8", "note": "Spindrift Island Punch sparkling water, 8 x 12 fl oz" },
+    { "productId": "24215744", "asin": "B08KT73KXT", "note": "Simple Mills original organic seed crackers, 4.25 oz" },
+    { "productId": "2570636", "asin": "B000REJY5Q", "note": "Amy's cheese enchilada, 9 oz" },
+    { "productId": "47594", "asin": "B0011EDTG6", "note": "Kerrygold garlic and herb butter, 3.5 oz" },
+    { "productId": "2915435", "asin": "B0718XQD7R", "note": "RXBAR chocolate sea salt protein bar, 1.8 oz" },
+    { "productId": "80347", "asin": "B00FTBT8OE", "note": "Amy's pad thai, 9.5 oz" },
+    { "productId": "18025322", "asin": "B078TR6L1D", "note": "Bob's Red Mill tapioca flour, 16 oz" },
+    { "productId": "48217", "asin": "B00FTCJ29O", "note": "Amy's non-dairy bean and rice burrito, 6 oz" }
+  ]
+}

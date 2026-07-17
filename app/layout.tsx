@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "West Seattle Grocery Index — PCC, Metro, Safeway & QFC",
+  title: "West Seattle Grocery Index — Five-store price comparison",
   description:
-    "A July 2026 Instacart comparison of 1,381 exact-match products across PCC Community Markets, Metropolitan Market, Safeway, and QFC in West Seattle.",
+    "A July 2026 comparison of matched grocery prices across PCC, Metropolitan Market, Safeway, QFC, and Whole Foods in West Seattle.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
