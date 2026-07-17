@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { organicQualifiersCompatible } from "./match-product-qualifiers.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
@@ -95,7 +96,7 @@ function quantitiesAgree(left, right) {
 
 const stopWords = new Set([
   "a", "an", "and", "the", "with", "made", "from", "for", "of", "in", "by",
-  "organic", "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
+  "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
   "frozen", "microwave", "meal", "meals", "food", "foods", "product", "products",
   "flavor", "flavored", "style", "premium", "ready", "serve", "your",
   "ounce", "ounces", "fluid", "pound", "pounds", "count", "pack", "packs", "ct", "oz",
@@ -173,6 +174,7 @@ function stateConflict(leftText, rightText, phrases, contextPattern = null) {
 }
 
 function variantsCompatible(leftText, rightText) {
+  if (!organicQualifiersCompatible(leftText, rightText)) return false;
   const conflicts = [
     stateConflict(leftText, rightText, ["unsalted", "salted"]),
     stateConflict(leftText, rightText, ["unsweetened", "sweetened"]),

@@ -181,6 +181,56 @@
         "productId": "20941372",
         "directId": "960546638",
         "note": "Chobani Original oatmilk, 52 fl oz; Safeway labels the listing Plain, while the product description identifies it as the Original recipe"
+      },
+      {
+        "productId": "79156",
+        "directId": "960014610",
+        "note": "Better Than Bouillon premium seasoned vegetable base, 8 oz; verified on the Safeway product page"
+      },
+      {
+        "productId": "24488",
+        "directId": "960057626",
+        "note": "Amy's regular organic lentil soup, 14.5 oz; Safeway details explicitly identify the listing as Organic Lentil Soup"
+      },
+      {
+        "productId": "218713",
+        "directId": "105450319",
+        "note": "Bragg organic raw unfiltered apple cider vinegar with the Mother, 32 fl oz; Safeway details confirm the organic claim"
+      },
+      {
+        "productId": "83224",
+        "directId": "960554992",
+        "note": "California Olive Ranch 100% California extra virgin olive oil, 16.9 fl oz"
+      },
+      {
+        "productId": "17276896",
+        "directId": "960311859",
+        "note": "Kettle & Fire Classic organic chicken bone broth, 16.9 fl oz; exact product and package verified on Safeway"
+      },
+      {
+        "productId": "2756965",
+        "directId": "960164592",
+        "note": "Lightlife Original organic soy tempeh, 8 oz; Safeway description confirms the organic Original SKU"
+      },
+      {
+        "productId": "21202412",
+        "directId": "970022435",
+        "note": "Naked Bread organic Bare White sandwich bread, 22.5 oz; Safeway description confirms the organic loaf"
+      },
+      {
+        "productId": "25508",
+        "directId": "111010954",
+        "note": "Nature's Path Organic Heritage Flakes cereal, 13.25 oz; exact product and package verified on Safeway"
+      },
+      {
+        "productId": "25153011",
+        "directId": "970053557",
+        "note": "OLIPOP Cream Soda prebiotic soda, single 12 fl oz can"
+      },
+      {
+        "productId": "21351192",
+        "directId": "960564566",
+        "note": "Kettle & Fire organic chicken cooking broth, 32 oz; Safeway product details confirm the organic chicken broth SKU and package"
       }
     ]
   },
@@ -310,6 +360,16 @@
         "productId": "295072",
         "directId": "0078204511315",
         "note": "Beecher's gluten-free macaroni and cheese frozen meal, 18 oz"
+      },
+      {
+        "productId": "48216",
+        "directId": "0004227200071",
+        "note": "Amy's Cheddar Cheese Burrito with organic rice and beans, single 6 oz package; pickup availability and package size verified at QFC West Seattle"
+      },
+      {
+        "productId": "24491",
+        "directId": "0004227200505",
+        "note": "Amy's regular organic low-fat split pea soup, 14.1 oz; QFC description distinguishes it from the separate light-in-sodium version"
       }
     ]
   }

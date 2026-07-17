@@ -2,7 +2,7 @@
 
 An interactive public comparison of PCC Community Markets, Metropolitan Market, Safeway, QFC, and Whole Foods Market using a July 16–17, 2026 West Seattle price snapshot.
 
-The current corpus contains **3,832 products found at two or more stores** and **57,986 dated price observations**. The strict intersection contains **224 products found at all five stores**, while **916 accepted Whole Foods cross-source matches** make pairwise and subset comparisons substantially broader. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
+The current corpus contains **3,824 products found at two or more stores** and **58,038 dated price observations**. The strict intersection contains **220 products found at all five stores**, while **876 accepted Whole Foods cross-source matches** make pairwise and subset comparisons substantially broader. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
 
 Live site: <https://west-seattle-grocery-prices.jubishop.chatgpt.site/#top>
 
@@ -53,6 +53,6 @@ The four Instacart catalogs use the selected West Seattle delivery area. Amazon 
 
 Current displayed prices are used, including member, club, and sale prices when shown; original prices are retained separately. Clip-once digital coupons and buy-multiple offers are not applied to the one-of-each comparison baskets.
 
-The four Instacart retailers are joined by identical product ID or a conservative same-SKU alias supported by equivalent brand, variant, and package quantity; every original external ID is retained. Whole Foods products are linked conservatively by exact-search provenance, brand, product or flavor tokens, and equivalent package quantity. An audited override file admits only human-reviewed same-SKU title variations. Ambiguous matches are excluded.
+The four Instacart retailers are joined by identical product ID or a conservative same-SKU alias supported by equivalent brand, variant, package quantity, and organic or conventional status; every original external ID is retained. Whole Foods products are linked conservatively by exact-search provenance, brand, product or flavor tokens, and equivalent package quantity. A July 17 matching audit separated organic products from similarly named conventional products, and an audited override file admits only human-reviewed same-SKU title variations. Ambiguous matches are excluded.
 
-The requested 300-item strict five-store intersection has not yet been reached: the current exact-product corpus contains 224 defensible unique five-way matches. The site reports that shortfall directly and does not pad it with merely similar products.
+The requested 300-item strict five-store intersection has not yet been reached: the current exact-product corpus contains 220 defensible unique five-way matches. The site reports that shortfall directly and does not pad it with merely similar products.

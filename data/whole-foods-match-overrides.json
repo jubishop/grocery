@@ -95,6 +95,18 @@
     { "productId": "3308560", "asin": "B01BVUDMVG", "note": "Simple Mills rosemary and sea salt almond flour crackers, nominal 4.2 to 4.25 oz package" },
     { "productId": "2717057", "asin": "B005G47UP8", "note": "Zoi traditional Greek plain yogurt, 32 oz; product page brand and five-serving tub confirm the same SKU" },
     { "productId": "2718322", "asin": "B005G47UA8", "note": "Zoi traditional Greek honey yogurt, 32 oz; product page brand and five-serving tub confirm the same SKU" },
-    { "productId": "16913835", "asin": "B07KMYWCPP", "note": "Good Culture organic low-fat classic cottage cheese, 2% milkfat, 16 oz" }
+    { "productId": "16913835", "asin": "B07KMYWCPP", "note": "Good Culture organic low-fat classic cottage cheese, 2% milkfat, 16 oz" },
+    { "productId": "124065", "asin": "B005P0MLXO", "note": "Justin's Classic almond butter jar, 16 oz; exact flavor and package verified in the Whole Foods catalog" },
+    { "productId": "200605", "asin": "B004XJLPSA", "note": "The Essential Baking Company organic Multi-Grain sliced bread, 32 oz" },
+    { "productId": "16291535", "asin": "B00JSC97O6", "note": "Bob's Red Mill unbleached white all-purpose flour, single 5 lb package" },
+    { "productId": "29027413", "asin": "B0BRY9PQ6Z", "note": "Cascadian Farm organic Oats N Honey granola, single 11 oz package; product page confirms USDA Organic" },
+    { "productId": "26548580", "asin": "B09RV1BBQV", "note": "GOODLES Cheddy Mac creamy cheddar macaroni and cheese, single 6 oz package" },
+    { "productId": "26548571", "asin": "B09RV1ZH11", "note": "GOODLES Shella Good aged white cheddar shells, single 6 oz package" },
+    { "productId": "26936264", "asin": "B0BLTDL65N", "note": "Primal Kitchen mayonnaise made with avocado oil in the 17 oz squeeze bottle" },
+    { "productId": "44184", "asin": "B006KZYT38", "note": "Amy's Broccoli & Cheddar Bake Bowl, single 9.5 oz frozen meal" },
+    { "productId": "2788934", "asin": "B01N9676VI", "note": "Amy's gluten-free Three Cheese Kale Bake Bowl, single 8.5 oz frozen meal" },
+    { "productId": "20951961", "asin": "B084BLBNRM", "note": "UNREAL dark chocolate caramel peanut nougat bars, single 3.4 oz bag" },
+    { "productId": "18008901", "asin": "B00M1QWODW", "note": "Vital Farms organic pasture-raised large eggs, 12 count" },
+    { "productId": "22999203", "asin": "B089C8JT7B", "note": "Vital Farms organic large eggs, 18 count" }
   ]
 }

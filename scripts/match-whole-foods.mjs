@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { organicQualifiersCompatible } from "./match-product-qualifiers.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
@@ -104,7 +105,7 @@ function quantitiesAgree(left, right) {
 
 const stopWords = new Set([
   "a", "an", "and", "the", "with", "made", "from", "for", "of", "in", "by",
-  "organic", "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
+  "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
   "frozen", "microwave", "meal", "meals", "food", "foods", "product", "products",
   "flavor", "flavored", "style", "premium", "ready", "serve",
   "ounce", "ounces", "fluid", "pound", "pounds", "count", "pack", "packs", "ct", "oz",
@@ -156,6 +157,7 @@ for (const item of allInstacart) {
       const candidateQuantity = quantity(candidate.title);
       if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
       if (!brandAgrees(item.name, candidate.brand)) return null;
+      if (!organicQualifiersCompatible(item.name, candidate.title)) return null;
       const score = tokenScore(item.name, candidate.title);
       return { candidate, candidateQuantity, score };
     })
@@ -167,6 +169,7 @@ for (const item of allInstacart) {
         const candidateQuantity = quantity(candidate.title);
         if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
         if (!brandAgrees(item.name, candidate.brand)) return null;
+        if (!organicQualifiersCompatible(item.name, candidate.title)) return null;
         const score = tokenScore(item.name, candidate.title);
         return { candidate, candidateQuantity, score };
       })

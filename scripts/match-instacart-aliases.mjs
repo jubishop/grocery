@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { organicQualifiersCompatible } from "./match-product-qualifiers.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const checkpointPath = path.join(root, "data/capture-checkpoint.json");
@@ -44,7 +45,7 @@ function quantity(text) {
 
 const stopWords = new Set([
   "a", "an", "and", "the", "with", "made", "from", "for", "of", "in", "by",
-  "organic", "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
+  "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
   "product", "products", "flavor", "flavored", "style", "premium", "ready", "serve",
   "ounce", "ounces", "fluid", "pound", "pounds", "count", "pack", "packs", "ct", "oz",
   "lb", "lbs", "ml", "liter", "liters", "gram", "grams", "g", "kg", "ea",
@@ -113,7 +114,11 @@ for (const candidates of buckets.values()) {
     for (const targetStore of stores) {
       if (targetStore === record.storeId) continue;
       const scored = candidates
-        .filter((candidate) => candidate.storeId === targetStore && candidate.id !== record.id)
+        .filter((candidate) => (
+          candidate.storeId === targetStore
+          && candidate.id !== record.id
+          && organicQualifiersCompatible(record.name, candidate.name)
+        ))
         .map((candidate) => ({ candidate, score: score(record.name, candidate.name) }))
         .filter((candidate) => candidate.score >= 0.82)
         .sort((a, b) => b.score - a.score || a.candidate.id.localeCompare(b.candidate.id, undefined, { numeric: true }));
