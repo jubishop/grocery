@@ -8,18 +8,26 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
 const wholeFoodsPath = path.join(root, "data/whole-foods-capture-checkpoint.json");
 const wholeFoodsMatchesPath = path.join(root, "data/whole-foods-matches.json");
+const aliasesPath = path.join(root, "data/instacart-aliases.json");
 const schemaPath = path.join(root, "data/schema.sql");
 const databasePath = path.join(root, "data/grocery-prices.sqlite");
 const siteDataPath = path.join(root, "data/site-data.json");
 
-const [instacart, wholeFoods, matchData, schema] = await Promise.all([
+const [instacart, wholeFoods, matchData, aliases, schema] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
   readFile(wholeFoodsPath, "utf8").then(JSON.parse),
   readFile(wholeFoodsMatchesPath, "utf8").then(JSON.parse),
+  readFile(aliasesPath, "utf8").then(JSON.parse),
   readFile(schemaPath, "utf8"),
 ]);
 
-instacart.records = instacart.records.filter((record) => Number.isFinite(record.price) && record.price > 0);
+instacart.records = instacart.records
+  .filter((record) => Number.isFinite(record.price) && record.price > 0)
+  .map((record) => ({
+    ...record,
+    sourceProductId: record.id,
+    id: aliases.aliases[record.id] ?? record.id,
+  }));
 wholeFoods.records = wholeFoods.records.filter((record) => Number.isFinite(record.price) && record.price > 0);
 
 const stores = [
@@ -139,7 +147,7 @@ for (const record of instacart.records) {
   recordsByProduct.set(record.id, group);
 }
 
-const acceptedMatches = [...matchData.matches]
+const acceptedMatches = [...(matchData.allMatches ?? matchData.matches)]
   .sort((a, b) => b.matchScore - a.matchScore || b.matchMargin - a.matchMargin || a.productId.localeCompare(b.productId, undefined, { numeric: true }));
 const matchByAsin = new Map();
 for (const match of acceptedMatches) if (!matchByAsin.has(match.asin)) matchByAsin.set(match.asin, match);
@@ -182,7 +190,7 @@ const wholeFoodsCompletedAt = wholeFoodsTimestamps.at(-1);
 const completedAt = [instacartCompletedAt, wholeFoodsCompletedAt].sort().at(-1);
 const instacartRunId = `instacart-west-seattle-${localDate(instacartStartedAt)}`;
 const wholeFoodsRunId = `amazon-whole-foods-west-seattle-${localDate(wholeFoodsStartedAt)}`;
-const methodology = "PCC, Metropolitan Market, Safeway, and QFC use current displayed Instacart prices and identical Instacart product IDs. Whole Foods uses current displayed Amazon Whole Foods prices and a conservative crosswalk requiring matching brand, product/flavor tokens, and equivalent package quantity; a small audited override file records human-reviewed same-SKU matches, and ambiguous matches are excluded.";
+const methodology = "PCC, Metropolitan Market, Safeway, and QFC use current displayed Instacart prices. Identical IDs are joined directly; retailer-specific duplicate IDs are joined only through conservative same-SKU alias evidence requiring equivalent brand, variant, and package quantity. Whole Foods uses current displayed Amazon Whole Foods prices and a conservative crosswalk requiring matching brand, product/flavor tokens, and equivalent package quantity; an audited override file records human-reviewed same-SKU matches, and ambiguous matches are excluded.";
 
 await rm(databasePath, { force: true });
 const database = new DatabaseSync(databasePath);
@@ -225,13 +233,13 @@ try {
   for (const store of stores) insertStore.run(store.id, store.slug, store.name, store.shortName, store.address, store.storeUrl, store.catalogSource, store.catalogUrl, store.color);
   for (const product of products) insertProduct.run(product.id, product.name, product.size, product.category, product.priceBasis, product.imageUrl, product.imagePath);
 
-  insertRun.run(instacartRunId, instacartStartedAt, instacartCompletedAt, localDate(instacartCompletedAt), "West Seattle, Seattle, WA", "Instacart", "Identical Instacart product IDs across retailer catalogs.");
+  insertRun.run(instacartRunId, instacartStartedAt, instacartCompletedAt, localDate(instacartCompletedAt), "West Seattle, Seattle, WA", "Instacart", "Identical Instacart IDs plus conservative same-SKU retailer alias clusters; original external IDs are preserved.");
   insertRun.run(wholeFoodsRunId, wholeFoodsStartedAt, wholeFoodsCompletedAt, localDate(wholeFoodsCompletedAt), "West Seattle, Seattle, WA 98116", "Amazon Whole Foods Market", matchData.methodology);
 
   for (const record of instacart.records) {
-    insertIdentifier.run("instacart", record.id, record.id, record.name, record.size || "", record.productUrl);
+    insertIdentifier.run("instacart", record.sourceProductId, record.id, record.name, record.size || "", record.productUrl);
     insertObservation.run(
-      instacartRunId, record.storeId, record.id, "instacart", record.id,
+      instacartRunId, record.storeId, record.id, "instacart", record.sourceProductId,
       new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(record.price * 100),
       record.originalPrice == null ? null : Math.round(record.originalPrice * 100), record.sale ? 1 : 0,
       record.priceBasis || "per item", record.productUrl, record.capturedUrl || "", record.query || "", record.category || "",

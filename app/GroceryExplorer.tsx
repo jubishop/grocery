@@ -438,7 +438,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <div className="content-section products-inner">
           <div className="section-intro split-intro">
             <div><p className="eyebrow">The full corpus</p><h2 id="products-heading">Every item. Every captured price.</h2></div>
-            <p>Instacart retailers use identical product IDs. Whole Foods products are linked conservatively by brand, product name, flavor, and package quantity. A blank price means no confident match was captured for that store.</p>
+            <p>Instacart retailers use identical product IDs or conservative same-SKU aliases with matching brand, variant, and package quantity. Whole Foods products are linked through exact-search provenance plus brand, product name, flavor, and package quantity. A blank price means no confident match was captured for that store.</p>
           </div>
 
           <div className="filter-panel">
