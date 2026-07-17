@@ -12,6 +12,7 @@ const aliasesPath = path.join(root, "data/instacart-aliases.json");
 const schemaPath = path.join(root, "data/schema.sql");
 const databasePath = path.join(root, "data/grocery-prices.sqlite");
 const siteDataPath = path.join(root, "data/site-data.json");
+const publicSiteDataPath = path.join(root, "public/site-data.json");
 
 const [instacart, wholeFoods, matchData, aliases, schema] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
@@ -416,6 +417,7 @@ const siteData = {
 };
 
 await writeFile(siteDataPath, `${JSON.stringify(siteData, null, 2)}\n`);
+await writeFile(publicSiteDataPath, JSON.stringify(siteData));
 database.close();
 
 console.log(JSON.stringify({
