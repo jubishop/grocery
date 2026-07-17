@@ -89,6 +89,12 @@
     { "productId": "19220792", "asin": "B07QF9H7K2", "note": "OLIPOP Vintage Cola prebiotic soda, single 12 fl oz can" },
     { "productId": "24875481", "asin": "B09G9B91J3", "note": "Poppi Root Beer prebiotic soda, single 12 fl oz can" },
     { "productId": "3308702", "asin": "B01CI3TA5M", "note": "Simple Mills Farmhouse Cheddar almond flour crackers, 4.25 oz" },
-    { "productId": "39602", "asin": "B000R4B9MW", "note": "Tillamook sharp cheddar cheese block, 8 oz" }
+    { "productId": "39602", "asin": "B000R4B9MW", "note": "Tillamook sharp cheddar cheese block, 8 oz" },
+    { "productId": "24488", "asin": "B007QR4OYS", "note": "Amy's regular organic lentil soup, 14.5 oz; product page nutrition lists 590 mg sodium, distinguishing it from the light-sodium variant" },
+    { "productId": "295072", "asin": "B00TRCEPDU", "note": "Beecher's gluten-free macaroni and cheese, 18 oz; the product page identifies the diet type as gluten free" },
+    { "productId": "3308560", "asin": "B01BVUDMVG", "note": "Simple Mills rosemary and sea salt almond flour crackers, nominal 4.2 to 4.25 oz package" },
+    { "productId": "2717057", "asin": "B005G47UP8", "note": "Zoi traditional Greek plain yogurt, 32 oz; product page brand and five-serving tub confirm the same SKU" },
+    { "productId": "2718322", "asin": "B005G47UA8", "note": "Zoi traditional Greek honey yogurt, 32 oz; product page brand and five-serving tub confirm the same SKU" },
+    { "productId": "16913835", "asin": "B07KMYWCPP", "note": "Good Culture organic low-fat classic cottage cheese, 2% milkfat, 16 oz" }
   ]
 }
