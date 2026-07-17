@@ -367,7 +367,6 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <a className="brand" href="#top">West Seattle Grocery Index</a>
           <div className="nav-links">
             <a href="#compare">Compare stores</a>
-            <a href="#research">Markup research</a>
             <a href="#products">Products</a>
             <a className="download-link" href="/west-seattle-grocery-prices.csv" download>CSV</a>
           </div>
@@ -485,8 +484,13 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         )}
       </section>
 
-      <section className="research-section" id="research" aria-labelledby="research-heading">
-        <div className="content-section">
+      <aside className="content-section research-footnote" id="research" aria-labelledby="research-heading">
+        <details>
+          <summary>
+            <span><strong>Source note</strong> PCC and Metropolitan Market prices come from Instacart; supporting pricing research is available here.</span>
+            <span className="research-footnote-action">Research &amp; evidence</span>
+          </summary>
+          <div className="research-footnote-body">
           <div className="section-intro split-intro">
             <div><p className="eyebrow">Instacart markup research</p><h2 id="research-heading">What we can prove—and what we can’t.</h2></div>
             <p>Official storefronts and terms carry the most weight. Independent reporting adds context. Blogs and Reddit are treated as signal only, and never as proof of a store-specific percentage.</p>
@@ -589,8 +593,9 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
             <strong>Limits of this conclusion</strong>
             <ul>{data.pricingResearch.limitations.map((limitation) => <li key={limitation}>{limitation}</li>)}</ul>
           </div>
-        </div>
-      </section>
+          </div>
+        </details>
+      </aside>
 
       <section className="content-section category-section" id="categories" aria-labelledby="category-heading">
         <div className="section-intro split-intro">
