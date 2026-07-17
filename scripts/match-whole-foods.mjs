@@ -215,7 +215,7 @@ for (const override of overrides.accepted) {
     const candidate = wholeFoods.records.find((record) => record.asin === override.asin);
     const itemQuantity = quantity(item.size || item.name);
     const candidateQuantity = candidate && quantity(candidate.title);
-    if (!candidate || !quantitiesAgree(itemQuantity, candidateQuantity) || !brandAgrees(item.name, candidate.brand)) continue;
+    if (!candidate) continue;
     reviewed = {
       productId: item.id,
       sourceProductIds: item.sourceProductIds,
@@ -232,7 +232,9 @@ for (const override of overrides.accepted) {
       capturedAt: candidate.capturedAt,
       matchScore: Number(tokenScore(item.name, candidate.title).toFixed(4)),
       matchMargin: 0,
-      sizeEvidence: `${itemQuantity.display} = ${candidateQuantity.display}`,
+      sizeEvidence: itemQuantity && candidateQuantity
+        ? `${itemQuantity.display} = ${candidateQuantity.display}`
+        : `${item.size || "catalog package"} = human-reviewed retailer package`,
     };
   }
   allMatches.push({ ...reviewed, matchMethod: "human_reviewed_brand_variant_size", manualReviewNote: override.note });
