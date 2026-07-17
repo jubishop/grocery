@@ -116,6 +116,66 @@
         "productId": "21146617",
         "directId": "970009910",
         "note": "Chosen Foods avocado-oil Caesar dressing and marinade, 8 fl oz; Instacart labels the same product Steakhouse Caesar"
+      },
+      {
+        "productId": "19168948",
+        "directId": "960458158",
+        "note": "Dave's Killer Bread Killer Classic organic English muffins, standard 6-count 13.2 oz package"
+      },
+      {
+        "productId": "17096792",
+        "directId": "960276899",
+        "note": "Dave's Killer Bread Raisin' the Roof organic cinnamon raisin bread, 18 oz"
+      },
+      {
+        "productId": "19168929",
+        "directId": "960458159",
+        "note": "Dave's Killer Bread Rockin' Grains organic English muffins, standard 6-count 13.2 oz package"
+      },
+      {
+        "productId": "57159806",
+        "directId": "971096676",
+        "note": "Naked Bread Great Seed organic bread, 26 oz"
+      },
+      {
+        "productId": "57159939",
+        "directId": "971096658",
+        "note": "Naked Bread Simple Sourdough organic bread, 20 oz"
+      },
+      {
+        "productId": "20269422",
+        "directId": "970109619",
+        "note": "Bob's Red Mill yellow corn grits or polenta, 24 oz; the same package is labeled gluten free by Instacart"
+      },
+      {
+        "productId": "27541778",
+        "directId": "970383739",
+        "note": "Kettle Brand Backyard Barbeque kettle potato chips, 7.5 oz; the product-page title and description confirm the Backyard Barbeque variant"
+      },
+      {
+        "productId": "18648",
+        "directId": "960079069",
+        "note": "Mezzetta Family Recipes spicy marinara sauce, 25 oz; Safeway uses the Napa Valley Homemade sub-brand wording"
+      },
+      {
+        "productId": "201001",
+        "directId": "960318094",
+        "note": "Napoleon non-pareil capers, 8 oz; Safeway misspells nonpareil in the title"
+      },
+      {
+        "productId": "17379096",
+        "directId": "970950246",
+        "note": "Poppi Orange Cream prebiotic soda, single 12 fl oz can"
+      },
+      {
+        "productId": "24875481",
+        "directId": "970310322",
+        "note": "Poppi Root Beer prebiotic soda, single 12 fl oz can"
+      },
+      {
+        "productId": "24822",
+        "directId": "128350085",
+        "note": "Mezzetta Family Recipes marinara sauce; retailer rounds the nominal 24.5 oz jar to 25 oz"
       }
     ]
   },
@@ -205,6 +265,46 @@
         "productId": "21146617",
         "directId": "0081507402249",
         "note": "Chosen Foods avocado-oil Caesar dressing and marinade, 8 fl oz; Instacart labels the same product Steakhouse Caesar"
+      },
+      {
+        "productId": "47581",
+        "directId": "0076770700106",
+        "note": "Kerrygold salted Irish butter foil, 8 oz"
+      },
+      {
+        "productId": "19220792",
+        "directId": "0085002770292",
+        "note": "OLIPOP Vintage Cola prebiotic soda, single 12 fl oz can"
+      },
+      {
+        "productId": "24678",
+        "directId": "0005260305425",
+        "note": "Pacific Foods organic free-range chicken broth, 32 fl oz"
+      },
+      {
+        "productId": "19650750",
+        "directId": "0081363602161",
+        "note": "Califia Farms Oat Barista Blend oat milk, 32 fl oz"
+      },
+      {
+        "productId": "39602",
+        "directId": "0007283000552",
+        "note": "Tillamook aged sharp cheddar block, 8 oz"
+      },
+      {
+        "productId": "97597",
+        "directId": "0085518800300",
+        "note": "Justin's Classic peanut butter jar, 16 oz"
+      },
+      {
+        "productId": "20941371",
+        "directId": "0081829001699",
+        "note": "Chobani vanilla oat milk, 52 fl oz"
+      },
+      {
+        "productId": "295072",
+        "directId": "0078204511315",
+        "note": "Beecher's gluten-free macaroni and cheese frozen meal, 18 oz"
       }
     ]
   }

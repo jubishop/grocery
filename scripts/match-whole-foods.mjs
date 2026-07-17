@@ -204,6 +204,13 @@ for (const item of allInstacart) {
   else if (best.score >= 0.4) allLowReview.push(result);
 }
 
+const rejectedKeys = new Set((overrides.rejected ?? []).map((match) => `${match.productId}|${match.asin}`));
+for (const matches of [allMatches, allReview, allLowReview]) {
+  for (let index = matches.length - 1; index >= 0; index -= 1) {
+    if (rejectedKeys.has(`${matches[index].productId}|${matches[index].asin}`)) matches.splice(index, 1);
+  }
+}
+
 const reviewedByKey = new Map([...allMatches, ...allReview, ...allLowReview].map((match) => [`${match.productId}|${match.asin}`, match]));
 for (const override of overrides.accepted) {
   const item = allInstacart.find((candidate) => candidate.id === override.productId || candidate.sourceProductIds.includes(override.productId));

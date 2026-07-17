@@ -198,20 +198,31 @@ for (const record of instacart.records) {
   groups.set(canonicalId, group);
 }
 
+const manualOverrides = overrides[storeId]?.accepted ?? [];
+function overrideForGroup(productId, group) {
+  return manualOverrides.find((candidate) => (
+    candidate.productId === productId || group.sourceProductIds.has(candidate.productId)
+  ));
+}
+
 const storeItems = [...groups.entries()]
-  .filter(([, group]) => group.storeIds.has(storeId))
+  .filter(([productId, group]) => group.storeIds.has(storeId) || overrideForGroup(productId, group))
   .map(([productId, group]) => {
     const storeRecord = group.records.find((record) => record.storeId === storeId);
+    const manualOverride = overrideForGroup(productId, group);
+    const representativeRecord = storeRecord
+      ?? group.records.find((record) => record.id === manualOverride?.productId)
+      ?? group.records[0];
     return {
       productId,
       sourceProductIds: [...group.sourceProductIds],
       storeIds: [...group.storeIds],
       storeCount: group.storeIds.size,
-      name: storeRecord.name,
-      size: storeRecord.size || "",
-      instacartPrice: storeRecord.price,
-      instacartUrl: storeRecord.productUrl,
-      quantity: quantity(storeRecord.size || storeRecord.name),
+      name: representativeRecord.name,
+      size: representativeRecord.size || "",
+      instacartPrice: storeRecord?.price ?? null,
+      instacartUrl: storeRecord?.productUrl ?? "",
+      quantity: quantity(representativeRecord.size || representativeRecord.name),
     };
   });
 
@@ -262,7 +273,9 @@ for (const item of storeItems) {
     if (!record) {
       throw new Error(`Missing ${storeId} direct product ${manualOverride.directId} for override ${manualOverride.productId}`);
     }
-    const priceDifference = Number((item.instacartPrice - record.price).toFixed(2));
+    const priceDifference = item.instacartPrice == null
+      ? null
+      : Number((item.instacartPrice - record.price).toFixed(2));
     accepted.push({
       productId: item.productId,
       sourceProductIds: item.sourceProductIds,
@@ -288,7 +301,9 @@ for (const item of storeItems) {
         : `${item.quantity.display} = retailer package ${record.size || record.quantity?.display || "verified in title"}`,
       manualReviewNote: manualOverride.note,
       priceDifference,
-      instacartMarkupPercent: Number(((item.instacartPrice / record.price - 1) * 100).toFixed(1)),
+      instacartMarkupPercent: item.instacartPrice == null
+        ? null
+        : Number(((item.instacartPrice / record.price - 1) * 100).toFixed(1)),
     });
     continue;
   }
@@ -369,7 +384,8 @@ const remainingReview = review
   .filter((match) => !acceptedKeys.has(`${match.productId}|${match.directId}`))
   .sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore);
 
-const priceDifferences = uniqueAccepted.map((match) => match.priceDifference).sort((a, b) => a - b);
+const markupMatches = uniqueAccepted.filter((match) => Number.isFinite(match.priceDifference));
+const priceDifferences = markupMatches.map((match) => match.priceDifference).sort((a, b) => a - b);
 const output = {
   generatedAt: new Date().toISOString(),
   storeId,
@@ -384,12 +400,12 @@ const output = {
     acceptedByStoreCount: Object.fromEntries([1, 2, 3, 4].map((count) => [count, uniqueAccepted.filter((match) => match.storeCount === count).length])),
   },
   markupSummary: {
-    comparedProducts: uniqueAccepted.length,
-    instacartHigherCount: uniqueAccepted.filter((match) => match.priceDifference > 0).length,
-    directHigherCount: uniqueAccepted.filter((match) => match.priceDifference < 0).length,
-    samePriceCount: uniqueAccepted.filter((match) => match.priceDifference === 0).length,
-    totalInstacart: Number(uniqueAccepted.reduce((sum, match) => sum + match.instacartPrice, 0).toFixed(2)),
-    totalDirect: Number(uniqueAccepted.reduce((sum, match) => sum + match.directPrice, 0).toFixed(2)),
+    comparedProducts: markupMatches.length,
+    instacartHigherCount: markupMatches.filter((match) => match.priceDifference > 0).length,
+    directHigherCount: markupMatches.filter((match) => match.priceDifference < 0).length,
+    samePriceCount: markupMatches.filter((match) => match.priceDifference === 0).length,
+    totalInstacart: Number(markupMatches.reduce((sum, match) => sum + match.instacartPrice, 0).toFixed(2)),
+    totalDirect: Number(markupMatches.reduce((sum, match) => sum + match.directPrice, 0).toFixed(2)),
     medianDifference: priceDifferences[Math.floor(priceDifferences.length / 2)] ?? 0,
   },
   matches: uniqueAccepted,

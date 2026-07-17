@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-07-17T19:01:32.653Z",
+  "generatedAt": "2026-07-17T21:00:39.578Z",
   "storeId": "safeway",
   "source": "safeway.com",
   "methodology": "Conservative Safeway direct-catalog crosswalk requiring equivalent package quantity, strong normalized product-name agreement, and an unambiguous best candidate. Unmatched items are excluded from the current Safeway corpus rather than falling back to Instacart.",
   "counts": {
-    "instacartStoreProducts": 13922,
-    "directProductsCaptured": 5520,
-    "accepted": 2536,
-    "review": 858,
-    "exactReview": 11,
+    "instacartStoreProducts": 13928,
+    "directProductsCaptured": 5608,
+    "accepted": 2594,
+    "review": 876,
+    "exactReview": 6,
     "acceptedByStoreCount": {
-      "1": 967,
-      "2": 735,
-      "3": 542,
-      "4": 292
+      "1": 996,
+      "2": 741,
+      "3": 557,
+      "4": 300
     }
   },
   "markupSummary": {
-    "comparedProducts": 2536,
-    "instacartHigherCount": 2437,
+    "comparedProducts": 2588,
+    "instacartHigherCount": 2488,
     "directHigherCount": 21,
-    "samePriceCount": 78,
-    "totalInstacart": 17457.97,
-    "totalDirect": 15059.7,
+    "samePriceCount": 79,
+    "totalInstacart": 17793,
+    "totalDirect": 15351.7,
     "medianDifference": 0.8
   },
   "matches": [
@@ -277,8 +277,8 @@
       "directPrice": 3.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.971076827.html",
-      "capturedAt": "2026-07-17T18:49:53.186Z",
-      "capturedQuery": "Aloha Protein Bars Chocolate Chip",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Aloha Coconut Chocolate Almond",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.96,
       "matchMargin": 0.96,
@@ -2267,8 +2267,8 @@
       "directPrice": 5.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960152958.html",
-      "capturedAt": "2026-07-17T16:45:06.052Z",
-      "capturedQuery": "Banza Rotini Pasta Gluten Free Lower Carb",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.645,
       "matchMargin": 0.645,
@@ -2758,6 +2758,34 @@
       "instacartMarkupPercent": 15.5
     },
     {
+      "productId": "98581",
+      "sourceProductIds": [
+        "98581"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Barilla Gluten Free Elbows",
+      "instacartSize": "12 oz",
+      "instacartPrice": 2.31,
+      "instacartUrl": "https://www.instacart.com/products/98581-barilla-gluten-free-pasta-elbows-12-oz?retailerSlug=safeway",
+      "directId": "960096324",
+      "directTitle": "Barilla Gluten Free Elbows Pasta - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 2,
+      "directOriginalPrice": 3.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.960096324.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9067,
+      "matchMargin": 0.9067,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 0.31,
+      "instacartMarkupPercent": 15.5
+    },
+    {
       "productId": "98582",
       "sourceProductIds": [
         "98582"
@@ -2779,6 +2807,35 @@
       "directUrl": "https://www.safeway.com/shop/product-details.960096322.html",
       "capturedAt": "2026-07-17T16:45:04.763Z",
       "capturedQuery": "Banza Penne Pasta Gluten Free & Lower Carb",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 0.31,
+      "instacartMarkupPercent": 15.5
+    },
+    {
+      "productId": "16413418",
+      "sourceProductIds": [
+        "16413418"
+      ],
+      "storeIds": [
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "instacartName": "Barilla Gluten Free Spaghetti Pasta",
+      "instacartSize": "12 oz",
+      "instacartPrice": 2.31,
+      "instacartUrl": "https://www.instacart.com/products/16413418-barilla-gluten-free-pasta-spaghetti-12-oz?retailerSlug=safeway",
+      "directId": "960096321",
+      "directTitle": "Barilla Gluten Free Spaghetti Pasta - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 2,
+      "directOriginalPrice": 3.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.960096321.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -3012,35 +3069,6 @@
       "matchScore": 0.825,
       "matchMargin": 0.1917,
       "sizeEvidence": "1 lb = 16 oz",
-      "priceDifference": 0.31,
-      "instacartMarkupPercent": 15.5
-    },
-    {
-      "productId": "39128",
-      "sourceProductIds": [
-        "39128"
-      ],
-      "storeIds": [
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 2,
-      "instacartName": "Barilla Tri-Color Rotini - Non-GMO Pasta Made with Durum Wheat Semolina & Kosher",
-      "instacartSize": "12 oz",
-      "instacartPrice": 2.31,
-      "instacartUrl": "https://www.instacart.com/products/39128-barilla-classic-blue-box-pasta-tri-color-rotini-12-oz?retailerSlug=safeway",
-      "directId": "128200525",
-      "directTitle": "Barilla Tri-Color Rotini Pasta - 12 Oz",
-      "directSize": "12 oz",
-      "directPrice": 2,
-      "directOriginalPrice": 2.49,
-      "directUrl": "https://www.safeway.com/shop/product-details.128200525.html",
-      "capturedAt": "2026-07-17T16:27:36.976Z",
-      "capturedQuery": "pasta",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.8756,
-      "matchMargin": 0.8756,
-      "sizeEvidence": "12 oz = 12 oz",
       "priceDifference": 0.31,
       "instacartMarkupPercent": 15.5
     },
@@ -6788,8 +6816,8 @@
       "directPrice": 11.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960306121.html",
-      "capturedAt": "2026-07-17T17:21:31.715Z",
-      "capturedQuery": "Bob's Red Mill Flaxseed Meal Whole Ground",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Old Fashioned Rolled Oats 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.463,
@@ -7166,6 +7194,38 @@
       "instacartMarkupPercent": 20.7
     },
     {
+      "productId": "20269422",
+      "sourceProductIds": [
+        "20611219",
+        "20269422"
+      ],
+      "storeIds": [
+        "metro",
+        "qfc",
+        "pcc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Bob's Red Mill Gluten Free Corn Grits, Polenta",
+      "instacartSize": "24 oz",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "970109619",
+      "directTitle": "Bob's Red Mill Yellow Corn Polenta - 24 Oz",
+      "directSize": "24 oz",
+      "directPrice": 5.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970109619.html",
+      "capturedAt": "2026-07-17T17:21:31.715Z",
+      "capturedQuery": "Bob's Red Mill Flaxseed Meal Whole Ground",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "24 oz = 24 oz",
+      "manualReviewNote": "Bob's Red Mill yellow corn grits or polenta, 24 oz; the same package is labeled gluten free by Instacart",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
+    },
+    {
       "productId": "25601",
       "sourceProductIds": [
         "25601"
@@ -7469,6 +7529,35 @@
       "instacartMarkupPercent": 18.5
     },
     {
+      "productId": "20669051",
+      "sourceProductIds": [
+        "20669051"
+      ],
+      "storeIds": [
+        "safeway",
+        "pcc"
+      ],
+      "storeCount": 2,
+      "instacartName": "Bob's Red Mill Oat Flour, Gluten Free",
+      "instacartSize": "18 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/20669051-bob-s-red-mill-oat-flour-gluten-free-18-0-oz?retailerSlug=safeway",
+      "directId": "960564063",
+      "directTitle": "Bob's Red Mill Gluten Free Whole Grain  Oat Flour - 18 Oz",
+      "directSize": "18 oz",
+      "directPrice": 7.29,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960564063.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.92,
+      "matchMargin": 0.204,
+      "sizeEvidence": "18 oz = 18 oz",
+      "priceDifference": 1.7,
+      "instacartMarkupPercent": 23.3
+    },
+    {
       "productId": "2912852",
       "sourceProductIds": [
         "2912852"
@@ -7553,8 +7642,8 @@
       "directPrice": 9.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960453539.html",
-      "capturedAt": "2026-07-17T16:21:30.585Z",
-      "capturedQuery": "Bob's Red Mill",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.0622,
@@ -7616,8 +7705,8 @@
       "directPrice": 9.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960453544.html",
-      "capturedAt": "2026-07-17T16:21:30.585Z",
-      "capturedQuery": "Bob's Red Mill",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -7648,8 +7737,8 @@
       "directPrice": 9.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960453538.html",
-      "capturedAt": "2026-07-17T15:11:35.810Z",
-      "capturedQuery": "Bob's Red Mill Extra Thick Rolled Oats, Organic 32 oz",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.0622,
@@ -7681,13 +7770,43 @@
       "directPrice": 4.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.970306430.html",
-      "capturedAt": "2026-07-17T15:11:35.810Z",
-      "capturedQuery": "Bob's Red Mill Extra Thick Rolled Oats, Organic 32 oz",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0,
       "sizeEvidence": "24 oz = 24 oz",
       "priceDifference": 1,
+      "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "18765182",
+      "sourceProductIds": [
+        "18765182",
+        "18916978"
+      ],
+      "storeIds": [
+        "safeway",
+        "pcc"
+      ],
+      "storeCount": 2,
+      "instacartName": "Bob's Red Mill Steel Cut Oats, Quick Cooking",
+      "instacartSize": "22 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/18765182-bob-s-red-mill-steel-cut-oats-quick-cooking-22-0-oz?retailerSlug=safeway",
+      "directId": "960461232",
+      "directTitle": "Bobs Red Mill Oats Steel Cut Quick Cooking - 22 Oz",
+      "directSize": "22 oz",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960461232.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "22 oz = 22 oz",
+      "priceDifference": 1.5,
       "instacartMarkupPercent": 20
     },
     {
@@ -7772,8 +7891,8 @@
       "directPrice": 6.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960564058.html",
-      "capturedAt": "2026-07-17T15:11:32.961Z",
-      "capturedQuery": "Bob's Red Mill Coconut Flour, Organic 16 oz",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.2301,
@@ -8145,8 +8264,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": 9.99,
       "directUrl": "https://www.safeway.com/shop/product-details.960021934.html",
-      "capturedAt": "2026-07-17T16:23:18.570Z",
-      "capturedQuery": "Bonne Maman",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Crofter's Strawberry Fruit Spread",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.292,
@@ -8380,8 +8499,8 @@
       "directPrice": 8.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.970975722.html",
-      "capturedAt": "2026-07-17T16:23:18.570Z",
-      "capturedQuery": "Bonne Maman",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9533,
       "matchMargin": 0.9533,
@@ -8411,8 +8530,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": 9.99,
       "directUrl": "https://www.safeway.com/shop/product-details.104050234.html",
-      "capturedAt": "2026-07-17T16:23:18.570Z",
-      "capturedQuery": "Bonne Maman",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Crofter's Strawberry Fruit Spread",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.292,
@@ -11890,6 +12009,36 @@
       "instacartMarkupPercent": 23.1
     },
     {
+      "productId": "29121854",
+      "sourceProductIds": [
+        "29121854"
+      ],
+      "storeIds": [
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "instacartName": "Cascadian Farm Organic No Added Sugar Coconut Cashew Granola",
+      "instacartSize": "11 oz",
+      "instacartPrice": 9.99,
+      "instacartUrl": "https://www.instacart.com/products/29121854-cascadian-farm-organic-no-added-sugar-coconut-cashew-granola-11-oz?retailerSlug=safeway",
+      "directId": "970537877",
+      "directTitle": "Cascadian Farm Organic No Added Sugar Coconut Cashew Granola - 11 OZ",
+      "directSize": "11 oz",
+      "directPrice": 8.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970537877.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.484,
+      "sizeEvidence": "11 oz = 11 oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 17.7
+    },
+    {
       "productId": "29027413",
       "sourceProductIds": [
         "29027413"
@@ -11919,6 +12068,36 @@
       "sizeEvidence": "11 oz = 11 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "22199295",
+      "sourceProductIds": [
+        "22199295"
+      ],
+      "storeIds": [
+        "pcc",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Catalina Crunch Chocolate Peanut Butter, Keto Friendly Cereal",
+      "instacartSize": "9 oz",
+      "instacartPrice": 9.99,
+      "instacartUrl": "https://www.instacart.com/products/22199295-catalina-crunch-chocolate-peanut-butter-keto-friendly-cereal-9-0-oz?retailerSlug=safeway",
+      "directId": "970080879",
+      "directTitle": "Catalina Crunch Chocolate Peanut Butter Protein Cereal - 9 Oz",
+      "directSize": "9 oz",
+      "directPrice": 8.99,
+      "directOriginalPrice": 9.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.970080879.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.8038,
+      "matchMargin": 0.8038,
+      "sizeEvidence": "9 oz = 9 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 11.1
     },
     {
       "productId": "32966262",
@@ -12389,8 +12568,8 @@
       "directPrice": 6.99,
       "directOriginalPrice": 8.49,
       "directUrl": "https://www.safeway.com/shop/product-details.138250107.html",
-      "capturedAt": "2026-07-17T18:50:14.140Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.07,
@@ -12450,8 +12629,8 @@
       "directPrice": 6.99,
       "directOriginalPrice": 8.49,
       "directUrl": "https://www.safeway.com/shop/product-details.138250064.html",
-      "capturedAt": "2026-07-17T18:50:14.140Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.07,
@@ -13034,7 +13213,7 @@
       "capturedQuery": "FAGE 5% Plain Greek Yogurt",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 0.2444,
+      "matchMargin": 0.1962,
       "sizeEvidence": "5.3 oz = 5.3 oz",
       "priceDifference": 0.3,
       "instacartMarkupPercent": 17.8
@@ -13088,8 +13267,8 @@
       "directPrice": 2.29,
       "directOriginalPrice": 2.49,
       "directUrl": "https://www.safeway.com/shop/product-details.971044265.html",
-      "capturedAt": "2026-07-17T16:45:44.374Z",
-      "capturedQuery": "Ellenos Mango Greek Yogurt",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9067,
       "matchMargin": 0.3022,
@@ -13501,8 +13680,8 @@
       "directPrice": 7.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960038589.html",
-      "capturedAt": "2026-07-17T18:49:55.024Z",
-      "capturedQuery": "Chobani Oatmilk",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "human_reviewed_brand_variant_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -13799,8 +13978,8 @@
       "directPrice": 5.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960159159.html",
-      "capturedAt": "2026-07-17T16:45:49.892Z",
-      "capturedQuery": "FAGE 5% Plain Greek Yogurt",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.895,
       "matchMargin": 0.2617,
@@ -13828,8 +14007,8 @@
       "directPrice": 5.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960092191.html",
-      "capturedAt": "2026-07-17T18:35:24.285Z",
-      "capturedQuery": "Chobani Plain Nonfat Greek Yogurt 32 oz",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9067,
       "matchMargin": 0.2187,
@@ -14096,8 +14275,8 @@
       "directPrice": 2.29,
       "directOriginalPrice": 2.49,
       "directUrl": "https://www.safeway.com/shop/product-details.960082890.html",
-      "capturedAt": "2026-07-17T16:29:31.331Z",
-      "capturedQuery": "Ellenos Key Lime Pie, Greek Yogurt 6 oz",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.916,
       "matchMargin": 0.3926,
@@ -15317,6 +15496,34 @@
       "instacartMarkupPercent": 11.2
     },
     {
+      "productId": "29503315",
+      "sourceProductIds": [
+        "29503315"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Country Crock Dairy Free Plant Butter with Olive Oil",
+      "instacartSize": "14 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/29503315-country-crock-olive-oil-dairy-free-tub-plant-butter-14-oz?retailerSlug=safeway",
+      "directId": "970544499",
+      "directTitle": "Country Crock Plant Butter Olive Oil - 14 OZ",
+      "directSize": "14 oz",
+      "directPrice": 5.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970544499.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9533,
+      "matchMargin": 0.9533,
+      "sizeEvidence": "14 oz = 14 oz",
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 20.7
+    },
+    {
       "productId": "73540525",
       "sourceProductIds": [
         "73540525"
@@ -15988,8 +16195,8 @@
       "directPrice": 4.99,
       "directOriginalPrice": 6.49,
       "directUrl": "https://www.safeway.com/shop/product-details.960036059.html",
-      "capturedAt": "2026-07-17T18:35:35.326Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter Foil 8 oz",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.93,
       "matchMargin": 0.93,
@@ -16077,8 +16284,8 @@
       "directPrice": 7.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960050655.html",
-      "capturedAt": "2026-07-17T18:50:18.092Z",
-      "capturedQuery": "Naked Bread Twenty Four Grains",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "exact_query_name_size",
       "matchScore": 1,
       "matchMargin": 0.174,
@@ -16108,8 +16315,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960038380.html",
-      "capturedAt": "2026-07-17T18:50:18.092Z",
-      "capturedQuery": "Naked Bread Twenty Four Grains",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "exact_query_name_size",
       "matchScore": 1,
       "matchMargin": 0.04,
@@ -16139,8 +16346,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960038378.html",
-      "capturedAt": "2026-07-17T18:50:18.092Z",
-      "capturedQuery": "Naked Bread Twenty Four Grains",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.92,
       "matchMargin": 0.184,
@@ -16209,6 +16416,37 @@
       "sizeEvidence": "20.5 oz = 20.5 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "19168948",
+      "sourceProductIds": [
+        "19168948"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Dave's Killer Bread Killer Classic English Muffins, Organic English Muffins, 6 Count",
+      "instacartSize": "6 ct",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "960458158",
+      "directTitle": "Dave's Killer Bread Organic Killer Classic English Muffins - 13.2 Oz",
+      "directSize": "13.2 oz",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960458158.html",
+      "capturedAt": "2026-07-17T17:21:28.180Z",
+      "capturedQuery": "Dave's Killer Bread Organic Thin-Sliced White Bread",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "6 ct = retailer package 13.2 oz",
+      "manualReviewNote": "Dave's Killer Bread Killer Classic organic English muffins, standard 6-count 13.2 oz package",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
     },
     {
       "productId": "21120333",
@@ -16326,8 +16564,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960165878.html",
-      "capturedAt": "2026-07-17T18:35:38.992Z",
-      "capturedQuery": "Naked Bread Organic Twenty Four Grains and Seeds Bread 27 oz",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.832,
       "matchMargin": 0.152,
@@ -16365,6 +16603,68 @@
       "sizeEvidence": "20.5 oz = 20.5 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "17096792",
+      "sourceProductIds": [
+        "17096792"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Dave's Killer Bread Raisin' the Roof!, Cinnamon Raisin Organic Breakfast Bread, 18 oz Loaf",
+      "instacartSize": "18 oz",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "960276899",
+      "directTitle": "Dave's Killer Bread Organic Cinnamon Raisin The Roof Bread- 18 Oz",
+      "directSize": "18 oz",
+      "directPrice": 8.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960276899.html",
+      "capturedAt": "2026-07-17T17:21:37.026Z",
+      "capturedQuery": "Dave's Killer Bread Thin Sliced Whole Wheat Organic Bread",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "18 oz = 18 oz",
+      "manualReviewNote": "Dave's Killer Bread Raisin' the Roof organic cinnamon raisin bread, 18 oz",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
+    },
+    {
+      "productId": "19168929",
+      "sourceProductIds": [
+        "19168929"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Dave's Killer Bread Rockin' Grains Organic English Muffins",
+      "instacartSize": "6 ct",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "960458159",
+      "directTitle": "Dave's Killer Bread Organic Rockin Grain English Muffins - 13.2 Oz",
+      "directSize": "13.2 oz",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960458159.html",
+      "capturedAt": "2026-07-17T17:21:37.026Z",
+      "capturedQuery": "Dave's Killer Bread Thin Sliced Whole Wheat Organic Bread",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "6 ct = retailer package 13.2 oz",
+      "manualReviewNote": "Dave's Killer Bread Rockin' Grains organic English muffins, standard 6-count 13.2 oz package",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
     },
     {
       "productId": "17187025",
@@ -16447,8 +16747,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960106430.html",
-      "capturedAt": "2026-07-17T18:35:38.992Z",
-      "capturedQuery": "Naked Bread Organic Twenty Four Grains and Seeds Bread 27 oz",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.463,
@@ -18809,8 +19109,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": 8.49,
       "directUrl": "https://www.safeway.com/shop/product-details.960050143.html",
-      "capturedAt": "2026-07-17T18:35:24.285Z",
-      "capturedQuery": "Chobani Plain Nonfat Greek Yogurt 32 oz",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.9067,
       "matchMargin": 0,
@@ -19069,8 +19369,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960129193.html",
-      "capturedAt": "2026-07-17T15:08:46.108Z",
-      "capturedQuery": "tofu",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9533,
       "matchMargin": 0.9533,
@@ -19100,8 +19400,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.184810161.html",
-      "capturedAt": "2026-07-17T18:50:53.733Z",
-      "capturedQuery": "Field Roast Grain Meat Sausages",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "exact_query_name_size",
       "matchScore": 0.9067,
       "matchMargin": 0.9067,
@@ -19393,6 +19693,36 @@
       "sizeEvidence": "59 fl oz = 59 fl oz",
       "priceDifference": 0.77,
       "instacartMarkupPercent": 18.2
+    },
+    {
+      "productId": "3187337",
+      "sourceProductIds": [
+        "3187337"
+      ],
+      "storeIds": [
+        "pcc",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Follow Your Heart Dairy-Free Parmesan Shredded",
+      "instacartSize": "4 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/3187337-follow-your-heart-dairy-free-parmesan-shredded-4-0-oz?retailerSlug=safeway",
+      "directId": "960283767",
+      "directTitle": "Follow Your Heart Parmesan Style Dairy Free Vegan Shredded Cheese - 4 Oz",
+      "directSize": "4 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960283767.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.92,
+      "matchMargin": 0.92,
+      "sizeEvidence": "4 oz = 4 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "16292127",
@@ -22072,8 +22402,8 @@
       "directPrice": 3.29,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960306002.html",
-      "capturedAt": "2026-07-17T18:49:53.186Z",
-      "capturedQuery": "Aloha Protein Bars Chocolate Chip",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Aloha Coconut Chocolate Almond",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.9378,
       "matchMargin": 0.9378,
@@ -22141,6 +22471,38 @@
       "sizeEvidence": "2.3 oz = 2.3 oz",
       "priceDifference": 0.7,
       "instacartMarkupPercent": 21.3
+    },
+    {
+      "productId": "16913835",
+      "sourceProductIds": [
+        "16913835",
+        "19760361"
+      ],
+      "storeIds": [
+        "safeway",
+        "pcc",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "good culture Cottage Cheese, Low-Fat Classic, 2% Milkfat, Simply",
+      "instacartSize": "16 oz",
+      "instacartPrice": 5.59,
+      "instacartUrl": "https://www.instacart.com/products/16913835-good-culture-cottage-cheese-low-fat-classic-16-oz?retailerSlug=safeway",
+      "directId": "960434389",
+      "directTitle": "good culture Simply Cottage Cheese 2% Milkfat Lowfat Classic - 16 Oz",
+      "directSize": "16 oz",
+      "directPrice": 4.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960434389.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Organic Valley Unsalted Butter 8 oz",
+      "matchMethod": "targeted_query_name_size",
+      "matchScore": 0.826,
+      "matchMargin": 0.826,
+      "sizeEvidence": "16 oz = 16 oz",
+      "priceDifference": 0.8,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "20975623",
@@ -22454,8 +22816,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.970023499.html",
-      "capturedAt": "2026-07-17T17:03:02.508Z",
-      "capturedQuery": "Nature's Path Heritage Flakes Cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Nature's Path Flax Plus Raisin Bran",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.93,
       "matchMargin": 0.93,
@@ -26915,6 +27277,36 @@
       "instacartMarkupPercent": 18.2
     },
     {
+      "productId": "42834",
+      "sourceProductIds": [
+        "42834"
+      ],
+      "storeIds": [
+        "metro",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "instacartName": "I Can't Believe It's Not Butter Light Spread",
+      "instacartSize": "15 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/42834-i-can-t-believe-it-s-not-butter-vegetable-oil-spread-the-light-one-15-oz?retailerSlug=safeway",
+      "directId": "138250008",
+      "directTitle": "I Can’t Believe It’s Not Butter! NutriRich Light Spread - 15 Oz",
+      "directSize": "15 oz",
+      "directPrice": 5.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.138250008.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.965,
+      "matchMargin": 0.1612,
+      "sizeEvidence": "15 oz = 15 oz",
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 20.7
+    },
+    {
       "productId": "3307083",
       "sourceProductIds": [
         "3307083"
@@ -26930,19 +27322,76 @@
       "instacartPrice": 6.99,
       "instacartUrl": "https://www.instacart.com/products/3307083-i-can-t-believe-it-s-not-butter-vegetable-oil-spread-the-original-15-oz?retailerSlug=safeway",
       "directId": "138250124",
-      "directTitle": "I Can't Believe It's Not Butter! NutriRich Original Spread - 15 Oz",
+      "directTitle": "I Can't Believe It's Not Butter! NutriRich Original Spread - 15 Oz ",
       "directSize": "15 oz",
       "directPrice": 5.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.138250124.html",
-      "capturedAt": "2026-07-17T16:26:11.157Z",
-      "capturedQuery": "butter",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 1,
+      "matchMargin": 0.1522,
       "sizeEvidence": "15 oz = 15 oz",
       "priceDifference": 1.2,
       "instacartMarkupPercent": 20.7
+    },
+    {
+      "productId": "16826566",
+      "sourceProductIds": [
+        "16826566"
+      ],
+      "storeIds": [
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 2,
+      "instacartName": "I Can't Believe It's Not Butter NutriRich Original Spread",
+      "instacartSize": "45 oz",
+      "instacartPrice": 12.99,
+      "instacartUrl": "https://www.instacart.com/products/16826566-i-can-t-believe-it-s-not-butter-vegetable-oil-spread-the-original-45-oz?retailerSlug=safeway",
+      "directId": "138250315",
+      "directTitle": "I Can't Believe It's Not Butter!  NutriRich Light Original Spread - 45 Oz ",
+      "directSize": "45 oz",
+      "directPrice": 11.49,
+      "directOriginalPrice": 12.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.138250315.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9689,
+      "matchMargin": 0.9689,
+      "sizeEvidence": "45 oz = 45 oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 13.1
+    },
+    {
+      "productId": "64520870",
+      "sourceProductIds": [
+        "64520870"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "I Can't Believe It's Not Butter NutriRich Original Spread",
+      "instacartSize": "7 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/64520870-spread-regular?retailerSlug=safeway",
+      "directId": "971134882",
+      "directTitle": "I Can’t Believe It’s Not Butter! NutriRich Original Spread - 7 Oz",
+      "directSize": "7 oz",
+      "directPrice": 3.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.971134882.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "7 oz = 7 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 14.3
     },
     {
       "productId": "74280039",
@@ -27079,8 +27528,8 @@
       "directPrice": 2.29,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960160531.html",
-      "capturedAt": "2026-07-17T16:46:08.479Z",
-      "capturedQuery": "Icelandic Provisions Peach Cloudberry Skyr",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 1,
       "matchMargin": 0.448,
@@ -27110,8 +27559,8 @@
       "directPrice": 2.29,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960160530.html",
-      "capturedAt": "2026-07-17T16:46:09.852Z",
-      "capturedQuery": "Icelandic Provisions Strawberry Lingonberry Skyr",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.7627,
       "matchMargin": 0.2257,
@@ -27140,8 +27589,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": 8.99,
       "directUrl": "https://www.safeway.com/shop/product-details.960559910.html",
-      "capturedAt": "2026-07-17T16:29:09.662Z",
-      "capturedQuery": "tofu",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -28306,14 +28755,42 @@
       "directPrice": 3.79,
       "directOriginalPrice": 4.29,
       "directUrl": "https://www.safeway.com/shop/product-details.204100011.html",
-      "capturedAt": "2026-07-17T16:23:18.570Z",
-      "capturedQuery": "Bonne Maman",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 0.2,
       "instacartMarkupPercent": 5.3
+    },
+    {
+      "productId": "42267261",
+      "sourceProductIds": [
+        "42267261"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Jif To Go Creamy Peanut Butter, 8 Cups, Each",
+      "instacartSize": "8 x 1.1 oz",
+      "instacartPrice": 4.69,
+      "instacartUrl": "https://www.instacart.com/products/42267261-jif-creamy-peanut-butter-cups-1-1-oz?retailerSlug=safeway",
+      "directId": "971287934",
+      "directTitle": "Jif To Go Creamy Peanut Butter 8 Count 1.1 Ounce - 8-1.1 OZ",
+      "directSize": "8.8 oz",
+      "directPrice": 3.99,
+      "directOriginalPrice": 4.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.971287934.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.96,
+      "matchMargin": 0.96,
+      "sizeEvidence": "8.8 oz = 8.8 oz",
+      "priceDifference": 0.7,
+      "instacartMarkupPercent": 17.5
     },
     {
       "productId": "38638",
@@ -29129,6 +29606,37 @@
       "instacartMarkupPercent": 14.3
     },
     {
+      "productId": "124065",
+      "sourceProductIds": [
+        "124065"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Justin's Classic Almond Butter, 16 OZ",
+      "instacartSize": "16 oz",
+      "instacartPrice": 16.99,
+      "instacartUrl": "https://www.instacart.com/products/124065-justin-s-classic-almond-butter-16-oz?retailerSlug=safeway",
+      "directId": "960052983",
+      "directTitle": "Justins Almond Butter Classic - 16 Oz",
+      "directSize": "16 oz",
+      "directPrice": 14.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960052983.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.292,
+      "sizeEvidence": "16 oz = 16 oz",
+      "priceDifference": 2,
+      "instacartMarkupPercent": 13.3
+    },
+    {
       "productId": "97597",
       "sourceProductIds": [
         "97597"
@@ -29150,11 +29658,11 @@
       "directPrice": 6.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960180801.html",
-      "capturedAt": "2026-07-17T16:23:18.570Z",
-      "capturedQuery": "Bonne Maman",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.944,
-      "matchMargin": 0.944,
+      "matchMargin": 0.264,
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 23.1
@@ -29557,8 +30065,8 @@
       "directPrice": 4.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960032007.html",
-      "capturedAt": "2026-07-17T18:50:14.140Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.944,
       "matchMargin": 0.944,
@@ -29613,8 +30121,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.970093043.html",
-      "capturedAt": "2026-07-17T18:50:14.140Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Organic Valley Unsalted Butter 8 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.8756,
       "matchMargin": 0.8756,
@@ -29644,8 +30152,8 @@
       "directPrice": 6.99,
       "directOriginalPrice": 7.49,
       "directUrl": "https://www.safeway.com/shop/product-details.138250237.html",
-      "capturedAt": "2026-07-17T18:50:14.140Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.645,
       "matchMargin": 0.645,
@@ -29704,8 +30212,8 @@
       "directPrice": 13.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.971003744.html",
-      "capturedAt": "2026-07-17T18:50:14.140Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9067,
       "matchMargin": 0.9067,
@@ -29891,6 +30399,37 @@
       "sizeEvidence": "6.5 oz = 6.5 oz",
       "priceDifference": 0.7,
       "instacartMarkupPercent": 17.5
+    },
+    {
+      "productId": "27541778",
+      "sourceProductIds": [
+        "27541778"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Kettle Brand Backyard Barbeque Potato Chips",
+      "instacartSize": "7.5 oz",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "970383739",
+      "directTitle": "Kettle Brand Barbeque Kettle Potato Chips - 7.5 Oz",
+      "directSize": "7.5 oz",
+      "directPrice": 3.99,
+      "directOriginalPrice": 4.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.970383739.html",
+      "capturedAt": "2026-07-17T16:46:27.491Z",
+      "capturedQuery": "Kettle Brand Sea Salt Potato Chips",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "7.5 oz = 7.5 oz",
+      "manualReviewNote": "Kettle Brand Backyard Barbeque kettle potato chips, 7.5 oz; the product-page title and description confirm the Backyard Barbeque variant",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
     },
     {
       "productId": "27541628",
@@ -31036,8 +31575,8 @@
       "directPrice": 7.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960097484.html",
-      "capturedAt": "2026-07-17T16:26:34.192Z",
-      "capturedQuery": "granola",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9689,
       "matchMargin": 0.3273,
@@ -31987,6 +32526,35 @@
       "sizeEvidence": "11 oz = 11 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 17.7
+    },
+    {
+      "productId": "141689",
+      "sourceProductIds": [
+        "141689"
+      ],
+      "storeIds": [
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "instacartName": "Knorr Rice Sides Chicken Long Grain Rice And Vermicelli Pasta Blend",
+      "instacartSize": "5.6 oz",
+      "instacartPrice": 1.93,
+      "instacartUrl": "https://www.instacart.com/products/141689-knorr-rice-sides-chicken-long-grain-rice-and-vermicelli-pasta-blend-5-6-oz?retailerSlug=safeway",
+      "directId": "126300042",
+      "directTitle": "Knorr Cheddar Broccoli Long Grain Rice & Vermicelli Pasta Blend Rice Sides - 5.7 Oz",
+      "directSize": "5.7 oz",
+      "directPrice": 1.67,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.126300042.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.8436,
+      "matchMargin": 0.8436,
+      "sizeEvidence": "5.6 oz = 5.7 oz",
+      "priceDifference": 0.26,
+      "instacartMarkupPercent": 15.6
     },
     {
       "productId": "2754829",
@@ -34518,6 +35086,35 @@
       "instacartMarkupPercent": 14.3
     },
     {
+      "productId": "99214",
+      "sourceProductIds": [
+        "99214"
+      ],
+      "storeIds": [
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "instacartName": "Land O Lakes Butter with Olive Oil & Sea Salt",
+      "instacartSize": "7 oz",
+      "instacartPrice": 4.99,
+      "instacartUrl": "https://www.instacart.com/products/99214-land-o-lakes-butter-with-olive-oil-sea-salt-7-oz?retailerSlug=safeway",
+      "directId": "960026946",
+      "directTitle": "Land O Lakes Butter with Olive Oil and Sea Salt Spreadable Tub - 7 Oz",
+      "directSize": "7 oz",
+      "directPrice": 4.29,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960026946.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9378,
+      "matchMargin": 0.9378,
+      "sizeEvidence": "7 oz = 7 oz",
+      "priceDifference": 0.7,
+      "instacartMarkupPercent": 16.3
+    },
+    {
       "productId": "19846424",
       "sourceProductIds": [
         "19846424"
@@ -34595,8 +35192,8 @@
       "directPrice": 6.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960047103.html",
-      "capturedAt": "2026-07-17T18:35:35.326Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter Foil 8 oz",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9533,
       "matchMargin": 0.9533,
@@ -35599,6 +36196,36 @@
       "instacartMarkupPercent": 20
     },
     {
+      "productId": "37460",
+      "sourceProductIds": [
+        "37460"
+      ],
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Life Cereal, Cinnamon, Multigrain",
+      "instacartSize": "13 oz",
+      "instacartPrice": 6.33,
+      "instacartUrl": "https://www.instacart.com/products/37460-quaker-life-cinnamon-cereal-13-oz?retailerSlug=safeway",
+      "directId": "960053123",
+      "directTitle": "Life Cereal Multigrain Cinnamon - 13 Oz",
+      "directSize": "13 oz",
+      "directPrice": 5.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960053123.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "13 oz = 13 oz",
+      "priceDifference": 0.84,
+      "instacartMarkupPercent": 15.3
+    },
+    {
       "productId": "16408396",
       "sourceProductIds": [
         "16408396"
@@ -35880,8 +36507,8 @@
       "directPrice": 3.99,
       "directOriginalPrice": 4.29,
       "directUrl": "https://www.safeway.com/shop/product-details.138250170.html",
-      "capturedAt": "2026-07-17T18:50:14.140Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.86,
       "matchMargin": 0.86,
@@ -36332,7 +36959,7 @@
       "capturedQuery": "Tillamook Medium Cheddar Cheese Block, 32oz 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9067,
-      "matchMargin": 0.9067,
+      "matchMargin": 0.3022,
       "sizeEvidence": "32 oz = 32 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 12.5
@@ -36420,6 +37047,62 @@
       "sizeEvidence": "32 oz = 32 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 12.5
+    },
+    {
+      "productId": "3371376",
+      "sourceProductIds": [
+        "3371376"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Cheese, Parmesan, Grated",
+      "instacartSize": "5 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/3371376-lucerne-cheese-parmesan-grated-5-oz?retailerSlug=safeway",
+      "directId": "960136451",
+      "directTitle": "Lucerne Cheese Grated Parmesan Tub - 5 Oz",
+      "directSize": "5 oz",
+      "directPrice": 3.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960136451.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.944,
+      "matchMargin": 0.264,
+      "sizeEvidence": "5 oz = 5 oz",
+      "priceDifference": 0.2,
+      "instacartMarkupPercent": 5.3
+    },
+    {
+      "productId": "18766060",
+      "sourceProductIds": [
+        "18766060"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Cheese, Part-Skim, Mozzarella, Low-Moisture, Rustic Cut",
+      "instacartSize": "8 oz",
+      "instacartPrice": 2.69,
+      "instacartUrl": "https://www.instacart.com/products/18766060-lucerne-cheese-part-skim-mozarella-low-moisture-rustic-cut-8-oz?retailerSlug=safeway",
+      "directId": "137050300",
+      "directTitle": "Lucerne Cheese Natural Mozzarella Low Moisture Part Skim - 8 Oz",
+      "directSize": "8 oz",
+      "directPrice": 2.29,
+      "directOriginalPrice": 2.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.137050300.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9378,
+      "matchMargin": 0.1118,
+      "sizeEvidence": "8 oz = 8 oz",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 17.5
     },
     {
       "productId": "43875",
@@ -36720,14 +37403,70 @@
       "directPrice": 2.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960273951.html",
-      "capturedAt": "2026-07-17T18:50:20.170Z",
-      "capturedQuery": "Valley 2 Milk",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.944,
       "matchMargin": 0.0373,
       "sizeEvidence": "12 ct = 12 ct",
       "priceDifference": 0,
       "instacartMarkupPercent": 0
+    },
+    {
+      "productId": "246075",
+      "sourceProductIds": [
+        "246075"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Fat Free Mozzarella Shredded Cheese",
+      "instacartSize": "7 oz",
+      "instacartPrice": 2.69,
+      "instacartUrl": "https://www.instacart.com/products/246075-lucerne-shredded-cheese-mozzarella-7-oz?retailerSlug=safeway",
+      "directId": "960109670",
+      "directTitle": "Lucerne Cheese Shredded Mozzarella Fat Free - 7 Oz",
+      "directSize": "7 oz",
+      "directPrice": 2.29,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.960109670.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "7 oz = 7 oz",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 17.5
+    },
+    {
+      "productId": "22952033",
+      "sourceProductIds": [
+        "22952033"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Fine Cut Italian Style 6 Cheese Blend Cheese Family Size",
+      "instacartSize": "32 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/22952033-lucerne-finely-shredded-cheese-6-cheese-blend-italian-style-family-size-32-oz?retailerSlug=safeway",
+      "directId": "970093024",
+      "directTitle": "Lucerne Cheese Italian Blend Shredded Family Size - 32 Oz",
+      "directSize": "32 oz",
+      "directPrice": 7.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970093024.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.8038,
+      "matchMargin": 0.2906,
+      "sizeEvidence": "32 oz = 32 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 12.5
     },
     {
       "productId": "122209",
@@ -36842,6 +37581,62 @@
       "instacartMarkupPercent": 17.5
     },
     {
+      "productId": "63674943",
+      "sourceProductIds": [
+        "63674943"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Grass-Fed Salted Butter",
+      "instacartSize": "2 x 4 oz",
+      "instacartPrice": 5.59,
+      "instacartUrl": "https://www.instacart.com/products/63674943-lucerne-salted-grassfed-butter-8-oz?retailerSlug=safeway",
+      "directId": "970094000",
+      "directTitle": "Lucerne Butter - 8 OZ",
+      "directSize": "8 oz",
+      "directPrice": 2.29,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970094000.html",
+      "capturedAt": "2026-07-17T18:50:14.140Z",
+      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.832,
+      "matchMargin": 0.152,
+      "sizeEvidence": "8 oz = 8 oz",
+      "priceDifference": 3.3,
+      "instacartMarkupPercent": 144.1
+    },
+    {
+      "productId": "16775870",
+      "sourceProductIds": [
+        "16775870"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Italian Style 6 Cheese Blend Shredded Cheese",
+      "instacartSize": "8 oz",
+      "instacartPrice": 2.69,
+      "instacartUrl": "https://www.instacart.com/products/16775870-lucerne-shredded-cheese-6-cheese-blend-finely-italian-style-8-oz?retailerSlug=safeway",
+      "directId": "137051203",
+      "directTitle": "Lucerne Cheese Finely Shredded Italian Style 6 Cheese Blend - 8 Oz",
+      "directSize": "8 oz",
+      "directPrice": 2.29,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.137051203.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9533,
+      "matchMargin": 0.2173,
+      "sizeEvidence": "8 oz = 8 oz",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 17.5
+    },
+    {
       "productId": "20984970",
       "sourceProductIds": [
         "20984970"
@@ -36926,6 +37721,62 @@
       "instacartMarkupPercent": -37.6
     },
     {
+      "productId": "6800",
+      "sourceProductIds": [
+        "6800"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Parmesan Cheese, Finely Shredded",
+      "instacartSize": "6 oz",
+      "instacartPrice": 2.69,
+      "instacartUrl": "https://www.instacart.com/products/6800-lucerne-shredded-cheese-parmesan-finely-6-oz?retailerSlug=safeway",
+      "directId": "237150284",
+      "directTitle": "Lucerne Cheese Finely Shredded Parmesan - 6 Oz",
+      "directSize": "6 oz",
+      "directPrice": 2.29,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.237150284.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.0467,
+      "sizeEvidence": "6 oz = 6 oz",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 17.5
+    },
+    {
+      "productId": "25498945",
+      "sourceProductIds": [
+        "25498945"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Parmesan Shaved Cheese",
+      "instacartSize": "6 oz",
+      "instacartPrice": 2.69,
+      "instacartUrl": "https://www.instacart.com/products/25498945-lucerne-shaved-cheese-parmesan-6-oz?retailerSlug=safeway",
+      "directId": "137050662",
+      "directTitle": "Lucerne Cheese Parmesan Shaved - 6 Oz",
+      "directSize": "6 oz",
+      "directPrice": 2.29,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.137050662.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.0933,
+      "sizeEvidence": "6 oz = 6 oz",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 17.5
+    },
+    {
       "productId": "19621526",
       "sourceProductIds": [
         "19621526"
@@ -36944,11 +37795,11 @@
       "directPrice": 2.29,
       "directOriginalPrice": 2.49,
       "directUrl": "https://www.safeway.com/shop/product-details.960491282.html",
-      "capturedAt": "2026-07-17T16:26:08.256Z",
-      "capturedQuery": "cheese",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 1,
+      "matchMargin": 0.0933,
       "sizeEvidence": "6 oz = 6 oz",
       "priceDifference": 0.4,
       "instacartMarkupPercent": 17.5
@@ -36982,6 +37833,62 @@
       "instacartMarkupPercent": 6.4
     },
     {
+      "productId": "17390514",
+      "sourceProductIds": [
+        "17390514"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Shaved Cheese, Parmesan",
+      "instacartSize": "4 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/17390514-lucerne-cheese-parmesan-shaved-4-oz?retailerSlug=safeway",
+      "directId": "960122424",
+      "directTitle": "Lucerne Cheese Shaved Parmesan Tub - 4 Oz",
+      "directSize": "4 oz",
+      "directPrice": 3.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960122424.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.944,
+      "matchMargin": 0.944,
+      "sizeEvidence": "4 oz = 4 oz",
+      "priceDifference": 0.2,
+      "instacartMarkupPercent": 5.3
+    },
+    {
+      "productId": "16774605",
+      "sourceProductIds": [
+        "16774605"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Shredded Cheese, Parmesan",
+      "instacartSize": "5 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/16774605-lucerne-cheese-parmesan-shredded-5-oz?retailerSlug=safeway",
+      "directId": "960136452",
+      "directTitle": "Lucerne Cheese Shredded Parmesan Cheese Tub - 5 Oz",
+      "directSize": "5 oz",
+      "directPrice": 3.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960136452.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.944,
+      "matchMargin": 0.264,
+      "sizeEvidence": "5 oz = 5 oz",
+      "priceDifference": 0.2,
+      "instacartMarkupPercent": 5.3
+    },
+    {
       "productId": "6940",
       "sourceProductIds": [
         "6940"
@@ -37004,7 +37911,7 @@
       "capturedQuery": "Valley 3 Cheese Finely Shredded",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 0.4578,
+      "matchMargin": 0.035,
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 0.4,
       "instacartMarkupPercent": 17.5
@@ -37056,8 +37963,8 @@
       "directPrice": 2.29,
       "directOriginalPrice": 2.69,
       "directUrl": "https://www.safeway.com/shop/product-details.137010343.html",
-      "capturedAt": "2026-07-17T16:26:08.256Z",
-      "capturedQuery": "cheese",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.944,
       "matchMargin": 0.3707,
@@ -37106,20 +38013,20 @@
       "instacartSize": "8 oz",
       "instacartPrice": 2.99,
       "instacartUrl": "https://www.instacart.com/products/102370551-lucerne-whipped-unsalted-butter-8-oz?retailerSlug=safeway",
-      "directId": "970094000",
-      "directTitle": "Lucerne Butter - 8 OZ",
+      "directId": "971315443",
+      "directTitle": "Lucerne Whipped Unsalted Butter 8 Oz - 8 OZ",
       "directSize": "8 oz",
-      "directPrice": 2.29,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.970094000.html",
-      "capturedAt": "2026-07-17T18:50:14.140Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter",
+      "directPrice": 2.69,
+      "directOriginalPrice": 3.69,
+      "directUrl": "https://www.safeway.com/shop/product-details.971315443.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
-      "matchScore": 0.86,
-      "matchMargin": 0.152,
+      "matchScore": 1,
+      "matchMargin": 0.14,
       "sizeEvidence": "8 oz = 8 oz",
-      "priceDifference": 0.7,
-      "instacartMarkupPercent": 30.6
+      "priceDifference": 0.3,
+      "instacartMarkupPercent": 11.2
     },
     {
       "productId": "122245",
@@ -37140,8 +38047,8 @@
       "directPrice": 3.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.136150034.html",
-      "capturedAt": "2026-07-17T18:50:20.170Z",
-      "capturedQuery": "Valley 2 Milk",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Organic Valley Unsalted Butter 8 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.86,
       "matchMargin": 0.86,
@@ -37500,6 +38407,36 @@
       "sizeEvidence": "28 oz = 28 oz",
       "priceDifference": 1.2,
       "instacartMarkupPercent": 17.7
+    },
+    {
+      "productId": "16291828",
+      "sourceProductIds": [
+        "16291828"
+      ],
+      "storeIds": [
+        "safeway",
+        "qfc",
+        "pcc"
+      ],
+      "storeCount": 3,
+      "instacartName": "MaraNatha No Stir Creamy Natural California Almond Butter",
+      "instacartSize": "12 oz",
+      "instacartPrice": 10.99,
+      "instacartUrl": "https://www.instacart.com/products/16291828-maranatha-no-stir-creamy-natural-california-almond-butter-12-oz?retailerSlug=safeway",
+      "directId": "960009866",
+      "directTitle": "MaraNatha Almond Butter Creamy - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 9.79,
+      "directOriginalPrice": 11.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.960009866.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.88,
+      "matchMargin": 0.88,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 12.3
     },
     {
       "productId": "34522",
@@ -38888,6 +39825,70 @@
       "instacartMarkupPercent": 11.1
     },
     {
+      "productId": "24822",
+      "sourceProductIds": [
+        "24822"
+      ],
+      "storeIds": [
+        "pcc",
+        "qfc",
+        "safeway",
+        "metro"
+      ],
+      "storeCount": 4,
+      "instacartName": "Mezzetta Family Recipes Marinara Sauce",
+      "instacartSize": "24.5 oz",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/24822-mezzetta-sauce-marinara-24-5-oz?retailerSlug=safeway",
+      "directId": "128350085",
+      "directTitle": "Mezzetta Napa Valley Homemade Sauce Marinara Jar - 25 Oz",
+      "directSize": "25 oz",
+      "directPrice": 6.99,
+      "directOriginalPrice": 8.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.128350085.html",
+      "capturedAt": "2026-07-17T18:50:29.288Z",
+      "capturedQuery": "Mezzetta Family Recipes Marinara Sauce",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "24.5 oz = 25 oz",
+      "manualReviewNote": "Mezzetta Family Recipes marinara sauce; retailer rounds the nominal 24.5 oz jar to 25 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 14.3
+    },
+    {
+      "productId": "18648",
+      "sourceProductIds": [
+        "18648"
+      ],
+      "storeIds": [
+        "pcc",
+        "qfc",
+        "safeway",
+        "metro"
+      ],
+      "storeCount": 4,
+      "instacartName": "Mezzetta Family Recipes Spicy Marinara Sauce",
+      "instacartSize": "25 oz",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/18648-mezzetta-sauce-spicy-marinara-25-oz?retailerSlug=safeway",
+      "directId": "960079069",
+      "directTitle": "Mezzetta Napa Valley Homemade Sauce Marinara Spicy Jar - 25 Oz",
+      "directSize": "25 oz",
+      "directPrice": 6.99,
+      "directOriginalPrice": 8.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.960079069.html",
+      "capturedAt": "2026-07-17T18:50:29.288Z",
+      "capturedQuery": "Mezzetta Family Recipes Marinara Sauce",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "25 oz = 25 oz",
+      "manualReviewNote": "Mezzetta Family Recipes spicy marinara sauce, 25 oz; Safeway uses the Napa Valley Homemade sub-brand wording",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 14.3
+    },
+    {
       "productId": "16408387",
       "sourceProductIds": [
         "16408387"
@@ -39175,6 +40176,36 @@
       "matchScore": 0.9378,
       "matchMargin": 0.9378,
       "sizeEvidence": "6.8 oz = 6.8 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 9.1
+    },
+    {
+      "productId": "17854942",
+      "sourceProductIds": [
+        "17854942"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "instacartName": "Milton's Organic Crackers, Multi-Grain",
+      "instacartSize": "6 oz",
+      "instacartPrice": 5.99,
+      "instacartUrl": "https://www.instacart.com/products/17854942-miltons-crackers-organic-multi-grain-6-oz?retailerSlug=safeway",
+      "directId": "960451488",
+      "directTitle": "Milton's Craft Bakers Multi-Grain Organic Gourmet Crackers - 6 Oz",
+      "directSize": "6 oz",
+      "directPrice": 5.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960451488.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Back to Nature Stoneground Wheat Crackers",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.88,
+      "matchMargin": 0.88,
+      "sizeEvidence": "6 oz = 6 oz",
       "priceDifference": 0.5,
       "instacartMarkupPercent": 9.1
     },
@@ -39783,6 +40814,34 @@
       "sizeEvidence": "24 oz = 24 oz",
       "priceDifference": 0.99,
       "instacartMarkupPercent": 11
+    },
+    {
+      "productId": "41112",
+      "sourceProductIds": [
+        "41112"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Mom's Best Quick Oats Oatmeal Canister",
+      "instacartSize": "16 oz",
+      "instacartPrice": 4.99,
+      "instacartUrl": "https://www.instacart.com/products/41112-mom-s-best-cereals-cereals-quick-oats-16-0-oz?retailerSlug=safeway",
+      "directId": "960045818",
+      "directTitle": "Mom's Best Quick Oats - 16 Oz",
+      "directSize": "16 oz",
+      "directPrice": 4.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960045818.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Old Fashioned Rolled Oats 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9067,
+      "matchMargin": 0.9067,
+      "sizeEvidence": "16 oz = 16 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 11.1
     },
     {
       "productId": "20211239",
@@ -40652,6 +41711,37 @@
       "instacartMarkupPercent": 12.5
     },
     {
+      "productId": "57159806",
+      "sourceProductIds": [
+        "57159806"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Naked Bread Organic Great Seed Bread",
+      "instacartSize": "26 oz",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "971096676",
+      "directTitle": "Naked Organic Bread Great Seed - 26 OZ",
+      "directSize": "26 oz",
+      "directPrice": 8.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.971096676.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "26 oz = 26 oz",
+      "manualReviewNote": "Naked Bread Great Seed organic bread, 26 oz",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
+    },
+    {
       "productId": "57159734",
       "sourceProductIds": [
         "57159734"
@@ -40673,8 +41763,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.971096636.html",
-      "capturedAt": "2026-07-17T18:50:18.092Z",
-      "capturedQuery": "Naked Bread Twenty Four Grains",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.38,
@@ -40808,6 +41898,38 @@
       "instacartMarkupPercent": 12.5
     },
     {
+      "productId": "57159939",
+      "sourceProductIds": [
+        "57159939"
+      ],
+      "storeIds": [
+        "pcc",
+        "safeway",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Naked Bread Organic Simple Sourdough",
+      "instacartSize": "20 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/57159939-naked-bread-organic-simple-sourdough-20-oz?retailerSlug=safeway",
+      "directId": "971096658",
+      "directTitle": "Naked Organic Simple Sourdough Bread - 20 OZ",
+      "directSize": "20 oz",
+      "directPrice": 7.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.971096658.html",
+      "capturedAt": "2026-07-17T18:50:18.092Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "20 oz = 20 oz",
+      "manualReviewNote": "Naked Bread Simple Sourdough organic bread, 20 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 12.5
+    },
+    {
       "productId": "57159799",
       "sourceProductIds": [
         "57159799"
@@ -40829,8 +41951,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.971096669.html",
-      "capturedAt": "2026-07-17T18:50:18.092Z",
-      "capturedQuery": "Naked Bread Twenty Four Grains",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.93,
       "matchMargin": 0.1744,
@@ -41079,6 +42201,38 @@
       "instacartMarkupPercent": 17.5
     },
     {
+      "productId": "201001",
+      "sourceProductIds": [
+        "201001"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Napoleon Co. Capers, Non-Pareil",
+      "instacartSize": "8 oz",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/201001-napoleon-co-nonpareil-capers-8-oz?retailerSlug=safeway",
+      "directId": "960318094",
+      "directTitle": "Napoleon Capers Nonpariel - 8 Oz",
+      "directSize": "8 oz",
+      "directPrice": 6.79,
+      "directOriginalPrice": 7.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.960318094.html",
+      "capturedAt": "2026-07-17T18:09:06.685Z",
+      "capturedQuery": "Napoleon Co. Capers, Non-Pareil 8 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "8 oz = 8 oz",
+      "manualReviewNote": "Napoleon non-pareil capers, 8 oz; Safeway misspells nonpareil in the title",
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 17.7
+    },
+    {
       "productId": "199197",
       "sourceProductIds": [
         "199197"
@@ -41274,8 +42428,8 @@
       "directPrice": 7.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960089287.html",
-      "capturedAt": "2026-07-17T16:26:34.192Z",
-      "capturedQuery": "granola",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.463,
@@ -41358,16 +42512,16 @@
       "instacartPrice": 8.49,
       "instacartUrl": "https://www.instacart.com/products/2636953-nature-s-bakery-gluten-free-bluebery-fig-bar-12-oz?retailerSlug=safeway",
       "directId": "960166979",
-      "directTitle": "Natures Bakery Fig Bar Stone G...t Blueberry - 6-2 Oz",
+      "directTitle": "Natures Bakery Fig Bar Stone Ground Whole Wheat Blueberry - 6-2 Oz",
       "directSize": "12 oz",
       "directPrice": 5.49,
       "directOriginalPrice": 5.99,
       "directUrl": "https://www.safeway.com/shop/product-details.960166979.html",
-      "capturedAt": "2026-07-17T15:04:42.584Z",
-      "capturedQuery": "Perfect Bar",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Back to Nature Stoneground Wheat Crackers",
       "matchMethod": "normalized_name_size",
-      "matchScore": 0.9533,
-      "matchMargin": 0.2653,
+      "matchScore": 0.8756,
+      "matchMargin": 0.1876,
       "sizeEvidence": "12 oz = 12 oz",
       "priceDifference": 3,
       "instacartMarkupPercent": 54.6
@@ -41449,8 +42603,8 @@
       "directPrice": 4.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960002359.html",
-      "capturedAt": "2026-07-17T18:35:38.992Z",
-      "capturedQuery": "Naked Bread Organic Twenty Four Grains and Seeds Bread 27 oz",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9067,
       "matchMargin": 0.2267,
@@ -41566,8 +42720,8 @@
       "directPrice": 6.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960155839.html",
-      "capturedAt": "2026-07-17T17:03:02.508Z",
-      "capturedQuery": "Nature's Path Heritage Flakes Cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Nature's Path Flax Plus Raisin Bran",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -41597,8 +42751,8 @@
       "directPrice": 6.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960181005.html",
-      "capturedAt": "2026-07-17T17:03:02.508Z",
-      "capturedQuery": "Nature's Path Heritage Flakes Cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Nature's Path Flax Plus Raisin Bran",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.9689,
       "matchMargin": 0.9689,
@@ -41658,8 +42812,8 @@
       "directPrice": 6.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.111010954.html",
-      "capturedAt": "2026-07-17T17:03:02.508Z",
-      "capturedQuery": "Nature's Path Heritage Flakes Cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Nature's Path Flax Plus Raisin Bran",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.9533,
       "matchMargin": 0.2373,
@@ -41747,8 +42901,8 @@
       "directPrice": 6.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.111010381.html",
-      "capturedAt": "2026-07-17T17:03:02.508Z",
-      "capturedQuery": "Nature's Path Heritage Flakes Cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Nature's Path Flax Plus Raisin Bran",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -42668,6 +43822,64 @@
       "instacartMarkupPercent": 17.7
     },
     {
+      "productId": "34243",
+      "sourceProductIds": [
+        "34243"
+      ],
+      "storeIds": [
+        "safeway",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Nutella Hazelnut Spread with Cocoa, Creamy Hazelnut Spread, Breakfast Favorite, 26.5 oz Jar",
+      "instacartSize": "26.5 oz",
+      "instacartPrice": 15.99,
+      "instacartUrl": "https://www.instacart.com/products/34243-nutella-chocolate-hazelnut-spread-perfect-topping-for-pancakes-26-5-oz?retailerSlug=safeway",
+      "directId": "960009847",
+      "directTitle": "Nutella Hazelnut Spread with Cocoa for Breakfast Jar - 26.5 Oz",
+      "directSize": "26.5 oz",
+      "directPrice": 13.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960009847.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.93,
+      "matchMargin": 0.93,
+      "sizeEvidence": "26.5 oz = 26.5 oz",
+      "priceDifference": 2.2,
+      "instacartMarkupPercent": 16
+    },
+    {
+      "productId": "3261718",
+      "sourceProductIds": [
+        "3261718"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Nutella Hazelnut Spread with Cocoa, Creamy Hazelnut Spread, Breakfast Favorite, 7.7 oz Jar",
+      "instacartSize": "7.7 oz",
+      "instacartPrice": 5.59,
+      "instacartUrl": "https://www.instacart.com/products/3261718-nutella-hazelnut-spread-with-cocoa-7-7-oz?retailerSlug=safeway",
+      "directId": "960224437",
+      "directTitle": "Nutella Hazelnut Spread with Cocoa for Breakfast Jar - 7.7 Oz",
+      "directSize": "7.7 oz",
+      "directPrice": 4.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960224437.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.93,
+      "matchMargin": 0.93,
+      "sizeEvidence": "7.7 oz = 7.7 oz",
+      "priceDifference": 0.8,
+      "instacartMarkupPercent": 16.7
+    },
+    {
       "productId": "30196408",
       "sourceProductIds": [
         "30196408"
@@ -43107,8 +44319,8 @@
       "directPrice": 4.29,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960079282.html",
-      "capturedAt": "2026-07-17T17:03:02.508Z",
-      "capturedQuery": "Nature's Path Heritage Flakes Cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -43135,8 +44347,8 @@
       "directPrice": 4.29,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960534507.html",
-      "capturedAt": "2026-07-17T17:03:02.508Z",
-      "capturedQuery": "Nature's Path Heritage Flakes Cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Nature's Path Flax Plus Raisin Bran",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -43499,13 +44711,69 @@
       "directPrice": 4.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960109862.html",
-      "capturedAt": "2026-07-17T18:50:16.265Z",
-      "capturedQuery": "Valley 3 Cheese Finely Shredded",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.8756,
       "matchMargin": 0.8756,
       "sizeEvidence": "6 oz = 6 oz",
       "priceDifference": 0.8,
+      "instacartMarkupPercent": 16.7
+    },
+    {
+      "productId": "19224979",
+      "sourceProductIds": [
+        "19224979"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "O Organics Fruit Spread, Concord Grape",
+      "instacartSize": "16.5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/19224979-o-organics-fruit-spread-organic-concord-grape-16-5-oz?retailerSlug=safeway",
+      "directId": "960470477",
+      "directTitle": "O Organics Fruit Spread Concord Grape - 16.5 Oz",
+      "directSize": "16.5 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960470477.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Crofter's Strawberry Fruit Spread",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.32,
+      "sizeEvidence": "16.5 oz = 16.5 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
+    },
+    {
+      "productId": "19224941",
+      "sourceProductIds": [
+        "19224941"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "O Organics Fruit Spread, Raspberry",
+      "instacartSize": "16.5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/19224941-o-organics-fruit-spread-organic-raspberry-16-5-oz?retailerSlug=safeway",
+      "directId": "960470476",
+      "directTitle": "O Organics Fruit Spread Raspberry - 16.5 Oz",
+      "directSize": "16.5 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960470476.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Crofter's Strawberry Fruit Spread",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.32,
+      "sizeEvidence": "16.5 oz = 16.5 oz",
+      "priceDifference": 1,
       "instacartMarkupPercent": 16.7
     },
     {
@@ -43583,8 +44851,8 @@
       "directPrice": 5.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960272195.html",
-      "capturedAt": "2026-07-17T16:26:34.192Z",
-      "capturedQuery": "granola",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -45802,34 +47070,6 @@
       "instacartMarkupPercent": 20
     },
     {
-      "productId": "44628",
-      "sourceProductIds": [
-        "44628"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "Open Nature Angus Beef, Ground, 85%/15%",
-      "instacartSize": "16 oz",
-      "instacartPrice": 10.99,
-      "instacartUrl": "https://www.instacart.com/products/44628-open-nature-beef-ground-85-15-angus-grass-fed-16-oz?retailerSlug=safeway",
-      "directId": "960085526",
-      "directTitle": "Open Nature 85% Lean 15% Fat All Natural Grass Fed Ground Beef Angus - 16 oz",
-      "directSize": "16 oz",
-      "directPrice": 6.99,
-      "directOriginalPrice": 9.49,
-      "directUrl": "https://www.safeway.com/shop/product-details.960085526.html",
-      "capturedAt": "2026-07-17T18:50:16.265Z",
-      "capturedQuery": "Valley 3 Cheese Finely Shredded",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.86,
-      "matchMargin": 0.86,
-      "sizeEvidence": "16 oz = 16 oz",
-      "priceDifference": 4,
-      "instacartMarkupPercent": 57.2
-    },
-    {
       "productId": "18517628",
       "sourceProductIds": [
         "18517628"
@@ -46324,8 +47564,8 @@
       "directPrice": 3.5,
       "directOriginalPrice": 4.99,
       "directUrl": "https://www.safeway.com/shop/product-details.970486950.html",
-      "capturedAt": "2026-07-17T16:26:34.192Z",
-      "capturedQuery": "granola",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.2373,
@@ -46352,8 +47592,8 @@
       "directPrice": 3.5,
       "directOriginalPrice": 4.99,
       "directUrl": "https://www.safeway.com/shop/product-details.960053026.html",
-      "capturedAt": "2026-07-17T17:21:34.913Z",
-      "capturedQuery": "Bob's Red Mill Homestyle Cranberry Almond Granola",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.2373,
@@ -46612,6 +47852,34 @@
       "sizeEvidence": "5 oz = 5 oz",
       "priceDifference": 0.7,
       "instacartMarkupPercent": 16.3
+    },
+    {
+      "productId": "19211",
+      "sourceProductIds": [
+        "19211"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Open Nature Water Crackers, Wheat",
+      "instacartSize": "4.4 oz",
+      "instacartPrice": 4.99,
+      "instacartUrl": "https://www.instacart.com/products/19211-open-nature-water-crackers-wheat-4-4-oz?retailerSlug=safeway",
+      "directId": "960078337",
+      "directTitle": "Open Nature Crackers Water Whole Wheat - 4.4 Oz",
+      "directSize": "4.4 oz",
+      "directPrice": 4.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960078337.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Back to Nature Stoneground Wheat Crackers",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9533,
+      "matchMargin": 0.9533,
+      "sizeEvidence": "4.4 oz = 4.4 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 11.1
     },
     {
       "productId": "57057",
@@ -47256,8 +48524,8 @@
       "directPrice": 6.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.196050883.html",
-      "capturedAt": "2026-07-17T18:50:18.092Z",
-      "capturedQuery": "Naked Bread Twenty Four Grains",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.944,
       "matchMargin": 0.236,
@@ -50646,6 +51914,40 @@
       "instacartMarkupPercent": 15.2
     },
     {
+      "productId": "17379096",
+      "sourceProductIds": [
+        "17379096",
+        "44407579",
+        "64254112"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Poppi Prebiotic Soda, Orange Cream",
+      "instacartSize": "12 fl oz",
+      "instacartPrice": 2.88,
+      "instacartUrl": "https://www.instacart.com/products/44407579-poppi-orange-cream-soda-12-fl-oz?retailerSlug=safeway",
+      "directId": "970950246",
+      "directTitle": "Poppi Prebiotic Orange Cream - 12 Fl. Oz.",
+      "directSize": "12 fl oz",
+      "directPrice": 2.5,
+      "directOriginalPrice": 2.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.970950246.html",
+      "capturedAt": "2026-07-17T17:47:37.964Z",
+      "capturedQuery": "Poppi Prebiotic Soda, Root Beer 12 fl oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "12 fl oz = 12 fl oz",
+      "manualReviewNote": "Poppi Orange Cream prebiotic soda, single 12 fl oz can",
+      "priceDifference": 0.38,
+      "instacartMarkupPercent": 15.2
+    },
+    {
       "productId": "17379091",
       "sourceProductIds": [
         "17379091"
@@ -50673,6 +51975,38 @@
       "matchScore": 0.9533,
       "matchMargin": 0.4013,
       "sizeEvidence": "12 fl oz = 12 fl oz",
+      "priceDifference": 0.38,
+      "instacartMarkupPercent": 15.2
+    },
+    {
+      "productId": "24875481",
+      "sourceProductIds": [
+        "24875481"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Poppi Prebiotic Soda, Root Beer",
+      "instacartSize": "12 fl oz",
+      "instacartPrice": 2.88,
+      "instacartUrl": "https://www.instacart.com/products/24875481-poppi-prebiotic-soda-root-beer-12-oz?retailerSlug=safeway",
+      "directId": "970310322",
+      "directTitle": "Poppi Soda Prebiotic Rootbeer - 12 FZ",
+      "directSize": "12 fl oz",
+      "directPrice": 2.5,
+      "directOriginalPrice": 2.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.970310322.html",
+      "capturedAt": "2026-07-17T17:47:37.964Z",
+      "capturedQuery": "Poppi Prebiotic Soda, Root Beer 12 fl oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "12 fl oz = 12 fl oz",
+      "manualReviewNote": "Poppi Root Beer prebiotic soda, single 12 fl oz can",
       "priceDifference": 0.38,
       "instacartMarkupPercent": 15.2
     },
@@ -51570,12 +52904,40 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960034630.html",
-      "capturedAt": "2026-07-17T16:23:56.411Z",
-      "capturedQuery": "BelGioioso",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 1,
+      "matchMargin": 0.12,
       "sizeEvidence": "8 oz = 8 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
+    },
+    {
+      "productId": "246392",
+      "sourceProductIds": [
+        "246392"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Primo Taglio Grated Cheese, Parmesan",
+      "instacartSize": "5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/246392-signature-kitchens-cheese-parmesan-grated-5-oz?retailerSlug=safeway",
+      "directId": "960110636",
+      "directTitle": "Primo Taglio Grated Parmesan - 5 Oz",
+      "directSize": "5 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960110636.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.944,
+      "matchMargin": 0.1813,
+      "sizeEvidence": "5 oz = 5 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 16.7
     },
@@ -51606,6 +52968,90 @@
       "sizeEvidence": "4 oz = 4 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 23.1
+    },
+    {
+      "productId": "268714",
+      "sourceProductIds": [
+        "268714"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Primo Taglio Shaved Cheese, Parmesan",
+      "instacartSize": "5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/268714-signature-kitchens-cheese-parmesan-shaved-5-oz?retailerSlug=safeway",
+      "directId": "960110639",
+      "directTitle": "Primo Taglio Shaved Parmesan Cheese - 5 Oz",
+      "directSize": "5 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960110639.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.2373,
+      "sizeEvidence": "5 oz = 5 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
+    },
+    {
+      "productId": "336724",
+      "sourceProductIds": [
+        "336724"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Primo Taglio Shredded Cheese, Parmesan",
+      "instacartSize": "5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/336724-signature-kitchens-cheese-parmesan-shredded-5-oz?retailerSlug=safeway",
+      "directId": "960112892",
+      "directTitle": "Primo Taglio Shredded Parmesan Cheese - 5 Oz",
+      "directSize": "5 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960112892.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.2373,
+      "sizeEvidence": "5 oz = 5 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
+    },
+    {
+      "productId": "25140792",
+      "sourceProductIds": [
+        "25140792"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Primo Taglio Shredded Cheese, Pizza Blend",
+      "instacartSize": "12 oz",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/25140792-primo-taglio-shredded-cheese-pizza-blend-12-oz?retailerSlug=safeway",
+      "directId": "970106315",
+      "directTitle": "Primo Taglio Pizza Blend Cheese - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 6.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970106315.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9533,
+      "matchMargin": 0.9533,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 14.3
     },
     {
       "productId": "18025601",
@@ -53204,8 +54650,8 @@
       "directPrice": 5.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960052975.html",
-      "capturedAt": "2026-07-17T16:26:25.452Z",
-      "capturedQuery": "oatmeal",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Old Fashioned Rolled Oats 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 0.32,
@@ -53489,8 +54935,8 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.111050087.html",
-      "capturedAt": "2026-07-17T16:26:25.452Z",
-      "capturedQuery": "oatmeal",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
@@ -53518,8 +54964,8 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.111050069.html",
-      "capturedAt": "2026-07-17T16:26:25.452Z",
-      "capturedQuery": "oatmeal",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Old Fashioned Rolled Oats 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9067,
       "matchMargin": 0.2867,
@@ -53779,8 +55225,8 @@
       "directPrice": 5.99,
       "directOriginalPrice": 7.49,
       "directUrl": "https://www.safeway.com/shop/product-details.970104726.html",
-      "capturedAt": "2026-07-17T16:26:34.192Z",
-      "capturedQuery": "granola",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.96,
       "matchMargin": 0,
@@ -56786,8 +58232,8 @@
       "directPrice": 5.69,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.196050233.html",
-      "capturedAt": "2026-07-17T18:35:38.992Z",
-      "capturedQuery": "Naked Bread Organic Twenty Four Grains and Seeds Bread 27 oz",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9533,
       "matchMargin": 0.1783,
@@ -57992,11 +59438,11 @@
       "directPrice": 6.49,
       "directOriginalPrice": 7.49,
       "directUrl": "https://www.safeway.com/shop/product-details.970306151.html",
-      "capturedAt": "2026-07-17T16:46:09.852Z",
-      "capturedQuery": "Icelandic Provisions Strawberry Lingonberry Skyr",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9689,
-      "matchMargin": 0.9689,
+      "matchMargin": 0.3146,
       "sizeEvidence": "21.2 oz = 21.2 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 23.1
@@ -58022,12 +59468,41 @@
       "directPrice": 6.99,
       "directOriginalPrice": 7.49,
       "directUrl": "https://www.safeway.com/shop/product-details.960123330.html",
-      "capturedAt": "2026-07-17T16:26:05.583Z",
-      "capturedQuery": "yogurt",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "24 oz = 24 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 14.3
+    },
+    {
+      "productId": "321130",
+      "sourceProductIds": [
+        "321130"
+      ],
+      "storeIds": [
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "instacartName": "Siggi's Icelandic Skyr Nonfat Yogurt Vanilla",
+      "instacartSize": "1.5 lb",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/321130-siggi-s-vanilla-skyr-icelandic-strained-non-fat-yogurt-24-oz?retailerSlug=safeway",
+      "directId": "960228154",
+      "directTitle": "siggi's Vanilla Icelandic Skyr Nonfat Yogurt - 24 Oz",
+      "directSize": "24 oz",
+      "directPrice": 6.99,
+      "directOriginalPrice": 7.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.960228154.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "1.5 lb = 24 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 14.3
     },
@@ -58053,8 +59528,8 @@
       "directPrice": 1.5,
       "directOriginalPrice": 2.29,
       "directUrl": "https://www.safeway.com/shop/product-details.960062909.html",
-      "capturedAt": "2026-07-17T15:22:40.751Z",
-      "capturedQuery": "Chobani Vanilla Greek Nonfat Yogurt 5.3 oz",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.8,
       "matchMargin": 0.1956,
@@ -58081,8 +59556,8 @@
       "directPrice": 1.5,
       "directOriginalPrice": 2.29,
       "directUrl": "https://www.safeway.com/shop/product-details.971164260.html",
-      "capturedAt": "2026-07-17T16:46:09.852Z",
-      "capturedQuery": "Icelandic Provisions Strawberry Lingonberry Skyr",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.96,
       "matchMargin": 0.96,
@@ -59521,6 +60996,90 @@
       "instacartMarkupPercent": 19.1
     },
     {
+      "productId": "167148",
+      "sourceProductIds": [
+        "167148"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Signature SELECT Cheese, Parmesan & Romano, Grated",
+      "instacartSize": "8 oz",
+      "instacartPrice": 4.69,
+      "instacartUrl": "https://www.instacart.com/products/167148-signature-select-cheese-parmesan-romano-grated-8-oz?retailerSlug=safeway",
+      "directId": "137150065",
+      "directTitle": "Signature SELECT Cheese  Grated Parmesan & Romano - 8 Oz",
+      "directSize": "8 oz",
+      "directPrice": 3.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.137150065.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "8 oz = 8 oz",
+      "priceDifference": 0.7,
+      "instacartMarkupPercent": 17.5
+    },
+    {
+      "productId": "167147",
+      "sourceProductIds": [
+        "167147"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Signature SELECT Cheese, Parmesan, Grated",
+      "instacartSize": "3 oz",
+      "instacartPrice": 2.99,
+      "instacartUrl": "https://www.instacart.com/products/167147-signature-select-cheese-parmesan-grated-3-oz?retailerSlug=safeway",
+      "directId": "137150042",
+      "directTitle": "Signature SELECT Grated Parmesan Cheese - 3 Oz",
+      "directSize": "3 oz",
+      "directPrice": 2.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.137150042.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "3 oz = 3 oz",
+      "priceDifference": 0,
+      "instacartMarkupPercent": 0
+    },
+    {
+      "productId": "167149",
+      "sourceProductIds": [
+        "167149"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Signature SELECT Cheese, Parmesan, Grated",
+      "instacartSize": "16 oz",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/167149-signature-select-grated-cheese-parmesan-16-oz?retailerSlug=safeway",
+      "directId": "137150040",
+      "directTitle": "Signature SELECT Grated Parmesan Cheese - 16 Oz",
+      "directSize": "16 oz",
+      "directPrice": 6.99,
+      "directOriginalPrice": 7.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.137150040.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.463,
+      "sizeEvidence": "16 oz = 16 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 14.3
+    },
+    {
       "productId": "76154493",
       "sourceProductIds": [
         "76154493"
@@ -59941,29 +61500,29 @@
       "instacartMarkupPercent": 7.2
     },
     {
-      "productId": "165942",
+      "productId": "122414",
       "sourceProductIds": [
-        "165942"
+        "122414"
       ],
       "storeIds": [
         "safeway"
       ],
       "storeCount": 1,
-      "instacartName": "Signature SELECT Creamy Reduced Fat Peanut Spread",
+      "instacartName": "Signature SELECT Creamy Peanut Butter",
       "instacartSize": "16 oz",
       "instacartPrice": 2.99,
-      "instacartUrl": "https://www.instacart.com/products/165942-signature-kitchens-peanut-spread-reduced-fat-creamy-16-oz?retailerSlug=safeway",
-      "directId": "960570495",
-      "directTitle": "Signature SELECT Peanut Spread Creamy Reduced Sugar & Sodium - 16 Oz",
+      "instacartUrl": "https://www.instacart.com/products/122414-signature-kitchens-peanut-butter-creamy-16-oz?retailerSlug=safeway",
+      "directId": "960091953",
+      "directTitle": "Signature SELECT Peanut Butter Creamy - 16 Oz",
       "directSize": "16 oz",
       "directPrice": 2.49,
       "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960570495.html",
-      "capturedAt": "2026-07-17T18:35:35.326Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter Foil 8 oz",
+      "directUrl": "https://www.safeway.com/shop/product-details.960091953.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
       "matchMethod": "normalized_name_size",
-      "matchScore": 0.8038,
-      "matchMargin": 0.2785,
+      "matchScore": 1,
+      "matchMargin": 0.2996,
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 0.5,
       "instacartMarkupPercent": 20.1
@@ -60585,6 +62144,62 @@
       "instacartMarkupPercent": 11.1
     },
     {
+      "productId": "19281698",
+      "sourceProductIds": [
+        "19281698"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Signature SELECT Gluten Free Fettuccine",
+      "instacartSize": "12 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/19281698-signature-select-fettuccine-gluten-free-12-oz?retailerSlug=safeway",
+      "directId": "960470056",
+      "directTitle": "Signature SELECT Pasta Gluten Free Fettuccine - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 3.59,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960470056.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.93,
+      "matchMargin": 0.31,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 11.1
+    },
+    {
+      "productId": "19223758",
+      "sourceProductIds": [
+        "19223758"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Signature SELECT Gluten Free Penne Rigate",
+      "instacartSize": "12 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/19223758-signature-select-penne-rigate-gluten-free-12-oz?retailerSlug=safeway",
+      "directId": "960470054",
+      "directTitle": "Signature SELECT Pasta Gluten Free Penne Rigate - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 3.59,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960470054.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.944,
+      "matchMargin": 0.352,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 11.1
+    },
+    {
       "productId": "19222335",
       "sourceProductIds": [
         "19222335"
@@ -60603,8 +62218,8 @@
       "directPrice": 3.59,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960470053.html",
-      "capturedAt": "2026-07-17T16:45:06.052Z",
-      "capturedQuery": "Banza Rotini Pasta Gluten Free Lower Carb",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.93,
       "matchMargin": 0.31,
@@ -60831,7 +62446,7 @@
       "capturedQuery": "nuts",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 0.463,
+      "matchMargin": 0.448,
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 0.2,
       "instacartMarkupPercent": 7.2
@@ -61531,7 +63146,7 @@
       "capturedQuery": "potatoes",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.96,
-      "matchMargin": 0.4366,
+      "matchMargin": 0.244,
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 20
@@ -61979,7 +63594,7 @@
       "capturedQuery": "pasta",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9067,
-      "matchMargin": 0.3147,
+      "matchMargin": 0.1987,
       "sizeEvidence": "12 oz = 12 oz",
       "priceDifference": 0.3,
       "instacartMarkupPercent": 23.3
@@ -64408,8 +66023,8 @@
       "directPrice": 5.49,
       "directOriginalPrice": 6.49,
       "directUrl": "https://www.safeway.com/shop/product-details.960294353.html",
-      "capturedAt": "2026-07-17T17:21:31.715Z",
-      "capturedQuery": "Bob's Red Mill Flaxseed Meal Whole Ground",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Back to Nature Stoneground Wheat Crackers",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 1,
       "matchMargin": 0.3584,
@@ -64585,8 +66200,8 @@
       "directPrice": 5.49,
       "directOriginalPrice": 6.49,
       "directUrl": "https://www.safeway.com/shop/product-details.970094822.html",
-      "capturedAt": "2026-07-17T17:03:37.376Z",
-      "capturedQuery": "Simple Mills Organic Seed Flour Crackers Original",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Back to Nature Stoneground Wheat Crackers",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.9533,
       "matchMargin": 0.2173,
@@ -64852,11 +66467,41 @@
       "directPrice": 3,
       "directOriginalPrice": 4.29,
       "directUrl": "https://www.safeway.com/shop/product-details.960110940.html",
-      "capturedAt": "2026-07-17T17:03:39.692Z",
-      "capturedQuery": "SkinnyDipped Almonds Dark Chocolate Peanut Butter",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Organic Valley Unsalted Butter 8 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.92,
       "matchMargin": 0.92,
+      "sizeEvidence": "16.3 oz = 16.3 oz",
+      "priceDifference": 0.46,
+      "instacartMarkupPercent": 15.3
+    },
+    {
+      "productId": "16658606",
+      "sourceProductIds": [
+        "16658606"
+      ],
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "SKIPPY SUPER CHUNK Peanut Butter, 16.3 Ounce",
+      "instacartSize": "16.3 oz",
+      "instacartPrice": 3.46,
+      "instacartUrl": "https://www.instacart.com/products/16658606-skippy-super-chunk-extra-crunchy-peanut-butter-16-3-oz?retailerSlug=safeway",
+      "directId": "960110939",
+      "directTitle": "SKIPPY Peanut Butter Spread Super Chunk Extra Crunchy - 16.3 Oz",
+      "directSize": "16.3 oz",
+      "directPrice": 3,
+      "directOriginalPrice": 4.29,
+      "directUrl": "https://www.safeway.com/shop/product-details.960110939.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.895,
+      "matchMargin": 0.343,
       "sizeEvidence": "16.3 oz = 16.3 oz",
       "priceDifference": 0.46,
       "instacartMarkupPercent": 15.3
@@ -67640,6 +69285,34 @@
       "instacartMarkupPercent": 11.1
     },
     {
+      "productId": "24496218",
+      "sourceProductIds": [
+        "24496218"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "SunButter Chocolate Sunflower Seed Butter",
+      "instacartSize": "16 oz",
+      "instacartPrice": 12.99,
+      "instacartUrl": "https://www.instacart.com/products/24496218-sunbutter-sunflower-butter-chocolate-16-oz?retailerSlug=safeway",
+      "directId": "960544126",
+      "directTitle": "SunButter Chocolate Sunflower Butter - 16 Oz.",
+      "directSize": "16 oz",
+      "directPrice": 10.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960544126.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.944,
+      "matchMargin": 0.056,
+      "sizeEvidence": "16 oz = 16 oz",
+      "priceDifference": 2.2,
+      "instacartMarkupPercent": 20.4
+    },
+    {
       "productId": "16753766",
       "sourceProductIds": [
         "16753766"
@@ -67660,11 +69333,11 @@
       "directPrice": 10.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960128902.html",
-      "capturedAt": "2026-07-17T16:23:18.570Z",
-      "capturedQuery": "Bonne Maman",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.888,
-      "matchMargin": 0.888,
+      "matchMargin": 0.208,
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 2.2,
       "instacartMarkupPercent": 20.4
@@ -70849,14 +72522,42 @@
       "directPrice": 6.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.184800222.html",
-      "capturedAt": "2026-07-17T17:04:32.898Z",
-      "capturedQuery": "Tofurky Hickory Smoked",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 1,
       "matchMargin": 0.32,
       "sizeEvidence": "5.5 oz = 5.5 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 23.1
+    },
+    {
+      "productId": "29426",
+      "sourceProductIds": [
+        "29426"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Tofurky Italian Sausage",
+      "instacartSize": "14 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/29426-tofurky-italian-sausage-with-sun-dried-tomatoes-and-basil-14-oz?retailerSlug=safeway",
+      "directId": "184801062",
+      "directTitle": "Tofurky Sausage Italian Original - 14 Oz",
+      "directSize": "14 oz",
+      "directPrice": 7.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.184801062.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.93,
+      "matchMargin": 0.93,
+      "sizeEvidence": "14 oz = 14 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 12.5
     },
     {
       "productId": "29393",
@@ -72306,8 +74007,8 @@
       "directPrice": 6.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960489437.html",
-      "capturedAt": "2026-07-17T15:24:44.024Z",
-      "capturedQuery": "Violife Just Like Smoked Provolone Slices, Dairy-Free Vegan 7.05 oz",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9378,
       "matchMargin": 0.0738,
@@ -72989,8 +74690,8 @@
       "directPrice": 3.99,
       "directOriginalPrice": 4.79,
       "directUrl": "https://www.safeway.com/shop/product-details.970065224.html",
-      "capturedAt": "2026-07-17T17:03:37.376Z",
-      "capturedQuery": "Simple Mills Organic Seed Flour Crackers Original",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Simple Mills Sundried Tomato Basil Crackers",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.96,
       "matchMargin": 0.2902,
@@ -73077,8 +74778,8 @@
       "directPrice": 7.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960100583.html",
-      "capturedAt": "2026-07-17T17:04:06.790Z",
-      "capturedQuery": "Vital Farms Pasture Raised Organic Large Grade A Eggs",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Wilcox Pasture Raised Omega 3 Eggs 12",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.93,
       "matchMargin": 0.2967,
@@ -74185,7 +75886,7 @@
       "capturedQuery": "Naked Bread Organic Wheat Bread 26 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.74,
-      "matchMargin": 0.12,
+      "matchMargin": 0.1582,
       "sizeEvidence": "12 oz = 12 oz",
       "priceDifference": 0.5,
       "instacartMarkupPercent": 9.1
@@ -74255,37 +75956,6 @@
       "instacartMarkupPercent": 11.1
     },
     {
-      "productId": "124065",
-      "sourceProductIds": [
-        "124065"
-      ],
-      "storeIds": [
-        "metro",
-        "pcc",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 4,
-      "instacartName": "Justin's Classic Almond Butter, 16 OZ",
-      "instacartSize": "16 oz",
-      "instacartPrice": 16.99,
-      "instacartUrl": "https://www.instacart.com/products/124065-justin-s-classic-almond-butter-16-oz?retailerSlug=safeway",
-      "directId": "960180801",
-      "directTitle": "Justins Peanut Butter Classic - 16 Oz",
-      "directSize": "16 oz",
-      "directPrice": 6.49,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960180801.html",
-      "capturedAt": "2026-07-17T16:23:18.570Z",
-      "capturedQuery": "Bonne Maman",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.708,
-      "matchMargin": 0.708,
-      "sizeEvidence": "16 oz = 16 oz",
-      "priceDifference": 10.5,
-      "instacartMarkupPercent": 161.8
-    },
-    {
       "productId": "199885",
       "sourceProductIds": [
         "199885"
@@ -74313,6 +75983,37 @@
       "matchScore": 0.708,
       "matchMargin": 0.708,
       "sizeEvidence": "18 oz = 18 oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 17.7
+    },
+    {
+      "productId": "20206207",
+      "sourceProductIds": [
+        "20206207"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "cocojune Organic Pure Coconut Cultured Coconut",
+      "instacartSize": "16 oz",
+      "instacartPrice": 9.99,
+      "instacartUrl": "https://www.instacart.com/products/20206207-cocojune-organic-cultured-coconut-yogurt-16-oz?retailerSlug=safeway",
+      "directId": "970304483",
+      "directTitle": "Cocojune Yogurt Pure Coconut Organic - 16 OZ",
+      "directSize": "16 oz",
+      "directPrice": 8.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970304483.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.708,
+      "matchMargin": 0.708,
+      "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 17.7
     },
@@ -74831,36 +76532,6 @@
       "matchMethod": "normalized_name_size",
       "matchScore": 0.8478,
       "matchMargin": 0.044,
-      "sizeEvidence": "5.3 oz = 5.3 oz",
-      "priceDifference": 0.3,
-      "instacartMarkupPercent": 17.8
-    },
-    {
-      "productId": "75505",
-      "sourceProductIds": [
-        "75505"
-      ],
-      "storeIds": [
-        "metro",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "instacartName": "Chobani Blended Coconut Reduced Fat Greek Yogurt",
-      "instacartSize": "5.3 oz",
-      "instacartPrice": 1.99,
-      "instacartUrl": "https://www.instacart.com/products/75505-chobani-greek-yogurt-coconut-blended-5-3-oz?retailerSlug=safeway",
-      "directId": "970688414",
-      "directTitle": "Chobani Reduced Fat Greek Yogurt Lemon Blended - 5.3 Oz.",
-      "directSize": "5.3 oz",
-      "directPrice": 1.69,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.970688414.html",
-      "capturedAt": "2026-07-17T15:22:39.246Z",
-      "capturedQuery": "Chobani Peach on the Bottom Nonfat Greek Yogurt 5.3 oz",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.8271,
-      "matchMargin": 0.0521,
       "sizeEvidence": "5.3 oz = 5.3 oz",
       "priceDifference": 0.3,
       "instacartMarkupPercent": 17.8
@@ -76164,6 +77835,37 @@
       "instacartMarkupPercent": 20
     },
     {
+      "productId": "2714723",
+      "sourceProductIds": [
+        "2714723",
+        "18209408"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "instacartName": "Chocolove Almonds & Sea Salt in Dark Chocolate",
+      "instacartSize": "3.2 oz",
+      "instacartPrice": 4.69,
+      "instacartUrl": "https://www.instacart.com/products/2714723-chocolove-dark-chocolate-almonds-sea-salt-55-cocoa-3-2-oz?retailerSlug=safeway",
+      "directId": "970726396",
+      "directTitle": "Chocolove Strong Bittersweet Belgian Dark Chocolate And Hawaiian Alaea Red Sea Salt - 3.2 Oz",
+      "directSize": "3.2 oz",
+      "directPrice": 3.99,
+      "directOriginalPrice": 4.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.970726396.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Aloha Coconut Chocolate Almond",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.7167,
+      "matchMargin": 0.7167,
+      "sizeEvidence": "3.2 oz = 3.2 oz",
+      "priceDifference": 0.7,
+      "instacartMarkupPercent": 17.5
+    },
+    {
       "productId": "16409459",
       "sourceProductIds": [
         "16409459"
@@ -76214,8 +77916,8 @@
       "directPrice": 3,
       "directOriginalPrice": 4.29,
       "directUrl": "https://www.safeway.com/shop/product-details.960110940.html",
-      "capturedAt": "2026-07-17T17:03:39.692Z",
-      "capturedQuery": "SkinnyDipped Almonds Dark Chocolate Peanut Butter",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Organic Valley Unsalted Butter 8 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.716,
       "matchMargin": 0.716,
@@ -77477,8 +79179,8 @@
       "directPrice": 7.99,
       "directOriginalPrice": 8.49,
       "directUrl": "https://www.safeway.com/shop/product-details.111050070.html",
-      "capturedAt": "2026-07-17T16:26:25.452Z",
-      "capturedQuery": "oatmeal",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.66,
       "matchMargin": 0.66,
@@ -78227,8 +79929,8 @@
       "directPrice": 3.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.136200019.html",
-      "capturedAt": "2026-07-17T16:23:23.947Z",
-      "capturedQuery": "Daisy",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Organic Valley Unsalted Butter 8 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.93,
       "matchMargin": 0.042,
@@ -78266,6 +79968,35 @@
       "instacartMarkupPercent": 17.8
     },
     {
+      "productId": "98583",
+      "sourceProductIds": [
+        "98583"
+      ],
+      "storeIds": [
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "instacartName": "Barilla Gluten Free Rotini",
+      "instacartSize": "12 oz",
+      "instacartPrice": 2.31,
+      "instacartUrl": "https://www.instacart.com/products/98583-barilla-gluten-free-pasta-rotini-12-oz?retailerSlug=safeway",
+      "directId": "960096323",
+      "directTitle": "Barilla Gluten Free Rotini Pasta - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 2,
+      "directOriginalPrice": 3.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.960096323.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.9067,
+      "matchMargin": 0.0747,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 0.31,
+      "instacartMarkupPercent": 15.5
+    },
+    {
       "productId": "36665",
       "sourceProductIds": [
         "36665"
@@ -78293,6 +80024,35 @@
       "sizeEvidence": "15 oz = 15 oz",
       "priceDifference": 1.06,
       "instacartMarkupPercent": 84.8
+    },
+    {
+      "productId": "39128",
+      "sourceProductIds": [
+        "39128"
+      ],
+      "storeIds": [
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "instacartName": "Barilla Tri-Color Rotini - Non-GMO Pasta Made with Durum Wheat Semolina & Kosher",
+      "instacartSize": "12 oz",
+      "instacartPrice": 2.31,
+      "instacartUrl": "https://www.instacart.com/products/39128-barilla-classic-blue-box-pasta-tri-color-rotini-12-oz?retailerSlug=safeway",
+      "directId": "128200525",
+      "directTitle": "Barilla Tri-Color Rotini Pasta - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 2,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.128200525.html",
+      "capturedAt": "2026-07-17T16:27:36.976Z",
+      "capturedQuery": "pasta",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.8756,
+      "matchMargin": 0.0622,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 0.31,
+      "instacartMarkupPercent": 15.5
     },
     {
       "productId": "1758156",
@@ -78780,8 +80540,8 @@
       "directPrice": 7.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960089287.html",
-      "capturedAt": "2026-07-17T16:26:34.192Z",
-      "capturedQuery": "granola",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.775,
       "matchMargin": 0.775,
@@ -79824,8 +81584,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960129193.html",
-      "capturedAt": "2026-07-17T15:08:46.108Z",
-      "capturedQuery": "tofu",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.7556,
       "matchMargin": 0.7556,
@@ -80375,8 +82135,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.970124479.html",
-      "capturedAt": "2026-07-17T16:26:22.839Z",
-      "capturedQuery": "cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.7382,
       "matchMargin": 0.7382,
@@ -80811,8 +82571,8 @@
       "directPrice": 6.49,
       "directOriginalPrice": 8.49,
       "directUrl": "https://www.safeway.com/shop/product-details.971136407.html",
-      "capturedAt": "2026-07-17T18:50:53.733Z",
-      "capturedQuery": "Field Roast Grain Meat Sausages",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.736,
       "matchMargin": 0.736,
@@ -81373,6 +83133,35 @@
       "instacartMarkupPercent": 20
     },
     {
+      "productId": "141684",
+      "sourceProductIds": [
+        "141684"
+      ],
+      "storeIds": [
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 2,
+      "instacartName": "Knorr Rice Sides Cheddar Broccoli Mix",
+      "instacartSize": "5.7 oz",
+      "instacartPrice": 1.93,
+      "instacartUrl": "https://www.instacart.com/products/141684-knorr-rice-sides-cheddar-broccoli-mix-5-7-oz?retailerSlug=safeway",
+      "directId": "126300042",
+      "directTitle": "Knorr Cheddar Broccoli Long Grain Rice & Vermicelli Pasta Blend Rice Sides - 5.7 Oz",
+      "directSize": "5.7 oz",
+      "directPrice": 1.67,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.126300042.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.7273,
+      "matchMargin": 0.7273,
+      "sizeEvidence": "5.7 oz = 5.7 oz",
+      "priceDifference": 0.26,
+      "instacartMarkupPercent": 15.6
+    },
+    {
       "productId": "2588682",
       "sourceProductIds": [
         "2588682",
@@ -81662,35 +83451,6 @@
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 15.8
-    },
-    {
-      "productId": "20669051",
-      "sourceProductIds": [
-        "20669051"
-      ],
-      "storeIds": [
-        "safeway",
-        "pcc"
-      ],
-      "storeCount": 2,
-      "instacartName": "Bob's Red Mill Oat Flour, Gluten Free",
-      "instacartSize": "18 oz",
-      "instacartPrice": 8.99,
-      "instacartUrl": "https://www.instacart.com/products/20669051-bob-s-red-mill-oat-flour-gluten-free-18-0-oz?retailerSlug=safeway",
-      "directId": "960453742",
-      "directTitle": "Bob's Red Mill Oat Bran Hot Cereal - 18 Oz",
-      "directSize": "18 oz",
-      "directPrice": 3.59,
-      "directOriginalPrice": 4.49,
-      "directUrl": "https://www.safeway.com/shop/product-details.960453742.html",
-      "capturedAt": "2026-07-17T16:21:30.585Z",
-      "capturedQuery": "Bob's Red Mill",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.716,
-      "matchMargin": 0.716,
-      "sizeEvidence": "18 oz = 18 oz",
-      "priceDifference": 5.4,
-      "instacartMarkupPercent": 150.4
     },
     {
       "productId": "43526",
@@ -82526,8 +84286,8 @@
       "directPrice": 3.79,
       "directOriginalPrice": 4.29,
       "directUrl": "https://www.safeway.com/shop/product-details.204100011.html",
-      "capturedAt": "2026-07-17T16:23:18.570Z",
-      "capturedQuery": "Bonne Maman",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.708,
       "matchMargin": 0.708,
@@ -83027,6 +84787,35 @@
       "sizeEvidence": "32 fl oz = 32 fl oz",
       "priceDifference": 1.2,
       "instacartMarkupPercent": 20.7
+    },
+    {
+      "productId": "3362920",
+      "sourceProductIds": [
+        "3362920"
+      ],
+      "storeIds": [
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 2,
+      "instacartName": "So Delicious Dairy Free Coconutmilk Unsweetened Vanilla Yogurt Alternative",
+      "instacartSize": "24 oz",
+      "instacartPrice": 8.63,
+      "instacartUrl": "https://www.instacart.com/products/3362920-so-delicious-dairy-free-coconutmilk-unsweetened-vanilla-yogurt-alternative-24-oz?retailerSlug=safeway",
+      "directId": "960457734",
+      "directTitle": "So Delicious Unsweetened Vanilla Dairy Free Coconut Milk Yogurt Cup - 24 Oz",
+      "directSize": "24 oz",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960457734.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Siggi's Coconut Lowfat",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.6927,
+      "matchMargin": 0.6927,
+      "sizeEvidence": "24 oz = 24 oz",
+      "priceDifference": 1.14,
+      "instacartMarkupPercent": 15.2
     },
     {
       "productId": "90266305",
@@ -84880,8 +86669,8 @@
       "directPrice": 5.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960052975.html",
-      "capturedAt": "2026-07-17T16:26:25.452Z",
-      "capturedQuery": "oatmeal",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Old Fashioned Rolled Oats 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.66,
       "matchMargin": 0.123,
@@ -85868,8 +87657,8 @@
       "directPrice": 7.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.970948022.html",
-      "capturedAt": "2026-07-17T16:26:22.839Z",
-      "capturedQuery": "cereal",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.6416,
       "matchMargin": 0.6416,
@@ -86050,6 +87839,35 @@
       "sizeEvidence": "20 oz = 20 oz",
       "priceDifference": 2.49,
       "instacartMarkupPercent": 71.1
+    },
+    {
+      "productId": "55716703",
+      "sourceProductIds": [
+        "55716703"
+      ],
+      "storeIds": [
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "instacartName": "Life Multigrain Cereal Bone Health Support Very Vanilla",
+      "instacartSize": "13 oz",
+      "instacartPrice": 6.33,
+      "instacartUrl": "https://www.instacart.com/products/55716703-quaker-vanilla-flavored-cereal-13-oz?retailerSlug=safeway",
+      "directId": "960053123",
+      "directTitle": "Life Cereal Multigrain Cinnamon - 13 Oz",
+      "directSize": "13 oz",
+      "directPrice": 5.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960053123.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.6333,
+      "matchMargin": 0.6333,
+      "sizeEvidence": "13 oz = 13 oz",
+      "priceDifference": 0.84,
+      "instacartMarkupPercent": 15.3
     },
     {
       "productId": "43704",
@@ -86749,6 +88567,34 @@
       "instacartMarkupPercent": 20.1
     },
     {
+      "productId": "19236374",
+      "sourceProductIds": [
+        "19236374"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Signature SELECT Gluten Free Rotini",
+      "instacartSize": "12 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/19236374-signature-select-rotini-gluten-free-12-oz?retailerSlug=safeway",
+      "directId": "960470055",
+      "directTitle": "Signature SELECT Pasta Gluten Free Rotini - 12 Oz",
+      "directSize": "12 oz",
+      "directPrice": 3.59,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960470055.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.93,
+      "matchMargin": 0.07,
+      "sizeEvidence": "12 oz = 12 oz",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 11.1
+    },
+    {
       "productId": "35347",
       "sourceProductIds": [
         "35347"
@@ -87309,6 +89155,34 @@
       "instacartMarkupPercent": 23.7
     },
     {
+      "productId": "165942",
+      "sourceProductIds": [
+        "165942"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Signature SELECT Creamy Reduced Fat Peanut Spread",
+      "instacartSize": "16 oz",
+      "instacartPrice": 2.99,
+      "instacartUrl": "https://www.instacart.com/products/165942-signature-kitchens-peanut-spread-reduced-fat-creamy-16-oz?retailerSlug=safeway",
+      "directId": "960570495",
+      "directTitle": "Signature SELECT Peanut Spread Creamy Reduced Sugar & Sodium - 16 Oz",
+      "directSize": "16 oz",
+      "directPrice": 2.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960570495.html",
+      "capturedAt": "2026-07-17T18:35:35.326Z",
+      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter Foil 8 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.8038,
+      "matchMargin": 0.0878,
+      "sizeEvidence": "16 oz = 16 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 20.1
+    },
+    {
       "productId": "2678245",
       "sourceProductIds": [
         "2678245"
@@ -87335,34 +89209,6 @@
       "sizeEvidence": "15.25 oz = 15.25 oz",
       "priceDifference": 0.6,
       "instacartMarkupPercent": 18.2
-    },
-    {
-      "productId": "17562159",
-      "sourceProductIds": [
-        "17562159"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "Lucerne Finely Shredded Cheese, Taco Blend",
-      "instacartSize": "8 oz",
-      "instacartPrice": 2.69,
-      "instacartUrl": "https://www.instacart.com/products/17562159-lucerne-shredded-cheese-finely-taco-blend-with-taco-seasoning-8-oz?retailerSlug=safeway",
-      "directId": "137050358",
-      "directTitle": "Lucerne Cheese Finely Shredded Mexican Style 4 Cheese Blend - 8 Oz",
-      "directSize": "8 oz",
-      "directPrice": 2.29,
-      "directOriginalPrice": 2.49,
-      "directUrl": "https://www.safeway.com/shop/product-details.137050358.html",
-      "capturedAt": "2026-07-17T17:46:49.324Z",
-      "capturedQuery": "Tillamook Extra Sharp White Cheddar Cheese Block, 8oz 227 g",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.8,
-      "matchMargin": 0.0444,
-      "sizeEvidence": "8 oz = 8 oz",
-      "priceDifference": 0.4,
-      "instacartMarkupPercent": 17.5
     },
     {
       "productId": "246251",
@@ -87923,6 +89769,34 @@
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 0.4,
       "instacartMarkupPercent": 17.5
+    },
+    {
+      "productId": "246016",
+      "sourceProductIds": [
+        "246016"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Family Size Shredded Mozzarella Cheese",
+      "instacartSize": "32 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/246016-lucerne-dairy-farms-shredded-cheese-mozarella-family-size-32-oz?retailerSlug=safeway",
+      "directId": "970093024",
+      "directTitle": "Lucerne Cheese Italian Blend Shredded Family Size - 32 Oz",
+      "directSize": "32 oz",
+      "directPrice": 7.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970093024.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.775,
+      "matchMargin": 0.1706,
+      "sizeEvidence": "32 oz = 32 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 12.5
     },
     {
       "productId": "89250",
@@ -88681,6 +90555,34 @@
       "instacartMarkupPercent": 11.1
     },
     {
+      "productId": "92303",
+      "sourceProductIds": [
+        "92303"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Knorr Rice Sides Creamy Chicken Long Grain Rice And Vermicelli Pasta Blend",
+      "instacartSize": "5.7 oz",
+      "instacartPrice": 1.93,
+      "instacartUrl": "https://www.instacart.com/products/92303-knorr-rice-sides-creamy-chicken-long-grain-rice-and-vermicelli-pasta-blend-5-7-oz?retailerSlug=safeway",
+      "directId": "126300042",
+      "directTitle": "Knorr Cheddar Broccoli Long Grain Rice & Vermicelli Pasta Blend Rice Sides - 5.7 Oz",
+      "directSize": "5.7 oz",
+      "directPrice": 1.67,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.126300042.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.7627,
+      "matchMargin": 0.7627,
+      "sizeEvidence": "5.7 oz = 5.7 oz",
+      "priceDifference": 0.26,
+      "instacartMarkupPercent": 15.6
+    },
+    {
       "productId": "167234",
       "sourceProductIds": [
         "167234"
@@ -88707,6 +90609,34 @@
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 0.31,
       "instacartMarkupPercent": 15.5
+    },
+    {
+      "productId": "16775336",
+      "sourceProductIds": [
+        "16775336"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Primo Taglio Shredded Cheese, Romano",
+      "instacartSize": "5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/16775336-signature-kitchens-cheese-romano-shredded-5-oz?retailerSlug=safeway",
+      "directId": "960112892",
+      "directTitle": "Primo Taglio Shredded Parmesan Cheese - 5 Oz",
+      "directSize": "5 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960112892.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.7627,
+      "matchMargin": 0.2107,
+      "sizeEvidence": "5 oz = 5 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "167230",
@@ -89347,7 +91277,7 @@
       "capturedQuery": "Valley 3 Cheese Finely Shredded",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.7556,
-      "matchMargin": 0.1636,
+      "matchMargin": 0.1356,
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 0.4,
       "instacartMarkupPercent": 17.5
@@ -89717,6 +91647,34 @@
       "instacartMarkupPercent": 20
     },
     {
+      "productId": "40989673",
+      "sourceProductIds": [
+        "40989673"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Jif To Go Peanut Butter & Chocolate Flavored Spread, 8 Single-Serve Cups, Each",
+      "instacartSize": "8 x 1.1 oz",
+      "instacartPrice": 4.69,
+      "instacartUrl": "https://www.instacart.com/products/40989673-jif-to-go-peanut-butter-chocolate-flavored-spread-1-1-oz?retailerSlug=safeway",
+      "directId": "971287934",
+      "directTitle": "Jif To Go Creamy Peanut Butter 8 Count 1.1 Ounce - 8-1.1 OZ",
+      "directSize": "8.8 oz",
+      "directPrice": 3.99,
+      "directOriginalPrice": 4.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.971287934.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Justin's Chocolate Hazelnut Almond Butter 16 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.74,
+      "matchMargin": 0.74,
+      "sizeEvidence": "8.8 oz = 8.8 oz",
+      "priceDifference": 0.7,
+      "instacartMarkupPercent": 17.5
+    },
+    {
       "productId": "17445904",
       "sourceProductIds": [
         "17445904"
@@ -89857,6 +91815,34 @@
       "instacartMarkupPercent": 20.7
     },
     {
+      "productId": "29502901",
+      "sourceProductIds": [
+        "29502901"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Country Crock Dairy Free Plant Butter with Avocado Oil",
+      "instacartSize": "14 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/29502901-country-crock-plant-based-with-avocado-oil-dairy-free-butter-14-oz?retailerSlug=safeway",
+      "directId": "970544499",
+      "directTitle": "Country Crock Plant Butter Olive Oil - 14 OZ",
+      "directSize": "14 oz",
+      "directPrice": 5.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970544499.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.736,
+      "matchMargin": 0.736,
+      "sizeEvidence": "14 oz = 14 oz",
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 20.7
+    },
+    {
       "productId": "69272159",
       "sourceProductIds": [
         "69272159"
@@ -89875,8 +91861,8 @@
       "directPrice": 6.99,
       "directOriginalPrice": 7.99,
       "directUrl": "https://www.safeway.com/shop/product-details.971233455.html",
-      "capturedAt": "2026-07-17T17:04:06.790Z",
-      "capturedQuery": "Vital Farms Pasture Raised Organic Large Grade A Eggs",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Wilcox Pasture Raised Omega 3 Eggs 12",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.736,
       "matchMargin": 0.116,
@@ -90109,6 +92095,34 @@
       "instacartMarkupPercent": 16.7
     },
     {
+      "productId": "16775196",
+      "sourceProductIds": [
+        "16775196"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Open Nature Water Crackers, Original",
+      "instacartSize": "4.4 oz",
+      "instacartPrice": 4.99,
+      "instacartUrl": "https://www.instacart.com/products/16775196-open-nature-water-crackers-original-4-4-oz?retailerSlug=safeway",
+      "directId": "960078337",
+      "directTitle": "Open Nature Crackers Water Whole Wheat - 4.4 Oz",
+      "directSize": "4.4 oz",
+      "directPrice": 4.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960078337.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Back to Nature Stoneground Wheat Crackers",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.736,
+      "matchMargin": 0.736,
+      "sizeEvidence": "4.4 oz = 4.4 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 11.1
+    },
+    {
       "productId": "39626298",
       "sourceProductIds": [
         "39626298"
@@ -90135,6 +92149,34 @@
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "246351",
+      "sourceProductIds": [
+        "246351"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Open Nature Water Crackers, Sesame",
+      "instacartSize": "4.4 oz",
+      "instacartPrice": 4.99,
+      "instacartUrl": "https://www.instacart.com/products/246351-open-nature-water-crackers-sesame-4-4-oz?retailerSlug=safeway",
+      "directId": "960078337",
+      "directTitle": "Open Nature Crackers Water Whole Wheat - 4.4 Oz",
+      "directSize": "4.4 oz",
+      "directPrice": 4.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960078337.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Back to Nature Stoneground Wheat Crackers",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.736,
+      "matchMargin": 0.736,
+      "sizeEvidence": "4.4 oz = 4.4 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 11.1
     },
     {
       "productId": "20472345",
@@ -91061,6 +93103,34 @@
       "instacartMarkupPercent": 17.5
     },
     {
+      "productId": "297046",
+      "sourceProductIds": [
+        "297046"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Primo Taglio Four Cheese Blend, Shredded",
+      "instacartSize": "5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/297046-signature-kitchens-cheese-four-cheese-blend-shredded-5-oz?retailerSlug=safeway",
+      "directId": "960112892",
+      "directTitle": "Primo Taglio Shredded Parmesan Cheese - 5 Oz",
+      "directSize": "5 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960112892.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.736,
+      "matchMargin": 0.199,
+      "sizeEvidence": "5 oz = 5 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
+    },
+    {
       "productId": "27939597",
       "sourceProductIds": [
         "27939597"
@@ -91227,6 +93297,34 @@
       "sizeEvidence": "10 oz = 10 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "38526",
+      "sourceProductIds": [
+        "38526"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Knorr Rice Sides Chicken Fried Rice With Long Grain Rice And Vermicelli Pasta",
+      "instacartSize": "5.7 oz",
+      "instacartPrice": 1.93,
+      "instacartUrl": "https://www.instacart.com/products/38526-knorr-rice-sides-chicken-fried-rice-with-long-grain-rice-and-vermicelli-pasta-5-7-oz?retailerSlug=safeway",
+      "directId": "126300042",
+      "directTitle": "Knorr Cheddar Broccoli Long Grain Rice & Vermicelli Pasta Blend Rice Sides - 5.7 Oz",
+      "directSize": "5.7 oz",
+      "directPrice": 1.67,
+      "directOriginalPrice": 2.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.126300042.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.7233,
+      "matchMargin": 0.7233,
+      "sizeEvidence": "5.7 oz = 5.7 oz",
+      "priceDifference": 0.26,
+      "instacartMarkupPercent": 15.6
     },
     {
       "productId": "36316",
@@ -91535,6 +93633,34 @@
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "17558761",
+      "sourceProductIds": [
+        "17558761"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Cheese, American Style, Family Size",
+      "instacartSize": "32 oz",
+      "instacartPrice": 9.99,
+      "instacartUrl": "https://www.instacart.com/products/17558761-lucerne-cheese-product-pasteurized-prepared-smooth-melting-american-style-family-pack-32-oz?retailerSlug=safeway",
+      "directId": "970093024",
+      "directTitle": "Lucerne Cheese Italian Blend Shredded Family Size - 32 Oz",
+      "directSize": "32 oz",
+      "directPrice": 7.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970093024.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.716,
+      "matchMargin": 0.1907,
+      "sizeEvidence": "32 oz = 32 oz",
+      "priceDifference": 2,
+      "instacartMarkupPercent": 25
     },
     {
       "productId": "3139277",
@@ -92311,8 +94437,8 @@
       "directPrice": 3.59,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960470053.html",
-      "capturedAt": "2026-07-17T16:45:06.052Z",
-      "capturedQuery": "Banza Rotini Pasta Gluten Free Lower Carb",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.708,
       "matchMargin": 0.116,
@@ -92367,11 +94493,11 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960034630.html",
-      "capturedAt": "2026-07-17T16:23:56.411Z",
-      "capturedQuery": "BelGioioso",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.708,
-      "matchMargin": 0.708,
+      "matchMargin": 0.063,
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 16.7
@@ -92395,11 +94521,11 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960034630.html",
-      "capturedAt": "2026-07-17T16:23:56.411Z",
-      "capturedQuery": "BelGioioso",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.708,
-      "matchMargin": 0.708,
+      "matchMargin": 0.063,
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 0,
       "instacartMarkupPercent": 0
@@ -92423,12 +94549,40 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960034630.html",
-      "capturedAt": "2026-07-17T16:23:56.411Z",
-      "capturedQuery": "BelGioioso",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.708,
+      "matchMargin": 0.063,
+      "sizeEvidence": "8 oz = 8 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
+    },
+    {
+      "productId": "17829908",
+      "sourceProductIds": [
+        "17829908"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "O Organics Old Fashioned Oatmeal",
+      "instacartSize": "18 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/17829908-o-organics-old-fashioned-oatmeal-18-oz?retailerSlug=safeway",
+      "directId": "960266701",
+      "directTitle": "O Organics Oats Old Fashioned - 18 Oz",
+      "directSize": "18 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960266701.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.708,
       "matchMargin": 0.708,
-      "sizeEvidence": "8 oz = 8 oz",
+      "sizeEvidence": "18 oz = 18 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 16.7
     },
@@ -92487,6 +94641,34 @@
       "sizeEvidence": "30 fl oz = 30 fl oz",
       "priceDifference": 0.8,
       "instacartMarkupPercent": 16.7
+    },
+    {
+      "productId": "23145192",
+      "sourceProductIds": [
+        "23145192"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Daring Breaded Plant Chicken Wings, Gluten-Free",
+      "instacartSize": "8 oz",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/23145192-daring-original-breaded-pieces-8-oz?retailerSlug=safeway",
+      "directId": "970583333",
+      "directTitle": "Daring Plant Chicken Wings Buffalo - 8 Oz",
+      "directSize": "8 oz",
+      "directPrice": 6.99,
+      "directOriginalPrice": 7.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.970583333.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.708,
+      "matchMargin": 0.116,
+      "sizeEvidence": "8 oz = 8 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 14.3
     },
     {
       "productId": "165965",
@@ -92843,11 +95025,11 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960034630.html",
-      "capturedAt": "2026-07-17T16:23:56.411Z",
-      "capturedQuery": "BelGioioso",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.708,
-      "matchMargin": 0.708,
+      "matchMargin": 0.063,
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 16.7
@@ -93017,34 +95199,6 @@
       "matchScore": 0.7004,
       "matchMargin": 0.1084,
       "sizeEvidence": "24 oz = 24 oz",
-      "priceDifference": 0.5,
-      "instacartMarkupPercent": 20.1
-    },
-    {
-      "productId": "122414",
-      "sourceProductIds": [
-        "122414"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "Signature SELECT Creamy Peanut Butter",
-      "instacartSize": "16 oz",
-      "instacartPrice": 2.99,
-      "instacartUrl": "https://www.instacart.com/products/122414-signature-kitchens-peanut-butter-creamy-16-oz?retailerSlug=safeway",
-      "directId": "960570495",
-      "directTitle": "Signature SELECT Peanut Spread Creamy Reduced Sugar & Sodium - 16 Oz",
-      "directSize": "16 oz",
-      "directPrice": 2.49,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960570495.html",
-      "capturedAt": "2026-07-17T18:35:35.326Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter Foil 8 oz",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.7004,
-      "matchMargin": 0.1484,
-      "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 0.5,
       "instacartMarkupPercent": 20.1
     },
@@ -93553,6 +95707,34 @@
       "instacartMarkupPercent": 0
     },
     {
+      "productId": "286253",
+      "sourceProductIds": [
+        "286253"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Gardein Plant-Based Ground Be'f, Frozen Meat Alternative",
+      "instacartSize": "13.8 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/286253-gardein-plant-based-ground-be-f-13-8-oz?retailerSlug=safeway",
+      "directId": "960159992",
+      "directTitle": "Gardein Ultimate Plant Based Frozen Ground Be'f - 13.7 Oz",
+      "directSize": "13.7 oz",
+      "directPrice": 7.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960159992.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.68,
+      "matchMargin": 0.68,
+      "sizeEvidence": "13.8 oz = 13.7 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 12.5
+    },
+    {
       "productId": "73761600",
       "sourceProductIds": [
         "73761600"
@@ -94047,8 +96229,8 @@
       "directPrice": 3.59,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960470053.html",
-      "capturedAt": "2026-07-17T16:45:06.052Z",
-      "capturedQuery": "Banza Rotini Pasta Gluten Free Lower Carb",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Jovial Brown Rice Spaghetti",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.68,
       "matchMargin": 0.1067,
@@ -94131,11 +96313,11 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960034630.html",
-      "capturedAt": "2026-07-17T16:23:56.411Z",
-      "capturedQuery": "BelGioioso",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.68,
-      "matchMargin": 0.68,
+      "matchMargin": 0.1547,
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 16.7
@@ -94215,11 +96397,11 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960034630.html",
-      "capturedAt": "2026-07-17T16:23:56.411Z",
-      "capturedQuery": "BelGioioso",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.68,
-      "matchMargin": 0.68,
+      "matchMargin": 0.1547,
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 0,
       "instacartMarkupPercent": 0
@@ -94363,6 +96545,34 @@
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 15.8
+    },
+    {
+      "productId": "27742641",
+      "sourceProductIds": [
+        "27742641"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "O Organics Fruit Spread, Triple Berry",
+      "instacartSize": "16.5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/27742641-o-organics-fruit-spread-organic-triple-berry-16-5-oz?retailerSlug=safeway",
+      "directId": "960470476",
+      "directTitle": "O Organics Fruit Spread Raspberry - 16.5 Oz",
+      "directSize": "16.5 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960470476.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Crofter's Strawberry Fruit Spread",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.68,
+      "matchMargin": 0.128,
+      "sizeEvidence": "16.5 oz = 16.5 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "29167690",
@@ -95279,8 +97489,8 @@
       "directPrice": 5.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960517889.html",
-      "capturedAt": "2026-07-17T15:23:20.079Z",
-      "capturedQuery": "Kerrygold Irish Grass-Fed Salted Butter Foil 8 oz",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Vital Farms Unsalted Butter",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.6698,
       "matchMargin": 0.6698,
@@ -95951,8 +98161,8 @@
       "directPrice": 5.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960034630.html",
-      "capturedAt": "2026-07-17T16:23:56.411Z",
-      "capturedQuery": "BelGioioso",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.66,
       "matchMargin": 0.66,
@@ -95979,11 +98189,11 @@
       "directPrice": 2.29,
       "directOriginalPrice": 2.69,
       "directUrl": "https://www.safeway.com/shop/product-details.137010343.html",
-      "capturedAt": "2026-07-17T16:26:08.256Z",
-      "capturedQuery": "cheese",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.66,
-      "matchMargin": 0.1,
+      "matchMargin": 0.04,
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 0.4,
       "instacartMarkupPercent": 17.5
@@ -96315,8 +98525,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.188100054.html",
-      "capturedAt": "2026-07-17T18:49:45.314Z",
-      "capturedQuery": "Kettle & Fire Chicken Bone",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.66,
       "matchMargin": 0.66,
@@ -96371,8 +98581,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.188100054.html",
-      "capturedAt": "2026-07-17T18:49:45.314Z",
-      "capturedQuery": "Kettle & Fire Chicken Bone",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.66,
       "matchMargin": 0.66,
@@ -96399,8 +98609,8 @@
       "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.188100054.html",
-      "capturedAt": "2026-07-17T18:49:45.314Z",
-      "capturedQuery": "Kettle & Fire Chicken Bone",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Beyond Meat Beyond Steak 10 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.66,
       "matchMargin": 0.66,
@@ -96633,34 +98843,6 @@
       "instacartMarkupPercent": 11.1
     },
     {
-      "productId": "18558677",
-      "sourceProductIds": [
-        "18558677"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "Lucerne 4 Cheese Blend, Mexican Style, Rustic Cut, Family Size",
-      "instacartSize": "32 oz",
-      "instacartPrice": 8.99,
-      "instacartUrl": "https://www.instacart.com/products/18558677-lucerne-4-cheese-blend-mexican-style-rustic-cut-family-size-32-oz?retailerSlug=safeway",
-      "directId": "960371120",
-      "directTitle": "Lucerne Cheese Mexican Blend Thickcut Shredded Family Pack - 32 Oz",
-      "directSize": "32 oz",
-      "directPrice": 7.99,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960371120.html",
-      "capturedAt": "2026-07-17T18:50:16.265Z",
-      "capturedQuery": "Valley 3 Cheese Finely Shredded",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.6543,
-      "matchMargin": 0.0623,
-      "sizeEvidence": "32 oz = 32 oz",
-      "priceDifference": 1,
-      "instacartMarkupPercent": 12.5
-    },
-    {
       "productId": "36103",
       "sourceProductIds": [
         "36103"
@@ -96827,6 +99009,34 @@
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 14.3
+    },
+    {
+      "productId": "95049675",
+      "sourceProductIds": [
+        "95049675"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Lucerne Recipe Ready Queso Quesadilla Shredded Cheese Family Size",
+      "instacartSize": "32 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/95049675-lucerne-queso-quesadilla-shredded-cheese-32-oz?retailerSlug=safeway",
+      "directId": "970093024",
+      "directTitle": "Lucerne Cheese Italian Blend Shredded Family Size - 32 Oz",
+      "directSize": "32 oz",
+      "directPrice": 7.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970093024.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Violife Parmesan Wedge",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.6543,
+      "matchMargin": 0.1383,
+      "sizeEvidence": "32 oz = 32 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 12.5
     },
     {
       "productId": "27738900",
@@ -97753,6 +99963,34 @@
       "instacartMarkupPercent": 5.3
     },
     {
+      "productId": "55716218",
+      "sourceProductIds": [
+        "55716218"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "Life Multigrain Cereal Immunity Support Strawberry Blueberry Bliss",
+      "instacartSize": "13 oz",
+      "instacartPrice": 6.33,
+      "instacartUrl": "https://www.instacart.com/products/55716218-quaker-mixed-berry-life-cereal-13-oz?retailerSlug=safeway",
+      "directId": "960053123",
+      "directTitle": "Life Cereal Multigrain Cinnamon - 13 Oz",
+      "directSize": "13 oz",
+      "directPrice": 5.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960053123.html",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Cascadian Farm Honey Nut O's",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.6333,
+      "matchMargin": 0.6333,
+      "sizeEvidence": "13 oz = 13 oz",
+      "priceDifference": 0.84,
+      "instacartMarkupPercent": 15.3
+    },
+    {
       "productId": "24790764",
       "sourceProductIds": [
         "24790764"
@@ -98005,34 +100243,6 @@
       "instacartMarkupPercent": 17.7
     },
     {
-      "productId": "18082827",
-      "sourceProductIds": [
-        "18082827"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "Open Nature Fresh 94% Lean 6% Fat Ground Chicken",
-      "instacartSize": "16 oz",
-      "instacartPrice": 9.99,
-      "instacartUrl": "https://www.instacart.com/products/18082827-open-nature-ground-chicken-16-oz?retailerSlug=safeway",
-      "directId": "960085526",
-      "directTitle": "Open Nature 85% Lean 15% Fat All Natural Grass Fed Ground Beef Angus - 16 oz",
-      "directSize": "16 oz",
-      "directPrice": 6.99,
-      "directOriginalPrice": 9.49,
-      "directUrl": "https://www.safeway.com/shop/product-details.960085526.html",
-      "capturedAt": "2026-07-17T18:50:16.265Z",
-      "capturedQuery": "Valley 3 Cheese Finely Shredded",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.631,
-      "matchMargin": 0.1056,
-      "sizeEvidence": "16 oz = 16 oz",
-      "priceDifference": 3,
-      "instacartMarkupPercent": 42.9
-    },
-    {
       "productId": "16523315",
       "sourceProductIds": [
         "16523315"
@@ -98275,8 +100485,8 @@
       "directPrice": 5.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960434094.html",
-      "capturedAt": "2026-07-17T16:26:25.452Z",
-      "capturedQuery": "oatmeal",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Old Fashioned Rolled Oats 16 oz",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.62,
       "matchMargin": 0.083,
@@ -98616,8 +100826,8 @@
       "directPrice": 7.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960050655.html",
-      "capturedAt": "2026-07-17T18:50:18.092Z",
-      "capturedQuery": "Naked Bread Twenty Four Grains",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Naked Bread Twenty Four Grains Seeds 27 oz",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.8038,
       "matchMargin": 0.0187,
@@ -98700,69 +100910,6 @@
           "size": "16 oz",
           "price": 8.99,
           "score": 0.775
-        }
-      ]
-    },
-    {
-      "productId": "17379096",
-      "sourceProductIds": [
-        "17379096",
-        "44407579",
-        "64254112"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "instacartName": "Poppi Prebiotic Soda, Orange Cream",
-      "instacartSize": "12 fl oz",
-      "instacartPrice": 2.88,
-      "instacartUrl": "https://www.instacart.com/products/44407579-poppi-orange-cream-soda-12-fl-oz?retailerSlug=safeway",
-      "directId": "971053773",
-      "directTitle": "Poppi Orange Prebiotic Soda - 12 Fl. Oz.",
-      "directSize": "12 fl oz",
-      "directPrice": 2.5,
-      "directOriginalPrice": 2.79,
-      "directUrl": "https://www.safeway.com/shop/product-details.971053773.html",
-      "capturedAt": "2026-07-17T17:47:37.964Z",
-      "capturedQuery": "Poppi Prebiotic Soda, Root Beer 12 fl oz",
-      "matchMethod": "targeted_query_name_size",
-      "matchScore": 0.7627,
-      "matchMargin": 0,
-      "sizeEvidence": "12 fl oz = 12 fl oz",
-      "priceDifference": 0.38,
-      "instacartMarkupPercent": 15.2,
-      "alternatives": [
-        {
-          "directId": "971053773",
-          "title": "Poppi Orange Prebiotic Soda - 12 Fl. Oz.",
-          "size": "12 fl oz",
-          "price": 2.5,
-          "score": 0.7627
-        },
-        {
-          "directId": "970950246",
-          "title": "Poppi Prebiotic Orange Cream - 12 Fl. Oz.",
-          "size": "12 fl oz",
-          "price": 2.5,
-          "score": 0.7627
-        },
-        {
-          "directId": "971275847",
-          "title": "Poppi Prebiotic Cream Soda 12fz - 12 FZ",
-          "size": "12 fl oz",
-          "price": 2.5,
-          "score": 0.736
-        },
-        {
-          "directId": "970310322",
-          "title": "Poppi Soda Prebiotic Rootbeer - 12 FZ",
-          "size": "12 fl oz",
-          "price": 2.5,
-          "score": 0.552
         }
       ]
     },
@@ -98863,147 +101010,6 @@
       ]
     },
     {
-      "productId": "18648",
-      "sourceProductIds": [
-        "18648"
-      ],
-      "storeIds": [
-        "pcc",
-        "qfc",
-        "safeway",
-        "metro"
-      ],
-      "storeCount": 4,
-      "instacartName": "Mezzetta Family Recipes Spicy Marinara Sauce",
-      "instacartSize": "25 oz",
-      "instacartPrice": 7.99,
-      "instacartUrl": "https://www.instacart.com/products/18648-mezzetta-sauce-spicy-marinara-25-oz?retailerSlug=safeway",
-      "directId": "960079069",
-      "directTitle": "Mezzetta Napa Valley Homemade Sauce Marinara Spicy Jar - 25 Oz",
-      "directSize": "25 oz",
-      "directPrice": 6.99,
-      "directOriginalPrice": 8.99,
-      "directUrl": "https://www.safeway.com/shop/product-details.960079069.html",
-      "capturedAt": "2026-07-17T18:50:29.288Z",
-      "capturedQuery": "Mezzetta Family Recipes Marinara Sauce",
-      "matchMethod": "targeted_query_name_size",
-      "matchScore": 0.592,
-      "matchMargin": 0.592,
-      "sizeEvidence": "25 oz = 25 oz",
-      "priceDifference": 1,
-      "instacartMarkupPercent": 14.3,
-      "alternatives": [
-        {
-          "directId": "960079069",
-          "title": "Mezzetta Napa Valley Homemade Sauce Marinara Spicy Jar - 25 Oz",
-          "size": "25 oz",
-          "price": 6.99,
-          "score": 0.592
-        }
-      ]
-    },
-    {
-      "productId": "201001",
-      "sourceProductIds": [
-        "201001"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "instacartName": "Napoleon Co. Capers, Non-Pareil",
-      "instacartSize": "8 oz",
-      "instacartPrice": 7.99,
-      "instacartUrl": "https://www.instacart.com/products/201001-napoleon-co-nonpareil-capers-8-oz?retailerSlug=safeway",
-      "directId": "960318094",
-      "directTitle": "Napoleon Capers Nonpariel - 8 Oz",
-      "directSize": "8 oz",
-      "directPrice": 6.79,
-      "directOriginalPrice": 7.79,
-      "directUrl": "https://www.safeway.com/shop/product-details.960318094.html",
-      "capturedAt": "2026-07-17T18:09:06.685Z",
-      "capturedQuery": "Napoleon Co. Capers, Non-Pareil 8 oz",
-      "matchMethod": "targeted_query_name_size",
-      "matchScore": 0.592,
-      "matchMargin": 0.592,
-      "sizeEvidence": "8 oz = 8 oz",
-      "priceDifference": 1.2,
-      "instacartMarkupPercent": 17.7,
-      "alternatives": [
-        {
-          "directId": "960318094",
-          "title": "Napoleon Capers Nonpariel - 8 Oz",
-          "size": "8 oz",
-          "price": 6.79,
-          "score": 0.592
-        }
-      ]
-    },
-    {
-      "productId": "24875481",
-      "sourceProductIds": [
-        "24875481"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "instacartName": "Poppi Prebiotic Soda, Root Beer",
-      "instacartSize": "12 fl oz",
-      "instacartPrice": 2.88,
-      "instacartUrl": "https://www.instacart.com/products/24875481-poppi-prebiotic-soda-root-beer-12-oz?retailerSlug=safeway",
-      "directId": "971053777",
-      "directTitle": "Poppi Grape Prebiotic Soda - 12 Fl. Oz.",
-      "directSize": "12 fl oz",
-      "directPrice": 2.5,
-      "directOriginalPrice": 2.79,
-      "directUrl": "https://www.safeway.com/shop/product-details.971053777.html",
-      "capturedAt": "2026-07-17T17:47:37.964Z",
-      "capturedQuery": "Poppi Prebiotic Soda, Root Beer 12 fl oz",
-      "matchMethod": "targeted_query_name_size",
-      "matchScore": 0.552,
-      "matchMargin": 0,
-      "sizeEvidence": "12 fl oz = 12 fl oz",
-      "priceDifference": 0.38,
-      "instacartMarkupPercent": 15.2,
-      "alternatives": [
-        {
-          "directId": "971053777",
-          "title": "Poppi Grape Prebiotic Soda - 12 Fl. Oz.",
-          "size": "12 fl oz",
-          "price": 2.5,
-          "score": 0.552
-        },
-        {
-          "directId": "971053773",
-          "title": "Poppi Orange Prebiotic Soda - 12 Fl. Oz.",
-          "size": "12 fl oz",
-          "price": 2.5,
-          "score": 0.552
-        },
-        {
-          "directId": "970310322",
-          "title": "Poppi Soda Prebiotic Rootbeer - 12 FZ",
-          "size": "12 fl oz",
-          "price": 2.5,
-          "score": 0.552
-        },
-        {
-          "directId": "970106251",
-          "title": "Poppi Watermelon Prebiotic Soda - 12 Fl. Oz.",
-          "size": "12 fl oz",
-          "price": 2.5,
-          "score": 0.552
-        }
-      ]
-    },
-    {
       "productId": "9117",
       "sourceProductIds": [
         "9117"
@@ -99044,53 +101050,6 @@
       ]
     },
     {
-      "productId": "24822",
-      "sourceProductIds": [
-        "24822"
-      ],
-      "storeIds": [
-        "pcc",
-        "qfc",
-        "safeway",
-        "metro"
-      ],
-      "storeCount": 4,
-      "instacartName": "Mezzetta Family Recipes Marinara Sauce",
-      "instacartSize": "24.5 oz",
-      "instacartPrice": 7.99,
-      "instacartUrl": "https://www.instacart.com/products/24822-mezzetta-sauce-marinara-24-5-oz?retailerSlug=safeway",
-      "directId": "128350085",
-      "directTitle": "Mezzetta Napa Valley Homemade Sauce Marinara Jar - 25 Oz",
-      "directSize": "25 oz",
-      "directPrice": 6.99,
-      "directOriginalPrice": 8.99,
-      "directUrl": "https://www.safeway.com/shop/product-details.128350085.html",
-      "capturedAt": "2026-07-17T18:50:29.288Z",
-      "capturedQuery": "Mezzetta Family Recipes Marinara Sauce",
-      "matchMethod": "targeted_query_name_size",
-      "matchScore": 0.5253,
-      "matchMargin": 0.0093,
-      "sizeEvidence": "24.5 oz = 25 oz",
-      "priceDifference": 1,
-      "instacartMarkupPercent": 14.3,
-      "alternatives": [
-        {
-          "directId": "128350085",
-          "title": "Mezzetta Napa Valley Homemade Sauce Marinara Jar - 25 Oz",
-          "size": "24 oz",
-          "price": 6.99,
-          "score": 0.5253
-        },
-        {
-          "directId": "960079069",
-          "title": "Mezzetta Napa Valley Homemade Sauce Marinara Spicy Jar - 25 Oz",
-          "size": "25 oz",
-          "price": 6.99,
-          "score": 0.516
-        }
-      ]
-    },
-    {
       "productId": "20718016",
       "sourceProductIds": [
         "20718016"
@@ -99112,8 +101071,8 @@
       "directPrice": 3.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.971076827.html",
-      "capturedAt": "2026-07-17T18:49:53.186Z",
-      "capturedQuery": "Aloha Protein Bars Chocolate Chip",
+      "capturedAt": "2026-07-17T20:41:19.639Z",
+      "capturedQuery": "Aloha Coconut Chocolate Almond",
       "matchMethod": "targeted_query_name_size",
       "matchScore": 0.5234,
       "matchMargin": 0.5234,

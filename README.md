@@ -2,7 +2,7 @@
 
 An interactive public comparison of PCC Community Markets, Metropolitan Market, Safeway, QFC, and Whole Foods Market using a July 16–17, 2026 West Seattle price snapshot.
 
-The current corpus contains **3,811 products found at two or more stores** and **57,805 dated price observations**. The strict intersection contains **205 products found at all five stores**, while **900 accepted Whole Foods cross-source matches** make pairwise and subset comparisons substantially broader. The site supports any subset of stores, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
+The current corpus contains **3,832 products found at two or more stores** and **57,986 dated price observations**. The strict intersection contains **224 products found at all five stores**, while **916 accepted Whole Foods cross-source matches** make pairwise and subset comparisons substantially broader. The site supports any subset of stores, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
 
 Live site: <https://west-seattle-grocery-prices.jubishop.chatgpt.site/#top>
 
@@ -55,4 +55,4 @@ Current displayed prices are used, including member, club, and sale prices when 
 
 The four Instacart retailers are joined by identical product ID or a conservative same-SKU alias supported by equivalent brand, variant, and package quantity; every original external ID is retained. Whole Foods products are linked conservatively by exact-search provenance, brand, product or flavor tokens, and equivalent package quantity. An audited override file admits only human-reviewed same-SKU title variations. Ambiguous matches are excluded.
 
-The requested 300-item strict five-store intersection has not yet been reached: the current exact-product corpus contains 205 defensible unique five-way matches. The site reports that shortfall directly and does not pad it with merely similar products.
+The requested 300-item strict five-store intersection has not yet been reached: the current exact-product corpus contains 224 defensible unique five-way matches. The site reports that shortfall directly and does not pad it with merely similar products.

@@ -1,5 +1,8 @@
 {
   "methodology": "Human-reviewed same-SKU overrides. Each pair must agree on brand, flavor or variant, and package quantity; marketing-only title differences are allowed.",
+  "rejected": [
+    { "productId": "19220792", "asin": "B0DCL42BTV", "note": "Four-can OLIPOP Vintage Cola pack, not the single 12 fl oz can used by the comparison product" }
+  ],
   "accepted": [
     { "productId": "2691990", "asin": "B000VTWD64", "note": "FAGE 0% plain Greek yogurt, 5.3 oz" },
     { "productId": "18718109", "asin": "B07C9KRVNT", "note": "Bob's Red Mill gluten-free old fashioned rolled oats, 32 oz" },
@@ -75,6 +78,17 @@
     { "productId": "218713", "asin": "B001I7MVG0", "note": "Bragg organic raw apple cider vinegar, 32 fl oz" },
     { "productId": "26862", "asin": "B06XZM52NQ", "note": "Tate's Bake Shop chocolate chip cookies, 7 oz" },
     { "productId": "48149", "asin": "B000VBVYZS", "note": "Maeve or Seattle Chocolates Pike Place Espresso Truffle Bar, 2.5 oz" },
-    { "productId": "57708", "asin": "B000RUOYPA", "note": "Tillamook vintage extra sharp white cheddar block, 32 oz" }
+    { "productId": "57708", "asin": "B000RUOYPA", "note": "Tillamook vintage extra sharp white cheddar block, 32 oz" },
+    { "productId": "23129", "asin": "B0004N0IBO", "note": "Bonne Maman strawberry preserves, 13 oz; Whole Foods title uses the singular Preserve" },
+    { "productId": "41662372", "asin": "B0CJVMHYDH", "note": "Purely Elizabeth chocolate chip cookie granola, 11 oz" },
+    { "productId": "17422782", "asin": "B077W3T2VP", "note": "Spindrift raspberry lime sparkling water, 8 x 12 fl oz" },
+    { "productId": "48216", "asin": "B000REIL78", "note": "Amy's cheddar cheese burrito with organic rice and beans, 6 oz" },
+    { "productId": "23133", "asin": "B0004MTM9Y", "note": "Bonne Maman wild blueberry preserves, 13 oz; Whole Foods title shortens the flavor to Blueberry" },
+    { "productId": "64882553", "asin": "B0DHF7ZZB5", "note": "GoMacro white chocolate and macadamia nuts MacroBar, single 2.3 oz bar; product-page title omits the package size" },
+    { "productId": "97597", "asin": "B006R1UGNW", "note": "Justin's Classic peanut butter, 16 oz jar" },
+    { "productId": "19220792", "asin": "B07QF9H7K2", "note": "OLIPOP Vintage Cola prebiotic soda, single 12 fl oz can" },
+    { "productId": "24875481", "asin": "B09G9B91J3", "note": "Poppi Root Beer prebiotic soda, single 12 fl oz can" },
+    { "productId": "3308702", "asin": "B01CI3TA5M", "note": "Simple Mills Farmhouse Cheddar almond flour crackers, 4.25 oz" },
+    { "productId": "39602", "asin": "B000R4B9MW", "note": "Tillamook sharp cheddar cheese block, 8 oz" }
   ]
 }
