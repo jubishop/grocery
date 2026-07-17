@@ -5,13 +5,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://west-seattle-grocery-prices.jubishop.chatgpt.site"),
   title: "West Seattle Grocery Index — Five-store price comparison",
   description:
-    "A source-transparent July 2026 comparison of matched grocery prices across PCC, Metropolitan Market, Safeway, QFC, and Whole Foods in West Seattle.",
+    "Build a grocery basket and compare complete totals across PCC, Metropolitan Market, Safeway, QFC, and Whole Foods in West Seattle.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "West Seattle Grocery Index",
-    description: "Compare exact grocery products across five West Seattle stores, with direct source labels on every price.",
+    description: "Build your actual grocery basket and find the cheapest complete total across five West Seattle stores.",
     type: "website",
     url: "/",
     images: [{ url: "/og.png", width: 1731, height: 909, alt: "An illustrated five-store grocery price comparison ledger surrounded by varied groceries" }],
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "West Seattle Grocery Index",
-    description: "Compare exact grocery products across five West Seattle stores, with direct source labels on every price.",
+    description: "Build your actual grocery basket and find the cheapest complete total across five West Seattle stores.",
     images: ["/og.png"],
   },
 };
