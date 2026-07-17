@@ -39,5 +39,5 @@ const lines = [
 const csv = `${lines.join("\n")}\n`;
 
 await writeFile(path.join(root, "data/products.csv"), csv);
-await writeFile(path.join(root, "public/seattle-grocery-prices.csv"), csv);
-console.log(`Wrote ${data.products.length} rows to data/products.csv and public/seattle-grocery-prices.csv`);
+await writeFile(path.join(root, "public/west-seattle-grocery-prices.csv"), csv);
+console.log(`Wrote ${data.products.length} rows to data/products.csv and public/west-seattle-grocery-prices.csv`);

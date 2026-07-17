@@ -290,17 +290,17 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
     <main id="top">
       <header className="hero">
         <nav className="topbar" aria-label="Page navigation">
-          <a className="brand" href="#top">Seattle grocery index</a>
+          <a className="brand" href="#top">West Seattle Grocery Index</a>
           <div className="nav-links">
             <a href="#compare">Compare stores</a>
             <a href="#products">Products</a>
-            <a className="download-link" href="/seattle-grocery-prices.csv" download>CSV</a>
+            <a className="download-link" href="/west-seattle-grocery-prices.csv" download>CSV</a>
           </div>
         </nav>
 
         <section className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Seattle · Instacart snapshot · {integer.format(data.summary.comparableProducts)} exact-match products</p>
+            <p className="eyebrow">West Seattle · Instacart snapshot · {integer.format(data.summary.comparableProducts)} exact-match products</p>
             <h1>Four stores.<br /><em>One honest price map.</em></h1>
             <p className="hero-deck">
               PCC, Metropolitan Market, Safeway, and QFC compared product by product. Every two-store pairing has at least <strong>{integer.format(minimumPairCount)} identical items</strong>—and you can choose the matchup.
@@ -468,7 +468,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <div className="store-locations">
             {data.stores.map((store) => <a key={store.id} href={store.storeUrl} target="_blank" rel="noreferrer"><span>{store.name}</span><span>{store.address}</span></a>)}
           </div>
-          <div className="footer-links"><a href="/seattle-grocery-prices.csv" download>Download {integer.format(data.summary.comparableProducts)} comparable products as CSV <ArrowIcon /></a><a href="https://github.com/jubishop/grocery" target="_blank" rel="noreferrer">SQLite database + source on GitHub <ArrowIcon /></a></div>
+          <div className="footer-links"><a href="/west-seattle-grocery-prices.csv" download>Download {integer.format(data.summary.comparableProducts)} comparable products as CSV <ArrowIcon /></a><a href="https://github.com/jubishop/grocery" target="_blank" rel="noreferrer">SQLite database + source on GitHub <ArrowIcon /></a></div>
         </div>
       </footer>
     </main>

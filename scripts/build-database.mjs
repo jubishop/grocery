@@ -118,8 +118,8 @@ const productById = new Map(products.map((product) => [product.id, product]));
 const timestamps = capture.records.map((record) => new Date(record.capturedAt).toISOString()).sort();
 const startedAt = timestamps[0];
 const completedAt = timestamps.at(-1);
-const runId = `instacart-seattle-${startedAt.slice(0, 10)}`;
-const methodology = "Prices are current displayed Instacart prices for one Seattle delivery area. Products are matched only by identical Instacart product ID; sale prices are included when shown.";
+const runId = `instacart-west-seattle-${startedAt.slice(0, 10)}`;
+const methodology = "Prices are current displayed Instacart prices for one West Seattle delivery area. Products are matched only by identical Instacart product ID; sale prices are included when shown.";
 
 await rm(databasePath, { force: true });
 const database = new DatabaseSync(databasePath);
@@ -152,7 +152,7 @@ database.exec("BEGIN");
 try {
   for (const store of stores) insertStore.run(store.id, store.slug, store.name, store.shortName, store.address, store.storeUrl, store.instacartUrl, store.color);
   for (const product of products) insertProduct.run(product.id, product.name, product.size, product.category, product.priceBasis, product.imageUrl, product.imagePath);
-  insertRun.run(runId, startedAt, completedAt, "Seattle, WA", "Instacart", methodology);
+  insertRun.run(runId, startedAt, completedAt, "West Seattle, Seattle, WA", "Instacart", methodology);
   for (const record of capture.records) {
     insertObservation.run(
       runId,
@@ -302,10 +302,10 @@ const siteData = {
     capturedAt: completedAt,
     capturedAtLabel: dateFormatter.format(new Date(completedAt)),
     captureStartedAt: startedAt,
-    deliveryArea: "Seattle, WA",
+    deliveryArea: "West Seattle, Seattle, WA",
     methodology,
     caveat: "Instacart prices can differ from in-store shelf prices, vary by delivery address, and change at any time. Loyalty-only discounts were not substituted for the regular displayed price.",
-    locationNote: "Instacart identifies the delivery catalog, not the fulfilling branch. These are the nearby West Seattle store addresses used for local context.",
+    locationNote: "Instacart identifies the delivery catalog, not the fulfilling branch. These West Seattle store addresses are included for local context.",
   },
   stores,
   summary: {

@@ -1,6 +1,6 @@
-# Seattle grocery price index
+# West Seattle Grocery Index
 
-An interactive public site backed by a July 16, 2026 Instacart snapshot of PCC Community Markets, Metropolitan Market, Safeway, and QFC in Seattle.
+An interactive public site backed by a July 16, 2026 Instacart snapshot of PCC Community Markets, Metropolitan Market, Safeway, and QFC in West Seattle.
 
 The main corpus contains **1,381 products found at two or more stores**, matched by identical Instacart product ID. Every two-store pairing has at least 349 exact matches; 334 products appear at three stores and 175 appear at all four.
 
@@ -21,7 +21,7 @@ Then open <http://localhost:3000/#top>.
 - `data/schema.sql` defines the historical-ready relational schema.
 - `data/grocery-prices.sqlite` is the populated SQLite database committed with the site.
 - `data/site-data.json` is the generated four-store payload used by the app.
-- `data/products.csv` and `public/seattle-grocery-prices.csv` contain the 1,381 comparable products in wide CSV form.
+- `data/products.csv` and `public/west-seattle-grocery-prices.csv` contain the 1,381 comparable products in wide CSV form.
 - `public/images/` contains one local thumbnail for every comparable product.
 - `data/products.json` is the original 298-item PCC/Metro snapshot retained as a legacy source artifact.
 
@@ -48,7 +48,7 @@ The schema separates stable `stores` and `products` from dated `capture_runs`, r
 - Safeway: 2622 California Ave SW, Seattle, WA 98116
 - QFC: 4550 42nd Ave SW, Seattle, WA 98116
 
-Instacart exposes a delivery catalog rather than a guaranteed fulfillment branch. Those nearby West Seattle addresses are included for geographic context; the captured delivery area is disclosed only as Seattle, WA.
+Instacart exposes a delivery catalog rather than a guaranteed fulfillment branch. The West Seattle addresses are included for geographic context; the captured delivery area is identified as West Seattle, Seattle, WA.
 
 ## Price methodology
 

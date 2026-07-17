@@ -1,6 +1,6 @@
-# Four-store Seattle grocery price analysis
+# West Seattle Grocery Index analysis
 
-Price observations were captured from Instacart on July 16, 2026 for one Seattle delivery area. Products are matched only when the Instacart product ID is identical.
+Price observations were captured from Instacart on July 16, 2026 for one West Seattle delivery area. Products are matched only when the Instacart product ID is identical.
 
 ## Coverage
 
@@ -56,6 +56,6 @@ The comparable corpus spans dairy and eggs, beverages, baking, frozen foods, sna
 
 Current displayed prices are used, including displayed promotions; original prices are retained separately. Loyalty-only discounts were not substituted for the regular displayed price. Each SQLite observation includes its time, store, product, price, sale state, source URL, and capture query.
 
-Instacart prices can differ from in-store shelf prices, vary by delivery address, and change at any time. Instacart identifies the delivery catalog, not the guaranteed fulfillment branch. Nearby West Seattle store addresses are included only as local context, while the delivery area is disclosed as Seattle, WA.
+Instacart prices can differ from in-store shelf prices, vary by delivery address, and change at any time. Instacart identifies the delivery catalog, not the guaranteed fulfillment branch. West Seattle store addresses are included as local context, and the delivery area is identified as West Seattle, Seattle, WA.
 
 The strict all-four intersection is 175 products, not 300. The 300-product guarantee applies to every possible **two-store comparison**. The site reports both numbers explicitly and lets users require availability at every selected store when comparing three or four stores.
