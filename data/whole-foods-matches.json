@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-17T08:23:45.760Z",
+  "generatedAt": "2026-07-17T17:51:12.522Z",
   "methodology": "Conservative automatic crosswalk: matching normalized brand, product/flavor tokens, and equivalent package quantity; ambiguous candidates are excluded.",
   "counts": {
     "instacartAllFour": 481,

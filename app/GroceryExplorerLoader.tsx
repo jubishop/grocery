@@ -12,12 +12,14 @@ export default function GroceryExplorerLoader() {
     const controller = new AbortController();
     setError(false);
 
-    fetch("/site-data.json", { cache: "force-cache", signal: controller.signal })
+    fetch("/site-data.json", { cache: "no-store", signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error(`Price data request failed with ${response.status}`);
         return response.json() as Promise<Dataset>;
       })
-      .then(setData)
+      .then((nextData) => {
+        setData(nextData);
+      })
       .catch((loadError: unknown) => {
         if (loadError instanceof DOMException && loadError.name === "AbortError") return;
         setError(true);
@@ -36,7 +38,7 @@ export default function GroceryExplorerLoader() {
         <p>
           {error
             ? "The site is online, but its grocery data could not be downloaded. Please try once more."
-            : "Preparing 8,100 comparable products across five West Seattle stores…"}
+            : "Preparing matched products across five West Seattle stores…"}
         </p>
         {error
           ? <button type="button" onClick={() => setAttempt((value) => value + 1)}>Try again</button>

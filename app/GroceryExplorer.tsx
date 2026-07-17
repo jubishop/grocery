@@ -13,6 +13,14 @@ type Store = {
   storeUrl: string;
   catalogSource: string;
   catalogUrl: string;
+  sourceType: string;
+  platformNote: string;
+  pricingPolicyTitle: string;
+  pricingPolicySummary: string;
+  pricingPolicyUrl: string;
+  termsUrl: string;
+  markupContextUrl: string;
+  researchUrl: string;
   color: string;
 };
 
@@ -49,6 +57,12 @@ type PairSummary = {
   percentDifference: number;
 };
 
+type ResearchSource = {
+  label: string;
+  url: string;
+  tier?: string;
+};
+
 export type Dataset = {
   metadata: {
     runId: string;
@@ -64,12 +78,56 @@ export type Dataset = {
   summary: {
     capturedProducts: number;
     observationCount: number;
+    currentObservationCount: number;
     comparableProducts: number;
     allStoreProducts: number;
     storeCount: number;
     distribution: Record<string, number>;
     queryCount: number;
     acceptedCrossSourceMatches: number;
+    instacartAllFourProducts: number;
+    bothDirectAllFourProducts: number;
+    wholeFoodsAllFourProducts: number;
+    directCatalogProducts: {
+      safeway: number;
+      qfc: number;
+      wholefoods: number;
+    };
+    directReplacements: {
+      safeway: number;
+      qfc: number;
+    };
+  };
+  pricingResearch: {
+    updatedAt: string;
+    headline: string;
+    conclusion: string;
+    verdicts: Array<{
+      storeId: "pcc" | "metro";
+      confidence: string;
+      status: string;
+      summary: string;
+      details: string[];
+      sources: ResearchSource[];
+    }>;
+    directAudit: Array<{
+      storeId: "safeway" | "qfc";
+      comparedProducts: number;
+      instacartHigherCount: number;
+      directHigherCount: number;
+      samePriceCount: number;
+      totalInstacart: number;
+      totalDirect: number;
+      basketDifference: number;
+      basketPercent: number;
+      medianDifference: number;
+    }>;
+    context: Array<{
+      title: string;
+      body: string;
+      sources: ResearchSource[];
+    }>;
+    limitations: string[];
   };
   storePerformance: Array<{
     storeId: StoreId;
@@ -91,6 +149,12 @@ type WinnerFilter = "all" | "tie" | StoreId;
 
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 const integer = new Intl.NumberFormat("en-US");
+const priceSourceLabels: Record<string, { label: string; action: string }> = {
+  instacart: { label: "Instacart.com", action: "View catalog price" },
+  "safeway.com": { label: "Safeway.com", action: "View direct price" },
+  "qfc.com": { label: "QFC.com", action: "View direct price" },
+  amazon_whole_foods: { label: "Amazon.com", action: "View pickup price" },
+};
 
 function ArrowIcon() {
   return (
@@ -188,7 +252,8 @@ function ProductCard({ product, stores, selected }: { product: Product; stores: 
             >
               <span>{store.shortName}</span>
               <div><strong>{money.format(price.price)}</strong>{price.originalPrice !== null && <s>{money.format(price.originalPrice)}</s>}</div>
-              <small>{price.sale ? "sale shown · " : ""}{price.source === "amazon_whole_foods" ? "View on Amazon" : "View on Instacart"}</small>
+              <small className="price-source">{price.sale ? "sale shown · " : ""}{priceSourceLabels[price.source]?.label ?? price.source}</small>
+              <small>{priceSourceLabels[price.source]?.action ?? "View source"} ↗</small>
             </a>
           );
         })}
@@ -213,6 +278,12 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
   const [visibleCount, setVisibleCount] = useState(48);
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
   const storeMap = useMemo(() => new Map(data.stores.map((store) => [store.id, store])), [data.stores]);
+
+  useEffect(() => {
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    const target = targetId ? document.getElementById(targetId) : document.getElementById("top");
+    window.requestAnimationFrame(() => target?.scrollIntoView({ behavior: "auto", block: "start" }));
+  }, []);
 
   useEffect(() => setVisibleCount(48), [selected, requireAll, deferredQuery, category, winner, saleOnly, sort]);
 
@@ -296,6 +367,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <a className="brand" href="#top">West Seattle Grocery Index</a>
           <div className="nav-links">
             <a href="#compare">Compare stores</a>
+            <a href="#research">Markup research</a>
             <a href="#products">Products</a>
             <a className="download-link" href="/west-seattle-grocery-prices.csv" download>CSV</a>
           </div>
@@ -303,7 +375,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
 
         <section className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">West Seattle · Instacart + Amazon snapshot · {integer.format(data.summary.comparableProducts)} comparable products</p>
+            <p className="eyebrow">West Seattle · direct + marketplace snapshot · {integer.format(data.summary.comparableProducts)} comparable products</p>
             <h1>Five stores.<br /><em>One honest price map.</em></h1>
             <p className="hero-deck">
               PCC, Metropolitan Market, Safeway, QFC, and Whole Foods compared product by product. Every two-store pairing currently has at least <strong>{integer.format(minimumPairCount)} confidently matched items</strong>—and you can choose the matchup.
@@ -334,7 +406,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       <div className="score-strip">
         <div><strong>{integer.format(data.summary.comparableProducts)}</strong><span>comparable products</span></div>
         <div><strong>{integer.format(data.summary.allStoreProducts)}</strong><span>at all five stores</span></div>
-        <div><strong>{integer.format(data.summary.observationCount)}</strong><span>dated price rows</span></div>
+        <div><strong>{integer.format(data.summary.currentObservationCount)}</strong><span>current price rows</span></div>
         <div><strong>{minimumPairCount}+</strong><span>in every pair</span></div>
       </div>
 
@@ -413,6 +485,113 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         )}
       </section>
 
+      <section className="research-section" id="research" aria-labelledby="research-heading">
+        <div className="content-section">
+          <div className="section-intro split-intro">
+            <div><p className="eyebrow">Instacart markup research</p><h2 id="research-heading">What we can prove—and what we can’t.</h2></div>
+            <p>Official storefronts and terms carry the most weight. Independent reporting adds context. Blogs and Reddit are treated as signal only, and never as proof of a store-specific percentage.</p>
+          </div>
+
+          <div className="research-lede">
+            <span>Bottom line · researched {data.pricingResearch.updatedAt}</span>
+            <h3>{data.pricingResearch.headline}</h3>
+            <p>{data.pricingResearch.conclusion}</p>
+          </div>
+
+          <div className="verdict-grid">
+            {data.pricingResearch.verdicts.map((verdict) => {
+              const store = storeMap.get(verdict.storeId)!;
+              return (
+                <article className="verdict-card" key={verdict.storeId} style={{ "--store-color": store.color } as React.CSSProperties}>
+                  <div className="verdict-card-heading">
+                    <div><span>{store.name}</span><h3>{verdict.status}</h3></div>
+                    <b>{verdict.confidence}</b>
+                  </div>
+                  <p>{verdict.summary}</p>
+                  <ul>{verdict.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
+                  <div className="research-links">
+                    {verdict.sources.map((source) => (
+                      <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>
+                        <span>{source.label}</span>
+                        {source.tier && <small>{source.tier}</small>}
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="direct-audit" aria-labelledby="direct-audit-heading">
+            <div className="direct-audit-heading">
+              <div><p className="eyebrow">Where we can measure it</p><h3 id="direct-audit-heading">Instacart versus the native store site.</h3></div>
+              <p>These are exact-product basket comparisons from the captured catalogs—not a claim about checkout fees, tips, loyalty coupons, or PCC and Metro.</p>
+            </div>
+            <div className="direct-audit-grid">
+              {data.pricingResearch.directAudit.map((audit) => {
+                const store = storeMap.get(audit.storeId)!;
+                return (
+                  <article key={audit.storeId} style={{ "--store-color": store.color } as React.CSSProperties}>
+                    <div><span>{store.name}</span><b>{integer.format(audit.comparedProducts)} exact products</b></div>
+                    <p><strong>{audit.basketPercent}% higher</strong> on the captured Instacart basket</p>
+                    <dl>
+                      <div><dt>Instacart total</dt><dd>{money.format(audit.totalInstacart)}</dd></div>
+                      <div><dt>Direct-site total</dt><dd>{money.format(audit.totalDirect)}</dd></div>
+                      <div><dt>Difference</dt><dd>{money.format(audit.basketDifference)}</dd></div>
+                      <div><dt>Median item gap</dt><dd>{money.format(audit.medianDifference)}</dd></div>
+                    </dl>
+                    <small>Instacart higher on {integer.format(audit.instacartHigherCount)} · same on {integer.format(audit.samePriceCount)} · direct higher on {integer.format(audit.directHigherCount)}</small>
+                  </article>
+                );
+              })}
+            </div>
+            <p className="direct-audit-note">Captured on adjacent July 2026 dates and matched conservatively by brand, variant, and package quantity. Sale timing can affect an individual item, but the breadth and direction of the differences are strong evidence of marketplace upcharges for these two catalogs.</p>
+          </div>
+
+          <div className="corpus-ledger" aria-labelledby="ledger-heading">
+            <div className="ledger-heading">
+              <div><p className="eyebrow">Current data ledger</p><h3 id="ledger-heading">Everything in the working corpus.</h3></div>
+              <p>The SQLite database retains every dated observation, including older Safeway and QFC Instacart rows. The live comparison substitutes their direct-site prices.</p>
+            </div>
+            <div className="ledger-grid">
+              <div><strong>{integer.format(data.summary.observationCount)}</strong><span>dated observations in SQLite</span></div>
+              <div><strong>{integer.format(data.summary.comparableProducts)}</strong><span>products comparable in 2+ stores</span></div>
+              <div><strong>{integer.format(data.summary.acceptedCrossSourceMatches)}</strong><span>accepted Whole Foods links</span></div>
+              <div><strong>{integer.format(data.summary.directReplacements.safeway)}</strong><span>accepted Safeway direct links</span></div>
+              <div><strong>{integer.format(data.summary.directReplacements.qfc)}</strong><span>accepted QFC direct links</span></div>
+              <div><strong>{integer.format(data.summary.queryCount)}</strong><span>captured search queries</span></div>
+            </div>
+            <div className="coverage-funnel" aria-label="Progress toward products present at all five stores">
+              <div><span>Original four-store Instacart overlap</span><strong>{integer.format(data.summary.instacartAllFourProducts)}</strong></div>
+              <i aria-hidden="true">→</i>
+              <div><span>Also matched on both direct sites</span><strong>{integer.format(data.summary.bothDirectAllFourProducts)}</strong></div>
+              <i aria-hidden="true">→</i>
+              <div><span>Also matched at Whole Foods</span><strong>{integer.format(data.summary.wholeFoodsAllFourProducts)}</strong></div>
+              <i aria-hidden="true">→</i>
+              <div className="funnel-result"><span>Confirmed across all five</span><strong>{integer.format(data.summary.allStoreProducts)}</strong></div>
+            </div>
+            <p className="funnel-note">The two middle sets overlap but are not nested: the final all-five count is their intersection. Direct source catalogs currently contain {integer.format(data.summary.directCatalogProducts.safeway)} Safeway, {integer.format(data.summary.directCatalogProducts.qfc)} QFC, and {integer.format(data.summary.directCatalogProducts.wholefoods)} Whole Foods observations.</p>
+          </div>
+
+          <div className="research-context-grid">
+            {data.pricingResearch.context.map((entry) => (
+              <article key={entry.title}>
+                <h3>{entry.title}</h3>
+                <p>{entry.body}</p>
+                <div>
+                  {entry.sources.map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>{source.label} ↗</a>)}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="research-limits">
+            <strong>Limits of this conclusion</strong>
+            <ul>{data.pricingResearch.limitations.map((limitation) => <li key={limitation}>{limitation}</li>)}</ul>
+          </div>
+        </div>
+      </section>
+
       <section className="content-section category-section" id="categories" aria-labelledby="category-heading">
         <div className="section-intro split-intro">
           <div><p className="eyebrow">Strict category baskets</p><h2 id="category-heading">A broad aisle-by-aisle view.</h2></div>
@@ -438,7 +617,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <div className="content-section products-inner">
           <div className="section-intro split-intro">
             <div><p className="eyebrow">The full corpus</p><h2 id="products-heading">Every item. Every captured price.</h2></div>
-            <p>Instacart retailers use identical product IDs or conservative same-SKU aliases with matching brand, variant, and package quantity. Whole Foods products are linked through exact-search provenance plus brand, product name, flavor, and package quantity. A blank price means no confident match was captured for that store.</p>
+            <p>PCC and Metro use Instacart catalogs; Safeway and QFC use their direct pickup sites; Whole Foods uses Amazon. Cross-source links require the same brand, variant, and package quantity. A blank price means no confident current match was captured.</p>
           </div>
 
           <div className="filter-panel">
@@ -468,6 +647,35 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <p>{data.metadata.methodology}</p>
           <p>{data.metadata.caveat}</p>
           <p>{data.metadata.locationNote}</p>
+          <div className="source-section" aria-labelledby="source-heading">
+            <div className="source-heading">
+              <h3 id="source-heading">Where each price comes from</h3>
+              <p>Every price tile names its corpus. Historical Instacart observations for Safeway and QFC remain in SQLite, but never appear as their current prices.</p>
+            </div>
+            <div className="source-grid">
+              {data.stores.map((store) => (
+                <article className="source-card" key={store.id} style={{ "--store-color": store.color } as React.CSSProperties}>
+                  <div className="source-card-top">
+                    <span>{store.shortName}</span>
+                    <b>{store.catalogSource}</b>
+                  </div>
+                  <p className="source-type">{store.sourceType}</p>
+                  <p>{store.platformNote}</p>
+                  <div className="source-policy">
+                    <strong>{store.pricingPolicyTitle}</strong>
+                    <span>{store.pricingPolicySummary}</span>
+                  </div>
+                  <div className="source-links">
+                    <a href={store.catalogUrl} target="_blank" rel="noreferrer">Price corpus ↗</a>
+                    <a href={store.pricingPolicyUrl} target="_blank" rel="noreferrer">Pricing policy ↗</a>
+                    {store.termsUrl && <a href={store.termsUrl} target="_blank" rel="noreferrer">Platform terms ↗</a>}
+                    {store.markupContextUrl && <a href={store.markupContextUrl} target="_blank" rel="noreferrer">Markup context ↗</a>}
+                    {store.researchUrl && <a href={store.researchUrl} target="_blank" rel="noreferrer">Independent context ↗</a>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
           <div className="store-locations">
             {data.stores.map((store) => <a key={store.id} href={store.storeUrl} target="_blank" rel="noreferrer"><span>{store.name}</span><span>{store.address}</span></a>)}
           </div>
