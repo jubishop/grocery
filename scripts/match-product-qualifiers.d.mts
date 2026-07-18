@@ -1,6 +1,10 @@
 export interface ProtectedQualifierClaims {
   organic: boolean;
   glutenFree: boolean;
+  dairyFree: boolean;
+  vegan: boolean;
+  sodiumState: "no salt added" | "low sodium" | "reduced sodium" | null;
+  sugarState: "no sugar added" | "sugar free" | "reduced sugar" | null;
   nonGmo: boolean;
   plantBased: boolean;
   grassFed: boolean;

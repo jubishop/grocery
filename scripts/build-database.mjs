@@ -7,6 +7,7 @@ import {
   normalizeDirectStoreRecords,
   normalizeInstacartRecords,
 } from "./normalize-instacart-pricing.mjs";
+import { isSourceExclusiveProduct } from "./source-exclusive-products.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
@@ -40,13 +41,29 @@ const [instacart, instacartWeightDetails, wholeFoods, matchData, aliases, safewa
   readFile(schemaPath, "utf8"),
 ]);
 
-instacart.records = normalizeInstacartRecords(instacart.records, instacartWeightDetails)
+const normalizedInstacartRecords = normalizeInstacartRecords(instacart.records, instacartWeightDetails)
   .filter((record) => Number.isFinite(record.price) && record.price > 0)
   .map((record) => ({
     ...record,
     sourceProductId: record.id,
     id: aliases.aliases[record.id] ?? record.id,
   }));
+const crossSourceMatchedProductIds = new Set([
+  ...(matchData.allMatches ?? matchData.matches).map((match) => match.productId),
+  ...safewayMatches.matches.map((match) => match.productId),
+  ...qfcMatches.matches.map((match) => match.productId),
+  ...traderJoesMatches.matches.map((match) => match.productId),
+]);
+const excludedInstacartSourceExclusiveRecords = normalizedInstacartRecords.filter((record) => (
+  !crossSourceMatchedProductIds.has(record.id)
+  && isSourceExclusiveProduct("instacart", record)
+));
+const excludedInstacartSourceExclusiveIds = new Set(
+  excludedInstacartSourceExclusiveRecords.map((record) => record.sourceProductId),
+);
+instacart.records = normalizedInstacartRecords.filter(
+  (record) => !excludedInstacartSourceExclusiveIds.has(record.sourceProductId),
+);
 wholeFoods.records = [
   ...new Map(
     wholeFoods.records
@@ -231,7 +248,7 @@ function localDate(iso) {
 }
 
 function sizeFromTitle(title) {
-  const matches = [...title.matchAll(/\b\d+(?:\.\d+)?\s*(?:fl\s*oz|oz|lb|g|kg|ml|l|ct|count)\b/gi)];
+  const matches = [...title.matchAll(/\b\d+(?:\.\d+)?\s*(?:fl\.?\s*oz\.?|fz|oz|lb|g|kg|ml|l|ct|count)\b/gi)];
   return matches.at(-1)?.[0] ?? "";
 }
 
@@ -250,6 +267,24 @@ const safewayMatchByDirectId = new Map(safewayMatches.matches.map((match) => [ma
 const qfcMatchByDirectId = new Map(qfcMatches.matches.map((match) => [match.directId, match]));
 const traderJoesMatchById = new Map(traderJoesMatches.matches.map((match) => [match.traderJoesId, match]));
 const traderJoesRecordById = new Map(traderJoes.records.map((record) => [record.id, record]));
+const wholeFoodsRetainedRecords = wholeFoods.records.filter((record) => (
+  matchByAsin.has(record.asin)
+  || !isSourceExclusiveProduct("amazon_whole_foods", record)
+));
+const safewayRetainedRecords = safewayDirect.records.filter((record) => (
+  safewayMatchByDirectId.has(record.id)
+  || !isSourceExclusiveProduct("safeway.com", record)
+));
+const qfcRetainedRecords = qfcDirect.records.filter((record) => (
+  qfcMatchByDirectId.has(record.id)
+  || !isSourceExclusiveProduct("qfc.com", record)
+));
+const excludedSourceExclusiveRecords = {
+  instacart: excludedInstacartSourceExclusiveRecords.length,
+  wholefoods: wholeFoods.records.length - wholeFoodsRetainedRecords.length,
+  safeway: safewayDirect.records.length - safewayRetainedRecords.length,
+  qfc: qfcDirect.records.length - qfcRetainedRecords.length,
+};
 const instacartAllFourProductIds = new Set(
   [...recordsByProduct.entries()]
     .filter(([, records]) => ["pcc", "metro", "safeway", "qfc"].every((storeId) => records.some((record) => record.storeId === storeId)))
@@ -281,13 +316,13 @@ for (const [id, records] of recordsByProduct) {
   });
 }
 
-for (const record of wholeFoods.records) {
+for (const record of wholeFoodsRetainedRecords) {
   if (matchByAsin.has(record.asin)) continue;
   const id = `wf:${record.asin}`;
   productsById.set(id, {
     id,
     name: record.title,
-    size: sizeFromTitle(record.title),
+    size: record.detailSize || sizeFromTitle(record.title),
     category: classifyProduct(record.title, [record.category ?? ""]),
     priceBasis: record.priceBasis || "per item",
     imageUrl: record.imageUrl,
@@ -296,8 +331,8 @@ for (const record of wholeFoods.records) {
 }
 
 for (const { prefix, records, matchByDirectId } of [
-  { prefix: "safeway", records: safewayDirect.records, matchByDirectId: safewayMatchByDirectId },
-  { prefix: "qfc", records: qfcDirect.records, matchByDirectId: qfcMatchByDirectId },
+  { prefix: "safeway", records: safewayRetainedRecords, matchByDirectId: safewayMatchByDirectId },
+  { prefix: "qfc", records: qfcRetainedRecords, matchByDirectId: qfcMatchByDirectId },
 ]) {
   for (const record of records) {
     if (matchByDirectId.has(record.id)) continue;
@@ -352,7 +387,7 @@ const qfcRunId = `qfc-direct-west-seattle-${localDate(qfcStartedAt)}`;
 const traderJoesRunId = `trader-joes-west-seattle-${localDate(traderJoesStartedAt)}`;
 const retainedInstacartPriceStoreIds = new Set(["pcc", "metro"]);
 const retainedInstacartPriceRecords = instacart.records.filter((record) => retainedInstacartPriceStoreIds.has(record.storeId));
-const methodology = "Current prices come from five captured source corpora spanning six stores: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, Whole Foods West Seattle pickup on Amazon.com, and a separate plain-commodity overlay from TraderJoes.com with the Seattle store selected. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. For Instacart products marked “Final cost by weight,” the explicit unit rate is canonicalized to dollars per pound; the estimated each total and displayed average weight are retained only as provenance. Legacy variable-weight candidates without a verified unit rate are retained in SQLite but automatically excluded from comparisons. Product URL suffixes are never accepted as sole selling-basis evidence. Clip-once and buy-multiple coupons are not applied to a one-unit basket. All matching is automatic. Instacart identical IDs are joined directly; retailer-specific aliases and packaged cross-source matches require equivalent brand, numeric variant, package quantity, and protected product claims. Loose produce may match only when normalized name, organic status, variety wording, and selling basis agree. Loose raw meat and seafood may match only by exact normalized cut and an explicitly captured per-pound basis when organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims agree. Poultry additionally requires product-detail qualifier evidence on both sides. Trader Joe's prepared, seasoned, mixed, novelty, and private-label-exclusive products are excluded before matching; its remaining produce, raw meat, eggs, dairy, baking staples, beans, grains, oils, salt, and plain cheese require an exact controlled commodity signature and compatible selling unit. Ambiguous candidates are excluded automatically. Safeway and QFC Instacart product identifiers and query evidence remain available for crosswalk auditing, but their obsolete item prices are omitted from SQLite; aggregate markup diagnostics remain in the direct-store matching artifacts.";
+const methodology = "Current prices come from five captured source corpora spanning six stores: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, Whole Foods West Seattle pickup on Amazon.com, and a separate plain-commodity overlay from TraderJoes.com with the Seattle store selected. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. For Instacart products marked “Final cost by weight,” the explicit unit rate is canonicalized to dollars per pound; the estimated each total and displayed average weight are retained only as provenance. Legacy variable-weight candidates without a verified unit rate are retained in SQLite but automatically excluded from comparisons. Captured URL slugs supply rejection-only variant hints and are never sufficient to establish identity or selling basis. Clip-once and buy-multiple coupons are not applied to a one-unit basket. All matching is automatic. Instacart identical IDs are joined directly; retailer-specific aliases and packaged cross-source matches require equivalent brand, numeric variant, package quantity, protected product claims, and packaged-product state. Unmatched explicit retailer house brands remain in raw capture evidence but are excluded from the active database; exact loose produce or meat commodities may still compare after retailer branding is removed. Loose produce may match only when normalized name, organic status, variety wording, and selling basis agree. Loose raw meat and seafood may match only by exact normalized cut and an explicitly captured per-pound basis when organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims agree. Poultry additionally requires product-detail qualifier evidence on both sides. Trader Joe's prepared, seasoned, mixed, novelty, and private-label-exclusive products are excluded before matching; its remaining produce, raw meat, eggs, dairy, baking staples, beans, grains, oils, salt, and plain cheese require an exact controlled commodity signature and compatible selling unit. Ambiguous candidates are excluded automatically. Safeway and QFC Instacart product identifiers and query evidence remain available for crosswalk auditing, but their obsolete item prices are omitted from SQLite; aggregate markup diagnostics remain in the direct-store matching artifacts.";
 
 await rm(databasePath, { force: true });
 const database = new DatabaseSync(databasePath);
@@ -417,13 +452,13 @@ try {
     );
   }
 
-  for (const record of wholeFoods.records) {
+  for (const record of wholeFoodsRetainedRecords) {
     const match = matchByAsin.get(record.asin);
     const productId = match?.productId ?? `wf:${record.asin}`;
     const observationPriceBasis = match?.matchMethod === "normalized_loose_meat_name_claims_basis"
       ? "per lb"
       : record.priceBasis || "per item";
-    insertIdentifier.run("amazon_whole_foods", record.asin, productId, record.title, sizeFromTitle(record.title), record.productUrl);
+    insertIdentifier.run("amazon_whole_foods", record.asin, productId, record.title, record.detailSize || sizeFromTitle(record.title), record.productUrl);
     if (match) insertMatch.run("amazon_whole_foods", record.asin, productId, match.matchMethod, match.matchScore, match.matchMargin, match.sizeEvidence);
     insertObservation.run(
       wholeFoodsRunId, "wholefoods", productId, "amazon_whole_foods", record.asin,
@@ -439,7 +474,7 @@ try {
       source: "safeway.com",
       prefix: "safeway",
       runId: safewayRunId,
-      records: safewayDirect.records,
+      records: safewayRetainedRecords,
       matches: safewayMatches,
       matchByDirectId: safewayMatchByDirectId,
     },
@@ -448,7 +483,7 @@ try {
       source: "qfc.com",
       prefix: "qfc",
       runId: qfcRunId,
-      records: qfcDirect.records,
+      records: qfcRetainedRecords,
       matches: qfcMatches,
       matchByDirectId: qfcMatchByDirectId,
     },
@@ -835,7 +870,7 @@ const siteData = {
   stores,
   summary: {
     capturedProducts: products.length,
-    observationCount: retainedInstacartPriceRecords.length + wholeFoods.records.length + safewayDirect.records.length + qfcDirect.records.length + traderJoes.records.length,
+    observationCount: retainedInstacartPriceRecords.length + wholeFoodsRetainedRecords.length + safewayRetainedRecords.length + qfcRetainedRecords.length + traderJoes.records.length,
     currentObservationCount: latestRows.length,
     normalizedWeightObservations: comparisonAudit.normalized_weight_observations,
     excludedUnverifiedWeightObservations: comparisonAudit.excluded_unverified_weight_observations,
@@ -865,6 +900,7 @@ const siteData = {
       qfc: qfcMatches.matches.length,
       traderjoes: traderJoesMatches.matches.length,
     },
+    excludedSourceExclusiveRecords,
   },
   pricingResearch,
   storePerformance,

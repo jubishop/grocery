@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T21:18:36.803Z",
+  "generatedAt": "2026-07-18T23:12:26.649Z",
   "storeId": "traderjoes",
   "source": "traderjoes.com",
   "methodology": "Fully automatic strict Trader Joe's commodity crosswalk. Prepared, seasoned, mixed, novelty, and first-party-exclusive products are rejected before matching. Plain produce requires the same normalized variety, organic status, selling basis, and exact fixed package quantity when packaged. Raw meat and seafood require the same normalized raw cut, an explicit per-pound basis, and exact agreement on all protected production, cut, grade, frozen, and animal-raising claims. Eggs, dairy, baking staples, beans, grains, oils, salt, and plain cheese require an exact controlled commodity signature plus exact package quantity. A candidate is accepted only when it has strictly greater existing store coverage than every other matching canonical group; tied source candidates and duplicate target assignments are excluded automatically.",
@@ -12,7 +12,7 @@
     "ambiguousSourceCandidates": 5,
     "ambiguousTargetAssignments": 0,
     "acceptedByFamily": {
-      "beans": 0,
+      "beans": 1,
       "butter": 1,
       "cheese": 0,
       "eggs": 2,
@@ -21,7 +21,7 @@
       "oats": 0,
       "oil-vinegar": 2,
       "pasta": 1,
-      "produce": 4,
+      "produce": 3,
       "raw-meat": 1,
       "rice": 0,
       "sugar": 0
@@ -183,10 +183,11 @@
   "matches": [
     {
       "productId": "252796",
-      "currentStoreCount": 2,
+      "currentStoreCount": 3,
       "currentStoreIds": [
         "metro",
-        "pcc"
+        "pcc",
+        "safeway"
       ],
       "traderJoesId": "056687",
       "traderJoesTitle": "Avocado Oil",
@@ -224,10 +225,29 @@
       "sizeEvidence": "conventional||balsamic|||vinegar; exact package quantity"
     },
     {
-      "productId": "42785",
-      "currentStoreCount": 3,
+      "productId": "35347",
+      "currentStoreCount": 1,
       "currentStoreIds": [
-        "metro",
+        "safeway"
+      ],
+      "traderJoesId": "009636",
+      "traderJoesTitle": "Black Beans",
+      "traderJoesSize": "15.5 Oz",
+      "traderJoesPrice": 0.99,
+      "traderJoesUrl": "https://www.traderjoes.com/home/products/pdp/black-beans-009636",
+      "capturedAt": "2026-07-18T20:53:50.847Z",
+      "commodityFamily": "beans",
+      "canonicalName": "Goya Premium Black Beans",
+      "canonicalSize": "15.5 oz",
+      "matchMethod": "strict_generic_commodity_signature_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "conventional|black||beans; exact package quantity"
+    },
+    {
+      "productId": "42785",
+      "currentStoreCount": 2,
+      "currentStoreIds": [
         "qfc",
         "safeway"
       ],
@@ -244,26 +264,6 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "conventional||salted|butter; exact package quantity"
-    },
-    {
-      "productId": "170218",
-      "currentStoreCount": 1,
-      "currentStoreIds": [
-        "safeway"
-      ],
-      "traderJoesId": "070120",
-      "traderJoesTitle": "Gold Potatoes 5 lb",
-      "traderJoesSize": "5 Lb",
-      "traderJoesPrice": 4.99,
-      "traderJoesUrl": "https://www.traderjoes.com/home/products/pdp/gold-potatoes-5-lb-070120",
-      "capturedAt": "2026-07-18T20:53:50.847Z",
-      "commodityFamily": "produce",
-      "canonicalName": "Signature SELECT Gold Potatoes",
-      "canonicalSize": "5 lb",
-      "matchMethod": "strict_generic_commodity_signature_size",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "conventional|gold potato; exact package quantity"
     },
     {
       "productId": "297310",
@@ -288,12 +288,13 @@
     },
     {
       "productId": "18008901",
-      "currentStoreCount": 4,
+      "currentStoreCount": 5,
       "currentStoreIds": [
         "metro",
         "pcc",
         "qfc",
-        "safeway"
+        "safeway",
+        "wholefoods"
       ],
       "traderJoesId": "072270",
       "traderJoesTitle": "Organic Pasture Raised Large Brown Eggs",

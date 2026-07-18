@@ -6,9 +6,14 @@ import {
   numericProductVariantsCompatible,
   productQualifierEvidence,
 } from "./match-product-qualifiers.mjs";
-import { looseProduceMatches } from "./match-loose-produce.mjs";
-import { looseMeatMatches } from "./match-loose-meat.mjs";
+import {
+  packagedProductVariantsCompatible,
+  productUrlVariantHints,
+} from "./match-packaged-variants.mjs";
+import { looseProduceKey, looseProduceMatches } from "./match-loose-produce.mjs";
+import { looseMeatKey, looseMeatMatches } from "./match-loose-meat.mjs";
 import { normalizeInstacartRecords } from "./normalize-instacart-pricing.mjs";
+import { isSourceExclusiveProduct } from "./source-exclusive-products.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
@@ -62,6 +67,7 @@ const unitAliases = new Map([
   ["ounce", "oz"], ["ounces", "oz"], ["oz", "oz"],
   ["pound", "lb"], ["pounds", "lb"], ["lb", "lb"], ["lbs", "lb"],
   ["fluid ounce", "fl oz"], ["fluid ounces", "fl oz"], ["fl ounce", "fl oz"], ["fl ounces", "fl oz"], ["fl oz", "fl oz"],
+  ["fz", "fl oz"],
   ["milliliter", "ml"], ["milliliters", "ml"], ["ml", "ml"],
   ["liter", "l"], ["liters", "l"], ["litre", "l"], ["litres", "l"], ["l", "l"],
   ["gram", "g"], ["grams", "g"], ["g", "g"],
@@ -85,13 +91,15 @@ function queryKey(value) {
 
 function quantity(text) {
   const value = plain(text).replace(/\b(12ct|18ct|24ct|6ct|8ct|4ct)\b/g, (match) => match.replace("ct", " ct"));
-  const multipack = value.match(/\b(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(fl\s*oz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const prefixPack = value.match(/\b(\d+)\s*(?:pack|pk)\s*[,/-]?\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  if (prefixPack) return normalizeQuantity(Number(prefixPack[2]) * Number(prefixPack[1]), prefixPack[3]);
+  const multipack = value.match(/\b(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (multipack) return normalizeQuantity(Number(multipack[2]) * Number(multipack[1]), multipack[3]);
 
   const count = value.match(/\b(\d+)\s*(?:count|ct|each|ea)\b/);
   if (count) return { dimension: "count", amount: Number(count[1]), display: `${count[1]} ct` };
 
-  const match = value.match(/\b(\d+(?:\.\d+)?)\s*(fl\s*oz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const match = value.match(/\b(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (!match) return null;
   const packSuffix = value.slice(match.index + match[0].length);
   const packMatch = packSuffix.match(/\b(?:(\d+)\s*pack|pack\s+of\s+(\d+))\b/);
@@ -100,7 +108,8 @@ function quantity(text) {
 }
 
 function normalizeQuantity(amount, rawUnit) {
-  const unit = unitAliases.get(rawUnit.replace(/\s+/g, " ")) ?? rawUnit;
+  const cleanUnit = rawUnit.replace(/\./g, "").replace(/\s+/g, " ");
+  const unit = unitAliases.get(cleanUnit) ?? cleanUnit;
   if (unit === "lb") return { dimension: "mass", amount: amount * 16, display: `${amount} lb` };
   if (unit === "oz") return { dimension: "mass", amount, display: `${amount} oz` };
   if (unit === "g") return { dimension: "mass", amount: amount / 28.349523125, display: `${amount} g` };
@@ -117,11 +126,31 @@ function quantitiesAgree(left, right) {
   return Math.abs(left.amount - right.amount) <= tolerance;
 }
 
+function quantityBucket(parsed) {
+  if (!parsed) return null;
+  if (parsed.dimension === "count") return `${parsed.dimension}:${parsed.amount}`;
+  return `${parsed.dimension}:${Math.round(parsed.amount * 4) / 4}`;
+}
+
+function quantityBucketCandidates(index, parsed) {
+  if (!parsed) return [];
+  if (parsed.dimension === "count") return index.get(quantityBucket(parsed)) ?? [];
+  const bucket = Math.round(parsed.amount * 4) / 4;
+  const tolerance = Math.max(0.08, parsed.amount * 0.025);
+  const radius = Math.ceil(tolerance * 4) + 1;
+  return Array.from({ length: radius * 2 + 1 }, (_, indexOffset) => (
+    bucket + (indexOffset - radius) / 4
+  )).flatMap((candidateBucket) => (
+    index.get(`${parsed.dimension}:${candidateBucket}`) ?? []
+  ));
+}
+
 const stopWords = new Set([
   "a", "an", "and", "the", "with", "made", "from", "for", "of", "in", "by",
   "natural", "naturals",
   "frozen", "microwave", "meal", "meals", "food", "foods", "product", "products",
   "flavor", "flavored", "style", "premium", "ready", "serve",
+  "brand", "co", "company", "family", "kitchen", "market",
   "ounce", "ounces", "fluid", "pound", "pounds", "count", "pack", "packs", "ct", "oz",
   "lb", "lbs", "ml", "liter", "liters", "gram", "grams", "g", "kg", "ea",
 ]);
@@ -132,7 +161,8 @@ function tokens(text) {
     .replace(/[^a-z0-9]+/g, " ")
     .trim()
     .split(/\s+/)
-    .filter((token) => token.length > 1 && !stopWords.has(token));
+    .filter((token) => token.length > 1 && !stopWords.has(token))
+    .map((token) => token.endsWith("s") && token.length > 4 ? token.slice(0, -1) : token);
 }
 
 function tokenScore(leftText, rightText) {
@@ -153,20 +183,64 @@ function brandAgrees(instacartName, amazonBrand) {
   return brandTokens.length === 1 && nameTokens.has(brandTokens[0]);
 }
 
+const wholeFoodsRecords = wholeFoods.records
+  .map((record) => ({
+    ...record,
+    quantity: quantity(record.detailSize || record.title),
+  }));
+const wholeFoodsCandidates = wholeFoodsRecords
+  .filter((record) => !isSourceExclusiveProduct("amazon_whole_foods", record));
+const wholeFoodsByAsin = new Map(wholeFoodsCandidates.map((record) => [record.asin, record]));
+const wholeFoodsByQuantity = new Map();
+const looseProduceByKey = new Map();
+const looseMeatByKey = new Map();
+for (const record of wholeFoodsRecords) {
+  const bucket = quantityBucket(record.quantity);
+  if (bucket && !isSourceExclusiveProduct("amazon_whole_foods", record)) {
+    const candidates = wholeFoodsByQuantity.get(bucket) ?? [];
+    candidates.push(record);
+    wholeFoodsByQuantity.set(bucket, candidates);
+  }
+  const produceKey = looseProduceKey({ ...record, category: "Produce" });
+  if (produceKey) {
+    const candidates = looseProduceByKey.get(produceKey) ?? [];
+    candidates.push(record);
+    looseProduceByKey.set(produceKey, candidates);
+  }
+  const meatKey = looseMeatKey({ ...record, category: "Meat & Seafood" });
+  if (meatKey) {
+    const candidates = looseMeatByKey.get(meatKey) ?? [];
+    candidates.push(record);
+    looseMeatByKey.set(meatKey, candidates);
+  }
+}
+
 const allMatches = [];
 const queryByKey = new Map(wholeFoods.queries.map((query) => [queryKey(query.query), query]));
+const queryByProductId = new Map(
+  wholeFoods.queries
+    .filter((query) => query.targetProductId)
+    .map((query) => [String(query.targetProductId), query]),
+);
 for (const item of allInstacart) {
-  const looseCandidates = wholeFoods.records.filter((candidate) => {
-    const left = {
-      name: item.name,
-      size: item.size,
-      category: item.category,
-      priceBasis: item.priceBasis,
-      productUrl: item.productUrl,
-      qualifierText: item.qualifierText,
-      comparisonEligible: item.comparisonEligible,
-    };
-    const right = { ...candidate, category: candidate.category || item.category };
+  const left = {
+    name: item.name,
+    size: item.size,
+    category: item.category,
+    priceBasis: item.priceBasis,
+    productUrl: item.productUrl,
+    qualifierText: item.qualifierText,
+    comparisonEligible: item.comparisonEligible,
+  };
+  const produceKey = looseProduceKey(left);
+  const meatKey = looseMeatKey(left);
+  const loosePool = produceKey
+    ? looseProduceByKey.get(produceKey) ?? []
+    : meatKey
+      ? looseMeatByKey.get(meatKey) ?? []
+      : [];
+  const looseCandidates = loosePool.filter((candidate) => {
+    const right = { ...candidate, category: item.category };
     return looseProduceMatches(left, right) || looseMeatMatches(left, right);
   });
   if (looseCandidates.length === 1) {
@@ -208,36 +282,62 @@ for (const item of allInstacart) {
     });
     continue;
   }
+  if (isSourceExclusiveProduct("instacart", left)) continue;
   const itemQuantity = quantity(item.size || item.name);
   if (!itemQuantity) continue;
   const expectedQuery = `${item.name} ${item.size || ""}`.trim();
-  const exactQuery = queryByKey.get(queryKey(expectedQuery));
-  const exactAsins = new Set(exactQuery?.asins ?? []);
+  const targetedQuery = queryByProductId.get(String(item.id));
+  const exactQuery = targetedQuery ?? queryByKey.get(queryKey(expectedQuery));
+  const exactAsinList = exactQuery?.asins ?? [];
+  const exactAsins = new Set(exactAsinList);
+  const rankByAsin = new Map(exactAsinList.map((asin, index) => [asin, index + 1]));
   const preferredRecords = exactAsins.size
-    ? wholeFoods.records.filter((candidate) => exactAsins.has(candidate.asin))
-    : wholeFoods.records;
+    ? exactAsinList.map((asin) => wholeFoodsByAsin.get(asin)).filter(Boolean)
+    : quantityBucketCandidates(wholeFoodsByQuantity, itemQuantity);
   let candidates = preferredRecords
     .map((candidate) => {
-      const candidateQuantity = quantity(candidate.title);
+      const candidateQuantity = candidate.quantity;
       if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
       if (!brandAgrees(item.name, candidate.brand)) return null;
       if (!crossSourceQualifiersCompatible(productQualifierEvidence(item), productQualifierEvidence(candidate))) return null;
       if (!numericProductVariantsCompatible(item.name, candidate.title)) return null;
+      if (!packagedProductVariantsCompatible(
+        `${item.name} ${item.size} ${productUrlVariantHints(item.productUrl)}`,
+        `${candidate.title} ${candidate.detailSize ?? ""} ${productUrlVariantHints(candidate.productUrl)}`,
+      )) return null;
       const score = tokenScore(item.name, candidate.title);
-      return { candidate, candidateQuantity, score };
+      return {
+        candidate,
+        candidateQuantity,
+        score,
+        queryRank: rankByAsin.get(candidate.asin) ?? Number.POSITIVE_INFINITY,
+      };
     })
     .filter(Boolean)
-    .sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title));
+    .sort((a, b) => (
+      targetedQuery
+        ? a.queryRank - b.queryRank || b.score - a.score
+        : b.score - a.score || a.candidate.title.localeCompare(b.candidate.title)
+    ));
   if (!candidates.length && exactAsins.size) {
-    candidates = wholeFoods.records
+    candidates = quantityBucketCandidates(wholeFoodsByQuantity, itemQuantity)
       .map((candidate) => {
-        const candidateQuantity = quantity(candidate.title);
+        const candidateQuantity = candidate.quantity;
         if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
         if (!brandAgrees(item.name, candidate.brand)) return null;
         if (!crossSourceQualifiersCompatible(productQualifierEvidence(item), productQualifierEvidence(candidate))) return null;
         if (!numericProductVariantsCompatible(item.name, candidate.title)) return null;
+        if (!packagedProductVariantsCompatible(
+          `${item.name} ${item.size} ${productUrlVariantHints(item.productUrl)}`,
+          `${candidate.title} ${candidate.detailSize ?? ""} ${productUrlVariantHints(candidate.productUrl)}`,
+        )) return null;
         const score = tokenScore(item.name, candidate.title);
-        return { candidate, candidateQuantity, score };
+        return {
+          candidate,
+          candidateQuantity,
+          score,
+          queryRank: Number.POSITIVE_INFINITY,
+        };
       })
       .filter(Boolean)
       .sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title));
@@ -261,14 +361,26 @@ for (const item of allInstacart) {
     wholeFoodsUrl: best.candidate.productUrl,
     wholeFoodsImageUrl: best.candidate.imageUrl,
     capturedAt: best.candidate.capturedAt,
-    matchMethod: exactAsins.has(best.candidate.asin)
-      ? "exact_query_brand_name_size"
+    matchMethod: targetedQuery && exactAsins.has(best.candidate.asin)
+      ? "targeted_query_brand_name_size"
+      : exactAsins.has(best.candidate.asin)
+        ? "exact_query_brand_name_size"
       : "normalized_brand_name_size",
     matchScore: Number(best.score.toFixed(4)),
     matchMargin: Number(margin.toFixed(4)),
     sizeEvidence: `${itemQuantity.display} = ${best.candidateQuantity.display}`,
   };
-  if (best.score >= 0.72 && (margin >= 0.08 || best.score >= 0.9)) allMatches.push(result);
+  const acceptedByTargetedQuery = Boolean(
+    targetedQuery
+    && best.queryRank === 1
+    && best.score >= 0.58
+  );
+  const acceptedByGeneralMatch = !targetedQuery
+    && best.score >= 0.72
+    && (margin >= 0.08 || best.score >= 0.9);
+  if (acceptedByTargetedQuery || acceptedByGeneralMatch) {
+    allMatches.push(result);
+  }
 }
 
 const uniqueMatches = [...allMatches]
@@ -286,10 +398,11 @@ const matches = uniqueMatches.filter((match) => match.storeCount === 4);
 
 const output = {
   generatedAt: new Date().toISOString(),
-  methodology: "Fully automatic conservative crosswalk requiring normalized brand and product agreement, equivalent package quantity and numeric variants, and agreement on protected product claims. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically.",
+  methodology: "Fully automatic conservative crosswalk requiring normalized brand and product agreement, equivalent package quantity and numeric variants, agreement on protected product claims, and no conflicting packaged-product state. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Exact product-targeted searches may accept only their first priced result after all automatic compatibility gates pass. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Retailer-exclusive house brands and ambiguous candidates are excluded automatically.",
   counts: {
     instacartAllFour: allFour.length,
     wholeFoodsCaptured: wholeFoods.records.length,
+    wholeFoodsMatchingCandidates: wholeFoodsCandidates.length,
     accepted: matches.length,
     acceptedAnyStoreCount: uniqueMatches.length,
     acceptedByStoreCount: Object.fromEntries([1, 2, 3, 4].map((count) => [count, uniqueMatches.filter((match) => match.storeCount === count).length])),

@@ -6,7 +6,14 @@ import {
   productQualifierEvidence,
   productQualifiersCompatible,
 } from "./match-product-qualifiers.mjs";
+import {
+  packagedProductVariantsCompatible,
+  productUrlVariantHints,
+} from "./match-packaged-variants.mjs";
+import { looseProduceMatches } from "./match-loose-produce.mjs";
+import { looseMeatMatches } from "./match-loose-meat.mjs";
 import { normalizeInstacartRecords } from "./normalize-instacart-pricing.mjs";
+import { isSourceExclusiveProduct } from "./source-exclusive-products.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const checkpointPath = path.join(root, "data/capture-checkpoint.json");
@@ -34,12 +41,12 @@ function plain(value) {
 }
 
 function normalizeQuantity(amount, unit) {
-  const clean = unit.replace(/\s+/g, " ");
+  const clean = unit.replace(/\./g, "").replace(/\s+/g, " ");
   if (/^(?:lb|lbs|pounds?)$/.test(clean)) return { dimension: "mass", amount: amount * 16 };
   if (/^(?:oz|ounces?)$/.test(clean)) return { dimension: "mass", amount };
   if (/^(?:g|grams?)$/.test(clean)) return { dimension: "mass", amount: amount / 28.349523125 };
   if (/^(?:kg|kilograms?)$/.test(clean)) return { dimension: "mass", amount: (amount * 1000) / 28.349523125 };
-  if (/^(?:fl oz|fluid ounces?)$/.test(clean)) return { dimension: "volume", amount };
+  if (/^(?:fl oz|fz|fluid ounces?)$/.test(clean)) return { dimension: "volume", amount };
   if (/^(?:ml|milliliters?)$/.test(clean)) return { dimension: "volume", amount: amount / 29.5735295625 };
   if (/^(?:l|liters?|litres?)$/.test(clean)) return { dimension: "volume", amount: (amount * 1000) / 29.5735295625 };
   return null;
@@ -47,11 +54,13 @@ function normalizeQuantity(amount, unit) {
 
 function quantity(text) {
   const value = plain(text).replace(/\b(12ct|18ct|24ct|6ct|8ct|4ct)\b/g, (match) => match.replace("ct", " ct"));
-  const multiplied = value.match(/\b(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(fl\s*oz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const prefixPack = value.match(/\b(\d+)\s*(?:pack|pk)\s*[,/-]?\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  if (prefixPack) return normalizeQuantity(Number(prefixPack[1]) * Number(prefixPack[2]), prefixPack[3]);
+  const multiplied = value.match(/\b(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (multiplied) return normalizeQuantity(Number(multiplied[1]) * Number(multiplied[2]), multiplied[3]);
   const count = value.match(/\b(\d+)\s*(?:count|ct|each|ea)\b/);
   if (count) return { dimension: "count", amount: Number(count[1]) };
-  const match = value.match(/\b(\d+(?:\.\d+)?)\s*(fl\s*oz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const match = value.match(/\b(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   return match ? normalizeQuantity(Number(match[1]), match[2]) : null;
 }
 
@@ -129,11 +138,23 @@ for (const candidates of buckets.values()) {
         .filter((candidate) => (
           candidate.storeId === targetStore
           && candidate.id !== record.id
+          && (
+            (
+              !isSourceExclusiveProduct("instacart", record)
+              && !isSourceExclusiveProduct("instacart", candidate)
+            )
+            || looseProduceMatches(record, candidate)
+            || looseMeatMatches(record, candidate)
+          )
           && productQualifiersCompatible(
             productQualifierEvidence(record),
             productQualifierEvidence(candidate),
           )
           && numericProductVariantsCompatible(record.name, candidate.name)
+          && packagedProductVariantsCompatible(
+            `${record.name} ${record.size ?? ""} ${productUrlVariantHints(record.productUrl)}`,
+            `${candidate.name} ${candidate.size ?? ""} ${productUrlVariantHints(candidate.productUrl)}`,
+          )
         ))
         .map((candidate) => ({ candidate, score: score(record.name, candidate.name) }))
         .filter((candidate) => candidate.score >= 0.82)
@@ -194,7 +215,7 @@ for (const cluster of serializedClusters) for (const productId of cluster.produc
 
 const output = {
   generatedAt: new Date().toISOString(),
-  methodology: "Exact Instacart IDs are preserved, then retailer-specific duplicate IDs are joined automatically only when brand, numeric variant, protected product claims, and equivalent package size agree and the normalized names are mutually unique high-confidence matches. Ambiguous candidates are excluded.",
+  methodology: "Exact Instacart IDs are preserved, then retailer-specific duplicate IDs are joined automatically only when brand, numeric variant, protected product claims, packaged-product state, and equivalent package size agree and the normalized names are mutually unique high-confidence matches. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Ambiguous candidates are excluded.",
   counts: {
     records: records.length,
     productIds: productIds.length,

@@ -10,6 +10,10 @@ function qualifierText(value) {
 
 export function protectedQualifierClaims(value) {
   const normalized = qualifierText(value);
+  const productLevelOrganicText = normalized
+    .replace(/\bmade\s+with\s+organic\b/g, "made with")
+    .replace(/\b\d+(?:\.\d+)?\s*(?:percent\s*)?organic\s+ingredients?\b/g, " ")
+    .replace(/\borganic\s+ingredients?\b/g, " ");
   const leanMatch = normalized.match(/\b(\d{2})\s*(?:percent\s*)?lean\b|\b(\d{2})\s+\d{1,2}\b/);
   const gradeMatch = normalized.match(/\busda\s*(prime|choice|select)\b/)
     ?? (/\bbeef\b/.test(normalized) ? normalized.match(/\b(prime|choice)\b/) : null);
@@ -21,8 +25,24 @@ export function protectedQualifierClaims(value) {
         ? "frozen"
         : null;
   return {
-    organic: /\borganics?\b/.test(normalized) && !/\bnon organic\b/.test(normalized),
+    organic: /\borganics?\b/.test(productLevelOrganicText) && !/\bnon organic\b/.test(productLevelOrganicText),
     glutenFree: /\bgluten\s*free\b/.test(normalized),
+    dairyFree: /\b(?:dairy\s*free|non\s*dairy)\b/.test(normalized),
+    vegan: /\bvegan\b/.test(normalized),
+    sodiumState: /\b(?:no\s+salt\s+added|unsalted)\b/.test(normalized)
+      ? "no salt added"
+      : /\b(?:low|light\s+in)\s+sodium\b/.test(normalized)
+        ? "low sodium"
+        : /\breduced\s+sodium\b/.test(normalized)
+          ? "reduced sodium"
+          : null,
+    sugarState: /\bno\s+sugar\s+added\b/.test(normalized)
+      ? "no sugar added"
+      : /\bsugar\s*free\b/.test(normalized)
+        ? "sugar free"
+        : /\breduced\s+sugar\b/.test(normalized)
+          ? "reduced sugar"
+          : null,
     nonGmo: /\b(?:non\s*gmo|gmo\s*free)\b/.test(normalized),
     plantBased: /\bplant\s*based\b/.test(normalized),
     grassFed: /\bgrass\s*(?:fed|finished)\b/.test(normalized),
@@ -75,7 +95,13 @@ function qualifiersCompatible(left, right, claims) {
   return claims.every((claim) => leftClaims[claim] === rightClaims[claim]);
 }
 
-const commonClaims = ["organic", "glutenFree"];
+const commonClaims = [
+  "organic",
+  "glutenFree",
+  "dairyFree",
+  "sodiumState",
+  "sugarState",
+];
 const meatClaims = [
   "nonGmo",
   "plantBased",
@@ -135,7 +161,7 @@ export function numericProductVariantsCompatible(left, right) {
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .replace(/\b100\s*(?:%|percent)\b/g, " ")
-    .replace(/\b\d+(?:\.\d+)?\s*(?:fl\s*oz|fluid\s*ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|gallons?|gal|kilograms?|kg|grams?|g|count|ct|each|ea|pack|pk)\b/g, " ")
+    .replace(/\b\d+(?:\.\d+)?\s*(?:fl\.?\s*oz\.?|fz|fluid\s*ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|gallons?|gal|kilograms?|kg|grams?|g|count|ct|each|ea|pack|pk)\b/g, " ")
     .replace(/\b(?:pack|case)\s+of\s+\d+\b/g, " ")
     .replace(/[^a-z0-9.]+/g, " ")
     .match(/\d+(?:\.\d+)?/g) ?? [];

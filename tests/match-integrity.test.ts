@@ -13,6 +13,11 @@ import {
   numericProductVariantsCompatible,
   productQualifierEvidence,
 } from "../scripts/match-product-qualifiers.mjs";
+import {
+  packagedProductVariantsCompatible,
+  productUrlVariantHints,
+} from "../scripts/match-packaged-variants.mjs";
+import { isSourceExclusiveProduct } from "../scripts/source-exclusive-products.mjs";
 
 const data = (name: string) => readFile(
   new URL(`../data/${name}`, import.meta.url),
@@ -56,6 +61,7 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     matches: Array<Record<string, any>>,
     sourceRecords: Array<Record<string, any>>,
     externalKey: "id" | "asin",
+    sourceName: "amazon_whole_foods" | "safeway.com" | "qfc.com",
   ) => {
     assert.equal(new Set(matches.map((match) => match.productId)).size, matches.length);
     assert.equal(new Set(matches.map((match) => match[externalKey === "id" ? "directId" : "asin"])).size, matches.length);
@@ -85,19 +91,49 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
         )));
       } else {
         assert.ok(candidates.some((candidate) => (
-          crossSourceQualifiersCompatible(
+          !isSourceExclusiveProduct("instacart", candidate)
+          && crossSourceQualifiersCompatible(
             productQualifierEvidence(candidate),
             productQualifierEvidence(source),
           )
           && numericProductVariantsCompatible(candidate.name, source.title)
+          && packagedProductVariantsCompatible(
+            `${candidate.name} ${candidate.size ?? ""} ${productUrlVariantHints(candidate.productUrl)}`,
+            `${source.title} ${source.size ?? ""} ${productUrlVariantHints(source.productUrl)}`,
+          )
         )));
+        assert.equal(
+          isSourceExclusiveProduct(sourceName, source),
+          false,
+          `Packaged match ${match.productId} uses a ${sourceName} house brand`,
+        );
       }
     }
   };
 
-  verify(wholeFoodsMatches.allMatches, wholeFoods.records, "asin");
-  verify(safewayMatches.matches, normalizeDirectStoreRecords(safeway.records), "id");
-  verify(qfcMatches.matches, normalizeDirectStoreRecords(qfc.records), "id");
+  verify(wholeFoodsMatches.allMatches, wholeFoods.records, "asin", "amazon_whole_foods");
+  verify(safewayMatches.matches, normalizeDirectStoreRecords(safeway.records), "id", "safeway.com");
+  verify(qfcMatches.matches, normalizeDirectStoreRecords(qfc.records), "id", "qfc.com");
+
+  const targetedWholeFoodsQueries = new Map<string, { asins: string[] }>(
+    wholeFoods.queries
+      .filter((query: Record<string, unknown>) => query.targetProductId)
+      .map((query: Record<string, any>) => [
+        String(query.targetProductId),
+        { asins: query.asins },
+      ]),
+  );
+  for (const match of wholeFoodsMatches.allMatches) {
+    if (match.matchMethod === "targeted_query_brand_name_size") {
+      const query = targetedWholeFoodsQueries.get(String(match.productId));
+      assert.ok(query, `Missing targeted query for ${match.productId}`);
+      assert.equal(
+        query.asins[0],
+        match.asin,
+        `Targeted match ${match.productId} did not use the first priced result`,
+      );
+    }
+  }
 
   assert.equal(
     wholeFoodsMatches.allMatches.some((match: Record<string, string>) => (
@@ -105,6 +141,67 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     )),
     false,
     "Ezekiel 4:9 bread must not match 7 Sprouted Grains bread",
+  );
+  assert.equal(
+    wholeFoodsMatches.allMatches.some((match: Record<string, string>) => (
+      match.productId === "23812281" && match.asin !== "B08QM46FGG"
+    )),
+    false,
+    "Mexican Wedding cookies must not match another Siete flavor",
+  );
+  assert.ok(
+    wholeFoodsMatches.allMatches.some((match: Record<string, string>) => (
+      match.productId === "23812281" && match.asin === "B08QM46FGG"
+    )),
+    "Verified Mexican Wedding cookie size evidence should reproduce its exact match",
+  );
+  for (const [productId, rejectedAsin] of [
+    ["24851", "B000SRLN7Y"],
+    ["19650750", "B012CIIDBK"],
+    ["16290443", "B0GFXLR11T"],
+    ["134238", "B084114YHX"],
+    ["22327171", "B00NWJE9NK"],
+  ]) {
+    assert.equal(
+      wholeFoodsMatches.allMatches.some((match: Record<string, string>) => (
+        match.productId === productId && match.asin === rejectedAsin
+      )),
+      false,
+      `${productId} must not use rejected variant ${rejectedAsin}`,
+    );
+  }
+
+  for (const [productId, directId] of [
+    ["16355028", "960071218"],
+    ["40439735", "970784648"],
+    ["30845593", "971151053"],
+    ["29132", "960076404"],
+  ]) {
+    assert.ok(
+      safewayMatches.matches.some((match: Record<string, string>) => (
+        match.productId === productId && match.directId === directId
+      )),
+      `Safeway match ${productId} should reproduce dotted/FZ size parsing`,
+    );
+  }
+  for (const [productId, rejectedDirectId] of [
+    ["190097", "970557754"],
+    ["82346", "960143967"],
+  ]) {
+    assert.equal(
+      safewayMatches.matches.some((match: Record<string, string>) => (
+        match.productId === productId && match.directId === rejectedDirectId
+      )),
+      false,
+      `${productId} must not use rejected Safeway variant ${rejectedDirectId}`,
+    );
+  }
+  assert.equal(
+    qfcMatches.matches.some((match: Record<string, string>) => (
+      match.productId === "25601" && match.directId === "0003997802330"
+    )),
+    false,
+    "Gluten-free muesli must not match flaxseed meal",
   );
 });
 
