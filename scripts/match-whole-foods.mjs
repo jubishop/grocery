@@ -1,33 +1,40 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { crossSourceQualifiersCompatible } from "./match-product-qualifiers.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
 const wholeFoodsPath = path.join(root, "data/whole-foods-capture-checkpoint.json");
 const outputPath = path.join(root, "data/whole-foods-matches.json");
 const overridesPath = path.join(root, "data/whole-foods-match-overrides.json");
+const aliasesPath = path.join(root, "data/instacart-aliases.json");
 
-const [instacart, wholeFoods, overrides] = await Promise.all([
+const [instacart, wholeFoods, overrides, aliases] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
   readFile(wholeFoodsPath, "utf8").then(JSON.parse),
   readFile(overridesPath, "utf8").then(JSON.parse),
+  readFile(aliasesPath, "utf8").then(JSON.parse),
 ]);
 
 const storeIds = ["pcc", "metro", "safeway", "qfc"];
 const groups = new Map();
 for (const record of instacart.records) {
-  const byStore = groups.get(record.id) ?? new Map();
-  byStore.set(record.storeId, record);
-  groups.set(record.id, byStore);
+  const canonicalId = aliases.aliases[record.id] ?? record.id;
+  const group = groups.get(canonicalId) ?? { byStore: new Map(), productIds: new Set() };
+  group.byStore.set(record.storeId, record);
+  group.productIds.add(record.id);
+  groups.set(canonicalId, group);
 }
 
 const allInstacart = [...groups.entries()]
-  .map(([id, byStore]) => {
+  .map(([id, group]) => {
+    const { byStore, productIds } = group;
     const records = [...byStore.values()];
     const representative = records.sort((a, b) => (b.name?.length ?? 0) - (a.name?.length ?? 0))[0];
     return {
       id,
+      sourceProductIds: [...productIds],
       name: representative.name,
       size: representative.size || "",
       category: representative.category || "Other Groceries",
@@ -56,6 +63,10 @@ function plain(value) {
     .replace(/&/g, " and ")
     .replace(/[’']/g, "")
     .toLowerCase();
+}
+
+function queryKey(value) {
+  return plain(value).replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, " ");
 }
 
 function quantity(text) {
@@ -94,7 +105,7 @@ function quantitiesAgree(left, right) {
 
 const stopWords = new Set([
   "a", "an", "and", "the", "with", "made", "from", "for", "of", "in", "by",
-  "organic", "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
+  "natural", "naturals",
   "frozen", "microwave", "meal", "meals", "food", "foods", "product", "products",
   "flavor", "flavored", "style", "premium", "ready", "serve",
   "ounce", "ounces", "fluid", "pound", "pounds", "count", "pack", "packs", "ct", "oz",
@@ -130,19 +141,41 @@ function brandAgrees(instacartName, amazonBrand) {
 
 const allMatches = [];
 const allReview = [];
+const allLowReview = [];
+const queryByKey = new Map(wholeFoods.queries.map((query) => [queryKey(query.query), query]));
 for (const item of allInstacart) {
   const itemQuantity = quantity(item.size || item.name);
   if (!itemQuantity) continue;
-  const candidates = wholeFoods.records
+  const expectedQuery = `${item.name} ${item.size || ""}`.trim();
+  const exactQuery = queryByKey.get(queryKey(expectedQuery));
+  const exactAsins = new Set(exactQuery?.asins ?? []);
+  const preferredRecords = exactAsins.size
+    ? wholeFoods.records.filter((candidate) => exactAsins.has(candidate.asin))
+    : wholeFoods.records;
+  let candidates = preferredRecords
     .map((candidate) => {
       const candidateQuantity = quantity(candidate.title);
       if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
       if (!brandAgrees(item.name, candidate.brand)) return null;
+      if (!crossSourceQualifiersCompatible(item.name, candidate.title)) return null;
       const score = tokenScore(item.name, candidate.title);
       return { candidate, candidateQuantity, score };
     })
     .filter(Boolean)
     .sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title));
+  if (!candidates.length && exactAsins.size) {
+    candidates = wholeFoods.records
+      .map((candidate) => {
+        const candidateQuantity = quantity(candidate.title);
+        if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
+        if (!brandAgrees(item.name, candidate.brand)) return null;
+        if (!crossSourceQualifiersCompatible(item.name, candidate.title)) return null;
+        const score = tokenScore(item.name, candidate.title);
+        return { candidate, candidateQuantity, score };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title));
+  }
 
   const best = candidates[0];
   const next = candidates[1];
@@ -150,6 +183,7 @@ for (const item of allInstacart) {
   const margin = best.score - (next?.score ?? 0);
   const result = {
     productId: item.id,
+    sourceProductIds: item.sourceProductIds,
     instacartName: item.name,
     instacartSize: item.size,
     category: item.category,
@@ -161,42 +195,96 @@ for (const item of allInstacart) {
     wholeFoodsUrl: best.candidate.productUrl,
     wholeFoodsImageUrl: best.candidate.imageUrl,
     capturedAt: best.candidate.capturedAt,
-    matchMethod: "normalized_brand_name_size",
+    matchMethod: exactAsins.has(best.candidate.asin)
+      ? "exact_query_brand_name_size"
+      : "normalized_brand_name_size",
     matchScore: Number(best.score.toFixed(4)),
     matchMargin: Number(margin.toFixed(4)),
     sizeEvidence: `${itemQuantity.display} = ${best.candidateQuantity.display}`,
   };
   if (best.score >= 0.72 && (margin >= 0.08 || best.score >= 0.9)) allMatches.push(result);
   else if (best.score >= 0.58) allReview.push(result);
+  else if (best.score >= 0.4) allLowReview.push(result);
 }
 
-const reviewedByKey = new Map([...allMatches, ...allReview].map((match) => [`${match.productId}|${match.asin}`, match]));
+const rejectedKeys = new Set((overrides.rejected ?? []).map((match) => `${match.productId}|${match.asin}`));
+for (const matches of [allMatches, allReview, allLowReview]) {
+  for (let index = matches.length - 1; index >= 0; index -= 1) {
+    if (rejectedKeys.has(`${matches[index].productId}|${matches[index].asin}`)) matches.splice(index, 1);
+  }
+}
+
+const reviewedByKey = new Map([...allMatches, ...allReview, ...allLowReview].map((match) => [`${match.productId}|${match.asin}`, match]));
 for (const override of overrides.accepted) {
-  const key = `${override.productId}|${override.asin}`;
-  const reviewed = reviewedByKey.get(key);
-  if (!reviewed || allMatches.some((match) => `${match.productId}|${match.asin}` === key)) continue;
+  const item = allInstacart.find((candidate) => candidate.id === override.productId || candidate.sourceProductIds.includes(override.productId));
+  if (!item) continue;
+  const key = `${item.id}|${override.asin}`;
+  if (allMatches.some((match) => `${match.productId}|${match.asin}` === key)) continue;
+  let reviewed = reviewedByKey.get(key);
+  if (!reviewed) {
+    const candidate = wholeFoods.records.find((record) => record.asin === override.asin);
+    const itemQuantity = quantity(item.size || item.name);
+    const candidateQuantity = candidate && quantity(candidate.title);
+    if (!candidate) continue;
+    reviewed = {
+      productId: item.id,
+      sourceProductIds: item.sourceProductIds,
+      instacartName: item.name,
+      instacartSize: item.size,
+      category: item.category,
+      storeIds: item.storeIds,
+      storeCount: item.storeCount,
+      asin: candidate.asin,
+      wholeFoodsTitle: candidate.title,
+      wholeFoodsPrice: candidate.price,
+      wholeFoodsUrl: candidate.productUrl,
+      wholeFoodsImageUrl: candidate.imageUrl,
+      capturedAt: candidate.capturedAt,
+      matchScore: Number(tokenScore(item.name, candidate.title).toFixed(4)),
+      matchMargin: 0,
+      sizeEvidence: itemQuantity && candidateQuantity
+        ? `${itemQuantity.display} = ${candidateQuantity.display}`
+        : `${item.size || "catalog package"} = human-reviewed retailer package`,
+    };
+  }
   allMatches.push({ ...reviewed, matchMethod: "human_reviewed_brand_variant_size", manualReviewNote: override.note });
 }
-const acceptedKeys = new Set(allMatches.map((match) => `${match.productId}|${match.asin}`));
+const uniqueMatches = [...allMatches]
+  .sort((a, b) => {
+    const aReviewed = a.matchMethod === "human_reviewed_brand_variant_size" ? 1 : 0;
+    const bReviewed = b.matchMethod === "human_reviewed_brand_variant_size" ? 1 : 0;
+    return b.storeCount - a.storeCount
+      || bReviewed - aReviewed
+      || b.matchScore - a.matchScore
+      || b.matchMargin - a.matchMargin
+      || a.productId.localeCompare(b.productId, undefined, { numeric: true });
+  })
+  .filter((match, index, matches) => matches.findIndex((candidate) => candidate.asin === match.asin) === index);
+const acceptedKeys = new Set(uniqueMatches.map((match) => `${match.productId}|${match.asin}`));
 const remainingReview = allReview.filter((match) => !acceptedKeys.has(`${match.productId}|${match.asin}`));
-const matches = allMatches.filter((match) => match.storeCount === 4);
+const remainingLowReview = allLowReview.filter((match) => !acceptedKeys.has(`${match.productId}|${match.asin}`));
+const matches = uniqueMatches.filter((match) => match.storeCount === 4);
 const review = remainingReview.filter((match) => match.storeCount === 4);
+const lowReview = remainingLowReview.filter((match) => match.storeCount === 4);
 
 const output = {
   generatedAt: new Date().toISOString(),
-  methodology: "Conservative automatic crosswalk: matching normalized brand, product/flavor tokens, and equivalent package quantity; ambiguous candidates are excluded.",
+  methodology: "Conservative automatic crosswalk: matching normalized brand, protected organic/gluten-free variant claims, product/flavor tokens including non-GMO and plant-based descriptors, and equivalent package quantity; ambiguous candidates are excluded.",
   counts: {
     instacartAllFour: allFour.length,
     wholeFoodsCaptured: wholeFoods.records.length,
     accepted: matches.length,
     review: review.length,
-    acceptedAnyStoreCount: allMatches.length,
-    acceptedByStoreCount: Object.fromEntries([1, 2, 3, 4].map((count) => [count, allMatches.filter((match) => match.storeCount === count).length])),
+    lowReview: lowReview.length,
+    acceptedAnyStoreCount: uniqueMatches.length,
+    acceptedByStoreCount: Object.fromEntries([1, 2, 3, 4].map((count) => [count, uniqueMatches.filter((match) => match.storeCount === count).length])),
   },
   matches: matches.sort((a, b) => a.instacartName.localeCompare(b.instacartName)),
   review: review.sort((a, b) => b.matchScore - a.matchScore || a.instacartName.localeCompare(b.instacartName)),
-  allMatches: allMatches.sort((a, b) => b.storeCount - a.storeCount || a.instacartName.localeCompare(b.instacartName)),
+  lowReview: lowReview.sort((a, b) => b.matchScore - a.matchScore || a.instacartName.localeCompare(b.instacartName)),
+  allMatches: uniqueMatches.sort((a, b) => b.storeCount - a.storeCount || a.instacartName.localeCompare(b.instacartName)),
   allReview: remainingReview.sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore || a.instacartName.localeCompare(b.instacartName)),
+  allLowReview: remainingLowReview.sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore || a.instacartName.localeCompare(b.instacartName)),
 };
 
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`);

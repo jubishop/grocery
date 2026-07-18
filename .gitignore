@@ -7,3 +7,6 @@ work/
 .DS_Store
 npm-debug.log*
 *.tsbuildinfo
+
+# Local scratch database; the canonical snapshot is data/grocery-prices.sqlite.
+data/grocery.sqlite
