@@ -38,7 +38,7 @@ export default function GroceryExplorerLoader() {
         <p>
           {error
             ? "The site is online, but its grocery data could not be downloaded. Please try once more."
-            : "Preparing matched products across five West Seattle stores…"}
+            : "Preparing five full West Seattle catalogs plus Trader Joe’s commodity matches…"}
         </p>
         {error
           ? <button type="button" onClick={() => setAttempt((value) => value + 1)}>Try again</button>

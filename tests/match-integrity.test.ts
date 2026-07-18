@@ -155,11 +155,13 @@ test("live produce and meat captures produce strict cross-store comparisons", as
   assert.equal(organicBroccoli.prices.safeway.price, 3.79);
 
   const groundBeef: any = byId.get("297310");
-  assert.deepEqual(Object.keys(groundBeef.prices).sort(), ["qfc", "safeway"]);
+  assert.deepEqual(Object.keys(groundBeef.prices).sort(), ["qfc", "safeway", "traderjoes"]);
   assert.equal(groundBeef.prices.qfc.priceBasis, "per lb");
   assert.equal(groundBeef.prices.safeway.priceBasis, "per lb");
   assert.equal(groundBeef.prices.qfc.price, 8.49);
   assert.equal(groundBeef.prices.safeway.price, 8.49);
+  assert.equal(groundBeef.prices.traderjoes.priceBasis, "per lb");
+  assert.equal(groundBeef.prices.traderjoes.price, 6.49);
 
   const celeryRoot: any = byId.get("16383572");
   assert.deepEqual(Object.keys(celeryRoot.prices).sort(), ["metro", "pcc"]);

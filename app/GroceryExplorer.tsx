@@ -14,7 +14,7 @@ import {
   type DietFilter,
 } from "./diet";
 
-type StoreId = "pcc" | "metro" | "safeway" | "qfc" | "wholefoods";
+type StoreId = "pcc" | "metro" | "safeway" | "qfc" | "wholefoods" | "traderjoes";
 
 type Store = {
   id: StoreId;
@@ -33,6 +33,7 @@ type Store = {
   termsUrl: string;
   markupContextUrl: string;
   researchUrl: string;
+  coverageMode: "full-catalog" | "commodity-overlay";
   color: string;
 };
 
@@ -47,6 +48,7 @@ type Price = {
   pricingMode: "fixed_price" | "unit_price_per_lb" | "final_cost_by_weight";
   estimatedItemPrice: number | null;
   estimatedWeightLb: number | null;
+  sourceTitle: string;
 };
 
 type Product = {
@@ -57,6 +59,7 @@ type Product = {
   priceBasis: string;
   imageUrl: string;
   imagePath: string;
+  searchAliases: string[];
   storeCount: number;
   prices: Partial<Record<StoreId, Price>>;
 };
@@ -100,6 +103,11 @@ export type Dataset = {
     comparableProducts: number;
     allStoreProducts: number;
     storeCount: number;
+    coreStoreCount: number;
+    coreAllStoreProducts: number;
+    traderJoesComparableProducts: number;
+    traderJoesEligibleProducts: number;
+    acceptedTraderJoesMatches: number;
     distribution: Record<string, number>;
     queryCount: number;
     acceptedCrossSourceMatches: number;
@@ -110,10 +118,12 @@ export type Dataset = {
       safeway: number;
       qfc: number;
       wholefoods: number;
+      traderjoes: number;
     };
     directReplacements: {
       safeway: number;
       qfc: number;
+      traderjoes: number;
     };
   };
   pricingResearch: {
@@ -172,6 +182,7 @@ const priceSourceLabels: Record<string, { label: string; action: string }> = {
   "safeway.com": { label: "Safeway.com", action: "View direct price" },
   "qfc.com": { label: "QFC.com", action: "View direct price" },
   amazon_whole_foods: { label: "Amazon.com", action: "View pickup price" },
+  "traderjoes.com": { label: "TraderJoes.com", action: "View catalog price" },
 };
 const basketStorageKey = "west-seattle-grocery-basket-v1";
 
@@ -292,6 +303,7 @@ function ProductCard({
               <div><strong>{money.format(price.price)}</strong>{price.originalPrice !== null && <s>{money.format(price.originalPrice)}</s>}</div>
               <small>{price.priceBasis}{price.pricingMode === "final_cost_by_weight" ? " · weight-normalized" : ""}</small>
               <small className="price-source">{price.sale ? "sale shown · " : ""}{priceSourceLabels[price.source]?.label ?? price.source}</small>
+              {price.sourceTitle && price.sourceTitle !== product.name && <small className="price-alias">{price.sourceTitle}</small>}
               <small>{priceSourceLabels[price.source]?.action ?? "View source"} ↗</small>
             </a>
           );
@@ -321,7 +333,9 @@ function ProductCard({
 }
 
 export default function GroceryExplorer({ data }: { data: Dataset }) {
-  const [selected, setSelected] = useState<StoreId[]>(data.stores.map((store) => store.id));
+  const [selected, setSelected] = useState<StoreId[]>(
+    data.stores.filter((store) => store.coverageMode === "full-catalog").map((store) => store.id),
+  );
   const [requireAll, setRequireAll] = useState(false);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All categories");
@@ -375,7 +389,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
 
   const filtered = useMemo(() => {
     const items = allSelectedProducts.filter((product) => {
-      const searchText = `${product.name} ${product.size} ${product.category}`.toLowerCase();
+      const searchText = `${product.name} ${product.searchAliases.join(" ")} ${product.size} ${product.category}`.toLowerCase();
       const matchesSearch = !deferredQuery || searchText.includes(deferredQuery);
       const matchesCategory = category === "All categories" || product.category === category;
       const matchesDiet = productHasDietClaim(product, diet);
@@ -415,8 +429,14 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
     ? snapshotBasketTotals[snapshotBasketRanking.at(-1)!] - snapshotBasketTotals[snapshotBasketLeader]
     : 0;
   const selectedPairs = data.pairwise.filter((pair) => pair.stores.every((storeId) => selected.includes(storeId)));
-  const minimumPairCount = Math.min(...data.pairwise.map((pair) => pair.count));
-  const bestPerformance = data.storePerformance[0];
+  const coreStoreIds = data.stores
+    .filter((store) => store.coverageMode === "full-catalog")
+    .map((store) => store.id);
+  const corePairwise = data.pairwise.filter((pair) => pair.stores.every((storeId) => coreStoreIds.includes(storeId)));
+  const minimumCorePairCount = Math.min(...corePairwise.map((pair) => pair.count));
+  const corePerformance = data.storePerformance.filter((performance) => coreStoreIds.includes(performance.storeId));
+  const bestPerformance = corePerformance[0];
+  const traderJoesPerformance = data.storePerformance.find((performance) => performance.storeId === "traderjoes");
 
   const basketItems = useMemo(() => Object.entries(basket).flatMap(([productId, quantity]) => {
     const product = productMap.get(productId);
@@ -530,9 +550,9 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <section className="hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">West Seattle · direct + marketplace snapshot · {integer.format(data.summary.comparableProducts)} comparable products</p>
-            <h1>Five stores.<br /><em>One honest price map.</em></h1>
+            <h1>Five full catalogs.<br /><em>Plus Trader Joe’s where it matches.</em></h1>
             <p className="hero-deck">
-              PCC, Metropolitan Market, Safeway, QFC, and Whole Foods compared product by product. Every two-store pairing currently has at least <strong>{integer.format(minimumPairCount)} confidently matched products</strong>—and you can choose the matchup.
+              PCC, Metropolitan Market, Safeway, QFC, and Whole Foods form the core comparison. Every core two-store pairing has at least <strong>{integer.format(minimumCorePairCount)} confidently matched products</strong>. Trader Joe’s joins separately through <strong>{integer.format(data.summary.traderJoesComparableProducts)} strict commodity matches</strong>.
             </p>
             <div className="hero-actions">
               <a className="primary-button" href="#basket">Build your basket <ArrowIcon /></a>
@@ -542,7 +562,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
 
           <div className="performance-panel" aria-label="Overall head-to-head store performance">
             <div className="panel-heading"><span>All captured matchups</span><span className="live-dot">price snapshot</span></div>
-            {data.storePerformance.map((performance, index) => {
+            {corePerformance.map((performance, index) => {
               const store = storeMap.get(performance.storeId)!;
               return (
                 <div className="performance-row" key={store.id} style={{ "--store-color": store.color } as React.CSSProperties}>
@@ -553,21 +573,27 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
               );
             })}
             <p className="panel-note">Price index: 100 is the product-level average; lower is cheaper. {storeMap.get(bestPerformance.storeId)!.shortName} leads this snapshot.</p>
+            {traderJoesPerformance && (
+              <p className="performance-panel-overlay">
+                <strong>Trader Joe’s commodity overlay</strong>
+                {integer.format(traderJoesPerformance.comparableProducts)} matched products · not ranked against the five full catalogs
+              </p>
+            )}
           </div>
         </section>
       </header>
 
       <div className="score-strip">
         <div><strong>{integer.format(data.summary.comparableProducts)}</strong><span>comparable products</span></div>
-        <div><strong>{integer.format(data.summary.allStoreProducts)}</strong><span>at all five stores</span></div>
+        <div><strong>{integer.format(data.summary.coreAllStoreProducts)}</strong><span>across all five core stores</span></div>
+        <div><strong>{integer.format(data.summary.traderJoesComparableProducts)}</strong><span>Trader Joe’s commodity matches</span></div>
         <div><strong>{integer.format(data.summary.currentObservationCount)}</strong><span>current price rows</span></div>
-        <div><strong>{minimumPairCount}+</strong><span>in every pair</span></div>
       </div>
 
       <section className="content-section compare-section" id="compare" aria-labelledby="compare-heading">
         <div className="section-intro split-intro">
           <div><p className="eyebrow">Interactive comparison</p><h2 id="compare-heading">Choose your stores.</h2></div>
-          <p>With two stores selected, every result is a shared product. With three to five, choose broad pairwise coverage or require the item at every selected store.</p>
+          <p>With two stores selected, every result is shared. With three or more, choose broad pairwise coverage or require every selected store. Trader Joe’s is optional because its web catalog is intentionally partial.</p>
         </div>
 
         <div className="store-selector" aria-label="Stores to compare">
@@ -575,7 +601,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
             const active = selected.includes(store.id);
             return (
               <button
-                className={`store-toggle ${active ? "active" : ""}`}
+                className={`store-toggle ${active ? "active" : ""} ${store.coverageMode === "commodity-overlay" ? "commodity-overlay" : ""}`}
                 type="button"
                 onClick={() => toggleStore(store.id)}
                 aria-pressed={active}
@@ -583,7 +609,12 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
                 style={{ "--store-color": store.color } as React.CSSProperties}
               >
                 <span className="store-check">{active ? "✓" : "+"}</span>
-                <span><strong>{store.name}</strong><small>{active ? "Included" : "Add to comparison"}</small></span>
+                <span>
+                  <strong>{store.name}</strong>
+                  <small>{store.coverageMode === "commodity-overlay"
+                    ? active ? "Commodity overlay included" : "Add commodity overlay"
+                    : active ? "Included" : "Add to comparison"}</small>
+                </span>
               </button>
             );
           })}
@@ -836,7 +867,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
               <div><strong>{integer.format(data.summary.acceptedCrossSourceMatches)}</strong><span>accepted Whole Foods links</span></div>
               <div><strong>{integer.format(data.summary.directReplacements.safeway)}</strong><span>accepted Safeway direct links</span></div>
               <div><strong>{integer.format(data.summary.directReplacements.qfc)}</strong><span>accepted QFC direct links</span></div>
-              <div><strong>{integer.format(data.summary.queryCount)}</strong><span>captured search queries</span></div>
+              <div><strong>{integer.format(data.summary.acceptedTraderJoesMatches)}</strong><span>accepted Trader Joe’s commodity links</span></div>
             </div>
             <div className="coverage-funnel" aria-label="Progress toward products present at all five stores">
               <div><span>Original four-store Instacart overlap</span><strong>{integer.format(data.summary.instacartAllFourProducts)}</strong></div>
@@ -845,9 +876,9 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
               <i aria-hidden="true">→</i>
               <div><span>Also matched at Whole Foods</span><strong>{integer.format(data.summary.wholeFoodsAllFourProducts)}</strong></div>
               <i aria-hidden="true">→</i>
-              <div className="funnel-result"><span>Confirmed across all five</span><strong>{integer.format(data.summary.allStoreProducts)}</strong></div>
+              <div className="funnel-result"><span>Confirmed across all five core stores</span><strong>{integer.format(data.summary.coreAllStoreProducts)}</strong></div>
             </div>
-            <p className="funnel-note">The two middle sets overlap but are not nested: the final all-five count is their intersection. Direct source catalogs currently contain {integer.format(data.summary.directCatalogProducts.safeway)} Safeway, {integer.format(data.summary.directCatalogProducts.qfc)} QFC, and {integer.format(data.summary.directCatalogProducts.wholefoods)} Whole Foods observations.</p>
+            <p className="funnel-note">The two middle sets overlap but are not nested: the final core-five count is their intersection. Separately, Trader Joe’s contributes {integer.format(data.summary.traderJoesEligibleProducts)} plain-commodity observations and {integer.format(data.summary.traderJoesComparableProducts)} products with strict matches to at least one core store. Its private-label and prepared exclusives are not used to dilute the core coverage number.</p>
           </div>
 
           <div className="research-context-grid">
@@ -895,7 +926,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <div className="content-section products-inner">
           <div className="section-intro split-intro">
             <div><p className="eyebrow">Build your basket</p><h2 id="products-heading">Find it. Price it. Add it.</h2></div>
-            <p>Add the exact products you plan to buy, then use the basket shortcut to compare complete totals. Cross-source links require the same brand, variant, and package quantity; a blank price means no confident current match was captured.</p>
+            <p>Add the exact products you plan to buy, then use the basket shortcut to compare complete totals. Cross-source links require the same product or a strict plain-commodity signature with matching qualifiers and selling unit; a blank price means no confident current match was captured.</p>
           </div>
 
           <div className="filter-panel">
