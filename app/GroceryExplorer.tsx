@@ -7,6 +7,12 @@ import {
   sanitizeBasket,
   type BasketQuantities,
 } from "./basket";
+import {
+  DIET_OPTIONS,
+  getDietOption,
+  productHasDietClaim,
+  type DietFilter,
+} from "./diet";
 
 type StoreId = "pcc" | "metro" | "safeway" | "qfc" | "wholefoods";
 
@@ -202,12 +208,14 @@ function ProductCard({
   product,
   stores,
   selected,
+  diet,
   basketQuantity,
   onAddToBasket,
 }: {
   product: Product;
   stores: Store[];
   selected: StoreId[];
+  diet: DietFilter;
   basketQuantity: number;
   onAddToBasket: (productId: string) => void;
 }) {
@@ -242,6 +250,7 @@ function ProductCard({
           <div className="product-kicker">
             <span>{product.category}</span>
             <span>{product.storeCount} stores</span>
+            {diet !== "all" && <span className="diet-claim-badge">{getDietOption(diet).badge}</span>}
           </div>
           <h3>{product.name}</h3>
           <p>{product.size || product.priceBasis}</p>
@@ -305,6 +314,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
   const [requireAll, setRequireAll] = useState(false);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All categories");
+  const [diet, setDiet] = useState<DietFilter>("all");
   const [winner, setWinner] = useState<WinnerFilter>("all");
   const [saleOnly, setSaleOnly] = useState(false);
   const [sort, setSort] = useState<SortKey>("spread");
@@ -322,7 +332,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
     window.requestAnimationFrame(() => target?.scrollIntoView({ behavior: "auto", block: "start" }));
   }, []);
 
-  useEffect(() => setVisibleCount(48), [selected, requireAll, deferredQuery, category, winner, saleOnly, sort]);
+  useEffect(() => setVisibleCount(48), [selected, requireAll, deferredQuery, category, diet, winner, saleOnly, sort]);
 
   useEffect(() => {
     try {
@@ -357,11 +367,12 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       const searchText = `${product.name} ${product.size} ${product.category}`.toLowerCase();
       const matchesSearch = !deferredQuery || searchText.includes(deferredQuery);
       const matchesCategory = category === "All categories" || product.category === category;
+      const matchesDiet = productHasDietClaim(product, diet);
       const selectedPrices = productPrices(product, selected);
       const matchesSale = !saleOnly || selectedPrices.some((entry) => entry.sale);
       const lowest = lowestStores(product, selected);
       const matchesWinner = winner === "all" || (winner === "tie" ? lowest.length > 1 : lowest.length === 1 && lowest[0] === winner);
-      return matchesSearch && matchesCategory && matchesSale && matchesWinner;
+      return matchesSearch && matchesCategory && matchesDiet && matchesSale && matchesWinner;
     });
     return items.sort((a, b) => {
       if (sort === "spread") return spreadFor(b, selected) - spreadFor(a, selected) || a.name.localeCompare(b.name);
@@ -373,7 +384,14 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       if (sort === "category") return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
       return a.name.localeCompare(b.name);
     });
-  }, [allSelectedProducts, category, deferredQuery, saleOnly, selected, sort, winner]);
+  }, [allSelectedProducts, category, deferredQuery, diet, saleOnly, selected, sort, winner]);
+
+  const dietCounts = useMemo(() => Object.fromEntries(
+    DIET_OPTIONS.map((option) => [
+      option.value,
+      allSelectedProducts.filter((product) => productHasDietClaim(product, option.value)).length,
+    ]),
+  ) as Record<Exclude<DietFilter, "all">, number>, [allSelectedProducts]);
 
   const snapshotBasketTotals = useMemo(() => Object.fromEntries(selected.map((storeId) => [
     storeId,
@@ -447,12 +465,13 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
   function resetFilters() {
     setQuery("");
     setCategory("All categories");
+    setDiet("all");
     setWinner("all");
     setSaleOnly(false);
     setSort("spread");
   }
 
-  const hasFilters = query || category !== "All categories" || winner !== "all" || saleOnly || sort !== "spread";
+  const hasFilters = query || category !== "All categories" || diet !== "all" || winner !== "all" || saleOnly || sort !== "spread";
   let basketVerdict: React.ReactNode = null;
 
   if (basketItems.length > 0) {
@@ -871,10 +890,29 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <div className="filter-panel">
             <label className="search-control"><span className="sr-only">Search products</span><SearchIcon /><input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder={`Search ${integer.format(allSelectedProducts.length)} products…`} /></label>
             <label className="select-control"><span>Category</span><select value={category} onChange={(event) => setCategory(event.target.value)}><option>All categories</option>{data.categories.map((entry) => <option key={entry.category}>{entry.category}</option>)}</select></label>
+            <label className="select-control"><span>Diet</span><select value={diet} onChange={(event) => setDiet(event.target.value as DietFilter)}><option value="all">All products</option>{DIET_OPTIONS.map((option) => <option value={option.value} key={option.value}>{option.label} ({dietCounts[option.value]})</option>)}</select></label>
             <label className="select-control"><span>Lowest price</span><select value={winner} onChange={(event) => setWinner(event.target.value as WinnerFilter)}><option value="all">Any store</option>{selected.map((storeId) => <option value={storeId} key={storeId}>{storeMap.get(storeId)!.shortName}</option>)}<option value="tie">Ties</option></select></label>
             <label className="select-control"><span>Sort</span><select value={sort} onChange={(event) => setSort(event.target.value as SortKey)}><option value="spread">Biggest price spread</option><option value="name">Product name</option><option value="category">Category</option><option value="lowest-price">Lowest price</option></select></label>
             <label className="checkbox-control"><input type="checkbox" checked={saleOnly} onChange={(event) => setSaleOnly(event.target.checked)} /><span>Sales only</span></label>
           </div>
+
+          {diet !== "all" && (
+            <div className={`diet-filter-note ${diet === "gluten-free" ? "celiac-note" : ""}`} role="note" aria-live="polite">
+              <div>
+                <strong>{getDietOption(diet).label}s only</strong>
+                <span>
+                  {diet === "gluten-free"
+                    ? "This conservative filter includes products whose catalog title explicitly says gluten-free; naturally gluten-free foods without that claim are left out."
+                    : "This filter uses explicit wording in the captured catalog title and does not infer a diet from ingredients or product category."}
+                </span>
+              </div>
+              <p>
+                {diet === "gluten-free"
+                  ? <>For celiac safety, verify the current package label, ingredients, and cross-contact information before buying. <a href="https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/questions-and-answers-gluten-free-food-labeling-final-rule" target="_blank" rel="noreferrer">FDA labeling guidance ↗</a></>
+                  : "Ingredients and cross-contact information are not independently verified; check the current package before buying."}
+              </p>
+            </div>
+          )}
 
           <div className="results-heading">
             <p><strong>{integer.format(filtered.length)}</strong> {filtered.length === 1 ? "product" : "products"} · showing {integer.format(Math.min(visibleCount, filtered.length))}</p>
@@ -887,6 +925,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
                 product={product}
                 stores={data.stores}
                 selected={selected}
+                diet={diet}
                 basketQuantity={basket[product.id] ?? 0}
                 onAddToBasket={(productId) => changeBasketQuantity(productId, 1)}
                 key={product.id}
