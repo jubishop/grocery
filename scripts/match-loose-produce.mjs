@@ -39,6 +39,7 @@ function plain(value) {
 }
 
 export function looseProduceKey(record) {
+  if (record?.comparisonEligible === false) return null;
   const title = String(record?.title ?? record?.name ?? "");
   const category = String(record?.category ?? "");
   if (!/\bproduce\b/i.test(category)) return null;

@@ -3,9 +3,14 @@ import { existsSync } from "node:fs";
 import { readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  normalizeDirectStoreRecords,
+  normalizeInstacartRecords,
+} from "./normalize-instacart-pricing.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
+const instacartWeightDetailsPath = path.join(root, "data/instacart-weight-details.json");
 const wholeFoodsPath = path.join(root, "data/whole-foods-capture-checkpoint.json");
 const wholeFoodsMatchesPath = path.join(root, "data/whole-foods-matches.json");
 const aliasesPath = path.join(root, "data/instacart-aliases.json");
@@ -18,8 +23,9 @@ const databasePath = path.join(root, "data/grocery-prices.sqlite");
 const siteDataPath = path.join(root, "data/site-data.json");
 const publicSiteDataPath = path.join(root, "public/site-data.json");
 
-const [instacart, wholeFoods, matchData, aliases, safewayDirect, safewayMatches, qfcDirect, qfcMatches, schema] = await Promise.all([
+const [instacart, instacartWeightDetails, wholeFoods, matchData, aliases, safewayDirect, safewayMatches, qfcDirect, qfcMatches, schema] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
+  readFile(instacartWeightDetailsPath, "utf8").then(JSON.parse),
   readFile(wholeFoodsPath, "utf8").then(JSON.parse),
   readFile(wholeFoodsMatchesPath, "utf8").then(JSON.parse),
   readFile(aliasesPath, "utf8").then(JSON.parse),
@@ -30,7 +36,7 @@ const [instacart, wholeFoods, matchData, aliases, safewayDirect, safewayMatches,
   readFile(schemaPath, "utf8"),
 ]);
 
-instacart.records = instacart.records
+instacart.records = normalizeInstacartRecords(instacart.records, instacartWeightDetails)
   .filter((record) => Number.isFinite(record.price) && record.price > 0)
   .map((record) => ({
     ...record,
@@ -44,8 +50,10 @@ wholeFoods.records = [
       .map((record) => [record.asin, record]),
   ).values(),
 ];
-safewayDirect.records = safewayDirect.records.filter((record) => Number.isFinite(record.price) && record.price > 0);
-qfcDirect.records = qfcDirect.records.filter((record) => Number.isFinite(record.price) && record.price > 0);
+safewayDirect.records = normalizeDirectStoreRecords(safewayDirect.records)
+  .filter((record) => Number.isFinite(record.price) && record.price > 0);
+qfcDirect.records = normalizeDirectStoreRecords(qfcDirect.records)
+  .filter((record) => Number.isFinite(record.price) && record.price > 0);
 
 const stores = [
   {
@@ -228,12 +236,14 @@ const wholeFoodsAllFourProductIds = new Set(
 const productsById = new Map();
 for (const [id, records] of recordsByProduct) {
   const name = mostCommon(records.map((record) => record.name), `Instacart product ${id}`);
+  const comparisonEligibleRecords = records.filter((record) => record.comparisonEligible !== false);
+  const basisRecords = comparisonEligibleRecords.length ? comparisonEligibleRecords : records;
   productsById.set(id, {
     id,
     name,
     size: mostCommon(records.map((record) => record.size)),
     category: classifyProduct(name, records.map((record) => record.category ?? "")),
-    priceBasis: mostCommon(records.map((record) => record.priceBasis), "per item"),
+    priceBasis: mostCommon(basisRecords.map((record) => record.priceBasis), "per item"),
     imageUrl: mostCommon(records.map((record) => record.imageUrl)),
     imagePath: imagePathFor(id) || `/images/${id}.webp`,
   });
@@ -292,7 +302,7 @@ const safewayRunId = `safeway-direct-west-seattle-${localDate(safewayStartedAt)}
 const qfcRunId = `qfc-direct-west-seattle-${localDate(qfcStartedAt)}`;
 const retainedInstacartPriceStoreIds = new Set(["pcc", "metro"]);
 const retainedInstacartPriceRecords = instacart.records.filter((record) => retainedInstacartPriceStoreIds.has(record.storeId));
-const methodology = "Current prices come from four explicit corpora: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, and Whole Foods West Seattle pickup on Amazon.com. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. Clip-once and buy-multiple coupons are not applied to a one-of-each basket. All matching is automatic. Instacart identical IDs are joined directly; retailer-specific aliases and packaged cross-source matches require equivalent brand, numeric variant, package quantity, and protected product claims. Loose produce may match only when normalized name, organic status, variety wording, and selling basis agree. Loose raw meat and seafood may match only by exact normalized cut and an explicitly captured per-pound basis when organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims agree. Poultry additionally requires product-detail qualifier evidence on both sides. Ambiguous candidates are excluded automatically. Safeway and QFC Instacart product identifiers and query evidence remain available for crosswalk auditing, but their obsolete item prices are omitted from SQLite; aggregate markup diagnostics remain in the direct-store matching artifacts.";
+const methodology = "Current prices come from four explicit corpora: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, and Whole Foods West Seattle pickup on Amazon.com. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. For Instacart products marked “Final cost by weight,” the explicit unit rate is canonicalized to dollars per pound; the estimated each total and displayed average weight are retained only as provenance. Legacy variable-weight candidates without a verified unit rate are retained in SQLite but automatically excluded from comparisons. Product URL suffixes are never accepted as sole selling-basis evidence. Clip-once and buy-multiple coupons are not applied to a one-unit basket. All matching is automatic. Instacart identical IDs are joined directly; retailer-specific aliases and packaged cross-source matches require equivalent brand, numeric variant, package quantity, and protected product claims. Loose produce may match only when normalized name, organic status, variety wording, and selling basis agree. Loose raw meat and seafood may match only by exact normalized cut and an explicitly captured per-pound basis when organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims agree. Poultry additionally requires product-detail qualifier evidence on both sides. Ambiguous candidates are excluded automatically. Safeway and QFC Instacart product identifiers and query evidence remain available for crosswalk auditing, but their obsolete item prices are omitted from SQLite; aggregate markup diagnostics remain in the direct-store matching artifacts.";
 
 await rm(databasePath, { force: true });
 const database = new DatabaseSync(databasePath);
@@ -322,8 +332,9 @@ const insertObservation = database.prepare(`
   INSERT INTO price_observations (
     run_id, store_id, product_id, source, external_id, observed_at, observation_date,
     price_cents, original_price_cents, on_sale, available, price_basis, product_url,
-    captured_url, captured_query, captured_category
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?)
+    captured_url, captured_query, captured_category, comparison_eligible,
+    exclusion_reason, pricing_mode, estimated_item_price_cents, estimated_weight_lb
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `);
 const insertQuery = database.prepare(`
   INSERT INTO capture_queries (run_id, store_id, query, category_hint, captured_at, result_count)
@@ -348,6 +359,10 @@ try {
       new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(record.price * 100),
       record.originalPrice == null ? null : Math.round(record.originalPrice * 100), record.sale ? 1 : 0,
       record.priceBasis || "per item", record.productUrl, record.capturedUrl || "", record.query || "", record.category || "",
+      record.comparisonEligible === false ? 0 : 1, record.exclusionReason || "",
+      record.pricingMode || (record.priceBasis === "per lb" ? "unit_price_per_lb" : "fixed_price"),
+      record.estimatedItemPrice == null ? null : Math.round(record.estimatedItemPrice * 100),
+      record.estimatedWeightLb ?? null,
     );
   }
 
@@ -363,6 +378,7 @@ try {
       wholeFoodsRunId, "wholefoods", productId, "amazon_whole_foods", record.asin,
       new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(record.price * 100),
       null, 0, observationPriceBasis, record.productUrl, record.searchUrl || "", record.query || "", record.category || "",
+      1, "", observationPriceBasis === "per lb" ? "unit_price_per_lb" : "fixed_price", null, null,
     );
   }
 
@@ -403,6 +419,9 @@ try {
         new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(record.price * 100),
         record.originalPrice == null ? null : Math.round(record.originalPrice * 100), record.sale ? 1 : 0,
         observationPriceBasis, record.productUrl, record.capturedUrl || "", record.query || "", record.category || "",
+        1, "", record.pricingMode || (observationPriceBasis === "per lb" ? "unit_price_per_lb" : "fixed_price"),
+        record.estimatedItemPrice == null ? null : Math.round(record.estimatedItemPrice * 100),
+        record.estimatedWeightLb ?? null,
       );
     }
   }
@@ -411,6 +430,35 @@ try {
   for (const query of wholeFoods.queries) insertQuery.run(wholeFoodsRunId, "wholefoods", query.query, query.category || "", new Date(query.capturedAt).toISOString(), query.count || 0);
   for (const query of safewayDirect.queries) insertQuery.run(safewayRunId, "safeway", query.query, query.category || "", new Date(query.capturedAt).toISOString(), query.count ?? query.resultCount ?? 0);
   for (const query of qfcDirect.queries) insertQuery.run(qfcRunId, "qfc", query.query, query.category || "", new Date(query.capturedAt).toISOString(), query.count ?? query.resultCount ?? 0);
+
+  const eligibleBasisRows = database.prepare(`
+    SELECT product_id, price_basis, COUNT(*) AS count
+    FROM price_observations
+    WHERE available = 1
+      AND comparison_eligible = 1
+    GROUP BY product_id, price_basis
+  `).all();
+  const eligibleBasesByProduct = new Map();
+  for (const row of eligibleBasisRows) {
+    const bases = eligibleBasesByProduct.get(row.product_id) ?? [];
+    bases.push({ priceBasis: row.price_basis, count: row.count });
+    eligibleBasesByProduct.set(row.product_id, bases);
+  }
+  const excludeBasis = database.prepare(`
+    UPDATE price_observations
+    SET comparison_eligible = 0,
+        exclusion_reason = 'incompatible_product_price_basis'
+    WHERE product_id = ?
+      AND comparison_eligible = 1
+      AND (? = '' OR price_basis <> ?)
+  `);
+  for (const [productId, bases] of eligibleBasesByProduct) {
+    if (bases.length < 2) continue;
+    bases.sort((left, right) => right.count - left.count || left.priceBasis.localeCompare(right.priceBasis));
+    const uniqueWinner = bases[0].count > bases[1].count;
+    const retainedBasis = uniqueWinner ? bases[0].priceBasis : "";
+    excludeBasis.run(productId, retainedBasis, retainedBasis);
+  }
   database.exec("COMMIT");
 } catch (error) {
   database.exec("ROLLBACK");
@@ -422,8 +470,28 @@ const latestRows = database.prepare(`
   FROM price_observations o
   JOIN products p ON p.id = o.product_id
   WHERE o.available = 1
+    AND o.comparison_eligible = 1
   ORDER BY o.observed_at
 `).all();
+const comparisonAudit = database.prepare(`
+  SELECT
+    SUM(CASE
+      WHEN source = 'instacart'
+        AND store_id IN ('pcc', 'metro')
+        AND comparison_eligible = 1
+        AND pricing_mode IN ('final_cost_by_weight', 'unit_price_per_lb')
+      THEN 1 ELSE 0 END
+    ) AS normalized_weight_observations,
+    SUM(CASE
+      WHEN exclusion_reason = 'unverified_variable_weight_price'
+      THEN 1 ELSE 0 END
+    ) AS excluded_unverified_weight_observations,
+    SUM(CASE
+      WHEN exclusion_reason = 'incompatible_product_price_basis'
+      THEN 1 ELSE 0 END
+    ) AS excluded_incompatible_basis_observations
+  FROM price_observations
+`).get();
 
 const siteProductsById = new Map();
 for (const row of latestRows) {
@@ -445,6 +513,9 @@ for (const row of latestRows) {
     url: row.product_url,
     source: row.source,
     observedAt: row.observed_at,
+    pricingMode: row.pricing_mode,
+    estimatedItemPrice: row.estimated_item_price_cents == null ? null : row.estimated_item_price_cents / 100,
+    estimatedWeightLb: row.estimated_weight_lb,
   };
   siteProductsById.set(row.product_id, product);
 }
@@ -644,7 +715,7 @@ const siteData = {
     captureStartedAt: [instacartStartedAt, wholeFoodsStartedAt, safewayStartedAt, qfcStartedAt].sort()[0],
     deliveryArea: "West Seattle, Seattle, WA",
     methodology,
-    caveat: "Catalog prices can differ from in-store shelf prices, vary by fulfillment method, and change at any time. Displayed member, club, and sale prices are used. Clip-once digital coupons and quantity-dependent offers are excluded from the one-of-each baskets.",
+    caveat: "Catalog prices can differ from in-store shelf prices, vary by fulfillment method, and change at any time. Displayed member, club, and sale prices are used. Instacart final-cost-by-weight estimates are compared by their explicit per-pound rate, never by estimated each totals. Unverified variable-weight captures are excluded. Clip-once digital coupons and quantity-dependent offers are excluded from the one-unit baskets.",
     locationNote: "PCC and Metropolitan Market use Instacart catalogs for the selected West Seattle delivery area. Safeway and QFC use direct pickup prices from the listed West Seattle stores. Amazon was set to Seattle 98116 with Whole Foods West Seattle selected for pickup.",
   },
   stores,
@@ -652,6 +723,9 @@ const siteData = {
     capturedProducts: products.length,
     observationCount: retainedInstacartPriceRecords.length + wholeFoods.records.length + safewayDirect.records.length + qfcDirect.records.length,
     currentObservationCount: latestRows.length,
+    normalizedWeightObservations: comparisonAudit.normalized_weight_observations,
+    excludedUnverifiedWeightObservations: comparisonAudit.excluded_unverified_weight_observations,
+    excludedIncompatibleBasisObservations: comparisonAudit.excluded_incompatible_basis_observations,
     comparableProducts: siteProducts.length,
     allStoreProducts: siteProducts.filter((product) => product.storeCount === stores.length).length,
     storeCount: stores.length,

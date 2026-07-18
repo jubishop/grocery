@@ -6,14 +6,22 @@ import {
   productQualifierEvidence,
   productQualifiersCompatible,
 } from "./match-product-qualifiers.mjs";
+import { normalizeInstacartRecords } from "./normalize-instacart-pricing.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const checkpointPath = path.join(root, "data/capture-checkpoint.json");
+const weightDetailsPath = path.join(root, "data/instacart-weight-details.json");
 const outputPath = path.join(root, "data/instacart-aliases.json");
-const checkpoint = JSON.parse(await readFile(checkpointPath, "utf8"));
+const [checkpoint, weightDetails] = await Promise.all([
+  readFile(checkpointPath, "utf8").then(JSON.parse),
+  readFile(weightDetailsPath, "utf8").then(JSON.parse),
+]);
 
 const stores = ["pcc", "metro", "safeway", "qfc"];
-const records = [...new Map(checkpoint.records.map((record) => [`${record.storeId}|${record.id}`, record])).values()];
+const records = [...new Map(
+  normalizeInstacartRecords(checkpoint.records, weightDetails)
+    .map((record) => [`${record.storeId}|${record.id}`, record]),
+).values()];
 
 function plain(value) {
   return String(value ?? "")

@@ -72,6 +72,11 @@ CREATE TABLE price_observations (
   captured_url TEXT NOT NULL DEFAULT '',
   captured_query TEXT NOT NULL DEFAULT '',
   captured_category TEXT NOT NULL DEFAULT '',
+  comparison_eligible INTEGER NOT NULL DEFAULT 1 CHECK (comparison_eligible IN (0, 1)),
+  exclusion_reason TEXT NOT NULL DEFAULT '',
+  pricing_mode TEXT NOT NULL DEFAULT 'fixed_price',
+  estimated_item_price_cents INTEGER CHECK (estimated_item_price_cents IS NULL OR estimated_item_price_cents >= 0),
+  estimated_weight_lb REAL CHECK (estimated_weight_lb IS NULL OR estimated_weight_lb > 0),
   PRIMARY KEY (run_id, store_id, external_id)
 );
 

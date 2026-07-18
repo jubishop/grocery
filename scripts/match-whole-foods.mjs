@@ -8,18 +8,22 @@ import {
 } from "./match-product-qualifiers.mjs";
 import { looseProduceMatches } from "./match-loose-produce.mjs";
 import { looseMeatMatches } from "./match-loose-meat.mjs";
+import { normalizeInstacartRecords } from "./normalize-instacart-pricing.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
+const instacartWeightDetailsPath = path.join(root, "data/instacart-weight-details.json");
 const wholeFoodsPath = path.join(root, "data/whole-foods-capture-checkpoint.json");
 const outputPath = path.join(root, "data/whole-foods-matches.json");
 const aliasesPath = path.join(root, "data/instacart-aliases.json");
 
-const [instacart, wholeFoods, aliases] = await Promise.all([
+const [instacart, instacartWeightDetails, wholeFoods, aliases] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
+  readFile(instacartWeightDetailsPath, "utf8").then(JSON.parse),
   readFile(wholeFoodsPath, "utf8").then(JSON.parse),
   readFile(aliasesPath, "utf8").then(JSON.parse),
 ]);
+instacart.records = normalizeInstacartRecords(instacart.records, instacartWeightDetails);
 
 const storeIds = ["pcc", "metro", "safeway", "qfc"];
 const groups = new Map();
@@ -35,7 +39,9 @@ const allInstacart = [...groups.entries()]
   .map(([id, group]) => {
     const { byStore, productIds } = group;
     const records = [...byStore.values()];
-    const representative = records.sort((a, b) => (b.name?.length ?? 0) - (a.name?.length ?? 0))[0];
+    const eligibleRecords = records.filter((record) => record.comparisonEligible !== false);
+    const representative = (eligibleRecords.length ? eligibleRecords : records)
+      .sort((a, b) => (b.name?.length ?? 0) - (a.name?.length ?? 0))[0];
     return {
       id,
       sourceProductIds: [...productIds],
@@ -45,6 +51,7 @@ const allInstacart = [...groups.entries()]
       priceBasis: representative.priceBasis || "per item",
       productUrl: representative.productUrl || "",
       qualifierText: representative.qualifierText || "",
+      comparisonEligible: eligibleRecords.length > 0,
       storeIds: [...byStore.keys()],
       storeCount: byStore.size,
     };
@@ -157,6 +164,7 @@ for (const item of allInstacart) {
       priceBasis: item.priceBasis,
       productUrl: item.productUrl,
       qualifierText: item.qualifierText,
+      comparisonEligible: item.comparisonEligible,
     };
     const right = { ...candidate, category: candidate.category || item.category };
     return looseProduceMatches(left, right) || looseMeatMatches(left, right);
@@ -171,6 +179,7 @@ for (const item of allInstacart) {
         priceBasis: item.priceBasis,
         productUrl: item.productUrl,
         qualifierText: item.qualifierText,
+        comparisonEligible: item.comparisonEligible,
       },
       { ...candidate, category: candidate.category || item.category },
     );

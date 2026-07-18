@@ -13,6 +13,7 @@
     "data:build": "npm run data:match && node scripts/build-database.mjs && node scripts/generate-csv.mjs",
     "data:refine": "node scripts/refine-dataset.mjs",
     "data:csv": "node scripts/generate-csv.mjs",
+    "data:audit-pricing": "node scripts/audit-weight-pricing.mjs",
     "images": "node scripts/download-images.mjs"
   },
   "dependencies": {

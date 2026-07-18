@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-07-18T18:37:26.084Z",
+  "generatedAt": "2026-07-18T19:36:23.657Z",
   "storeId": "safeway",
   "source": "safeway.com",
   "methodology": "Fully automatic conservative Safeway direct-catalog crosswalk requiring equivalent package quantity and numeric variants, agreement on protected product claims, strong normalized product-name agreement, and an unambiguous best candidate. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically without falling back to Instacart.",
   "counts": {
-    "instacartStoreProducts": 14565,
+    "instacartStoreProducts": 14120,
     "directProductsCaptured": 5649,
-    "accepted": 2065,
+    "accepted": 2045,
     "acceptedByStoreCount": {
-      "1": 824,
-      "2": 586,
-      "3": 441,
+      "1": 816,
+      "2": 575,
+      "3": 440,
       "4": 214
     }
   },
   "markupSummary": {
-    "comparedProducts": 2047,
-    "instacartHigherCount": 1981,
+    "comparedProducts": 2043,
+    "instacartHigherCount": 1978,
     "directHigherCount": 12,
-    "samePriceCount": 54,
-    "totalInstacart": 13482.19,
-    "totalDirect": 11599.56,
+    "samePriceCount": 53,
+    "totalInstacart": 13463.41,
+    "totalDirect": 11600.4,
     "medianDifference": 0.7
   },
   "matches": [
@@ -35,8 +35,8 @@
       "storeCount": 1,
       "instacartName": "21-25 Count Previously Frozen Raw Shrimp",
       "instacartSize": "",
-      "instacartPrice": 14.99,
-      "instacartUrl": "https://www.instacart.com/products/18079356-21-25-count-previously-frozen-raw-shrimp-per-lb?retailerSlug=safeway",
+      "instacartPrice": null,
+      "instacartUrl": "",
       "directId": "960025577",
       "directTitle": "Service Case Previously Frozen Raw Jumbo Shrimp 21 - 25 Count - 1 Lb",
       "directSize": "25 ct",
@@ -49,8 +49,8 @@
       "matchScore": 0.86,
       "matchMargin": 0.86,
       "sizeEvidence": "25 ct = 25 ct",
-      "priceDifference": 8.99,
-      "instacartMarkupPercent": 149.8
+      "priceDifference": -6,
+      "instacartMarkupPercent": -100
     },
     {
       "productId": "2590261",
@@ -7970,34 +7970,6 @@
       "instacartMarkupPercent": 9.1
     },
     {
-      "productId": "3253874",
-      "sourceProductIds": [
-        "3253874"
-      ],
-      "storeIds": [
-        "metro"
-      ],
-      "storeCount": 1,
-      "instacartName": "Broccoli Crown",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184290007",
-      "directTitle": "Broccoli Crown",
-      "directSize": "per item",
-      "directPrice": 2.62,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184290007.html",
-      "capturedAt": "2026-07-17T16:25:48.037Z",
-      "capturedQuery": "Banza",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
       "productId": "18182750",
       "sourceProductIds": [
         "18182750"
@@ -12243,34 +12215,6 @@
       "instacartMarkupPercent": 11.2
     },
     {
-      "productId": "43442197",
-      "sourceProductIds": [
-        "43442197"
-      ],
-      "storeIds": [
-        "metro"
-      ],
-      "storeCount": 1,
-      "instacartName": "Cosmic Crisp Apples",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "960541354",
-      "directTitle": "Cosmic Crisp Apple",
-      "directSize": "per item",
-      "directPrice": 1.25,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960541354.html",
-      "capturedAt": "2026-07-17T17:04:31.390Z",
-      "capturedQuery": "Synergy Honeycrisp Apple",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
       "productId": "29503315",
       "sourceProductIds": [
         "29503315"
@@ -14827,34 +14771,6 @@
       "instacartMarkupPercent": 17.7
     },
     {
-      "productId": "16345637",
-      "sourceProductIds": [
-        "16345637"
-      ],
-      "storeIds": [
-        "qfc"
-      ],
-      "storeCount": 1,
-      "instacartName": "Envy Apple",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "960080685",
-      "directTitle": "Envy Apple",
-      "directSize": "per item",
-      "directPrice": 1.4,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960080685.html",
-      "capturedAt": "2026-07-17T16:27:10.789Z",
-      "capturedQuery": "apples",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
       "productId": "17445541",
       "sourceProductIds": [
         "17445541"
@@ -15136,7 +15052,7 @@
       "directId": "960146766",
       "directTitle": "Field Roast Sausage Breakfast Apple Maple - 9.31 Oz",
       "directSize": "9.31 oz",
-      "directPrice": 8.49,
+      "directPrice": 14.56,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960146766.html",
       "capturedAt": "2026-07-17T18:50:53.733Z",
@@ -15145,8 +15061,8 @@
       "matchScore": 0.93,
       "matchMargin": 0.93,
       "sizeEvidence": "264 g = 9.31 oz",
-      "priceDifference": 1.5,
-      "instacartMarkupPercent": 17.7
+      "priceDifference": -4.57,
+      "instacartMarkupPercent": -31.4
     },
     {
       "productId": "20111582",
@@ -18401,35 +18317,6 @@
       "instacartMarkupPercent": 18
     },
     {
-      "productId": "3039144",
-      "sourceProductIds": [
-        "3039144"
-      ],
-      "storeIds": [
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 2,
-      "instacartName": "Green Skin Avocados",
-      "instacartSize": "",
-      "instacartPrice": 2.39,
-      "instacartUrl": "https://www.instacart.com/products/3039144-green-skin-avocados-each?retailerSlug=safeway",
-      "directId": "960486174",
-      "directTitle": "Green Skin Avocado",
-      "directSize": "per item",
-      "directPrice": 4.99,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960486174.html",
-      "capturedAt": "2026-07-17T16:27:23.710Z",
-      "capturedQuery": "avocado",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": -2.6,
-      "instacartMarkupPercent": -52.1
-    },
-    {
       "productId": "3350778",
       "sourceProductIds": [
         "3350778"
@@ -19682,34 +19569,6 @@
       "sizeEvidence": "20 oz = 20 oz",
       "priceDifference": 0.5,
       "instacartMarkupPercent": 11.1
-    },
-    {
-      "productId": "16631889",
-      "sourceProductIds": [
-        "16631889"
-      ],
-      "storeIds": [
-        "metro"
-      ],
-      "storeCount": 1,
-      "instacartName": "Heirloom Tomato",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "960131122",
-      "directTitle": "Heirloom Tomato",
-      "directSize": "per item",
-      "directPrice": 4.5,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960131122.html",
-      "capturedAt": "2026-07-17T16:27:26.371Z",
-      "capturedQuery": "tomatoes",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
     },
     {
       "productId": "71931",
@@ -21359,35 +21218,6 @@
       "sizeEvidence": "8 oz = 8 oz",
       "priceDifference": 2,
       "instacartMarkupPercent": 16.7
-    },
-    {
-      "productId": "1356661",
-      "sourceProductIds": [
-        "1356661"
-      ],
-      "storeIds": [
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 2,
-      "instacartName": "Honeycrisp Apples",
-      "instacartSize": "",
-      "instacartPrice": 1.5,
-      "instacartUrl": "https://www.instacart.com/products/1356661-honeycrisp-apple-each?retailerSlug=safeway",
-      "directId": "184020020",
-      "directTitle": "Honeycrisp Apple",
-      "directSize": "per item",
-      "directPrice": 1.25,
-      "directOriginalPrice": 1.85,
-      "directUrl": "https://www.safeway.com/shop/product-details.184020020.html",
-      "capturedAt": "2026-07-17T16:27:10.789Z",
-      "capturedQuery": "apples",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": 0.25,
-      "instacartMarkupPercent": 20
     },
     {
       "productId": "151975",
@@ -34038,8 +33868,8 @@
       "instacartUrl": "",
       "directId": "184080032",
       "directTitle": "Navel Orange",
-      "directSize": "per item",
-      "directPrice": 1.25,
+      "directSize": "per lb",
+      "directPrice": 2.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.184080032.html",
       "capturedAt": "2026-07-18T17:28:20.000Z",
@@ -34047,7 +33877,7 @@
       "matchMethod": "normalized_loose_produce_name_basis",
       "matchScore": 1,
       "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
+      "sizeEvidence": "same loose produce name and per lb selling basis",
       "priceDifference": null,
       "instacartMarkupPercent": null
     },
@@ -38470,36 +38300,6 @@
       "instacartMarkupPercent": 18
     },
     {
-      "productId": "3255474",
-      "sourceProductIds": [
-        "3255474"
-      ],
-      "storeIds": [
-        "metro",
-        "pcc",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "instacartName": "Organic Bananas",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184700054",
-      "directTitle": "Organic Banana",
-      "directSize": "per item",
-      "directPrice": 0.33,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184700054.html",
-      "capturedAt": "2026-07-17T16:27:13.227Z",
-      "capturedQuery": "bananas",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
       "productId": "16345572",
       "sourceProductIds": [
         "16345572"
@@ -38515,8 +38315,8 @@
       "instacartUrl": "",
       "directId": "184710086",
       "directTitle": "Organic Broccoli",
-      "directSize": "per item",
-      "directPrice": 4.93,
+      "directSize": "per lb",
+      "directPrice": 3.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.184710086.html",
       "capturedAt": "2026-07-18T17:30:00.000Z",
@@ -38524,64 +38324,7 @@
       "matchMethod": "normalized_loose_produce_name_basis",
       "matchScore": 1,
       "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "2813811",
-      "sourceProductIds": [
-        "2813811"
-      ],
-      "storeIds": [
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 2,
-      "instacartName": "Organic Fuji Apples",
-      "instacartSize": "",
-      "instacartPrice": 1.5,
-      "instacartUrl": "https://www.instacart.com/products/2813811-bulk-organic-fuji-apples-each?retailerSlug=safeway",
-      "directId": "184700039",
-      "directTitle": "Organic Fuji Apple",
-      "directSize": "per item",
-      "directPrice": 1.5,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184700039.html",
-      "capturedAt": "2026-07-17T16:27:10.789Z",
-      "capturedQuery": "apples",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": 0,
-      "instacartMarkupPercent": 0
-    },
-    {
-      "productId": "3260671",
-      "sourceProductIds": [
-        "3260671"
-      ],
-      "storeIds": [
-        "pcc"
-      ],
-      "storeCount": 1,
-      "instacartName": "Organic Gala Apple",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184700038",
-      "directTitle": "Organic Gala Apple",
-      "directSize": "per item",
-      "directPrice": 1.5,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184700038.html",
-      "capturedAt": "2026-07-17T16:27:10.789Z",
-      "capturedQuery": "apples",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
+      "sizeEvidence": "same loose produce name and per lb selling basis",
       "priceDifference": null,
       "instacartMarkupPercent": null
     },
@@ -38617,105 +38360,19 @@
       "instacartMarkupPercent": 17.5
     },
     {
-      "productId": "16631867",
+      "productId": "16855612",
       "sourceProductIds": [
-        "16631867"
+        "16855612"
       ],
       "storeIds": [
-        "pcc"
-      ],
-      "storeCount": 1,
-      "instacartName": "Organic Granny Smith Apple",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184700041",
-      "directTitle": "Organic Granny Smith Apple",
-      "directSize": "per item",
-      "directPrice": 1.5,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184700041.html",
-      "capturedAt": "2026-07-17T16:27:10.789Z",
-      "capturedQuery": "apples",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "16689259",
-      "sourceProductIds": [
-        "16689259"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "instacartName": "Organic Hass Avocado",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184700157",
-      "directTitle": "Organic Hass Avocado",
-      "directSize": "per item",
-      "directPrice": 2.5,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184700157.html",
-      "capturedAt": "2026-07-17T16:27:23.710Z",
-      "capturedQuery": "avocado",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "16647985",
-      "sourceProductIds": [
-        "16647985"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "instacartName": "Organic Heirloom Tomato",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184710003",
-      "directTitle": "Organic Heirloom Tomato",
-      "directSize": "per item",
-      "directPrice": 4.5,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184710003.html",
-      "capturedAt": "2026-07-17T16:27:26.371Z",
-      "capturedQuery": "tomatoes",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "16614421",
-      "sourceProductIds": [
-        "16614421"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro"
+        "safeway",
+        "qfc"
       ],
       "storeCount": 2,
       "instacartName": "Organic Honeycrisp Apple",
       "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
+      "instacartPrice": 3.5,
+      "instacartUrl": "https://www.instacart.com/products/16855612-honey-crisp-n-a-lb?retailerSlug=safeway",
       "directId": "184700411",
       "directTitle": "Organic Honeycrisp Apple",
       "directSize": "per item",
@@ -38728,8 +38385,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "348066",
@@ -38762,19 +38419,18 @@
       "instacartMarkupPercent": 14.3
     },
     {
-      "productId": "16616970",
+      "productId": "1856855",
       "sourceProductIds": [
-        "16616970"
+        "1856855"
       ],
       "storeIds": [
-        "metro",
-        "pcc"
+        "safeway"
       ],
-      "storeCount": 2,
-      "instacartName": "Organic Red Onion",
+      "storeCount": 1,
+      "instacartName": "Organic Red Onions",
       "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
+      "instacartPrice": 2.24,
+      "instacartUrl": "https://www.instacart.com/products/1856855-organic-red-onions-2-lb?retailerSlug=safeway",
       "directId": "184710488",
       "directTitle": "Organic Red Onion",
       "directSize": "per item",
@@ -38787,123 +38443,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "16346292",
-      "sourceProductIds": [
-        "16346292"
-      ],
-      "storeIds": [
-        "pcc"
-      ],
-      "storeCount": 1,
-      "instacartName": "Organic Sweet Onion",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "960016503",
-      "directTitle": "Organic Sweet Onion",
-      "directSize": "per item",
-      "directPrice": 1.27,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960016503.html",
-      "capturedAt": "2026-07-17T16:27:31.242Z",
-      "capturedQuery": "onions",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "16519540",
-      "sourceProductIds": [
-        "16519540"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "instacartName": "Organic Valencia Orange",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184700001",
-      "directTitle": "Organic Valencia Orange",
-      "directSize": "per item",
-      "directPrice": 1.25,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184700001.html",
-      "capturedAt": "2026-07-18T17:28:20.000Z",
-      "capturedQuery": "oranges",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "3402431",
-      "sourceProductIds": [
-        "3402431"
-      ],
-      "storeIds": [
-        "pcc",
-        "qfc"
-      ],
-      "storeCount": 2,
-      "instacartName": "Organic White Onion",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "960084243",
-      "directTitle": "Organic White Onion",
-      "directSize": "per item",
-      "directPrice": 1.87,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960084243.html",
-      "capturedAt": "2026-07-17T16:27:31.242Z",
-      "capturedQuery": "onions",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "3401219",
-      "sourceProductIds": [
-        "3401219"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "instacartName": "Organic Yellow Onion",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184710074",
-      "directTitle": "Organic Yellow Onion",
-      "directSize": "per item",
-      "directPrice": 2.02,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.184710074.html",
-      "capturedAt": "2026-07-17T16:27:31.242Z",
-      "capturedQuery": "onions",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
+      "priceDifference": 0.37,
+      "instacartMarkupPercent": 19.8
     },
     {
       "productId": "188984",
@@ -44945,35 +44486,6 @@
       "instacartMarkupPercent": 15.3
     },
     {
-      "productId": "16614373",
-      "sourceProductIds": [
-        "16614373"
-      ],
-      "storeIds": [
-        "metro",
-        "safeway"
-      ],
-      "storeCount": 2,
-      "instacartName": "Red Potato",
-      "instacartSize": "",
-      "instacartPrice": 0.25,
-      "instacartUrl": "https://www.instacart.com/products/16614373-red-potato-each?retailerSlug=safeway",
-      "directId": "184500048",
-      "directTitle": "Red Potatoes",
-      "directSize": "per item",
-      "directPrice": 0.36,
-      "directOriginalPrice": 0.68,
-      "directUrl": "https://www.safeway.com/shop/product-details.184500048.html",
-      "capturedAt": "2026-07-17T16:27:28.464Z",
-      "capturedQuery": "potatoes",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": -0.11,
-      "instacartMarkupPercent": -30.6
-    },
-    {
       "productId": "17313842",
       "sourceProductIds": [
         "17313842",
@@ -45675,34 +45187,6 @@
       "sizeEvidence": "8.1 oz = 8.1 oz",
       "priceDifference": 0.7,
       "instacartMarkupPercent": 11.1
-    },
-    {
-      "productId": "16621852",
-      "sourceProductIds": [
-        "16621852"
-      ],
-      "storeIds": [
-        "metro"
-      ],
-      "storeCount": 1,
-      "instacartName": "Russet Potato",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "184500022",
-      "directTitle": "Russet Potatoes",
-      "directSize": "per item",
-      "directPrice": 0.77,
-      "directOriginalPrice": 1.11,
-      "directUrl": "https://www.safeway.com/shop/product-details.184500022.html",
-      "capturedAt": "2026-07-17T16:27:28.464Z",
-      "capturedQuery": "potatoes",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
     },
     {
       "productId": "2909668",
@@ -54815,34 +54299,6 @@
       "instacartMarkupPercent": 15.2
     },
     {
-      "productId": "19399024",
-      "sourceProductIds": [
-        "19399024"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "SugarBee Apple",
-      "instacartSize": "",
-      "instacartPrice": 0.9,
-      "instacartUrl": "https://www.instacart.com/products/19399024-sugarbee-sugarbee-apples-each?retailerSlug=safeway",
-      "directId": "960316104",
-      "directTitle": "SugarBee Apple",
-      "directSize": "per item",
-      "directPrice": 0.75,
-      "directOriginalPrice": 1.85,
-      "directUrl": "https://www.safeway.com/shop/product-details.960316104.html",
-      "capturedAt": "2026-07-17T16:27:10.789Z",
-      "capturedQuery": "apples",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": 0.15,
-      "instacartMarkupPercent": 20
-    },
-    {
       "productId": "203513",
       "sourceProductIds": [
         "203513"
@@ -59682,35 +59138,6 @@
       "sizeEvidence": "3 lb = 3 lb",
       "priceDifference": 2.5,
       "instacartMarkupPercent": 14.3
-    },
-    {
-      "productId": "3297927",
-      "sourceProductIds": [
-        "3297927"
-      ],
-      "storeIds": [
-        "metro",
-        "safeway"
-      ],
-      "storeCount": 2,
-      "instacartName": "Yellow Bell Pepper",
-      "instacartSize": "",
-      "instacartPrice": 2.99,
-      "instacartUrl": "https://www.instacart.com/products/3297927-yellow-bell-pepper-each?retailerSlug=safeway",
-      "directId": "184480001",
-      "directTitle": "Yellow Bell Pepper",
-      "directSize": "per item",
-      "directPrice": 1.25,
-      "directOriginalPrice": 2.99,
-      "directUrl": "https://www.safeway.com/shop/product-details.184480001.html",
-      "capturedAt": "2026-07-17T16:25:48.037Z",
-      "capturedQuery": "Banza",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": 1.74,
-      "instacartMarkupPercent": 139.2
     },
     {
       "productId": "40358",

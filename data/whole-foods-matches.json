@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-07-18T18:36:14.080Z",
+  "generatedAt": "2026-07-18T19:35:18.025Z",
   "methodology": "Fully automatic conservative crosswalk requiring normalized brand and product agreement, equivalent package quantity and numeric variants, and agreement on protected product claims. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically.",
   "counts": {
     "instacartAllFour": 473,
     "wholeFoodsCaptured": 3848,
-    "accepted": 116,
-    "acceptedAnyStoreCount": 615,
+    "accepted": 112,
+    "acceptedAnyStoreCount": 603,
     "acceptedByStoreCount": {
-      "1": 196,
-      "2": 173,
-      "3": 130,
-      "4": 116
+      "1": 194,
+      "2": 168,
+      "3": 129,
+      "4": 112
     }
   },
   "matches": [
@@ -2316,84 +2316,6 @@
       "sizeEvidence": "12 fl oz = 12 fl oz"
     },
     {
-      "productId": "16614358",
-      "sourceProductIds": [
-        "16614358"
-      ],
-      "instacartName": "Organic Green Cabbage",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "asin": "B0787TK5FV",
-      "wholeFoodsTitle": "Organic Green Cabbage",
-      "wholeFoodsPrice": 5.37,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0787TK5FV",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71IoNP7O8eL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:21.495Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "16382968",
-      "sourceProductIds": [
-        "16382968"
-      ],
-      "instacartName": "Organic Red Cabbage",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "asin": "B000RH1MXK",
-      "wholeFoodsTitle": "Organic Red Cabbage, 1 Count",
-      "wholeFoodsPrice": 6.11,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B000RH1MXK",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71esHLBkfhL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:21.495Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "16616963",
-      "sourceProductIds": [
-        "16616963"
-      ],
-      "instacartName": "Organic Romaine Lettuce",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "asin": "B07812N26Q",
-      "wholeFoodsTitle": "Organic Romaine Lettuce, 1 Each",
-      "wholeFoodsPrice": 3.69,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B07812N26Q",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/817jgVBD70L._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:27.515Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
       "productId": "47409",
       "sourceProductIds": [
         "47409"
@@ -2499,32 +2421,6 @@
       "matchScore": 0.76,
       "matchMargin": 0.085,
       "sizeEvidence": "2.3 oz = 2.3 oz"
-    },
-    {
-      "productId": "439841",
-      "sourceProductIds": [
-        "439841"
-      ],
-      "instacartName": "Pineapple",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "asin": "B07HHGK3TF",
-      "wholeFoodsTitle": "Pineapple, 1 Each",
-      "wholeFoodsPrice": 3.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B07HHGK3TF",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71twrl8ehjL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:30.524Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
     },
     {
       "productId": "17379091",
@@ -5350,84 +5246,6 @@
       "sizeEvidence": "12 fl oz = 12 fl oz"
     },
     {
-      "productId": "16614358",
-      "sourceProductIds": [
-        "16614358"
-      ],
-      "instacartName": "Organic Green Cabbage",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "asin": "B0787TK5FV",
-      "wholeFoodsTitle": "Organic Green Cabbage",
-      "wholeFoodsPrice": 5.37,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0787TK5FV",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71IoNP7O8eL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:21.495Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "16382968",
-      "sourceProductIds": [
-        "16382968"
-      ],
-      "instacartName": "Organic Red Cabbage",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "asin": "B000RH1MXK",
-      "wholeFoodsTitle": "Organic Red Cabbage, 1 Count",
-      "wholeFoodsPrice": 6.11,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B000RH1MXK",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71esHLBkfhL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:21.495Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "16616963",
-      "sourceProductIds": [
-        "16616963"
-      ],
-      "instacartName": "Organic Romaine Lettuce",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "asin": "B07812N26Q",
-      "wholeFoodsTitle": "Organic Romaine Lettuce, 1 Each",
-      "wholeFoodsPrice": 3.69,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B07812N26Q",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/817jgVBD70L._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:27.515Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
       "productId": "47409",
       "sourceProductIds": [
         "47409"
@@ -5533,32 +5351,6 @@
       "matchScore": 0.76,
       "matchMargin": 0.085,
       "sizeEvidence": "2.3 oz = 2.3 oz"
-    },
-    {
-      "productId": "439841",
-      "sourceProductIds": [
-        "439841"
-      ],
-      "instacartName": "Pineapple",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "asin": "B07HHGK3TF",
-      "wholeFoodsTitle": "Pineapple, 1 Each",
-      "wholeFoodsPrice": 3.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B07HHGK3TF",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71twrl8ehjL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:30.524Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
     },
     {
       "productId": "17379091",
@@ -8282,31 +8074,6 @@
       "matchScore": 1,
       "matchMargin": 0.3833,
       "sizeEvidence": "8 oz = 8 oz"
-    },
-    {
-      "productId": "2677309",
-      "sourceProductIds": [
-        "2677309"
-      ],
-      "instacartName": "Organic Cauliflower",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "metro",
-        "pcc",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B000P6G0GM",
-      "wholeFoodsTitle": "Organic Cauliflower, 1 Each",
-      "wholeFoodsPrice": 5.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B000P6G0GM",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71RGPyyFH9L._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:15.902Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
     },
     {
       "productId": "26691937",
@@ -12413,126 +12180,6 @@
       "sizeEvidence": "12 fl oz = 12 fl oz"
     },
     {
-      "productId": "16382949",
-      "sourceProductIds": [
-        "16382949"
-      ],
-      "instacartName": "Organic Baby Bok Choy",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "asin": "B07FZ83QRZ",
-      "wholeFoodsTitle": "Organic Baby Bok Choy, 1 Each",
-      "wholeFoodsPrice": 1.08,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B07FZ83QRZ",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/713l3em0AFL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:21.495Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "16345572",
-      "sourceProductIds": [
-        "16345572"
-      ],
-      "instacartName": "Organic Broccoli",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "asin": "B000P6L3K0",
-      "wholeFoodsTitle": "Organic Broccoli, 1 Each",
-      "wholeFoodsPrice": 4.17,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B000P6L3K0",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81w4CCxS1uL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:48:50.377Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "2748190",
-      "sourceProductIds": [
-        "2748190"
-      ],
-      "instacartName": "Organic Cucumber",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "asin": "B001PLETDC",
-      "wholeFoodsTitle": "Organic Cucumber",
-      "wholeFoodsPrice": 0.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B001PLETDC",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/719QWPLb0hL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:21.495Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "16616969",
-      "sourceProductIds": [
-        "16616969"
-      ],
-      "instacartName": "Organic Green Bell Pepper",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "asin": "B000P6J14K",
-      "wholeFoodsTitle": "Organic Green Bell Pepper",
-      "wholeFoodsPrice": 1.64,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B000P6J14K",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/713FCNtWInL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:15.902Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "3287153",
-      "sourceProductIds": [
-        "3287153"
-      ],
-      "instacartName": "Organic Lemon",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "asin": "B079DSY3ZL",
-      "wholeFoodsTitle": "Organic Lemon",
-      "wholeFoodsPrice": 1.29,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B079DSY3ZL",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/710O+MVcd6L._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:18.587Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
       "productId": "27747064",
       "sourceProductIds": [
         "27747064"
@@ -16604,6 +16251,29 @@
       "sizeEvidence": "7 oz = 7 oz"
     },
     {
+      "productId": "2763712",
+      "sourceProductIds": [
+        "2763712"
+      ],
+      "instacartName": "O Organics Fresh - Organic Broccoli -",
+      "instacartSize": "",
+      "category": "Produce",
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "asin": "B000P6L3K0",
+      "wholeFoodsTitle": "Organic Broccoli, 1 Each",
+      "wholeFoodsPrice": 4.17,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B000P6L3K0",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81w4CCxS1uL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:48:50.377Z",
+      "matchMethod": "normalized_loose_produce_name_basis",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "same loose produce name and selling basis"
+    },
+    {
       "productId": "29670619",
       "sourceProductIds": [
         "29670619"
@@ -16648,98 +16318,6 @@
       "matchScore": 0.9667,
       "matchMargin": 0.278,
       "sizeEvidence": "1 oz = 1 oz"
-    },
-    {
-      "productId": "19980789",
-      "sourceProductIds": [
-        "19980789"
-      ],
-      "instacartName": "Organic English Cucumber",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "asin": "B0040QYLW8",
-      "wholeFoodsTitle": "Organic English Cucumber",
-      "wholeFoodsPrice": 2.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0040QYLW8",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71PGRMDYvZL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:27.515Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "2750739",
-      "sourceProductIds": [
-        "2750739"
-      ],
-      "instacartName": "Organic Garlic",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "metro"
-      ],
-      "storeCount": 1,
-      "asin": "B0788FLWK1",
-      "wholeFoodsTitle": "Organic Garlic",
-      "wholeFoodsPrice": 0.91,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0788FLWK1",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71KpWVcGo5L._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:48:53.042Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "3106565",
-      "sourceProductIds": [
-        "3106565"
-      ],
-      "instacartName": "Organic Iceberg Lettuce",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "asin": "B0011CXRVK",
-      "wholeFoodsTitle": "Organic Iceberg Lettuce, 1 Each",
-      "wholeFoodsPrice": 2.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0011CXRVK",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/818sx8Pa-dL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:27.515Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
-    },
-    {
-      "productId": "1373765",
-      "sourceProductIds": [
-        "1373765"
-      ],
-      "instacartName": "Organic Red Bell Peppers",
-      "instacartSize": "",
-      "category": "Produce",
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "asin": "B000RGYJQI",
-      "wholeFoodsTitle": "Organic Red Bell Pepper",
-      "wholeFoodsPrice": 3.14,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B000RGYJQI",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71BTI3PDLFL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:21.495Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
     },
     {
       "productId": "102789199",
@@ -16993,6 +16571,29 @@
       "matchScore": 0.8,
       "matchMargin": 0.1333,
       "sizeEvidence": "5.3 oz = 5.3 oz"
+    },
+    {
+      "productId": "17090525",
+      "sourceProductIds": [
+        "17090525"
+      ],
+      "instacartName": "Pineapple",
+      "instacartSize": "1 ct",
+      "category": "Produce",
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "asin": "B07HHGK3TF",
+      "wholeFoodsTitle": "Pineapple, 1 Each",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07HHGK3TF",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71twrl8ehjL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:49:30.524Z",
+      "matchMethod": "normalized_loose_produce_name_basis",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "same loose produce name and selling basis"
     },
     {
       "productId": "20712639",

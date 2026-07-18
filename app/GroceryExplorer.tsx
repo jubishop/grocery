@@ -44,6 +44,9 @@ type Price = {
   url: string;
   source: string;
   observedAt: string;
+  pricingMode: "fixed_price" | "unit_price_per_lb" | "final_cost_by_weight";
+  estimatedItemPrice: number | null;
+  estimatedWeightLb: number | null;
 };
 
 type Product = {
@@ -91,6 +94,9 @@ export type Dataset = {
     capturedProducts: number;
     observationCount: number;
     currentObservationCount: number;
+    normalizedWeightObservations: number;
+    excludedUnverifiedWeightObservations: number;
+    excludedIncompatibleBasisObservations: number;
     comparableProducts: number;
     allStoreProducts: number;
     storeCount: number;
@@ -222,6 +228,10 @@ function ProductCard({
   const available = productPrices(product, selected);
   const winners = lowestStores(product, selected);
   const spread = spreadFor(product, selected);
+  const basketUnitLabel = product.priceBasis === "per lb" ? "lb" : "item";
+  const basketQuantityLabel = product.priceBasis === "per lb"
+    ? `${basketQuantity} ${basketQuantity === 1 ? "pound" : "pounds"}`
+    : `${basketQuantity} ${basketQuantity === 1 ? "item" : "items"}`;
   const winnerLabel = winners.length === available.length
     ? "Same price"
     : winners.length > 1
@@ -280,7 +290,7 @@ function ProductCard({
             >
               <span>{store.shortName}</span>
               <div><strong>{money.format(price.price)}</strong>{price.originalPrice !== null && <s>{money.format(price.originalPrice)}</s>}</div>
-              <small>{price.priceBasis}</small>
+              <small>{price.priceBasis}{price.pricingMode === "final_cost_by_weight" ? " · weight-normalized" : ""}</small>
               <small className="price-source">{price.sale ? "sale shown · " : ""}{priceSourceLabels[price.source]?.label ?? price.source}</small>
               <small>{priceSourceLabels[price.source]?.action ?? "View source"} ↗</small>
             </a>
@@ -299,11 +309,11 @@ function ProductCard({
           onClick={() => onAddToBasket(product.id)}
           disabled={basketQuantity >= MAX_BASKET_QUANTITY}
           aria-label={basketQuantity > 0
-            ? `Add another ${product.name} to basket. Current quantity ${basketQuantity}`
-            : `Add ${product.name} to basket`}
+            ? `Add another ${basketUnitLabel} of ${product.name} to basket. Current quantity ${basketQuantityLabel}`
+            : `Add one ${basketUnitLabel} of ${product.name} to basket`}
         >
           <span aria-hidden="true">{basketQuantity > 0 ? basketQuantity : "+"}</span>
-          {basketQuantity > 0 ? "Add another" : "Add to basket"}
+          {basketQuantity > 0 ? `Add another ${basketUnitLabel}` : `Add 1 ${basketUnitLabel}`}
         </button>
       </div>
     </article>
@@ -522,7 +532,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
             <p className="eyebrow">West Seattle · direct + marketplace snapshot · {integer.format(data.summary.comparableProducts)} comparable products</p>
             <h1>Five stores.<br /><em>One honest price map.</em></h1>
             <p className="hero-deck">
-              PCC, Metropolitan Market, Safeway, QFC, and Whole Foods compared product by product. Every two-store pairing currently has at least <strong>{integer.format(minimumPairCount)} confidently matched items</strong>—and you can choose the matchup.
+              PCC, Metropolitan Market, Safeway, QFC, and Whole Foods compared product by product. Every two-store pairing currently has at least <strong>{integer.format(minimumPairCount)} confidently matched products</strong>—and you can choose the matchup.
             </p>
             <div className="hero-actions">
               <a className="primary-button" href="#basket">Build your basket <ArrowIcon /></a>
@@ -610,7 +620,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
                 <div className="basket-list-heading">
                   <div>
                     <span>My list</span>
-                    <strong>{basketItems.length} {basketItems.length === 1 ? "product" : "products"} · {basketUnitCount} {basketUnitCount === 1 ? "item" : "items"}</strong>
+                    <strong>{basketItems.length} {basketItems.length === 1 ? "product" : "products"} · {basketUnitCount} {basketUnitCount === 1 ? "unit" : "units"}</strong>
                   </div>
                   <button type="button" onClick={() => setBasket({})}>Clear basket</button>
                 </div>
@@ -643,14 +653,14 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
                               : `At ${availableStoreCount} of ${selected.length} selected stores`}
                           </small>
                         </div>
-                        <div className="quantity-stepper" role="group" aria-label={`Quantity for ${product.name}`}>
-                          <button type="button" onClick={() => changeBasketQuantity(product.id, -1)} aria-label={`Remove one ${product.name}`}>−</button>
-                          <output aria-label={`${quantity} in basket`}>{quantity}</output>
+                        <div className="quantity-stepper" role="group" aria-label={`Quantity for ${product.name} in ${product.priceBasis === "per lb" ? "pounds" : "items"}`}>
+                          <button type="button" onClick={() => changeBasketQuantity(product.id, -1)} aria-label={`Remove one ${product.priceBasis === "per lb" ? "pound" : "item"} of ${product.name}`}>−</button>
+                          <output aria-label={`${quantity} ${product.priceBasis === "per lb" ? (quantity === 1 ? "pound" : "pounds") : (quantity === 1 ? "item" : "items")} in basket`}>{quantity}</output>
                           <button
                             type="button"
                             onClick={() => changeBasketQuantity(product.id, 1)}
                             disabled={quantity >= MAX_BASKET_QUANTITY}
-                            aria-label={`Add one ${product.name}`}
+                            aria-label={`Add one ${product.priceBasis === "per lb" ? "pound" : "item"} of ${product.name}`}
                           >
                             +
                           </button>
@@ -706,7 +716,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
 
         <div className="comparison-overview">
           <article className="basket-card">
-            <div className="card-heading"><span>Snapshot-wide one-of-each basket</span><span>{strictCommonProducts.length} products at every selected store</span></div>
+            <div className="card-heading"><span>Snapshot-wide one-unit basket</span><span>{strictCommonProducts.length} products at every selected store</span></div>
             <div className="basket-totals">
               {snapshotBasketRanking.map((storeId, index) => {
                 const store = storeMap.get(storeId)!;
@@ -939,7 +949,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       </section>
 
       {basketUnitCount > 0 && (
-        <a className="basket-jump" href="#basket" aria-label={`View basket with ${basketUnitCount} ${basketUnitCount === 1 ? "item" : "items"} and compare totals`}>
+        <a className="basket-jump" href="#basket" aria-label={`View basket with ${basketUnitCount} ${basketUnitCount === 1 ? "unit" : "units"} and compare totals`}>
           <span aria-hidden="true">{basketUnitCount}</span>
           <div>
             <small>My basket</small>

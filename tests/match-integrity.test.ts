@@ -5,6 +5,10 @@ import test from "node:test";
 import { looseMeatMatches } from "../scripts/match-loose-meat.mjs";
 import { looseProduceMatches } from "../scripts/match-loose-produce.mjs";
 import {
+  normalizeDirectStoreRecords,
+  normalizeInstacartRecords,
+} from "../scripts/normalize-instacart-pricing.mjs";
+import {
   crossSourceQualifiersCompatible,
   numericProductVariantsCompatible,
   productQualifierEvidence,
@@ -18,6 +22,7 @@ const data = (name: string) => readFile(
 test("generated crosswalks are one-to-one and reproduce their automatic evidence", async () => {
   const [
     instacart,
+    instacartWeightDetails,
     aliases,
     wholeFoods,
     wholeFoodsMatches,
@@ -27,6 +32,7 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     qfcMatches,
   ] = await Promise.all([
     data("capture-checkpoint.json"),
+    data("instacart-weight-details.json"),
     data("instacart-aliases.json"),
     data("whole-foods-capture-checkpoint.json"),
     data("whole-foods-matches.json"),
@@ -39,7 +45,7 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
   assert.equal(Object.hasOwn(aliases, "reviewEvidence"), false);
 
   const instacartByCanonical = new Map<string, Array<Record<string, unknown>>>();
-  for (const record of instacart.records) {
+  for (const record of normalizeInstacartRecords(instacart.records, instacartWeightDetails)) {
     const canonicalId = aliases.aliases[record.id] ?? record.id;
     const records = instacartByCanonical.get(canonicalId) ?? [];
     records.push(record);
@@ -90,8 +96,8 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
   };
 
   verify(wholeFoodsMatches.allMatches, wholeFoods.records, "asin");
-  verify(safewayMatches.matches, safeway.records, "id");
-  verify(qfcMatches.matches, qfc.records, "id");
+  verify(safewayMatches.matches, normalizeDirectStoreRecords(safeway.records), "id");
+  verify(qfcMatches.matches, normalizeDirectStoreRecords(qfc.records), "id");
 
   assert.equal(
     wholeFoodsMatches.allMatches.some((match: Record<string, string>) => (
@@ -113,6 +119,13 @@ test("published comparisons never mix selling bases", async () => {
       1,
       `${product.id} ${product.name} mixes ${[...bases].join(" and ")}`,
     );
+    for (const price of Object.values(product.prices) as any[]) {
+      assert.notEqual(
+        price.pricingMode,
+        "unverified_variable_weight",
+        `${product.id} ${product.name} published an unverified weight price`,
+      );
+    }
   }
 });
 
@@ -122,13 +135,24 @@ test("live produce and meat captures produce strict cross-store comparisons", as
 
   const navelOrange: any = byId.get("3401790");
   assert.deepEqual(Object.keys(navelOrange.prices).sort(), ["metro", "pcc", "safeway"]);
-  assert.equal(navelOrange.prices.safeway.priceBasis, "per item");
+  assert.equal(navelOrange.prices.pcc.priceBasis, "per lb");
+  assert.equal(navelOrange.prices.metro.priceBasis, "per lb");
+  assert.equal(navelOrange.prices.pcc.price, 2.99);
+  assert.equal(navelOrange.prices.metro.price, 2.09);
+  assert.equal(navelOrange.prices.pcc.estimatedItemPrice, 2.34);
+  assert.equal(navelOrange.prices.metro.estimatedItemPrice, 1.88);
+  assert.equal(navelOrange.prices.safeway.priceBasis, "per lb");
+  assert.equal(navelOrange.prices.safeway.price, 2.49);
+  assert.equal(navelOrange.prices.safeway.estimatedItemPrice, 1.25);
 
   const organicBroccoli: any = byId.get("16345572");
   assert.deepEqual(
     Object.keys(organicBroccoli.prices).sort(),
-    ["metro", "pcc", "safeway", "wholefoods"],
+    ["metro", "pcc", "safeway"],
   );
+  assert.equal(organicBroccoli.prices.pcc.price, 2.99);
+  assert.equal(organicBroccoli.prices.metro.price, 4.79);
+  assert.equal(organicBroccoli.prices.safeway.price, 3.79);
 
   const groundBeef: any = byId.get("297310");
   assert.deepEqual(Object.keys(groundBeef.prices).sort(), ["qfc", "safeway"]);
@@ -136,4 +160,14 @@ test("live produce and meat captures produce strict cross-store comparisons", as
   assert.equal(groundBeef.prices.safeway.priceBasis, "per lb");
   assert.equal(groundBeef.prices.qfc.price, 8.49);
   assert.equal(groundBeef.prices.safeway.price, 8.49);
+
+  const celeryRoot: any = byId.get("16383572");
+  assert.deepEqual(Object.keys(celeryRoot.prices).sort(), ["metro", "pcc"]);
+  assert.equal(celeryRoot.priceBasis, "per lb");
+  assert.equal(celeryRoot.prices.pcc.price, 2.99);
+  assert.equal(celeryRoot.prices.metro.price, 4.19);
+  assert.equal(celeryRoot.prices.pcc.estimatedItemPrice, 5.98);
+  assert.equal(celeryRoot.prices.metro.estimatedItemPrice, 0.38);
+  assert.equal(celeryRoot.prices.pcc.pricingMode, "final_cost_by_weight");
+  assert.equal(celeryRoot.prices.metro.pricingMode, "final_cost_by_weight");
 });

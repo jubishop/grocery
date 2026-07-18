@@ -74,6 +74,7 @@ function plain(value) {
 }
 
 export function looseMeatKey(record) {
+  if (record?.comparisonEligible === false) return null;
   const title = String(record?.title ?? record?.name ?? "");
   if (!/\b(?:meat|seafood)\b/i.test(String(record?.category ?? ""))) return null;
   if (String(record?.priceBasis ?? "").toLowerCase() !== "per lb") return null;
