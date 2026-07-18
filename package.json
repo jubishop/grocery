@@ -9,7 +9,7 @@
     "start": "vinext start",
     "lint": "tsc --noEmit",
     "test": "node --test tests/*.test.ts",
-    "data:match": "node scripts/match-instacart-aliases.mjs && node scripts/match-whole-foods.mjs && node scripts/match-direct-store.mjs safeway && node scripts/match-direct-store.mjs qfc",
+    "data:match": "node scripts/match-instacart-aliases.mjs && node scripts/match-whole-foods.mjs && node scripts/match-direct-store.mjs safeway && node scripts/match-direct-store.mjs qfc && node scripts/match-trader-joes.mjs",
     "data:build": "npm run data:match && node scripts/build-database.mjs && node scripts/generate-csv.mjs",
     "data:refine": "node scripts/refine-dataset.mjs",
     "data:csv": "node scripts/generate-csv.mjs",

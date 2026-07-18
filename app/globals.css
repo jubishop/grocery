@@ -194,11 +194,15 @@ button { color: inherit; }
 .store-toggle { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 17px; text-align: left; background: var(--cream); border: 1px solid var(--line); border-radius: 15px; cursor: pointer; transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease; }
 .store-toggle:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(25,37,29,.07); }
 .store-toggle.active { border-color: color-mix(in srgb, var(--store-color) 55%, white); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--store-color) 25%, transparent); }
+.store-toggle.commodity-overlay { background: #fff8f2; border-style: dashed; }
+.store-toggle.commodity-overlay strong::after { content: "overlay"; display: inline-block; margin-left: 7px; padding: 2px 5px; color: #7b302a; font-size: .55rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: #f3ded6; border-radius: 999px; vertical-align: 1px; }
 .store-check { display: grid; flex: 0 0 29px; place-items: center; width: 29px; height: 29px; color: white; background: #b7bbb7; border-radius: 50%; font-size: .8rem; font-weight: 850; }
 .store-toggle.active .store-check { background: var(--store-color); }
 .store-toggle > span:last-child { display: flex; flex-direction: column; min-width: 0; }
 .store-toggle strong { overflow: hidden; font-size: .85rem; text-overflow: ellipsis; white-space: nowrap; }
 .store-toggle small { color: var(--muted); font-size: .7rem; }
+.performance-panel-overlay { display: flex; flex-direction: column; gap: 3px; margin: 13px 18px 18px; padding: 12px 14px; color: #5f2b29; font-size: .72rem; line-height: 1.45; background: #f7e8e2; border: 1px dashed #c89385; border-radius: 10px; }
+.performance-panel-overlay strong { font-size: .76rem; }
 
 .mode-switch { display: inline-flex; gap: 3px; margin-top: 15px; padding: 4px; background: #e6e3da; border-radius: 999px; }
 .mode-switch button { padding: 9px 15px; color: var(--muted); background: transparent; border: 0; border-radius: 999px; cursor: pointer; font-size: .76rem; font-weight: 750; }
@@ -435,6 +439,7 @@ a.store-price:hover { background: white; box-shadow: inset 0 0 0 1px var(--store
 .store-price s { color: var(--muted); font-size: .65rem; }
 .store-price small { margin-top: 3px; color: var(--muted); font-size: .58rem; }
 .store-price .price-source { color: var(--store-color); font-weight: 800; }
+.store-price .price-alias { max-width: 18ch; overflow: hidden; color: #6b4a43; text-overflow: ellipsis; white-space: nowrap; }
 .unavailable-price { border-top-color: #c8cac6; }
 .unavailable-price > span { color: var(--muted); }
 .unavailable-price strong { margin-top: 5px; color: #979c97; font-size: .7rem; }

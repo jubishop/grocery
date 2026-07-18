@@ -100,3 +100,46 @@ test("weighted estimates retain provenance but only verified unit rates are comp
     database.close();
   }
 });
+
+test("Trader Joe's is published as a searchable commodity overlay", () => {
+  const database = new DatabaseSync(databasePath, { readOnly: true });
+  try {
+    const observations = database.prepare(`
+      SELECT COUNT(*) AS count
+      FROM price_observations
+      WHERE source = 'traderjoes.com'
+        AND store_id = 'traderjoes'
+    `).get() as { count: number };
+    const matches = database.prepare(`
+      SELECT COUNT(*) AS count
+      FROM product_matches
+      WHERE source = 'traderjoes.com'
+    `).get() as { count: number };
+    const forbiddenPaths = database.prepare(`
+      SELECT COUNT(*) AS count
+      FROM product_matches
+      WHERE LOWER(match_method) LIKE '%human%'
+         OR LOWER(match_method) LIKE '%manual%'
+         OR LOWER(match_method) LIKE '%review%'
+         OR LOWER(match_method) LIKE '%override%'
+    `).get() as { count: number };
+    const siteData = JSON.parse(readFileSync(siteDataPath, "utf8"));
+    const traderJoes = siteData.stores.find((store: { id: string }) => store.id === "traderjoes");
+    const traderProducts = siteData.products.filter((product: any) => product.prices.traderjoes);
+    const butter = traderProducts.find((product: any) => (
+      product.searchAliases.includes("Butter Quarters, Salted")
+    ));
+
+    assert.equal(traderJoes.coverageMode, "commodity-overlay");
+    assert.equal(siteData.summary.coreStoreCount, 5);
+    assert.equal(siteData.summary.coreAllStoreProducts, 64);
+    assert.equal(observations.count, siteData.summary.traderJoesEligibleProducts);
+    assert.equal(matches.count, siteData.summary.acceptedTraderJoesMatches);
+    assert.equal(traderProducts.length, siteData.summary.traderJoesComparableProducts);
+    assert.ok(butter);
+    assert.equal(butter.prices.traderjoes.sourceTitle, "Butter Quarters, Salted");
+    assert.equal(forbiddenPaths.count, 0);
+  } finally {
+    database.close();
+  }
+});
