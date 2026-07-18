@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-07-18T02:40:20.909Z",
+  "generatedAt": "2026-07-18T03:29:28.904Z",
   "methodology": "Conservative automatic crosswalk: matching normalized brand, protected organic/gluten-free variant claims, product/flavor tokens including non-GMO and plant-based descriptors, and equivalent package quantity; ambiguous candidates are excluded.",
   "counts": {
     "instacartAllFour": 472,
-    "wholeFoodsCaptured": 3847,
-    "accepted": 306,
+    "wholeFoodsCaptured": 3848,
+    "accepted": 309,
     "review": 45,
     "lowReview": 30,
-    "acceptedAnyStoreCount": 860,
+    "acceptedAnyStoreCount": 896,
     "acceptedByStoreCount": {
       "1": 216,
       "2": 191,
-      "3": 147,
-      "4": 306
+      "3": 180,
+      "4": 309
     }
   },
   "matches": [
@@ -5494,6 +5494,33 @@
       "manualReviewNote": "OLIPOP Cherry Cola prebiotic soda, single 12 fl oz can"
     },
     {
+      "productId": "50176307",
+      "sourceProductIds": [
+        "50176307"
+      ],
+      "instacartName": "OLIPOP Prebiotic Soda, Classic Grape, Shelf Stable",
+      "instacartSize": "4 x 12 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B0DCLCWB3F",
+      "wholeFoodsTitle": "OLIPOP Prebiotic Soda Pop, Classic Grape, Prebiotics, Botanicals, Plant Fiber, 12 fl oz (4 Cans)",
+      "wholeFoodsPrice": 9.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0DCLCWB3F",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71lBgEzqJ9L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T19:14:51.419Z",
+      "matchScore": 0.6071,
+      "matchMargin": 0,
+      "sizeEvidence": "48 fl oz = 12 fl oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: OLIPOP Classic Grape prebiotic soda, 4 x 12 fl oz"
+    },
+    {
       "productId": "25164692",
       "sourceProductIds": [
         "25164692",
@@ -5603,6 +5630,33 @@
       "matchMargin": 0.1671,
       "sizeEvidence": "12 fl oz = 12 fl oz",
       "manualReviewNote": "OLIPOP Ginger Ale prebiotic soda, single 12 fl oz can"
+    },
+    {
+      "productId": "50176349",
+      "sourceProductIds": [
+        "50176349"
+      ],
+      "instacartName": "OLIPOP Prebiotic Soda, Strawberry Vanilla, Shelf Stable",
+      "instacartSize": "4 x 12 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B0DCKSLPJR",
+      "wholeFoodsTitle": "Sponsored OLIPOP Prebiotic Soda Pop, Strawberry Vanilla, Prebiotics, Botanicals, Plant Fiber, 12 fl oz (4 Cans)",
+      "wholeFoodsPrice": 9.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0DCKSLPJR",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71uFCUlw7FL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:51:26.992Z",
+      "matchScore": 0.6,
+      "matchMargin": 0,
+      "sizeEvidence": "48 fl oz = 12 fl oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: OLIPOP Strawberry Vanilla prebiotic soda, 4 x 12 fl oz"
     },
     {
       "productId": "17314724",
@@ -7429,6 +7483,34 @@
       "sizeEvidence": "2 oz = 2 fl oz",
       "matchMethod": "human_reviewed_brand_variant_size",
       "manualReviewNote": "Exact live Whole Foods match verified: Sponsored TABASCO Brand Original Red Pepper Hot Sauce, Medium Heat, Glass Bottle, Classic & Versatile Flavor, Three Simple Ingredients, Great for Dips, Tacos, Eggs, Pizza, Oysters & More, 2 Fl Oz (Pack of 1)"
+    },
+    {
+      "productId": "30864",
+      "sourceProductIds": [
+        "3239255",
+        "30864"
+      ],
+      "instacartName": "TATE'S Walnut Chocolate Chip Cookies",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B06XZM52NQ",
+      "wholeFoodsTitle": "Tate's Bake Shop, Chocolate Chip Cookies, 7 Ounce",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B06XZM52NQ",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71odot8zmpL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T18:30:03.219Z",
+      "matchScore": 0.7314,
+      "matchMargin": 0,
+      "sizeEvidence": "7 oz = 7 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Tate's Bake Shop chocolate chip cookies, 7 oz"
     },
     {
       "productId": "200605",
@@ -15659,6 +15741,33 @@
       "manualReviewNote": "OLIPOP Cherry Cola prebiotic soda, single 12 fl oz can"
     },
     {
+      "productId": "50176307",
+      "sourceProductIds": [
+        "50176307"
+      ],
+      "instacartName": "OLIPOP Prebiotic Soda, Classic Grape, Shelf Stable",
+      "instacartSize": "4 x 12 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B0DCLCWB3F",
+      "wholeFoodsTitle": "OLIPOP Prebiotic Soda Pop, Classic Grape, Prebiotics, Botanicals, Plant Fiber, 12 fl oz (4 Cans)",
+      "wholeFoodsPrice": 9.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0DCLCWB3F",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71lBgEzqJ9L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T19:14:51.419Z",
+      "matchScore": 0.6071,
+      "matchMargin": 0,
+      "sizeEvidence": "48 fl oz = 12 fl oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: OLIPOP Classic Grape prebiotic soda, 4 x 12 fl oz"
+    },
+    {
       "productId": "25164692",
       "sourceProductIds": [
         "25164692",
@@ -15768,6 +15877,33 @@
       "matchMargin": 0.1671,
       "sizeEvidence": "12 fl oz = 12 fl oz",
       "manualReviewNote": "OLIPOP Ginger Ale prebiotic soda, single 12 fl oz can"
+    },
+    {
+      "productId": "50176349",
+      "sourceProductIds": [
+        "50176349"
+      ],
+      "instacartName": "OLIPOP Prebiotic Soda, Strawberry Vanilla, Shelf Stable",
+      "instacartSize": "4 x 12 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B0DCKSLPJR",
+      "wholeFoodsTitle": "Sponsored OLIPOP Prebiotic Soda Pop, Strawberry Vanilla, Prebiotics, Botanicals, Plant Fiber, 12 fl oz (4 Cans)",
+      "wholeFoodsPrice": 9.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0DCKSLPJR",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71uFCUlw7FL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:51:26.992Z",
+      "matchScore": 0.6,
+      "matchMargin": 0,
+      "sizeEvidence": "48 fl oz = 12 fl oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: OLIPOP Strawberry Vanilla prebiotic soda, 4 x 12 fl oz"
     },
     {
       "productId": "17314724",
@@ -17596,6 +17732,34 @@
       "manualReviewNote": "Exact live Whole Foods match verified: Sponsored TABASCO Brand Original Red Pepper Hot Sauce, Medium Heat, Glass Bottle, Classic & Versatile Flavor, Three Simple Ingredients, Great for Dips, Tacos, Eggs, Pizza, Oysters & More, 2 Fl Oz (Pack of 1)"
     },
     {
+      "productId": "30864",
+      "sourceProductIds": [
+        "3239255",
+        "30864"
+      ],
+      "instacartName": "TATE'S Walnut Chocolate Chip Cookies",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B06XZM52NQ",
+      "wholeFoodsTitle": "Tate's Bake Shop, Chocolate Chip Cookies, 7 Ounce",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B06XZM52NQ",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71odot8zmpL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T18:30:03.219Z",
+      "matchScore": 0.7314,
+      "matchMargin": 0,
+      "sizeEvidence": "7 oz = 7 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Tate's Bake Shop chocolate chip cookies, 7 oz"
+    },
+    {
       "productId": "200605",
       "sourceProductIds": [
         "200605"
@@ -18677,6 +18841,58 @@
       "sizeEvidence": "7 oz = 7 oz"
     },
     {
+      "productId": "129868",
+      "sourceProductIds": [
+        "129868"
+      ],
+      "instacartName": "Applegate Gluten-Free Chicken Nuggets",
+      "instacartSize": "16 oz",
+      "category": "Frozen",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B006T88ZOK",
+      "wholeFoodsTitle": "Applegate, Natural Chicken Nuggets Family Size, 16oz (Frozen)",
+      "wholeFoodsPrice": 14.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B006T88ZOK",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91OTxrgN1NL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T03:24:14.767Z",
+      "matchScore": 0.5325,
+      "matchMargin": 0,
+      "sizeEvidence": "16 oz = 16 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Applegate gluten-free natural chicken nuggets, family-size 16 oz bag"
+    },
+    {
+      "productId": "16880969",
+      "sourceProductIds": [
+        "16880969"
+      ],
+      "instacartName": "Applegate Great Organic Beef Hot Dog Uncured",
+      "instacartSize": "10 oz",
+      "category": "Meat & Seafood",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B08CBZXQ5Z",
+      "wholeFoodsTitle": "Applegate Organic Uncured Beef Hot Dogs, 10 OZ",
+      "wholeFoodsPrice": 8.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08CBZXQ5Z",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91PY3h0xzzL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T03:24:14.767Z",
+      "matchScore": 0.7708,
+      "matchMargin": 0,
+      "sizeEvidence": "10 oz = 10 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Applegate organic uncured beef hot dogs, 10 oz"
+    },
+    {
       "productId": "2721579",
       "sourceProductIds": [
         "2721579",
@@ -18701,6 +18917,32 @@
       "matchScore": 0.88,
       "matchMargin": 0.54,
       "sizeEvidence": "4 oz = 4 oz"
+    },
+    {
+      "productId": "35637",
+      "sourceProductIds": [
+        "35637"
+      ],
+      "instacartName": "ARROWHEAD Brand  Mountain Spring Water, 16.9-ounce plastic bottles (Pack of 24)",
+      "instacartSize": "24 x 16.9 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "qfc",
+        "safeway",
+        "metro"
+      ],
+      "storeCount": 3,
+      "asin": "B00J1NX9NW",
+      "wholeFoodsTitle": "Arrowhead Water Spring 500 Milliliter, 16.91 Fl Oz (Pack of 24)",
+      "wholeFoodsPrice": 7.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00J1NX9NW",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81t31Qg3YBL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:00:19.974Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.52,
+      "matchMargin": 0.52,
+      "sizeEvidence": "405.59999999999997 fl oz = 12000 ml",
+      "manualReviewNote": "Exact Whole Foods capture match: Arrowhead spring water, 24 x 16.9 fl oz bottles"
     },
     {
       "productId": "32397870",
@@ -19128,6 +19370,32 @@
       "sizeEvidence": "22 oz = 22 oz"
     },
     {
+      "productId": "50587268",
+      "sourceProductIds": [
+        "50587268"
+      ],
+      "instacartName": "Bob's Red Mill Homestyle Buttermilk Pancake & Waffle Mix 20 oz Signature Blend",
+      "instacartSize": "20 oz",
+      "category": "Breakfast Foods",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B0D5JXMKV3",
+      "wholeFoodsTitle": "Bob's Red Mill Homestyle Buttermilk Pancake & Waffle Mix - 20 oz Bag (Pack of 1) - Just Add Water, Simple Ingredients",
+      "wholeFoodsPrice": 4.39,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0D5JXMKV3",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71r-ULjEu1L._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:01:19.628Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.71,
+      "matchMargin": 0.4471,
+      "sizeEvidence": "20 oz = 20 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Bob's Red Mill homestyle buttermilk pancake and waffle mix, 20 oz"
+    },
+    {
       "productId": "18025020",
       "sourceProductIds": [
         "18025020"
@@ -19453,6 +19721,58 @@
       "sizeEvidence": "25.4 fl oz = 25.4 fl oz"
     },
     {
+      "productId": "306805",
+      "sourceProductIds": [
+        "306805"
+      ],
+      "instacartName": "Califia Farms Original Almond Barista Blend Almond Milk",
+      "instacartSize": "32 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B012CIIDBK",
+      "wholeFoodsTitle": "Califia Farms Creamer Almond Barista Blend, 32 Fl Oz",
+      "wholeFoodsPrice": 5.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B012CIIDBK",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71j5DvHdwtL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:51:26.992Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6667,
+      "matchMargin": 0.6667,
+      "sizeEvidence": "32 fl oz = 32 fl oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Califia Farms almond Barista Blend, 32 fl oz"
+    },
+    {
+      "productId": "24370172",
+      "sourceProductIds": [
+        "24370172"
+      ],
+      "instacartName": "Carbone Marinara Pasta Sauce, No Sugar Added, Non Gmo, Kosher",
+      "instacartSize": "24 oz",
+      "category": "Condiments & Sauces",
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B09Z3MD8ND",
+      "wholeFoodsTitle": "Sponsored Carbone Pasta Sauce Marinara, 24 Ounce",
+      "wholeFoodsPrice": 10.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B09Z3MD8ND",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81q7H-UBx3L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:30:57.262Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6691,
+      "matchMargin": 0.1024,
+      "sizeEvidence": "24 oz = 24 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Carbone marinara pasta sauce, 24 oz"
+    },
+    {
       "productId": "44014",
       "sourceProductIds": [
         "44014"
@@ -19526,6 +19846,32 @@
       "matchScore": 1,
       "matchMargin": 0.5,
       "sizeEvidence": "9.5 oz = 9.5 oz"
+    },
+    {
+      "productId": "17313825",
+      "sourceProductIds": [
+        "17313825"
+      ],
+      "instacartName": "Celestial Seasonings Tea Bags Sleepytime",
+      "instacartSize": "20 ct",
+      "category": "Beverages",
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B00I3X2DWY",
+      "wholeFoodsTitle": "Celestial Seasonings Herbal Tea, Sleepytime, 20 Count",
+      "wholeFoodsPrice": 4.39,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00I3X2DWY",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91mdKjfSJQL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:00:16.630Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.76,
+      "matchMargin": 0.0286,
+      "sizeEvidence": "20 ct = 20 ct",
+      "manualReviewNote": "Exact Whole Foods capture match: Celestial Seasonings Sleepytime herbal tea, 20 count"
     },
     {
       "productId": "215378",
@@ -19676,6 +20022,32 @@
       "matchScore": 0.95,
       "matchMargin": 0.485,
       "sizeEvidence": "5 fl oz = 5 fl oz"
+    },
+    {
+      "productId": "26148689",
+      "sourceProductIds": [
+        "26148689"
+      ],
+      "instacartName": "Chomps Original Beef Stick",
+      "instacartSize": "8 x 1.15 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B08Z9NBC77",
+      "wholeFoodsTitle": "Chomps Original Beef Jerky Snack Sticks, 8pk",
+      "wholeFoodsPrice": 21.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08Z9NBC77",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71QQr-0o1SL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:04:01.771Z",
+      "matchScore": 0.6375,
+      "matchMargin": 0,
+      "sizeEvidence": "8 x 1.15 oz = human-reviewed retailer package",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Chomps original beef sticks, 8 x 1.15 oz"
     },
     {
       "productId": "28508534",
@@ -19928,6 +20300,32 @@
       "sizeEvidence": "16 oz = 16 oz"
     },
     {
+      "productId": "66381360",
+      "sourceProductIds": [
+        "66381360"
+      ],
+      "instacartName": "Ellenos S'Mores, Greek Yogurt",
+      "instacartSize": "6 oz",
+      "category": "Dairy & Eggs",
+      "storeIds": [
+        "metro",
+        "qfc",
+        "pcc"
+      ],
+      "storeCount": 3,
+      "asin": "B0DBY9TRM5",
+      "wholeFoodsTitle": "Ellenos Yogurt, S'Mores, 6oz",
+      "wholeFoodsPrice": 3,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0DBY9TRM5",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71feW-H2m6L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:30:57.262Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.705,
+      "matchMargin": 0.255,
+      "sizeEvidence": "6 oz = 6 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Ellenos S'mores Greek yogurt, 6 oz"
+    },
+    {
       "productId": "66381526",
       "sourceProductIds": [
         "66381526"
@@ -19951,6 +20349,32 @@
       "matchScore": 0.94,
       "matchMargin": 0.5043,
       "sizeEvidence": "6 oz = 6 oz"
+    },
+    {
+      "productId": "21166547",
+      "sourceProductIds": [
+        "21166547"
+      ],
+      "instacartName": "Fever-Tree Sparkling Pink Grapefruit Soda, 4-pack, 6.76oz Bottle, 0.0% ABV",
+      "instacartSize": "4 x 6.8 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "qfc",
+        "safeway",
+        "metro"
+      ],
+      "storeCount": 3,
+      "asin": "B08V6HBPRG",
+      "wholeFoodsTitle": "Fever-Tree Sparkling Pink Grapefruit Mixer, 6.8 Fl Oz (Pack of 4)",
+      "wholeFoodsPrice": 6.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08V6HBPRG",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71IjmVL3Z2L._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:00:25.567Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6364,
+      "matchMargin": 0.6364,
+      "sizeEvidence": "27.2 fl oz = 27.2 fl oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Fever-Tree sparkling pink grapefruit mixer, 4 x 6.8 fl oz"
     },
     {
       "productId": "3322133",
@@ -19977,6 +20401,32 @@
       "matchScore": 0.9625,
       "matchMargin": 0.9625,
       "sizeEvidence": "5.5 oz = 5.5 oz"
+    },
+    {
+      "productId": "3187337",
+      "sourceProductIds": [
+        "3187337"
+      ],
+      "instacartName": "Follow Your Heart Dairy-Free Parmesan Shredded",
+      "instacartSize": "4 oz",
+      "category": "Deli",
+      "storeIds": [
+        "pcc",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B01E8TH2Y0",
+      "wholeFoodsTitle": "Sponsored Follow Your Heart Alternative Cheese Parmesan Shredded Tub, 4 Ounce",
+      "wholeFoodsPrice": 7.39,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01E8TH2Y0",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81F-zYYO86L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:47:42.041Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6364,
+      "matchMargin": 0.6364,
+      "sizeEvidence": "4 oz = 4 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Follow Your Heart dairy-free shredded Parmesan, 4 oz"
     },
     {
       "productId": "36122",
@@ -20105,6 +20555,32 @@
       "sizeEvidence": "750 ml = 25.3 fl oz"
     },
     {
+      "productId": "27415533",
+      "sourceProductIds": [
+        "27415533"
+      ],
+      "instacartName": "Graza Sizzle, Extra Virgin Olive Oil for Cooking",
+      "instacartSize": "750 ml",
+      "category": "Oils, Vinegars & Spices",
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B0CNB9JLZ5",
+      "wholeFoodsTitle": "Graza Sizzle Extra Virgin Olive Oil, Cooking Oil - High Polyphenol Peak Harvest EVOO Cooking Oil in a Squeeze Bottle - Single Farm Olives from Spain - 25.3 Fl Oz (750ml) Refill Can",
+      "wholeFoodsPrice": 18.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0CNB9JLZ5",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71bDe-jLTKL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:03:25.476Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.7955,
+      "matchMargin": 0,
+      "sizeEvidence": "750 ml = 25.3 fl oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Graza Sizzle extra-virgin olive oil, 750 ml / 25.3 fl oz refill can"
+    },
+    {
       "productId": "3154863",
       "sourceProductIds": [
         "3154863"
@@ -20153,6 +20629,32 @@
       "matchScore": 0.8846,
       "matchMargin": 0.1796,
       "sizeEvidence": "9 oz = 9 oz"
+    },
+    {
+      "productId": "80873",
+      "sourceProductIds": [
+        "80873"
+      ],
+      "instacartName": "Jovial 100% Organic Gluten Free Brown Rice Spaghetti",
+      "instacartSize": "12 oz",
+      "category": "Dry Goods & Pasta",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B01MRYH92Z",
+      "wholeFoodsTitle": "Jovial Gluten Free Brown Rice Pasta Organic - Award-Winning Taste & Texture, Non-GMO, Free of Top 8 Allergens, Vegan Brown Rice Noodles, Made in Italy - Gluten Free Spaghetti, 12 oz",
+      "wholeFoodsPrice": 5.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01MRYH92Z",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71xlITg8y-L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T03:26:13.370Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.8105,
+      "matchMargin": 0.0721,
+      "sizeEvidence": "12 oz = 12 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Jovial organic gluten-free brown-rice spaghetti, 12 oz"
     },
     {
       "productId": "3405067",
@@ -20253,6 +20755,32 @@
       "matchScore": 0.9333,
       "matchMargin": 0.3083,
       "sizeEvidence": "17.2 oz = 17.2 oz"
+    },
+    {
+      "productId": "16410756",
+      "sourceProductIds": [
+        "16410756"
+      ],
+      "instacartName": "Kerrygold Grass-Fed Pure Irish Salted Softer Butter Tub,",
+      "instacartSize": "8 oz",
+      "category": "Dairy & Eggs",
+      "storeIds": [
+        "metro",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B00FTC7DR2",
+      "wholeFoodsTitle": "kerrygold Naturally Softer Pure Irish Butter, 8 oz",
+      "wholeFoodsPrice": 6.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00FTC7DR2",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61eAbhy3LEL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T06:03:26.210Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.7333,
+      "matchMargin": 0,
+      "sizeEvidence": "8 oz = 8 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Kerrygold Naturally Softer salted Irish butter, 8 oz tub"
     },
     {
       "productId": "25003284",
@@ -20581,6 +21109,32 @@
       "sizeEvidence": "17 oz = 17 oz"
     },
     {
+      "productId": "16473381",
+      "sourceProductIds": [
+        "16473381"
+      ],
+      "instacartName": "King Arthur Baking Company Measure for Measure Flour, Gluten-Free, Non-GMO Project Verified, Kosher",
+      "instacartSize": "48 oz",
+      "category": "Baking Essentials",
+      "storeIds": [
+        "metro",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B01JJ9H1Q8",
+      "wholeFoodsTitle": "Sponsored King Arthur Measure for Measure Gluten-Free Flour: All-Purpose 1:1 Substitute for Wheat Flour, Non-GMO, Kosher Certified, 3 lbs Bag for Baking Cookies, Cakes, Muffins",
+      "wholeFoodsPrice": 14.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01JJ9H1Q8",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/713y86brwrL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:47:42.041Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6689,
+      "matchMargin": 0.6689,
+      "sizeEvidence": "48 oz = 3 lb",
+      "manualReviewNote": "Exact Whole Foods capture match: King Arthur Measure for Measure gluten-free flour, 3 lb / 48 oz"
+    },
+    {
       "productId": "93348038",
       "sourceProductIds": [
         "93348038"
@@ -20606,6 +21160,32 @@
       "sizeEvidence": "6 oz = 6 oz"
     },
     {
+      "productId": "26110426",
+      "sourceProductIds": [
+        "26110426"
+      ],
+      "instacartName": "LATE JULY Snacks Restaurant Style Blue Corn Tortilla Chips",
+      "instacartSize": "10.1 oz",
+      "category": "Other Groceries",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B09GZN5XSD",
+      "wholeFoodsTitle": "Late July Blue Corn Organic Tortilla Chips, 10.1 Oz Bag",
+      "wholeFoodsPrice": 5.89,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B09GZN5XSD",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81mNXLHlTqL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T06:07:12.698Z",
+      "matchScore": 0.705,
+      "matchMargin": 0,
+      "sizeEvidence": "10.1 oz = 10.1 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Late July blue corn organic tortilla chips, 10.1 oz"
+    },
+    {
       "productId": "20218180",
       "sourceProductIds": [
         "20218180"
@@ -20629,6 +21209,111 @@
       "matchScore": 0.76,
       "matchMargin": 0.2114,
       "sizeEvidence": "4.6 oz = 4.6 oz"
+    },
+    {
+      "productId": "54637",
+      "sourceProductIds": [
+        "54637"
+      ],
+      "instacartName": "Lundberg Family Farms Gourmet, California White Jasmine Rice",
+      "instacartSize": "32 oz",
+      "category": "Dry Goods & Pasta",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B004SI9SPS",
+      "wholeFoodsTitle": "Lundberg Jasmine Rice, Long Grain White Rice - Non-Sticky, FluffyAromatic Rice, Sustainably Grown in California, Pantry Staples, Chip Clip Included, 32 Oz",
+      "wholeFoodsPrice": 8.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B004SI9SPS",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71+Spjw70IL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T05:42:04.683Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.5125,
+      "matchMargin": 0.5125,
+      "sizeEvidence": "32 oz = 32 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Lundberg California white jasmine rice, 32 oz"
+    },
+    {
+      "productId": "16359812",
+      "sourceProductIds": [
+        "16359812"
+      ],
+      "instacartName": "Lundberg Family Farms Organic White Jasmine Rice",
+      "instacartSize": "32 oz",
+      "category": "Dry Goods & Pasta",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B000WLXMB6",
+      "wholeFoodsTitle": "Lundberg Jasmine Rice, Regenerative Organic Certified – Non-Sticky, Aromatic Long-Grain White Rice, Responsibly Grown in California, 32 Oz",
+      "wholeFoodsPrice": 10.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B000WLXMB6",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71viCmzXvBL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T05:42:04.683Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.5882,
+      "matchMargin": 0.1025,
+      "sizeEvidence": "32 oz = 32 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Lundberg organic white jasmine rice, 32 oz"
+    },
+    {
+      "productId": "26939030",
+      "sourceProductIds": [
+        "26939030",
+        "26939342"
+      ],
+      "instacartName": "Minor Figures Barista Oat Milk (Organic Lite)",
+      "instacartSize": "32 fl oz",
+      "category": "Dairy & Eggs",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B0BHJCWBQS",
+      "wholeFoodsTitle": "Minor Figures Organic, Light Oat Milk, Barista Quality, 32 Fl oz, Dairy-Free & Vegan, No Added Sugar, Long Shelf Life, 1 pack)",
+      "wholeFoodsPrice": 5.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0BHJCWBQS",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61KNeU8fcoL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:51:26.992Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6947,
+      "matchMargin": 0.6947,
+      "sizeEvidence": "32 fl oz = 32 fl oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Minor Figures Organic Light barista oat milk, 32 fl oz"
+    },
+    {
+      "productId": "26268168",
+      "sourceProductIds": [
+        "26268168"
+      ],
+      "instacartName": "Momofuku Chili Crunch",
+      "instacartSize": "155 g",
+      "category": "Condiments & Sauces",
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B09DS5J8F9",
+      "wholeFoodsTitle": "Sponsored MOMOFUKU Chili Crunch by David Chang, (5.5 Ounces), Chili Oil with Crunchy Garlic and Shallots, Spicy Chili Crisp",
+      "wholeFoodsPrice": 13.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B09DS5J8F9",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81lRKdoTlQL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:30:57.262Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.775,
+      "matchMargin": 0.0375,
+      "sizeEvidence": "155 g = 5.5 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Momofuku Chili Crunch, 155 g / 5.5 oz"
     },
     {
       "productId": "24852",
@@ -20831,6 +21516,32 @@
       "sizeEvidence": "8 oz = 8 oz"
     },
     {
+      "productId": "75351",
+      "sourceProductIds": [
+        "75351"
+      ],
+      "instacartName": "Noosa Lemon Yogurt",
+      "instacartSize": "8 oz",
+      "category": "Dairy & Eggs",
+      "storeIds": [
+        "metro",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B004KZ0VX2",
+      "wholeFoodsTitle": "Noosa Yoghurt, Lemon, 8 oz",
+      "wholeFoodsPrice": 2.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B004KZ0VX2",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71ymHtvmiGL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T18:26:53.024Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6167,
+      "matchMargin": 0.3233,
+      "sizeEvidence": "8 oz = 8 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Noosa lemon yogurt, 8 oz"
+    },
+    {
       "productId": "134985",
       "sourceProductIds": [
         "134985"
@@ -20879,6 +21590,32 @@
       "matchScore": 1,
       "matchMargin": 0.3833,
       "sizeEvidence": "8 oz = 8 oz"
+    },
+    {
+      "productId": "22332065",
+      "sourceProductIds": [
+        "22332065"
+      ],
+      "instacartName": "OLIPOP Prebiotic Soda, Orange Squeeze",
+      "instacartSize": "12 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B09B36S826",
+      "wholeFoodsTitle": "Sponsored OLIPOP Orange Squeeze Sparkling Tonic, Healthy Soda, Prebiotic Soft Drink, Aids Digestive Health & Immune Health, With Vitamin C & Plant Fiber, Caffeine Free, Low Calorie, Low Sugar 12 oz",
+      "wholeFoodsPrice": 2.59,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B09B36S826",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71BHMLrnXxL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:51:26.992Z",
+      "matchScore": 0.7652,
+      "matchMargin": 0,
+      "sizeEvidence": "12 fl oz = 12 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: OLIPOP Orange Squeeze prebiotic soda, 12 fl oz"
     },
     {
       "productId": "19220792",
@@ -21435,6 +22172,32 @@
       "sizeEvidence": "1.8 oz = 1.8 oz"
     },
     {
+      "productId": "27747893",
+      "sourceProductIds": [
+        "27747893"
+      ],
+      "instacartName": "Santa Cruz Organic Peanut Butter Spread, Dark Roasted, Crunchy, No Stir",
+      "instacartSize": "16 oz",
+      "category": "Breakfast Foods",
+      "storeIds": [
+        "metro",
+        "qfc",
+        "pcc"
+      ],
+      "storeCount": 3,
+      "asin": "B0BHLS1P8T",
+      "wholeFoodsTitle": "Santa Cruz ORGANIC Peanut Butter Spread Dark Roast Crunchy No Stir Organic, 16 Ounce",
+      "wholeFoodsPrice": 8.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0BHLS1P8T",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81uXEUK+PQL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:51:26.992Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.8864,
+      "matchMargin": 0.0641,
+      "sizeEvidence": "16 oz = 16 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Santa Cruz Organic dark-roasted crunchy no-stir peanut butter spread, 16 oz"
+    },
+    {
       "productId": "186321",
       "sourceProductIds": [
         "186321"
@@ -21458,6 +22221,32 @@
       "matchScore": 0.7333,
       "matchMargin": 0.1467,
       "sizeEvidence": "28 fl oz = 28 fl oz"
+    },
+    {
+      "productId": "29421673",
+      "sourceProductIds": [
+        "29421673"
+      ],
+      "instacartName": "Siete Corn Sea Salt Tortilla Chips",
+      "instacartSize": "7.5 oz",
+      "category": "Other Groceries",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B0BQXV1RDH",
+      "wholeFoodsTitle": "Siete Family Foods, Chips Tortilla Corn Sea Salt Maiz Yellow White, 7.5 Ounce",
+      "wholeFoodsPrice": 6.19,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0BQXV1RDH",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71+Hty9mBTL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T19:12:20.407Z",
+      "matchScore": 0.88,
+      "matchMargin": 0,
+      "sizeEvidence": "7.5 oz = 7.5 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Siete sea salt Maiz corn tortilla chips, 7.5 oz"
     },
     {
       "productId": "29697302",
@@ -21586,6 +22375,58 @@
       "sizeEvidence": "10.5 oz = 10.5 oz"
     },
     {
+      "productId": "159646",
+      "sourceProductIds": [
+        "159646"
+      ],
+      "instacartName": "Siggi's Icelandic Skyr Nonfat Yogurt Plain",
+      "instacartSize": "24 oz",
+      "category": "Dairy & Eggs",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B00LMC4XVW",
+      "wholeFoodsTitle": "siggi's Icelandic Strained Nonfat Yogurt, Plain, 24 oz. Multiserving Container – Thick, Protein-Rich Yogurt Snack",
+      "wholeFoodsPrice": 6.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00LMC4XVW",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71MHCUT-dhL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:30:57.262Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6987,
+      "matchMargin": 0.2487,
+      "sizeEvidence": "24 oz = 24 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: siggi's plain nonfat Icelandic skyr, 24 oz"
+    },
+    {
+      "productId": "75357",
+      "sourceProductIds": [
+        "75357"
+      ],
+      "instacartName": "Siggi's Nonfat Acai & Mixed Berries Yogurt",
+      "instacartSize": "5.3 oz",
+      "category": "Dairy & Eggs",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B002M3ZBNO",
+      "wholeFoodsTitle": "Sponsored siggi's Icelandic Strained Nonfat Yogurt, Acai Mixed Berry, 5.3 oz. Single Serve Cup – Thick, Protein-Rich Yogurt",
+      "wholeFoodsPrice": 1.32,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B002M3ZBNO",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71RQLYhtoXL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:30:57.261Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6833,
+      "matchMargin": 0.2733,
+      "sizeEvidence": "5.3 oz = 5.3 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: siggi's nonfat acai mixed berry skyr, 5.3 oz"
+    },
+    {
       "productId": "2725126",
       "sourceProductIds": [
         "2725126"
@@ -21661,6 +22502,32 @@
       "sizeEvidence": "24 oz = 24 oz"
     },
     {
+      "productId": "3314410",
+      "sourceProductIds": [
+        "3314410"
+      ],
+      "instacartName": "Simple Mills Almond Flour Crackers, Sundried Tomato & Basil",
+      "instacartSize": "4.25 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B01BWF19WE",
+      "wholeFoodsTitle": "Simple Mills Almond Flour Crackers, Sundried Tomato & Basil, Gluten Free, Flax Seed, Sunflower Seeds, Corn Free, Good for Snacks, Made with whole foods, (Packaging May Vary), 4.25 Ounce",
+      "wholeFoodsPrice": 6.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01BWF19WE",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81LAs+0gWpL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:30:57.261Z",
+      "matchScore": 0.8143,
+      "matchMargin": 0,
+      "sizeEvidence": "4.25 oz = 4.25 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Simple Mills sundried tomato and basil almond flour crackers, 4.25 oz"
+    },
+    {
       "productId": "25142539",
       "sourceProductIds": [
         "25142539"
@@ -21686,6 +22553,58 @@
       "sizeEvidence": "4.25 oz = 4.25 oz"
     },
     {
+      "productId": "27544336",
+      "sourceProductIds": [
+        "27544336"
+      ],
+      "instacartName": "Simple Mills Nut Butter Stuffed Sandwich Cookies, Cocoa Cashew Creme",
+      "instacartSize": "6.7 oz",
+      "category": "Snacks",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B09L8YRV7R",
+      "wholeFoodsTitle": "Simple Mills Cocoa Cashew Crème Sandwich Cookies - Gluten Free, Vegan (Pack of 1)",
+      "wholeFoodsPrice": 7.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B09L8YRV7R",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81IpaV8M9TL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T19:12:24.549Z",
+      "matchScore": 0.6515,
+      "matchMargin": 0,
+      "sizeEvidence": "6.7 oz = human-reviewed retailer package",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Simple Mills cocoa cashew creme sandwich cookies, 6.7 oz"
+    },
+    {
+      "productId": "20239099",
+      "sourceProductIds": [
+        "20239099"
+      ],
+      "instacartName": "Simple Mills Soft Baked Almond Flour Bars, Dark Chocolate Almond",
+      "instacartSize": "5 x 1.19 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B07TRPH5VK",
+      "wholeFoodsTitle": "Simple Mills Soft Baked Dark Chocolate Almond Flour Bars, 5 ct, 1.19 oz each",
+      "wholeFoodsPrice": 5.59,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07TRPH5VK",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/713Ekm8h9vL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T18:26:18.538Z",
+      "matchScore": 0.97,
+      "matchMargin": 0,
+      "sizeEvidence": "5.949999999999999 oz = 5 ct",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Simple Mills dark chocolate almond flour soft-baked bars, 5 x 1.19 oz"
+    },
+    {
       "productId": "20268265",
       "sourceProductIds": [
         "20268265"
@@ -21709,6 +22628,32 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "5.949999999999999 oz = 5.99 oz"
+    },
+    {
+      "productId": "21210415",
+      "sourceProductIds": [
+        "21210415"
+      ],
+      "instacartName": "Simple Mills Veggie Pita Crackers, Himalayan Salt",
+      "instacartSize": "4.25 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B084DWQ9LP",
+      "wholeFoodsTitle": "Simple Mills Veggie Pita Crackers, Himalayan Salt - Gluten Free, Vegan, Healthy Snacks, Paleo Friendly, 4.25 Ounce (Pack of 1)",
+      "wholeFoodsPrice": 6.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B084DWQ9LP",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71GDPOb8OQL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T21:30:57.261Z",
+      "matchScore": 0.85,
+      "matchMargin": 0,
+      "sizeEvidence": "4.25 oz = 4.25 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "manualReviewNote": "Exact Whole Foods capture match: Simple Mills Himalayan salt veggie pita crackers, 4.25 oz"
     },
     {
       "productId": "23126",
@@ -21875,17 +22820,69 @@
         "qfc"
       ],
       "storeCount": 3,
-      "asin": "B06XZM52NQ",
-      "wholeFoodsTitle": "Tate's Bake Shop, Chocolate Chip Cookies, 7 Ounce",
+      "asin": "B006LRMI5G",
+      "wholeFoodsTitle": "Tate's Bake Shop Gluten Free Chocolate Chip Cookies, Gluten Free Cookies, 7 oz",
       "wholeFoodsPrice": 6.79,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B06XZM52NQ",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71odot8zmpL._AC_UL320_.jpg",
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B006LRMI5G",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/712J631nE+L._AC_UL320_.jpg",
       "capturedAt": "2026-07-17T18:30:03.219Z",
-      "matchScore": 0.6167,
+      "matchScore": 0.925,
       "matchMargin": 0,
       "sizeEvidence": "7 oz = 7 oz",
       "matchMethod": "human_reviewed_brand_variant_size",
-      "manualReviewNote": "Tate's Bake Shop chocolate chip cookies, 7 oz"
+      "manualReviewNote": "Exact Whole Foods capture match: Tate's Bake Shop gluten-free chocolate chip cookies, 7 oz"
+    },
+    {
+      "productId": "16293771",
+      "sourceProductIds": [
+        "16293771"
+      ],
+      "instacartName": "TAZO Tea Passion Herbal Infusion Caffeine Free Tea Bags",
+      "instacartSize": "20 ct",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B00N9UGP16",
+      "wholeFoodsTitle": "TAZO Passion Herbal Tea Filterbags, 20 Count",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00N9UGP16",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71bqZ2+h+HL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T03:25:17.844Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.6933,
+      "matchMargin": 0.6933,
+      "sizeEvidence": "20 ct = 20 ct",
+      "manualReviewNote": "Exact Whole Foods capture match: Tazo Passion caffeine-free herbal tea, 20 count"
+    },
+    {
+      "productId": "15456",
+      "sourceProductIds": [
+        "15456"
+      ],
+      "instacartName": "Tillamook Medium Cheddar Cheese",
+      "instacartSize": "0.75 oz",
+      "category": "Deli",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B00Y0UTG06",
+      "wholeFoodsTitle": "Tillamook Medium Cheddar Mini, 0.75 OZ",
+      "wholeFoodsPrice": 0.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00Y0UTG06",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71k3mEWbQDL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:51:26.992Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.705,
+      "matchMargin": 0.705,
+      "sizeEvidence": "0.75 oz = 0.75 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Tillamook medium cheddar mini snack, 0.75 oz"
     },
     {
       "productId": "27987",
@@ -21911,6 +22908,32 @@
       "matchScore": 0.8,
       "matchMargin": 0.3682,
       "sizeEvidence": "16 ct = 16 ct"
+    },
+    {
+      "productId": "18553473",
+      "sourceProductIds": [
+        "18553473"
+      ],
+      "instacartName": "Violife Block 100% Vegan Feta",
+      "instacartSize": "8.1 oz",
+      "category": "Deli",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B07GT7S6DS",
+      "wholeFoodsTitle": "Violife Just Like Feta Block, 8.1 OZ",
+      "wholeFoodsPrice": 7.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07GT7S6DS",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81hZErH65-L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T05:41:51.385Z",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 0.675,
+      "matchMargin": 0.4625,
+      "sizeEvidence": "8.1 oz = 8.1 oz",
+      "manualReviewNote": "Exact Whole Foods capture match: Violife Just Like Feta vegan block, 8.1 oz"
     },
     {
       "productId": "18550735",
@@ -32832,31 +33855,6 @@
       "sizeEvidence": "5.3 oz = 5.3 oz"
     },
     {
-      "productId": "27747893",
-      "sourceProductIds": [
-        "27747893"
-      ],
-      "instacartName": "Santa Cruz Organic Peanut Butter Spread, Dark Roasted, Crunchy, No Stir",
-      "instacartSize": "16 oz",
-      "category": "Breakfast Foods",
-      "storeIds": [
-        "metro",
-        "qfc",
-        "pcc"
-      ],
-      "storeCount": 3,
-      "asin": "B0BHLS1P8T",
-      "wholeFoodsTitle": "Santa Cruz ORGANIC Peanut Butter Spread Dark Roast Crunchy No Stir Organic, 16 Ounce",
-      "wholeFoodsPrice": 8.79,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0BHLS1P8T",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81uXEUK+PQL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T20:51:26.992Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.8864,
-      "matchMargin": 0.0641,
-      "sizeEvidence": "16 oz = 16 oz"
-    },
-    {
       "productId": "29421673",
       "sourceProductIds": [
         "29421673"
@@ -32880,31 +33878,6 @@
       "matchScore": 0.88,
       "matchMargin": 0,
       "sizeEvidence": "7.5 oz = 7.5 oz"
-    },
-    {
-      "productId": "80873",
-      "sourceProductIds": [
-        "80873"
-      ],
-      "instacartName": "Jovial 100% Organic Gluten Free Brown Rice Spaghetti",
-      "instacartSize": "12 oz",
-      "category": "Dry Goods & Pasta",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B01MRYH92Z",
-      "wholeFoodsTitle": "Jovial Gluten Free Brown Rice Pasta Organic - Award-Winning Taste & Texture, Non-GMO, Free of Top 8 Allergens, Vegan Brown Rice Noodles, Made in Italy - Gluten Free Spaghetti, 12 oz",
-      "wholeFoodsPrice": 5.49,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B01MRYH92Z",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71xlITg8y-L._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T03:26:13.370Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.8105,
-      "matchMargin": 0.0721,
-      "sizeEvidence": "12 oz = 12 oz"
     },
     {
       "productId": "16880969",
@@ -32957,31 +33930,6 @@
       "sizeEvidence": "10 oz = 10 oz"
     },
     {
-      "productId": "27415533",
-      "sourceProductIds": [
-        "27415533"
-      ],
-      "instacartName": "Graza Sizzle, Extra Virgin Olive Oil for Cooking",
-      "instacartSize": "750 ml",
-      "category": "Oils, Vinegars & Spices",
-      "storeIds": [
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B0CNB9JLZ5",
-      "wholeFoodsTitle": "Graza Sizzle Extra Virgin Olive Oil, Cooking Oil - High Polyphenol Peak Harvest EVOO Cooking Oil in a Squeeze Bottle - Single Farm Olives from Spain - 25.3 Fl Oz (750ml) Refill Can",
-      "wholeFoodsPrice": 18.29,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0CNB9JLZ5",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71bDe-jLTKL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:03:25.476Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.7955,
-      "matchMargin": 0,
-      "sizeEvidence": "750 ml = 25.3 fl oz"
-    },
-    {
       "productId": "77728595",
       "sourceProductIds": [
         "77728595"
@@ -33005,31 +33953,6 @@
       "matchScore": 0.7818,
       "matchMargin": 0,
       "sizeEvidence": "25.3 fl oz = 25.3 fl oz"
-    },
-    {
-      "productId": "26268168",
-      "sourceProductIds": [
-        "26268168"
-      ],
-      "instacartName": "Momofuku Chili Crunch",
-      "instacartSize": "155 g",
-      "category": "Condiments & Sauces",
-      "storeIds": [
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B09DS5J8F9",
-      "wholeFoodsTitle": "Sponsored MOMOFUKU Chili Crunch by David Chang, (5.5 Ounces), Chili Oil with Crunchy Garlic and Shallots, Spicy Chili Crisp",
-      "wholeFoodsPrice": 13.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B09DS5J8F9",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81lRKdoTlQL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:30:57.262Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.775,
-      "matchMargin": 0.0375,
-      "sizeEvidence": "155 g = 5.5 oz"
     },
     {
       "productId": "3343074",
@@ -33082,31 +34005,6 @@
       "sizeEvidence": "28 oz = 28 oz"
     },
     {
-      "productId": "17313825",
-      "sourceProductIds": [
-        "17313825"
-      ],
-      "instacartName": "Celestial Seasonings Tea Bags Sleepytime",
-      "instacartSize": "20 ct",
-      "category": "Beverages",
-      "storeIds": [
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B00I3X2DWY",
-      "wholeFoodsTitle": "Celestial Seasonings Herbal Tea, Sleepytime, 20 Count",
-      "wholeFoodsPrice": 4.39,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B00I3X2DWY",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91mdKjfSJQL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:00:16.630Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.76,
-      "matchMargin": 0.0286,
-      "sizeEvidence": "20 ct = 20 ct"
-    },
-    {
       "productId": "17620519",
       "sourceProductIds": [
         "17620519"
@@ -33130,31 +34028,6 @@
       "matchScore": 0.75,
       "matchMargin": 0,
       "sizeEvidence": "1.98 oz = 1.98 oz"
-    },
-    {
-      "productId": "16410756",
-      "sourceProductIds": [
-        "16410756"
-      ],
-      "instacartName": "Kerrygold Grass-Fed Pure Irish Salted Softer Butter Tub,",
-      "instacartSize": "8 oz",
-      "category": "Dairy & Eggs",
-      "storeIds": [
-        "metro",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B00FTC7DR2",
-      "wholeFoodsTitle": "kerrygold Naturally Softer Pure Irish Butter, 8 oz",
-      "wholeFoodsPrice": 6.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B00FTC7DR2",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61eAbhy3LEL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T06:03:26.210Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.7333,
-      "matchMargin": 0,
-      "sizeEvidence": "8 oz = 8 oz"
     },
     {
       "productId": "2286695",
@@ -33407,31 +34280,6 @@
       "sizeEvidence": "1.98 oz = 1.98 oz"
     },
     {
-      "productId": "50587268",
-      "sourceProductIds": [
-        "50587268"
-      ],
-      "instacartName": "Bob's Red Mill Homestyle Buttermilk Pancake & Waffle Mix 20 oz Signature Blend",
-      "instacartSize": "20 oz",
-      "category": "Breakfast Foods",
-      "storeIds": [
-        "metro",
-        "pcc",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B0D5JXMKV3",
-      "wholeFoodsTitle": "Bob's Red Mill Homestyle Buttermilk Pancake & Waffle Mix - 20 oz Bag (Pack of 1) - Just Add Water, Simple Ingredients",
-      "wholeFoodsPrice": 4.39,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0D5JXMKV3",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71r-ULjEu1L._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:01:19.628Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.71,
-      "matchMargin": 0.4471,
-      "sizeEvidence": "20 oz = 20 oz"
-    },
-    {
       "productId": "46568408",
       "sourceProductIds": [
         "46568408"
@@ -33608,31 +34456,6 @@
       "sizeEvidence": "13 oz = 13 oz"
     },
     {
-      "productId": "66381360",
-      "sourceProductIds": [
-        "66381360"
-      ],
-      "instacartName": "Ellenos S'Mores, Greek Yogurt",
-      "instacartSize": "6 oz",
-      "category": "Dairy & Eggs",
-      "storeIds": [
-        "metro",
-        "qfc",
-        "pcc"
-      ],
-      "storeCount": 3,
-      "asin": "B0DBY9TRM5",
-      "wholeFoodsTitle": "Ellenos Yogurt, S'Mores, 6oz",
-      "wholeFoodsPrice": 3,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0DBY9TRM5",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71feW-H2m6L._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:30:57.262Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.705,
-      "matchMargin": 0.255,
-      "sizeEvidence": "6 oz = 6 oz"
-    },
-    {
       "productId": "18473650",
       "sourceProductIds": [
         "18473650"
@@ -33684,31 +34507,6 @@
       "sizeEvidence": "227 g = 8 oz"
     },
     {
-      "productId": "15456",
-      "sourceProductIds": [
-        "15456"
-      ],
-      "instacartName": "Tillamook Medium Cheddar Cheese",
-      "instacartSize": "0.75 oz",
-      "category": "Deli",
-      "storeIds": [
-        "metro",
-        "pcc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B00Y0UTG06",
-      "wholeFoodsTitle": "Tillamook Medium Cheddar Mini, 0.75 OZ",
-      "wholeFoodsPrice": 0.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B00Y0UTG06",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71k3mEWbQDL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T20:51:26.992Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.705,
-      "matchMargin": 0.705,
-      "sizeEvidence": "0.75 oz = 0.75 oz"
-    },
-    {
       "productId": "19133653",
       "sourceProductIds": [
         "19133653"
@@ -33757,57 +34555,6 @@
       "matchScore": 0.705,
       "matchMargin": 0.0514,
       "sizeEvidence": "5.5 oz = 5.5 oz"
-    },
-    {
-      "productId": "159646",
-      "sourceProductIds": [
-        "159646"
-      ],
-      "instacartName": "Siggi's Icelandic Skyr Nonfat Yogurt Plain",
-      "instacartSize": "24 oz",
-      "category": "Dairy & Eggs",
-      "storeIds": [
-        "metro",
-        "pcc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B00LMC4XVW",
-      "wholeFoodsTitle": "siggi's Icelandic Strained Nonfat Yogurt, Plain, 24 oz. Multiserving Container – Thick, Protein-Rich Yogurt Snack",
-      "wholeFoodsPrice": 6.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B00LMC4XVW",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71MHCUT-dhL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:30:57.262Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6987,
-      "matchMargin": 0.2487,
-      "sizeEvidence": "24 oz = 24 oz"
-    },
-    {
-      "productId": "26939030",
-      "sourceProductIds": [
-        "26939030",
-        "26939342"
-      ],
-      "instacartName": "Minor Figures Barista Oat Milk (Organic Lite)",
-      "instacartSize": "32 fl oz",
-      "category": "Dairy & Eggs",
-      "storeIds": [
-        "metro",
-        "pcc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B0BHJCWBQS",
-      "wholeFoodsTitle": "Minor Figures Organic, Light Oat Milk, Barista Quality, 32 Fl oz, Dairy-Free & Vegan, No Added Sugar, Long Shelf Life, 1 pack)",
-      "wholeFoodsPrice": 5.79,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0BHJCWBQS",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61KNeU8fcoL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T20:51:26.992Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6947,
-      "matchMargin": 0.6947,
-      "sizeEvidence": "32 fl oz = 32 fl oz"
     },
     {
       "productId": "58731",
@@ -33886,31 +34633,6 @@
       "sizeEvidence": "16.9 oz = 16.9 oz"
     },
     {
-      "productId": "16293771",
-      "sourceProductIds": [
-        "16293771"
-      ],
-      "instacartName": "TAZO Tea Passion Herbal Infusion Caffeine Free Tea Bags",
-      "instacartSize": "20 ct",
-      "category": "Beverages",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B00N9UGP16",
-      "wholeFoodsTitle": "TAZO Passion Herbal Tea Filterbags, 20 Count",
-      "wholeFoodsPrice": 4.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B00N9UGP16",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71bqZ2+h+HL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T03:25:17.844Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6933,
-      "matchMargin": 0.6933,
-      "sizeEvidence": "20 ct = 20 ct"
-    },
-    {
       "productId": "57061",
       "sourceProductIds": [
         "57061"
@@ -33959,31 +34681,6 @@
       "matchScore": 0.6886,
       "matchMargin": 0.0523,
       "sizeEvidence": "2.1 oz = 2.1 oz"
-    },
-    {
-      "productId": "75357",
-      "sourceProductIds": [
-        "75357"
-      ],
-      "instacartName": "Siggi's Nonfat Acai & Mixed Berries Yogurt",
-      "instacartSize": "5.3 oz",
-      "category": "Dairy & Eggs",
-      "storeIds": [
-        "metro",
-        "pcc",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B002M3ZBNO",
-      "wholeFoodsTitle": "Sponsored siggi's Icelandic Strained Nonfat Yogurt, Acai Mixed Berry, 5.3 oz. Single Serve Cup – Thick, Protein-Rich Yogurt",
-      "wholeFoodsPrice": 1.32,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B002M3ZBNO",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71RQLYhtoXL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:30:57.261Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6833,
-      "matchMargin": 0.2733,
-      "sizeEvidence": "5.3 oz = 5.3 oz"
     },
     {
       "productId": "243574",
@@ -34086,56 +34783,6 @@
       "sizeEvidence": "12 oz = 12 oz"
     },
     {
-      "productId": "18553473",
-      "sourceProductIds": [
-        "18553473"
-      ],
-      "instacartName": "Violife Block 100% Vegan Feta",
-      "instacartSize": "8.1 oz",
-      "category": "Deli",
-      "storeIds": [
-        "pcc",
-        "metro",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B07GT7S6DS",
-      "wholeFoodsTitle": "Violife Just Like Feta Block, 8.1 OZ",
-      "wholeFoodsPrice": 7.49,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B07GT7S6DS",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81hZErH65-L._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T05:41:51.385Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.675,
-      "matchMargin": 0.4625,
-      "sizeEvidence": "8.1 oz = 8.1 oz"
-    },
-    {
-      "productId": "24370172",
-      "sourceProductIds": [
-        "24370172"
-      ],
-      "instacartName": "Carbone Marinara Pasta Sauce, No Sugar Added, Non Gmo, Kosher",
-      "instacartSize": "24 oz",
-      "category": "Condiments & Sauces",
-      "storeIds": [
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B09Z3MD8ND",
-      "wholeFoodsTitle": "Sponsored Carbone Pasta Sauce Marinara, 24 Ounce",
-      "wholeFoodsPrice": 10.49,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B09Z3MD8ND",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81q7H-UBx3L._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:30:57.262Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6691,
-      "matchMargin": 0.1024,
-      "sizeEvidence": "24 oz = 24 oz"
-    },
-    {
       "productId": "25863440",
       "sourceProductIds": [
         "25863440"
@@ -34159,56 +34806,6 @@
       "matchScore": 0.6691,
       "matchMargin": 0,
       "sizeEvidence": "8 oz = 8 oz"
-    },
-    {
-      "productId": "16473381",
-      "sourceProductIds": [
-        "16473381"
-      ],
-      "instacartName": "King Arthur Baking Company Measure for Measure Flour, Gluten-Free, Non-GMO Project Verified, Kosher",
-      "instacartSize": "48 oz",
-      "category": "Baking Essentials",
-      "storeIds": [
-        "metro",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B01JJ9H1Q8",
-      "wholeFoodsTitle": "Sponsored King Arthur Measure for Measure Gluten-Free Flour: All-Purpose 1:1 Substitute for Wheat Flour, Non-GMO, Kosher Certified, 3 lbs Bag for Baking Cookies, Cakes, Muffins",
-      "wholeFoodsPrice": 14.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B01JJ9H1Q8",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/713y86brwrL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:47:42.041Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6689,
-      "matchMargin": 0.6689,
-      "sizeEvidence": "48 oz = 3 lb"
-    },
-    {
-      "productId": "306805",
-      "sourceProductIds": [
-        "306805"
-      ],
-      "instacartName": "Califia Farms Original Almond Barista Blend Almond Milk",
-      "instacartSize": "32 fl oz",
-      "category": "Beverages",
-      "storeIds": [
-        "pcc",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B012CIIDBK",
-      "wholeFoodsTitle": "Califia Farms Creamer Almond Barista Blend, 32 Fl Oz",
-      "wholeFoodsPrice": 5.49,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B012CIIDBK",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71j5DvHdwtL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T20:51:26.992Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6667,
-      "matchMargin": 0.6667,
-      "sizeEvidence": "32 fl oz = 32 fl oz"
     },
     {
       "productId": "59770217",
@@ -34537,56 +35134,6 @@
       "sizeEvidence": "24 fl oz = 24 fl oz"
     },
     {
-      "productId": "21166547",
-      "sourceProductIds": [
-        "21166547"
-      ],
-      "instacartName": "Fever-Tree Sparkling Pink Grapefruit Soda, 4-pack, 6.76oz Bottle, 0.0% ABV",
-      "instacartSize": "4 x 6.8 fl oz",
-      "category": "Beverages",
-      "storeIds": [
-        "qfc",
-        "safeway",
-        "metro"
-      ],
-      "storeCount": 3,
-      "asin": "B08V6HBPRG",
-      "wholeFoodsTitle": "Fever-Tree Sparkling Pink Grapefruit Mixer, 6.8 Fl Oz (Pack of 4)",
-      "wholeFoodsPrice": 6.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B08V6HBPRG",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71IjmVL3Z2L._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:00:25.567Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6364,
-      "matchMargin": 0.6364,
-      "sizeEvidence": "27.2 fl oz = 27.2 fl oz"
-    },
-    {
-      "productId": "3187337",
-      "sourceProductIds": [
-        "3187337"
-      ],
-      "instacartName": "Follow Your Heart Dairy-Free Parmesan Shredded",
-      "instacartSize": "4 oz",
-      "category": "Deli",
-      "storeIds": [
-        "pcc",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 3,
-      "asin": "B01E8TH2Y0",
-      "wholeFoodsTitle": "Sponsored Follow Your Heart Alternative Cheese Parmesan Shredded Tub, 4 Ounce",
-      "wholeFoodsPrice": 7.39,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B01E8TH2Y0",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81F-zYYO86L._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:47:42.041Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6364,
-      "matchMargin": 0.6364,
-      "sizeEvidence": "4 oz = 4 oz"
-    },
-    {
       "productId": "28416224",
       "sourceProductIds": [
         "28416224"
@@ -34813,31 +35360,6 @@
       "sizeEvidence": "8 oz = 8 oz"
     },
     {
-      "productId": "75351",
-      "sourceProductIds": [
-        "75351"
-      ],
-      "instacartName": "Noosa Lemon Yogurt",
-      "instacartSize": "8 oz",
-      "category": "Dairy & Eggs",
-      "storeIds": [
-        "metro",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B004KZ0VX2",
-      "wholeFoodsTitle": "Noosa Yoghurt, Lemon, 8 oz",
-      "wholeFoodsPrice": 2.79,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B004KZ0VX2",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71ymHtvmiGL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T18:26:53.024Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.6167,
-      "matchMargin": 0.3233,
-      "sizeEvidence": "8 oz = 8 oz"
-    },
-    {
       "productId": "22032382",
       "sourceProductIds": [
         "22032382"
@@ -35012,31 +35534,6 @@
       "matchScore": 0.6,
       "matchMargin": 0.6,
       "sizeEvidence": "8.94 oz = 8.94 oz"
-    },
-    {
-      "productId": "16359812",
-      "sourceProductIds": [
-        "16359812"
-      ],
-      "instacartName": "Lundberg Family Farms Organic White Jasmine Rice",
-      "instacartSize": "32 oz",
-      "category": "Dry Goods & Pasta",
-      "storeIds": [
-        "metro",
-        "pcc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B000WLXMB6",
-      "wholeFoodsTitle": "Lundberg Jasmine Rice, Regenerative Organic Certified – Non-Sticky, Aromatic Long-Grain White Rice, Responsibly Grown in California, 32 Oz",
-      "wholeFoodsPrice": 10.49,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B000WLXMB6",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71viCmzXvBL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T05:42:04.683Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.5882,
-      "matchMargin": 0.1025,
-      "sizeEvidence": "32 oz = 32 oz"
     },
     {
       "productId": "24754",
@@ -46195,31 +46692,6 @@
       "sizeEvidence": "20 ct = 20 ct"
     },
     {
-      "productId": "35637",
-      "sourceProductIds": [
-        "35637"
-      ],
-      "instacartName": "ARROWHEAD Brand  Mountain Spring Water, 16.9-ounce plastic bottles (Pack of 24)",
-      "instacartSize": "24 x 16.9 fl oz",
-      "category": "Beverages",
-      "storeIds": [
-        "qfc",
-        "safeway",
-        "metro"
-      ],
-      "storeCount": 3,
-      "asin": "B00J1NX9NW",
-      "wholeFoodsTitle": "Arrowhead Water Spring 500 Milliliter, 16.91 Fl Oz (Pack of 24)",
-      "wholeFoodsPrice": 7.29,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B00J1NX9NW",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81t31Qg3YBL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:00:19.974Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.52,
-      "matchMargin": 0.52,
-      "sizeEvidence": "405.59999999999997 fl oz = 12000 ml"
-    },
-    {
       "productId": "54191044",
       "sourceProductIds": [
         "54191044"
@@ -46371,31 +46843,6 @@
       "matchScore": 0.5164,
       "matchMargin": 0.5164,
       "sizeEvidence": "8 oz = 8 oz"
-    },
-    {
-      "productId": "54637",
-      "sourceProductIds": [
-        "54637"
-      ],
-      "instacartName": "Lundberg Family Farms Gourmet, California White Jasmine Rice",
-      "instacartSize": "32 oz",
-      "category": "Dry Goods & Pasta",
-      "storeIds": [
-        "metro",
-        "pcc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B004SI9SPS",
-      "wholeFoodsTitle": "Lundberg Jasmine Rice, Long Grain White Rice - Non-Sticky, FluffyAromatic Rice, Sustainably Grown in California, Pantry Staples, Chip Clip Included, 32 Oz",
-      "wholeFoodsPrice": 8.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B004SI9SPS",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71+Spjw70IL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T05:42:04.683Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.5125,
-      "matchMargin": 0.5125,
-      "sizeEvidence": "32 oz = 32 oz"
     },
     {
       "productId": "38821863",

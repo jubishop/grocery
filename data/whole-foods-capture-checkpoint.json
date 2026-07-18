@@ -46167,6 +46167,18 @@
       "query": "KIND Honey Oat Breakfast Bars 6 count 1.76 oz",
       "category": "Breakfast & Cereal",
       "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B013ORJQWI",
+      "brand": "Wild Planet",
+      "imageUrl": "https://m.media-amazon.com/images/I/71Y-AnDoKUL._AC_UL320_.jpg",
+      "price": 6.49,
+      "title": "Wild Albacore Tuna, No Salt Added, Canned Tuna, Sustainably Wild-Caught, Non-GMO, Kosher, Gluten Free, Keto and Paleo 5 Ounce, Single Unit/Can",
+      "productUrl": "https://www.amazon.com/dp/B013ORJQWI",
+      "searchUrl": "https://www.amazon.com/s?k=Wild%20Planet%20No%20Salt%20Added%20Albacore%20Tuna%205%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Wild Planet No Salt Added Albacore Tuna 5 oz",
+      "category": "Meat & Seafood",
+      "capturedAt": "2026-07-18T03:13:39.000Z"
     }
   ],
   "queries": [
@@ -58442,6 +58454,15 @@
       "asins": ["B0FS82Z95B"],
       "url": "https://www.amazon.com/s?k=KIND%20Honey%20Oat%20Breakfast%20Bars%206%20count%201.76%20oz&i=wholefoods&rh=n%3A18473610011",
       "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Wild Planet No Salt Added Albacore Tuna 5 oz",
+      "targetProductId": "30076",
+      "category": "Meat & Seafood",
+      "count": 1,
+      "asins": ["B013ORJQWI"],
+      "url": "https://www.amazon.com/s?k=Wild%20Planet%20No%20Salt%20Added%20Albacore%20Tuna%205%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T03:13:39.000Z"
     }
   ]
 }
