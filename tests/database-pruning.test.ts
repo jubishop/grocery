@@ -49,6 +49,69 @@ test("aggregate Safeway and QFC markup diagnostics remain available", () => {
   }
 });
 
+test("unmatched retailer house brands stay out of the active comparison database", () => {
+  const database = new DatabaseSync(databasePath, { readOnly: true });
+  try {
+    const forbiddenStandalone = database.prepare(`
+      SELECT COUNT(*) AS count
+      FROM product_identifiers AS identifier
+      WHERE (
+        source = 'instacart'
+        AND (
+          source_title LIKE '365 by Whole Foods Market%'
+          OR source_title LIKE 'Whole Foods Market%'
+          OR source_title LIKE 'PCC %'
+          OR source_title LIKE 'Metropolitan Market%'
+          OR source_title LIKE 'Signature Select%'
+          OR source_title LIKE 'O Organics%'
+          OR source_title LIKE 'Open Nature%'
+          OR source_title LIKE 'Lucerne%'
+          OR source_title LIKE 'Kroger%'
+          OR source_title LIKE 'Simple Truth%'
+          OR source_title LIKE 'Private Selection%'
+        )
+        AND NOT EXISTS (
+          SELECT 1
+          FROM product_matches AS match
+          WHERE match.product_id = identifier.product_id
+        )
+      ) OR (
+        source = 'amazon_whole_foods'
+        AND product_id LIKE 'wf:%'
+        AND (
+          source_title LIKE '365 by Whole Foods Market%'
+          OR source_title LIKE 'Whole Foods Market%'
+        )
+      ) OR (
+        source = 'safeway.com'
+        AND product_id LIKE 'safeway:%'
+        AND (
+          source_title LIKE 'Signature Select%'
+          OR source_title LIKE 'O Organics%'
+          OR source_title LIKE 'Open Nature%'
+        )
+      ) OR (
+        source = 'qfc.com'
+        AND product_id LIKE 'qfc:%'
+        AND (
+          source_title LIKE 'Kroger%'
+          OR source_title LIKE 'Simple Truth%'
+          OR source_title LIKE 'Private Selection%'
+        )
+      )
+    `).get() as { count: number };
+    const siteData = JSON.parse(readFileSync(siteDataPath, "utf8"));
+
+    assert.equal(forbiddenStandalone.count, 0);
+    assert.ok(siteData.summary.excludedSourceExclusiveRecords.instacart > 0);
+    assert.ok(siteData.summary.excludedSourceExclusiveRecords.wholefoods > 0);
+    assert.ok(siteData.summary.excludedSourceExclusiveRecords.safeway > 0);
+    assert.ok(siteData.summary.excludedSourceExclusiveRecords.qfc > 0);
+  } finally {
+    database.close();
+  }
+});
+
 test("weighted estimates retain provenance but only verified unit rates are comparable", () => {
   const database = new DatabaseSync(databasePath, { readOnly: true });
   try {
@@ -132,7 +195,7 @@ test("Trader Joe's is published as a searchable commodity overlay", () => {
 
     assert.equal(traderJoes.coverageMode, "commodity-overlay");
     assert.equal(siteData.summary.coreStoreCount, 5);
-    assert.equal(siteData.summary.coreAllStoreProducts, 64);
+    assert.equal(siteData.summary.coreAllStoreProducts, 78);
     assert.equal(observations.count, siteData.summary.traderJoesEligibleProducts);
     assert.equal(matches.count, siteData.summary.acceptedTraderJoesMatches);
     assert.equal(traderProducts.length, siteData.summary.traderJoesComparableProducts);
