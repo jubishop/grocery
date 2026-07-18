@@ -8,12 +8,26 @@ function qualifierText(value) {
     .replace(/\s+/g, " ");
 }
 
-export function hasOrganicClaim(value) {
+export function protectedQualifierClaims(value) {
   const normalized = qualifierText(value);
-  if (/\bnon organic\b/.test(normalized)) return false;
-  return /\borganic\b/.test(normalized);
+  return {
+    organic: /\borganic\b/.test(normalized) && !/\bnon organic\b/.test(normalized),
+    glutenFree: /\bgluten\s*free\b/.test(normalized),
+    nonGmo: /\b(?:non\s*gmo|gmo\s*free)\b/.test(normalized),
+    plantBased: /\bplant\s*based\b/.test(normalized),
+  };
 }
 
-export function organicQualifiersCompatible(left, right) {
-  return hasOrganicClaim(left) === hasOrganicClaim(right);
+function qualifiersCompatible(left, right, claims) {
+  const leftClaims = protectedQualifierClaims(left);
+  const rightClaims = protectedQualifierClaims(right);
+  return claims.every((claim) => leftClaims[claim] === rightClaims[claim]);
+}
+
+export function productQualifiersCompatible(left, right) {
+  return qualifiersCompatible(left, right, ["organic", "glutenFree", "nonGmo", "plantBased"]);
+}
+
+export function crossSourceQualifiersCompatible(left, right) {
+  return qualifiersCompatible(left, right, ["organic", "glutenFree"]);
 }

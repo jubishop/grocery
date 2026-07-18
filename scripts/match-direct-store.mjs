@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { organicQualifiersCompatible } from "./match-product-qualifiers.mjs";
+import { crossSourceQualifiersCompatible } from "./match-product-qualifiers.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
@@ -96,7 +96,7 @@ function quantitiesAgree(left, right) {
 
 const stopWords = new Set([
   "a", "an", "and", "the", "with", "made", "from", "for", "of", "in", "by",
-  "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
+  "natural", "naturals",
   "frozen", "microwave", "meal", "meals", "food", "foods", "product", "products",
   "flavor", "flavored", "style", "premium", "ready", "serve", "your",
   "ounce", "ounces", "fluid", "pound", "pounds", "count", "pack", "packs", "ct", "oz",
@@ -174,7 +174,7 @@ function stateConflict(leftText, rightText, phrases, contextPattern = null) {
 }
 
 function variantsCompatible(leftText, rightText) {
-  if (!organicQualifiersCompatible(leftText, rightText)) return false;
+  if (!crossSourceQualifiersCompatible(leftText, rightText)) return false;
   const conflicts = [
     stateConflict(leftText, rightText, ["unsalted", "salted"]),
     stateConflict(leftText, rightText, ["unsweetened", "sweetened"]),
@@ -392,7 +392,7 @@ const output = {
   generatedAt: new Date().toISOString(),
   storeId,
   source: config.source,
-  methodology: `Conservative ${config.displayName} direct-catalog crosswalk requiring equivalent package quantity, strong normalized product-name agreement, and an unambiguous best candidate. Unmatched items are excluded from the current ${config.displayName} corpus rather than falling back to Instacart.`,
+  methodology: `Conservative ${config.displayName} direct-catalog crosswalk requiring equivalent package quantity, agreement on protected organic/gluten-free variant claims, strong normalized product-name agreement that retains non-GMO and plant-based descriptors, and an unambiguous best candidate. Unmatched items are excluded from the current ${config.displayName} corpus rather than falling back to Instacart.`,
   counts: {
     instacartStoreProducts: storeItems.length,
     directProductsCaptured: direct.records.length,

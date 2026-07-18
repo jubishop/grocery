@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { organicQualifiersCompatible } from "./match-product-qualifiers.mjs";
+import { crossSourceQualifiersCompatible } from "./match-product-qualifiers.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
@@ -105,7 +105,7 @@ function quantitiesAgree(left, right) {
 
 const stopWords = new Set([
   "a", "an", "and", "the", "with", "made", "from", "for", "of", "in", "by",
-  "natural", "naturals", "non", "gmo", "gluten", "free", "plant", "based",
+  "natural", "naturals",
   "frozen", "microwave", "meal", "meals", "food", "foods", "product", "products",
   "flavor", "flavored", "style", "premium", "ready", "serve",
   "ounce", "ounces", "fluid", "pound", "pounds", "count", "pack", "packs", "ct", "oz",
@@ -157,7 +157,7 @@ for (const item of allInstacart) {
       const candidateQuantity = quantity(candidate.title);
       if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
       if (!brandAgrees(item.name, candidate.brand)) return null;
-      if (!organicQualifiersCompatible(item.name, candidate.title)) return null;
+      if (!crossSourceQualifiersCompatible(item.name, candidate.title)) return null;
       const score = tokenScore(item.name, candidate.title);
       return { candidate, candidateQuantity, score };
     })
@@ -169,7 +169,7 @@ for (const item of allInstacart) {
         const candidateQuantity = quantity(candidate.title);
         if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
         if (!brandAgrees(item.name, candidate.brand)) return null;
-        if (!organicQualifiersCompatible(item.name, candidate.title)) return null;
+        if (!crossSourceQualifiersCompatible(item.name, candidate.title)) return null;
         const score = tokenScore(item.name, candidate.title);
         return { candidate, candidateQuantity, score };
       })
@@ -269,7 +269,7 @@ const lowReview = remainingLowReview.filter((match) => match.storeCount === 4);
 
 const output = {
   generatedAt: new Date().toISOString(),
-  methodology: "Conservative automatic crosswalk: matching normalized brand, product/flavor tokens, and equivalent package quantity; ambiguous candidates are excluded.",
+  methodology: "Conservative automatic crosswalk: matching normalized brand, protected organic/gluten-free variant claims, product/flavor tokens including non-GMO and plant-based descriptors, and equivalent package quantity; ambiguous candidates are excluded.",
   counts: {
     instacartAllFour: allFour.length,
     wholeFoodsCaptured: wholeFoods.records.length,
