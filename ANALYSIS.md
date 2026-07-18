@@ -13,7 +13,7 @@ Prices were captured July 16–17, 2026 for a West Seattle delivery area. PCC, M
 - 810 accepted Whole Foods cross-source matches
 - 1,323 recorded search and aisle-capture queries across the two catalog sources
 
-The strict five-store target of more than 300 products was not attainable from the live catalogs with same-SKU matching. The capture now covers every food aisle exposed by all four Instacart stores (excluding alcohol), reconciles only high-confidence duplicate Instacart IDs, records exact Whole Foods search-result provenance, and includes a human audit of borderline cross-source candidates. That exhaustive pass produced 181 defensible unique five-way matches. Similar flavors, sizes, multipacks, or product variants were excluded.
+The strict five-store target of more than 300 products was not attainable from the live catalogs with same-SKU matching. The capture now covers every food aisle exposed by all four Instacart stores (excluding alcohol), reconciles only high-confidence duplicate Instacart IDs, records exact Whole Foods search-result provenance, and automatically excludes borderline cross-source candidates. That exhaustive pass produced 181 defensible unique five-way matches. Similar flavors, sizes, multipacks, or product variants were excluded.
 
 ## Pairwise baskets
 

@@ -22,7 +22,6 @@ Then open <http://localhost:3000/#top>.
 - `data/capture-checkpoint.json` is the durable Instacart browser capture for PCC, Metropolitan Market, Safeway, and QFC.
 - `data/whole-foods-capture-checkpoint.json` is the durable Amazon Whole Foods capture.
 - `data/whole-foods-matches.json` is the generated conservative cross-source product crosswalk.
-- `data/whole-foods-match-overrides.json` is the small auditable list of human-reviewed same-SKU matches.
 - `data/instacart-aliases.json` records high-confidence retailer-specific Instacart ID aliases for diagnostics.
 - `data/schema.sql` defines the historical-ready relational schema.
 - `data/grocery-prices.sqlite` is the populated SQLite database committed with the site.
@@ -55,6 +54,6 @@ The PCC and Metropolitan Market Instacart catalogs use the selected West Seattle
 
 Current displayed prices are used, including member, club, and sale prices when shown; original prices are retained separately. Clip-once digital coupons and buy-multiple offers are not applied to the one-of-each comparison baskets.
 
-The Instacart catalogs are joined by identical product ID or a conservative same-SKU alias supported by equivalent brand, package quantity, and explicit organic, gluten-free, non-GMO, and plant-based claims; every original external ID is retained. Whole Foods and direct-store products are linked conservatively by brand, product or flavor tokens, equivalent package quantity, and agreement on organic and gluten-free variants, while non-GMO and plant-based descriptors remain part of the name score. A July 17 matching audit separated protected product variants, and an audited override file admits only human-reviewed same-SKU title variations. Ambiguous matches are excluded.
+The Instacart catalogs are joined by identical product ID or a conservative same-SKU alias supported by equivalent brand, numeric variant, package quantity, and protected product claims; every original external ID is retained. Whole Foods and direct-store products are linked automatically and conservatively by brand, product or flavor tokens, equivalent package quantity, and agreement on protected variants. Loose produce additionally requires the same normalized produce name, variety, organic status, and selling basis. Loose raw meat and seafood require the same normalized cut and an explicitly captured per-pound basis plus agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry also requires product-detail qualifier evidence on both sides. Ambiguous candidates are excluded automatically.
 
 The requested 300-item strict five-store intersection has not yet been reached: the current exact-product corpus contains 257 defensible unique five-way matches. The site reports that shortfall directly and does not pad it with merely similar products.

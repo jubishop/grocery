@@ -280,6 +280,7 @@ function ProductCard({
             >
               <span>{store.shortName}</span>
               <div><strong>{money.format(price.price)}</strong>{price.originalPrice !== null && <s>{money.format(price.originalPrice)}</s>}</div>
+              <small>{price.priceBasis}</small>
               <small className="price-source">{price.sale ? "sale shown · " : ""}{priceSourceLabels[price.source]?.label ?? price.source}</small>
               <small>{priceSourceLabels[price.source]?.action ?? "View source"} ↗</small>
             </a>

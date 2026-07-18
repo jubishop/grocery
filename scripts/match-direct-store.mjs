@@ -1,12 +1,17 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { crossSourceQualifiersCompatible } from "./match-product-qualifiers.mjs";
+import {
+  crossSourceQualifiersCompatible,
+  numericProductVariantsCompatible,
+  productQualifierEvidence,
+} from "./match-product-qualifiers.mjs";
+import { looseProduceKey, looseProduceMatches } from "./match-loose-produce.mjs";
+import { looseMeatKey, looseMeatMatches } from "./match-loose-meat.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
 const aliasesPath = path.join(root, "data/instacart-aliases.json");
-const overridesPath = path.join(root, "data/direct-store-match-overrides.json");
 const storeId = process.argv[2] ?? "safeway";
 const configs = {
   safeway: {
@@ -25,11 +30,10 @@ const configs = {
 const config = configs[storeId];
 if (!config) throw new Error(`Unsupported direct store: ${storeId}`);
 
-const [instacart, direct, aliases, overrides] = await Promise.all([
+const [instacart, direct, aliases] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
   readFile(config.directPath, "utf8").then(JSON.parse),
   readFile(aliasesPath, "utf8").then(JSON.parse),
-  readFile(overridesPath, "utf8").then(JSON.parse),
 ]);
 
 const unitAliases = new Map([
@@ -175,6 +179,7 @@ function stateConflict(leftText, rightText, phrases, contextPattern = null) {
 
 function variantsCompatible(leftText, rightText) {
   if (!crossSourceQualifiersCompatible(leftText, rightText)) return false;
+  if (!numericProductVariantsCompatible(leftText, rightText)) return false;
   const conflicts = [
     stateConflict(leftText, rightText, ["unsalted", "salted"]),
     stateConflict(leftText, rightText, ["unsweetened", "sweetened"]),
@@ -200,21 +205,15 @@ for (const record of instacart.records) {
   groups.set(canonicalId, group);
 }
 
-const manualOverrides = overrides[storeId]?.accepted ?? [];
-function overrideForGroup(productId, group) {
-  return manualOverrides.find((candidate) => (
-    candidate.productId === productId || group.sourceProductIds.has(candidate.productId)
-  ));
-}
-
 const storeItems = [...groups.entries()]
-  .filter(([productId, group]) => group.storeIds.has(storeId) || overrideForGroup(productId, group))
+  .filter(([, group]) => (
+    group.storeIds.has(storeId)
+    || group.records.some((record) => looseProduceKey(record))
+    || group.records.some((record) => looseMeatKey(record))
+  ))
   .map(([productId, group]) => {
     const storeRecord = group.records.find((record) => record.storeId === storeId);
-    const manualOverride = overrideForGroup(productId, group);
-    const representativeRecord = storeRecord
-      ?? group.records.find((record) => record.id === manualOverride?.productId)
-      ?? group.records[0];
+    const representativeRecord = storeRecord ?? group.records[0];
     return {
       productId,
       sourceProductIds: [...group.sourceProductIds],
@@ -222,6 +221,10 @@ const storeItems = [...groups.entries()]
       storeCount: group.storeIds.size,
       name: representativeRecord.name,
       size: representativeRecord.size || "",
+      category: representativeRecord.category || "",
+      priceBasis: representativeRecord.priceBasis || "per item",
+      productUrl: representativeRecord.productUrl || "",
+      qualifierText: representativeRecord.qualifierText || "",
       instacartPrice: storeRecord?.price ?? null,
       instacartUrl: storeRecord?.productUrl ?? "",
       quantity: quantity(representativeRecord.size || representativeRecord.name),
@@ -243,10 +246,6 @@ const directWithQuantity = direct.records
   })
   .filter((record) => record.quantity);
 const directById = new Map(directWithQuantity.map((record) => [record.id, record]));
-const directByAnyId = new Map(direct.records.map((record) => [record.id, {
-  ...record,
-  quantity: quantity(record.title) ?? quantity(record.size),
-}]));
 const resultIdsByQuery = new Map();
 const resultIdsByProduct = new Map();
 for (const query of direct.queries) {
@@ -263,21 +262,32 @@ for (const query of direct.queries) {
 }
 
 const accepted = [];
-const review = [];
-const exactReview = [];
 for (const item of storeItems) {
-  if (!item.quantity) continue;
-  const manualOverride = overrides[storeId]?.accepted?.find((candidate) => (
-    candidate.productId === item.productId || item.sourceProductIds.includes(candidate.productId)
-  ));
-  if (manualOverride) {
-    const record = directByAnyId.get(manualOverride.directId);
-    if (!record) {
-      throw new Error(`Missing ${storeId} direct product ${manualOverride.directId} for override ${manualOverride.productId}`);
-    }
-    const priceDifference = item.instacartPrice == null
-      ? null
-      : Number((item.instacartPrice - record.price).toFixed(2));
+  const looseCandidates = direct.records.filter((record) => {
+    const left = {
+      name: item.name,
+      size: item.size,
+      category: item.category,
+      priceBasis: item.priceBasis,
+      productUrl: item.productUrl,
+      qualifierText: item.qualifierText,
+    };
+    const right = { ...record, category: record.category || item.category };
+    return looseProduceMatches(left, right) || looseMeatMatches(left, right);
+  });
+  if (looseCandidates.length === 1) {
+    const record = looseCandidates[0];
+    const isProduce = looseProduceMatches(
+    {
+      name: item.name,
+      size: item.size,
+      category: item.category,
+      priceBasis: item.priceBasis,
+      productUrl: item.productUrl,
+      qualifierText: item.qualifierText,
+    },
+    { ...record, category: record.category || item.category },
+    );
     accepted.push({
       productId: item.productId,
       sourceProductIds: item.sourceProductIds,
@@ -289,26 +299,26 @@ for (const item of storeItems) {
       instacartUrl: item.instacartUrl,
       directId: record.id,
       directTitle: record.title,
-      directSize: storeId === "safeway" ? (record.quantity?.display ?? record.size ?? item.size) : record.size,
+      directSize: record.size || record.priceBasis || item.priceBasis,
       directPrice: record.price,
       directOriginalPrice: record.originalPrice,
       directUrl: record.productUrl,
       capturedAt: record.capturedAt,
       capturedQuery: record.query,
-      matchMethod: "human_reviewed_brand_variant_size",
+      matchMethod: isProduce
+        ? "normalized_loose_produce_name_basis"
+        : "normalized_loose_meat_name_claims_basis",
       matchScore: 1,
       matchMargin: 1,
-      sizeEvidence: record.quantity && quantitiesAgree(item.quantity, record.quantity)
-        ? `${item.quantity.display} = ${record.quantity.display}`
-        : `${item.quantity.display} = retailer package ${record.size || record.quantity?.display || "verified in title"}`,
-      manualReviewNote: manualOverride.note,
-      priceDifference,
-      instacartMarkupPercent: item.instacartPrice == null
-        ? null
-        : Number(((item.instacartPrice / record.price - 1) * 100).toFixed(1)),
+      sizeEvidence: isProduce
+        ? `same loose produce name and ${record.priceBasis || item.priceBasis} selling basis`
+        : "same loose meat cut, protected claims, and per lb selling basis",
+      priceDifference: item.instacartPrice == null ? null : Number((item.instacartPrice - record.price).toFixed(2)),
+      instacartMarkupPercent: item.instacartPrice == null ? null : Number(((item.instacartPrice / record.price - 1) * 100).toFixed(1)),
     });
     continue;
   }
+  if (!item.quantity) continue;
   const expectedQueryKey = queryKey(`${item.name} ${item.size}`.trim());
   const targetedResultIds = resultIdsByProduct.get(item.productId);
   const exactResultIds = targetedResultIds ?? resultIdsByQuery.get(expectedQueryKey);
@@ -321,7 +331,7 @@ for (const item of storeItems) {
     .map((record) => ({ record, score: tokenScore(item.name, record.title) }))
     .filter(({ record, score }) => (
       brandsCompatible(item.name, record.title, score)
-      && variantsCompatible(item.name, record.title)
+      && variantsCompatible(productQualifierEvidence(item), productQualifierEvidence(record))
     ))
     .filter(({ score }) => score >= 0.48)
     .sort((a, b) => b.score - a.score || a.record.title.localeCompare(b.record.title));
@@ -363,28 +373,15 @@ for (const item of storeItems) {
       : best.score >= 0.78 && (margin >= 0.1 || best.score >= 0.93)
   );
   if (isAccepted) accepted.push(result);
-  else if (exactQueryRecords.length) exactReview.push({
-    ...result,
-    alternatives: candidates.slice(0, 4).map(({ record, score }) => ({
-      directId: record.id,
-      title: record.title,
-      size: record.size,
-      price: record.price,
-      score: Number(score.toFixed(4)),
-    })),
-  });
-  else if (best.score >= 0.62 && margin >= 0.04) review.push(result);
 }
 
 const uniqueAccepted = accepted
   .sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore || b.matchMargin - a.matchMargin)
-  .filter((match, index, matches) => matches.findIndex((candidate) => candidate.directId === match.directId) === index)
+  .filter((match, index, matches) => (
+    matches.findIndex((candidate) => candidate.directId === match.directId) === index
+    && matches.findIndex((candidate) => candidate.productId === match.productId) === index
+  ))
   .sort((a, b) => a.instacartName.localeCompare(b.instacartName));
-
-const acceptedKeys = new Set(uniqueAccepted.map((match) => `${match.productId}|${match.directId}`));
-const remainingReview = review
-  .filter((match) => !acceptedKeys.has(`${match.productId}|${match.directId}`))
-  .sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore);
 
 const markupMatches = uniqueAccepted.filter((match) => Number.isFinite(match.priceDifference));
 const priceDifferences = markupMatches.map((match) => match.priceDifference).sort((a, b) => a - b);
@@ -392,13 +389,11 @@ const output = {
   generatedAt: new Date().toISOString(),
   storeId,
   source: config.source,
-  methodology: `Conservative ${config.displayName} direct-catalog crosswalk requiring equivalent package quantity, agreement on protected organic/gluten-free variant claims, strong normalized product-name agreement that retains non-GMO and plant-based descriptors, and an unambiguous best candidate. Unmatched items are excluded from the current ${config.displayName} corpus rather than falling back to Instacart.`,
+  methodology: `Fully automatic conservative ${config.displayName} direct-catalog crosswalk requiring equivalent package quantity and numeric variants, agreement on protected product claims, strong normalized product-name agreement, and an unambiguous best candidate. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically without falling back to Instacart.`,
   counts: {
     instacartStoreProducts: storeItems.length,
     directProductsCaptured: direct.records.length,
     accepted: uniqueAccepted.length,
-    review: remainingReview.length,
-    exactReview: exactReview.length,
     acceptedByStoreCount: Object.fromEntries([1, 2, 3, 4].map((count) => [count, uniqueAccepted.filter((match) => match.storeCount === count).length])),
   },
   markupSummary: {
@@ -411,8 +406,6 @@ const output = {
     medianDifference: priceDifferences[Math.floor(priceDifferences.length / 2)] ?? 0,
   },
   matches: uniqueAccepted,
-  review: remainingReview,
-  exactReview: exactReview.sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore),
 };
 
 await writeFile(config.outputPath, `${JSON.stringify(output, null, 2)}\n`);
