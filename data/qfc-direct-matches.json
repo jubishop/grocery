@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-07-18T18:38:36.050Z",
+  "generatedAt": "2026-07-18T19:37:27.813Z",
   "storeId": "qfc",
   "source": "qfc.com",
   "methodology": "Fully automatic conservative QFC direct-catalog crosswalk requiring equivalent package quantity and numeric variants, agreement on protected product claims, strong normalized product-name agreement, and an unambiguous best candidate. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically without falling back to Instacart.",
   "counts": {
-    "instacartStoreProducts": 12707,
+    "instacartStoreProducts": 12244,
     "directProductsCaptured": 6202,
-    "accepted": 3008,
+    "accepted": 2997,
     "acceptedByStoreCount": {
-      "1": 1199,
-      "2": 953,
+      "1": 1194,
+      "2": 948,
       "3": 606,
-      "4": 250
+      "4": 249
     }
   },
   "markupSummary": {
-    "comparedProducts": 2997,
-    "instacartHigherCount": 2387,
+    "comparedProducts": 2994,
+    "instacartHigherCount": 2385,
     "directHigherCount": 9,
-    "samePriceCount": 601,
-    "totalInstacart": 20607.73,
-    "totalDirect": 17601.22,
+    "samePriceCount": 600,
+    "totalInstacart": 20595.96,
+    "totalDirect": 17591.62,
     "medianDifference": 0.7
   },
   "matches": [
@@ -2709,34 +2709,6 @@
       "sizeEvidence": "40 oz = 40 oz",
       "priceDifference": 0.7,
       "instacartMarkupPercent": 9.6
-    },
-    {
-      "productId": "3258106",
-      "sourceProductIds": [
-        "3258106"
-      ],
-      "storeIds": [
-        "metro"
-      ],
-      "storeCount": 1,
-      "instacartName": "Artichoke",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "0000000004762",
-      "directTitle": "Artichoke",
-      "directSize": "1 ct",
-      "directPrice": 3.99,
-      "directOriginalPrice": 4.99,
-      "directUrl": "https://www.qfc.com/p/artichoke/0000000004762?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T16:08:58.569Z",
-      "capturedQuery": "Napoleon",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
     },
     {
       "productId": "47198",
@@ -15627,34 +15599,6 @@
       "instacartMarkupPercent": 5.7
     },
     {
-      "productId": "3177720",
-      "sourceProductIds": [
-        "3177720"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "Cilantro",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "0000000004889",
-      "directTitle": "Cilantro",
-      "directSize": "1 ct",
-      "directPrice": 1.29,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/cilantro/0000000004889?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T16:16:05.708Z",
-      "capturedQuery": "Litehouse",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
       "productId": "34418",
       "sourceProductIds": [
         "34418"
@@ -17341,34 +17285,6 @@
       "sizeEvidence": "10 oz = 10 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 11.1
-    },
-    {
-      "productId": "3253345",
-      "sourceProductIds": [
-        "3253345"
-      ],
-      "storeIds": [
-        "metro"
-      ],
-      "storeCount": 1,
-      "instacartName": "Cucumber",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "0000000004062",
-      "directTitle": "Cucumber",
-      "directSize": "1 ct",
-      "directPrice": 0.99,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/cucumber/0000000004062?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T15:36:34.155Z",
-      "capturedQuery": "avocado",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
     },
     {
       "productId": "22133943",
@@ -24377,35 +24293,6 @@
       "sizeEvidence": "15 oz = 15 oz",
       "priceDifference": 4,
       "instacartMarkupPercent": 40
-    },
-    {
-      "productId": "26518763",
-      "sourceProductIds": [
-        "26518763"
-      ],
-      "storeIds": [
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 2,
-      "instacartName": "Garlic",
-      "instacartSize": "",
-      "instacartPrice": 0.99,
-      "instacartUrl": "https://www.instacart.com/products/26518763-world-variety-produce-garlic-each?retailerSlug=qfc",
-      "directId": "0000000004608",
-      "directTitle": "Garlic",
-      "directSize": "1 ct",
-      "directPrice": 0.99,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/garlic/0000000004608?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T15:36:45.174Z",
-      "capturedQuery": "onions",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": 0,
-      "instacartMarkupPercent": 0
     },
     {
       "productId": "210673",
@@ -46660,18 +46547,18 @@
       "instacartMarkupPercent": 4.8
     },
     {
-      "productId": "2677342",
+      "productId": "23000972",
       "sourceProductIds": [
-        "2677342"
+        "23000972"
       ],
       "storeIds": [
-        "metro"
+        "qfc"
       ],
       "storeCount": 1,
-      "instacartName": "Limes",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
+      "instacartName": "Lime",
+      "instacartSize": "1 ct",
+      "instacartPrice": 1.49,
+      "instacartUrl": "https://www.instacart.com/products/23000972-lime-1-ct?retailerSlug=qfc",
       "directId": "0000000004048",
       "directTitle": "Fresh Limes - Each",
       "directSize": "1 each",
@@ -46684,8 +46571,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
+      "priceDifference": 0.24,
+      "instacartMarkupPercent": 19.2
     },
     {
       "productId": "201433",
@@ -55149,35 +55036,6 @@
       "instacartMarkupPercent": 11.1
     },
     {
-      "productId": "43435",
-      "sourceProductIds": [
-        "43435"
-      ],
-      "storeIds": [
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 2,
-      "instacartName": "Orange Bell Pepper",
-      "instacartSize": "",
-      "instacartPrice": 2.29,
-      "instacartUrl": "https://www.instacart.com/products/43435-orange-bell-pepper-each?retailerSlug=qfc",
-      "directId": "0000000003121",
-      "directTitle": "Fresh Orange Bell Pepper",
-      "directSize": "1 ct",
-      "directPrice": 2,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/fresh-orange-bell-pepper/0000000003121?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T16:11:15.235Z",
-      "capturedQuery": "organicgirl",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": 0.29,
-      "instacartMarkupPercent": 14.5
-    },
-    {
       "productId": "41936",
       "sourceProductIds": [
         "41936"
@@ -55347,35 +55205,6 @@
       "directUrl": "https://www.qfc.com/p/fresh-organic-limes-each/0000000094048?fulfillment=PICKUP",
       "capturedAt": "2026-07-17T17:08:08.510Z",
       "capturedQuery": "Late July Sea Salt Lime",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "16346283",
-      "sourceProductIds": [
-        "16346283"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro"
-      ],
-      "storeCount": 2,
-      "instacartName": "Organic Orange Bell Pepper",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "0000000093121",
-      "directTitle": "Organic Fresh Orange Bell Pepper",
-      "directSize": "1 ct",
-      "directPrice": 2.5,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/organic-fresh-orange-bell-pepper/0000000093121?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T15:36:34.155Z",
-      "capturedQuery": "avocado",
       "matchMethod": "normalized_loose_produce_name_basis",
       "matchScore": 1,
       "matchMargin": 1,
@@ -55565,62 +55394,6 @@
       "sizeEvidence": "64 fl oz = 64 fl oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 27.3
-    },
-    {
-      "productId": "16616981",
-      "sourceProductIds": [
-        "16616981"
-      ],
-      "storeIds": [
-        "pcc"
-      ],
-      "storeCount": 1,
-      "instacartName": "Organic Yellow Bell Pepper",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "0000000094689",
-      "directTitle": "Organic Fresh Yellow Bell Pepper",
-      "directSize": "1 ct",
-      "directPrice": 2.5,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/organic-fresh-yellow-bell-pepper/0000000094689?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T15:36:37.765Z",
-      "capturedQuery": "tomatoes",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
-    },
-    {
-      "productId": "21132834",
-      "sourceProductIds": [
-        "21132834"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "Organic Zucchini Squash",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "0000000094067",
-      "directTitle": "Organic Zucchini Squash",
-      "directSize": "per lb",
-      "directPrice": 1.9,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/organic-zucchini-squash/0000000094067?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T16:11:15.235Z",
-      "capturedQuery": "organicgirl",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per lb selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
     },
     {
       "productId": "40272",
@@ -58461,21 +58234,18 @@
       "instacartMarkupPercent": 9.1
     },
     {
-      "productId": "439841",
+      "productId": "17090525",
       "sourceProductIds": [
-        "439841"
+        "17090525"
       ],
       "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
+        "safeway"
       ],
-      "storeCount": 4,
+      "storeCount": 1,
       "instacartName": "Pineapple",
-      "instacartSize": "",
-      "instacartPrice": 6.99,
-      "instacartUrl": "https://www.instacart.com/products/439841-pineapple-each?retailerSlug=qfc",
+      "instacartSize": "1 ct",
+      "instacartPrice": null,
+      "instacartUrl": "",
       "directId": "0000000004430",
       "directTitle": "Fresh Ripe Whole Pineapple",
       "directSize": "1 ct",
@@ -58488,8 +58258,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": 1,
-      "instacartMarkupPercent": 16.7
+      "priceDifference": null,
+      "instacartMarkupPercent": null
     },
     {
       "productId": "23000176",
@@ -58577,34 +58347,6 @@
       "sizeEvidence": "32 fl oz = 32 fl oz",
       "priceDifference": 2.8,
       "instacartMarkupPercent": 127.9
-    },
-    {
-      "productId": "3253316",
-      "sourceProductIds": [
-        "3253316"
-      ],
-      "storeIds": [
-        "metro"
-      ],
-      "storeCount": 1,
-      "instacartName": "Plantain",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "0000000004235",
-      "directTitle": "Fresh Plantain - Single",
-      "directSize": "1 ea",
-      "directPrice": 1.39,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/fresh-plantain-single/0000000004235?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T15:36:27.725Z",
-      "capturedQuery": "bananas",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
     },
     {
       "productId": "55191",
@@ -81002,35 +80744,6 @@
       "instacartMarkupPercent": 12.5
     },
     {
-      "productId": "19687238",
-      "sourceProductIds": [
-        "19687238"
-      ],
-      "storeIds": [
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 2,
-      "instacartName": "Sweet Potatoes",
-      "instacartSize": "",
-      "instacartPrice": 2.99,
-      "instacartUrl": "https://www.instacart.com/products/19687238-white-sweet-potatoes-yams-per-lb?retailerSlug=qfc",
-      "directId": "0000000004816",
-      "directTitle": "Sweet Potato",
-      "directSize": "per lb",
-      "directPrice": 1.87,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/sweet-potato/0000000004816?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T15:36:42.009Z",
-      "capturedQuery": "potatoes",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per lb selling basis",
-      "priceDifference": 1.12,
-      "instacartMarkupPercent": 59.9
-    },
-    {
       "productId": "16355028",
       "sourceProductIds": [
         "16355028"
@@ -86887,35 +86600,6 @@
       "sizeEvidence": "24 oz = 1.5 lb",
       "priceDifference": 5,
       "instacartMarkupPercent": 45.5
-    },
-    {
-      "productId": "3297927",
-      "sourceProductIds": [
-        "3297927"
-      ],
-      "storeIds": [
-        "metro",
-        "safeway"
-      ],
-      "storeCount": 2,
-      "instacartName": "Yellow Bell Pepper",
-      "instacartSize": "",
-      "instacartPrice": null,
-      "instacartUrl": "",
-      "directId": "0000000004689",
-      "directTitle": "Fresh Yellow Bell Pepper",
-      "directSize": "1 ct",
-      "directPrice": 2,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.qfc.com/p/fresh-yellow-bell-pepper/0000000004689?fulfillment=PICKUP",
-      "capturedAt": "2026-07-17T16:11:15.235Z",
-      "capturedQuery": "organicgirl",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and per item selling basis",
-      "priceDifference": null,
-      "instacartMarkupPercent": null
     },
     {
       "productId": "16507392",

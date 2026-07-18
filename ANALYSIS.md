@@ -1,67 +1,81 @@
 # West Seattle Grocery Index analysis
 
-Prices were captured July 16–17, 2026 for a West Seattle delivery area. PCC, Metropolitan Market, Safeway, and QFC came from Instacart; Whole Foods came from Amazon with the West Seattle store selected.
+Prices were captured July 16–18, 2026 for West Seattle. PCC and Metropolitan Market prices come from Instacart, Safeway and QFC prices come from their direct pickup catalogs, and Whole Foods prices come from Amazon with the West Seattle store selected.
 
 ## Coverage
 
-- 33,925 distinct captured products after same-SKU identity reconciliation
-- 46,055 dated price observations
-- 8,100 products comparable at two or more stores
-- 1,778 products present at three stores
-- 475 products present at four stores
-- 181 products present at all five stores
-- 810 accepted Whole Foods cross-source matches
-- 1,323 recorded search and aisle-capture queries across the two catalog sources
+- 41,241 distinct captured products after identity reconciliation
+- 31,591 dated price observations retained in SQLite
+- 30,518 observations eligible for current comparisons
+- 1,073 unverified variable-weight observations retained but excluded
+- 3,552 products comparable at two or more stores
+- 596 products present at three stores
+- 207 products present at four stores
+- 64 products present at all five stores
+- 603 accepted Whole Foods cross-source matches
+- 2,909 recorded search and aisle-capture queries
 
-The strict five-store target of more than 300 products was not attainable from the live catalogs with same-SKU matching. The capture now covers every food aisle exposed by all four Instacart stores (excluding alcohol), reconciles only high-confidence duplicate Instacart IDs, records exact Whole Foods search-result provenance, and automatically excludes borderline cross-source candidates. That exhaustive pass produced 181 defensible unique five-way matches. Similar flavors, sizes, multipacks, or product variants were excluded.
+The strict five-store target of more than 300 products is not attainable from this snapshot under same-product, same-basis matching. Similar flavors, sizes, packages, protected product claims, and incompatible or unverified selling bases are excluded automatically.
+
+## Weight normalization audit
+
+Instacart can show a retailer-specific estimated each total even when the final cost is calculated by weight. The pipeline now parses the explicit unit rate and canonicalizes it to dollars per pound; the estimate and displayed average weight are retained only as provenance. Direct-store card text such as `$4.93 each ($3.79 / Lb)` is normalized by the same rule. Packaged bags and other fixed-size products retain their each price.
+
+The current SQLite audit reports:
+
+- 22 eligible Instacart unit-price observations across PCC and Metro
+- 34 eligible direct-store per-pound observations across Safeway and QFC, including 16 Safeway final-cost-by-weight estimates
+- 1,073 excluded unverified variable-weight observations
+- zero eligible products mixing selling bases
+- zero unverified weight prices eligible for comparison
+
+The reported celery-root regression is now PCC **$2.99/lb** versus Metro **$4.19/lb**. The former estimated totals—$5.98 for an assumed 2.0 lb at PCC and $0.38 for an assumed 0.09 lb at Metro—remain stored as evidence but no longer affect rankings.
 
 ## Pairwise baskets
 
-Each row is a one-of-each basket over the products shared by that pair. Totals should not be compared between rows because every pair has a different product set.
+Each row is a one-unit basket over the products shared by that pair. A unit is one item for fixed-price products and one pound for per-pound products. Totals should not be compared between rows because every pair has a different product set.
 
 | Pair | Matches | Lower basket | Difference |
 |---|---:|---|---:|
-| PCC vs. Metropolitan Market | 2,200 | PCC | $1,883.63 (11.1%) |
-| PCC vs. Safeway | 973 | PCC | $1,340.52 (18.0%) |
-| PCC vs. QFC | 994 | PCC | $1,094.14 (14.5%) |
-| PCC vs. Whole Foods | 537 | PCC | $11.85 (0.3%) |
-| Metropolitan Market vs. Safeway | 2,559 | Metropolitan Market | $965.39 (5.1%) |
-| Metropolitan Market vs. QFC | 2,465 | Metropolitan Market | $490.23 (2.8%) |
-| Metropolitan Market vs. Whole Foods | 539 | Whole Foods | $335.98 (8.4%) |
-| Safeway vs. QFC | 4,570 | QFC | $777.12 (2.3%) |
-| Safeway vs. Whole Foods | 409 | Whole Foods | $645.66 (19.7%) |
-| QFC vs. Whole Foods | 414 | Whole Foods | $465.51 (14.7%) |
+| PCC vs. Metropolitan Market | 2,153 | PCC | $1,902.99 (11.4%) |
+| PCC vs. Safeway | 325 | PCC | $106.19 (4.9%) |
+| PCC vs. QFC | 424 | QFC | $63.12 (2.3%) |
+| PCC vs. Whole Foods | 400 | PCC | $30.55 (1.2%) |
+| Metropolitan Market vs. Safeway | 717 | Safeway | $415.41 (8.8%) |
+| Metropolitan Market vs. QFC | 929 | QFC | $850.73 (13.2%) |
+| Metropolitan Market vs. Whole Foods | 379 | Whole Foods | $266.93 (9.8%) |
+| Safeway vs. QFC | 680 | QFC | $142.20 (3.5%) |
+| Safeway vs. Whole Foods | 161 | Whole Foods | $103.01 (9.7%) |
+| QFC vs. Whole Foods | 187 | QFC | $12.53 (1.1%) |
 
 ## Overall store pattern
 
-The site uses a product-level price index to summarize uneven catalogs. For each comparable product, 100 is the average among stores where that product was captured; each store's index is the mean of those product-level ratios. Lower is cheaper.
+The site uses a product-level price index to summarize uneven catalogs. For each comparable product, 100 is the average among stores where that product was captured; each store's index is the mean of those ratios. Lower is cheaper.
 
 | Store | Price index | Head-to-head win rate | Comparable products |
 |---|---:|---:|---:|
-| PCC Community Markets | 92.8 | 79.6% | 2,713 |
-| Whole Foods Market | 93.0 | 76.2% | 810 |
-| QFC | 100.9 | 47.3% | 5,600 |
-| Metropolitan Market | 101.3 | 47.2% | 4,689 |
-| Safeway | 102.5 | 31.5% | 5,659 |
+| QFC | 94.6 | 72.1% | 1,285 |
+| PCC Community Markets | 95.5 | 72.1% | 2,387 |
+| Whole Foods Market | 96.6 | 68.5% | 562 |
+| Safeway | 98.7 | 46.6% | 1,033 |
+| Metropolitan Market | 106.9 | 18.5% | 3,039 |
 
-Whole Foods still has a smaller comparable set, so its overall index is not directly as representative as the four Instacart stores. On its broader 537-product pairing with PCC, PCC is cheaper by just $11.85 (0.3%). On the strict 181-product basket shared by all five, totals are:
+Whole Foods has a smaller comparable set, so its overall index is less representative than PCC or Metro. On the strict 64-product basket shared by all five stores, totals are:
 
 | Store | Total |
 |---|---:|
-| Whole Foods Market | $1,155.78 |
-| PCC Community Markets | $1,178.17 |
-| Metropolitan Market | $1,262.06 |
-| QFC | $1,360.89 |
-| Safeway | $1,450.55 |
-
-Whole Foods is $294.77 below Safeway on that fully common basket. PCC is second, $22.39 above Whole Foods.
+| QFC | $385.90 |
+| Whole Foods Market | $386.44 |
+| PCC Community Markets | $401.56 |
+| Safeway | $432.85 |
+| Metropolitan Market | $440.09 |
 
 ## Category breadth
 
-The strict five-store set spans 14 categories. Dairy and eggs is largest with 48 products, followed by bakery and bread (21), baking (16), plant-based foods (14), condiments and oils (14), breakfast and cereal (14), snacks (12), meat and seafood (11), beverages (10), frozen (8), canned goods and soup (7), pasta and sauces (3), other groceries (2), and produce (1). The site exposes every category and dynamically recalculates strict baskets for the selected stores.
+The strict five-store set spans 12 categories: dairy and eggs (22), bakery and bread (11), baking (7), breakfast and cereal (5), snacks (4), frozen (3), condiments and oils (3), meat and seafood (2), beverages (2), canned goods and soup (2), plant-based foods (2), and pasta and sauces (1).
 
 ## Method and caveats
 
-Every SQLite observation includes an observation date and timestamp, store, source, original external product ID, canonical product ID, price, sale state, source URL, and capture query. `product_identifiers` and `product_matches` preserve the identity evidence needed for future historical updates. Amazon query records now retain the ASIN result set from each exact search.
+Every SQLite observation includes an observation timestamp and date, store, source, original external product ID, canonical product ID, comparison and estimated-item price evidence, sale state, selling basis, pricing mode, eligibility, exclusion reason, source URL, and capture query. `product_identifiers` and `product_matches` preserve the identity evidence needed for future historical updates.
 
-Catalog prices can differ from in-store shelf prices, vary by address, and change at any time. The addresses on the site provide West Seattle context; the catalog source, not the address alone, determines the displayed price and availability.
+Catalog prices can differ from in-store shelf prices, vary by address and fulfillment mode, and change at any time. The addresses on the site provide West Seattle context; the catalog source, not the address alone, determines displayed price and availability.

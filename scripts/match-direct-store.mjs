@@ -8,9 +8,14 @@ import {
 } from "./match-product-qualifiers.mjs";
 import { looseProduceKey, looseProduceMatches } from "./match-loose-produce.mjs";
 import { looseMeatKey, looseMeatMatches } from "./match-loose-meat.mjs";
+import {
+  normalizeDirectStoreRecords,
+  normalizeInstacartRecords,
+} from "./normalize-instacart-pricing.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
+const instacartWeightDetailsPath = path.join(root, "data/instacart-weight-details.json");
 const aliasesPath = path.join(root, "data/instacart-aliases.json");
 const storeId = process.argv[2] ?? "safeway";
 const configs = {
@@ -30,11 +35,14 @@ const configs = {
 const config = configs[storeId];
 if (!config) throw new Error(`Unsupported direct store: ${storeId}`);
 
-const [instacart, direct, aliases] = await Promise.all([
+const [instacart, instacartWeightDetails, direct, aliases] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
+  readFile(instacartWeightDetailsPath, "utf8").then(JSON.parse),
   readFile(config.directPath, "utf8").then(JSON.parse),
   readFile(aliasesPath, "utf8").then(JSON.parse),
 ]);
+instacart.records = normalizeInstacartRecords(instacart.records, instacartWeightDetails);
+direct.records = normalizeDirectStoreRecords(direct.records);
 
 const unitAliases = new Map([
   ["ounce", "oz"], ["ounces", "oz"], ["oz", "oz"],
@@ -213,7 +221,10 @@ const storeItems = [...groups.entries()]
   ))
   .map(([productId, group]) => {
     const storeRecord = group.records.find((record) => record.storeId === storeId);
-    const representativeRecord = storeRecord ?? group.records[0];
+    const eligibleRecords = group.records.filter((record) => record.comparisonEligible !== false);
+    const representativeRecord = (
+      storeRecord?.comparisonEligible !== false ? storeRecord : null
+    ) ?? eligibleRecords[0] ?? storeRecord ?? group.records[0];
     return {
       productId,
       sourceProductIds: [...group.sourceProductIds],
@@ -225,8 +236,9 @@ const storeItems = [...groups.entries()]
       priceBasis: representativeRecord.priceBasis || "per item",
       productUrl: representativeRecord.productUrl || "",
       qualifierText: representativeRecord.qualifierText || "",
-      instacartPrice: storeRecord?.price ?? null,
-      instacartUrl: storeRecord?.productUrl ?? "",
+      comparisonEligible: eligibleRecords.length > 0,
+      instacartPrice: storeRecord?.comparisonEligible !== false ? storeRecord?.price ?? null : null,
+      instacartUrl: storeRecord?.comparisonEligible !== false ? storeRecord?.productUrl ?? "" : "",
       quantity: quantity(representativeRecord.size || representativeRecord.name),
     };
   });
@@ -271,6 +283,7 @@ for (const item of storeItems) {
       priceBasis: item.priceBasis,
       productUrl: item.productUrl,
       qualifierText: item.qualifierText,
+      comparisonEligible: item.comparisonEligible,
     };
     const right = { ...record, category: record.category || item.category };
     return looseProduceMatches(left, right) || looseMeatMatches(left, right);
@@ -285,6 +298,7 @@ for (const item of storeItems) {
       priceBasis: item.priceBasis,
       productUrl: item.productUrl,
       qualifierText: item.qualifierText,
+      comparisonEligible: item.comparisonEligible,
     },
     { ...record, category: record.category || item.category },
     );
