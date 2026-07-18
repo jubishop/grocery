@@ -37,7 +37,13 @@ instacart.records = instacart.records
     sourceProductId: record.id,
     id: aliases.aliases[record.id] ?? record.id,
   }));
-wholeFoods.records = wholeFoods.records.filter((record) => Number.isFinite(record.price) && record.price > 0);
+wholeFoods.records = [
+  ...new Map(
+    wholeFoods.records
+      .filter((record) => Number.isFinite(record.price) && record.price > 0)
+      .map((record) => [record.asin, record]),
+  ).values(),
+];
 safewayDirect.records = safewayDirect.records.filter((record) => Number.isFinite(record.price) && record.price > 0);
 qfcDirect.records = qfcDirect.records.filter((record) => Number.isFinite(record.price) && record.price > 0);
 

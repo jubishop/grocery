@@ -231,6 +231,186 @@
         "productId": "21351192",
         "directId": "960564566",
         "note": "Kettle & Fire organic chicken cooking broth, 32 oz; Safeway product details confirm the organic chicken broth SKU and package"
+      },
+      {
+        "productId": "53380",
+        "directId": "960152789",
+        "note": "Muir Glen organic fire-roasted diced tomatoes, 28 oz; exact product, package, and current Safeway price verified"
+      },
+      {
+        "productId": "26862",
+        "directId": "960084453",
+        "note": "Tate's Bake Shop gluten-free chocolate chip cookies, 7 oz; exact gluten-free variant, package, and current Safeway price verified"
+      },
+      {
+        "productId": "48223",
+        "directId": "960090888",
+        "note": "Saffron Road chicken tikka masala frozen meal, 10 oz; product-detail title and GTIN distinguish it from the similar chicken biryani result"
+      },
+      {
+        "productId": "18718109",
+        "directId": "960453543",
+        "note": "Bob's Red Mill gluten-free old fashioned rolled oats, 32 oz"
+      },
+      {
+        "productId": "16694181",
+        "directId": "960062909",
+        "note": "Siggi's vanilla nonfat skyr, single 5.3 oz cup"
+      },
+      {
+        "productId": "26548580",
+        "directId": "970475814",
+        "note": "GOODLES Cheddy Mac creamy cheddar macaroni and cheese, single 6 oz box"
+      },
+      {
+        "productId": "17096888",
+        "directId": "960276898",
+        "note": "Dave's Killer Bread Epic Everything organic bagels, 5 count and 16.75 oz"
+      },
+      {
+        "productId": "29774",
+        "directId": "960057110",
+        "note": "LARABAR peanut butter chocolate chip fruit and nut bar, single 1.6 oz bar"
+      },
+      {
+        "productId": "27564",
+        "directId": "960071220",
+        "note": "GT's SYNERGY Guava Goddess kombucha, single 16 fl oz bottle"
+      },
+      {
+        "productId": "175345",
+        "directId": "960194584",
+        "note": "Coombs Family Farms organic grade A maple syrup, single 12 fl oz bottle"
+      },
+      {
+        "productId": "73515",
+        "directId": "136050130",
+        "note": "Organic Valley organic whole milk, half gallon or 64 fl oz"
+      },
+      {
+        "productId": "3134126",
+        "directId": "960195951",
+        "note": "Chosen Foods classic avocado-oil mayonnaise, 12 fl oz"
+      },
+      {
+        "productId": "18021451",
+        "directId": "960100459",
+        "note": "Vital Farms pasture-raised large brown grade A eggs, 12 count; pasture-raised variant confirmed in Safeway product details"
+      },
+      {
+        "productId": "2788934",
+        "directId": "960146385",
+        "note": "Amy's gluten-free three cheese and kale bake bowl, 8.5 oz"
+      },
+      {
+        "productId": "54709",
+        "directId": "960019689",
+        "note": "Annie's gluten-free rice pasta and cheddar macaroni and cheese, 6 oz"
+      },
+      {
+        "productId": "2591776",
+        "directId": "960322722",
+        "note": "MALK organic unsweetened almond milk, 28 fl oz"
+      },
+      {
+        "productId": "395436",
+        "directId": "960161304",
+        "note": "Pacific Foods organic unsalted chicken bone broth, 32 fl oz"
+      },
+      {
+        "productId": "280043",
+        "directId": "149010344",
+        "note": "CLIF BAR classic chocolate chip single energy bar, 2.4 oz; exact flavor and single-bar package verified on Safeway product page"
+      },
+      {
+        "productId": "287297",
+        "directId": "960047109",
+        "note": "Amy's organic Margherita pizza, single 13 oz frozen pizza"
+      },
+      {
+        "productId": "49798",
+        "directId": "960010404",
+        "note": "Annie's classic cheddar macaroni and cheese, single 6 oz box"
+      },
+      {
+        "productId": "24310",
+        "directId": "126250138",
+        "note": "Annie's organic shells and real aged cheddar macaroni and cheese, single 6 oz box"
+      },
+      {
+        "productId": "12932",
+        "directId": "960075633",
+        "note": "CLIF Kid ZBAR chocolate chip soft-baked snack bars, 6 count"
+      },
+      {
+        "productId": "24866",
+        "directId": "121300355",
+        "note": "Muir Glen organic fire-roasted diced tomatoes, single 14.5 oz can"
+      },
+      {
+        "productId": "25339",
+        "directId": "105400011",
+        "note": "TABASCO Original Red Pepper Sauce, single 2 fl oz bottle"
+      },
+      {
+        "productId": "24683",
+        "directId": "125250087",
+        "note": "Pacific Foods organic vegetable broth, single 32 fl oz carton"
+      },
+      {
+        "productId": "254020",
+        "directId": "960113871",
+        "note": "KIND caramel almond and sea salt snack bar, single 1.4 oz bar"
+      },
+      {
+        "productId": "2915433",
+        "directId": "960254105",
+        "note": "RXBAR coconut chocolate protein bar, single 1.8 oz bar"
+      },
+      {
+        "productId": "310485",
+        "directId": "960166981",
+        "note": "Nature's Bakery whole-wheat raspberry fig bar twin packs, 6 x 2 oz"
+      },
+      {
+        "productId": "26544524",
+        "directId": "970407834",
+        "note": "Sanpellegrino Aranciata Rossa orange and blood orange sparkling drink, 6 x 11.15 fl oz"
+      },
+      {
+        "productId": "26532540",
+        "directId": "970407835",
+        "note": "Sanpellegrino Limonata sparkling lemon drink, 6 x 11.15 fl oz"
+      },
+      {
+        "productId": "218717",
+        "directId": "105450314",
+        "note": "Bragg organic raw unfiltered apple cider vinegar with the mother, 16 fl oz"
+      },
+      {
+        "productId": "25648058",
+        "directId": "970523808",
+        "note": "Annie's Organic Berry Patch Bunny fruit snacks, 10 pouches totaling 7 oz"
+      },
+      {
+        "productId": "27038",
+        "directId": "102020821",
+        "note": "Wasa Multi Grain crispbread, 9.7 oz box (20 crispbreads)"
+      },
+      {
+        "productId": "24682",
+        "directId": "960152908",
+        "note": "Pacific Foods organic beef broth, 32 oz carton"
+      },
+      {
+        "productId": "18008978",
+        "directId": "960294013",
+        "note": "Stumptown original Nitro cold brew coffee, 10.3 fl oz can"
+      },
+      {
+        "productId": "94689837",
+        "directId": "971363638",
+        "note": "KIND Honey Oat breakfast protein bars, 6 twin-bar pouches (6 x 1.76 oz)"
       }
     ]
   },
@@ -370,6 +550,201 @@
         "productId": "24491",
         "directId": "0004227200505",
         "note": "Amy's regular organic low-fat split pea soup, 14.1 oz; QFC description distinguishes it from the separate light-in-sodium version"
+      },
+      {
+        "productId": "43453",
+        "directId": "0007073400008",
+        "note": "Celestial Seasonings caffeine-free peppermint herbal tea, 20 count"
+      },
+      {
+        "productId": "44162",
+        "directId": "0004227200352",
+        "note": "Amy's gluten-free non-dairy bean and rice burrito, 5.5 oz"
+      },
+      {
+        "productId": "16290425",
+        "directId": "0001356230215",
+        "note": "Annie's organic original cheddar bunnies snack crackers, 7.5 oz"
+      },
+      {
+        "productId": "10073",
+        "directId": "0001356200004",
+        "note": "Annie's organic shells and white cheddar macaroni and cheese, 6 oz"
+      },
+      {
+        "productId": "20633111",
+        "directId": "0003997811332",
+        "note": "Bob's Red Mill gluten-free chickpea flour, 16 oz"
+      },
+      {
+        "productId": "25689056",
+        "directId": "0081509902163",
+        "note": "Late July organic sea salt tortilla chips, 10.1 oz"
+      },
+      {
+        "productId": "74505",
+        "directId": "0089520300115",
+        "note": "organicgirl organic baby arugula, 5 oz"
+      },
+      {
+        "productId": "16790738",
+        "directId": "0004227201149",
+        "note": "Amy's organic roasted poblano enchilada frozen meal, 9.1 oz"
+      },
+      {
+        "productId": "2588658",
+        "directId": "0086102900012",
+        "note": "MALK organic vanilla almond milk, 28 fl oz"
+      },
+      {
+        "productId": "21125182",
+        "directId": "0085176900775",
+        "note": "Siete mild taco seasoning, single 1.31 oz packet"
+      },
+      {
+        "productId": "21220661",
+        "directId": "0085176900776",
+        "note": "Siete spicy taco seasoning, single 1.31 oz packet"
+      },
+      {
+        "productId": "16907565",
+        "directId": "0085556911060",
+        "note": "Perfect Bar refrigerated dark chocolate chip peanut butter protein bar, single 2.3 oz bar; QFC displays one count and $1.52 per oz"
+      },
+      {
+        "productId": "44184",
+        "directId": "0004227200811",
+        "note": "Amy's gluten-free broccoli and cheddar bake bowl, single 9.5 oz frozen meal"
+      },
+      {
+        "productId": "24493",
+        "directId": "0004227200582",
+        "note": "Amy's organic light-in-sodium lentil vegetable soup, 14.5 oz"
+      },
+      {
+        "productId": "18025322",
+        "directId": "0003997803535",
+        "note": "Bob's Red Mill gluten-free finely ground tapioca flour, 16 oz"
+      },
+      {
+        "productId": "41662372",
+        "directId": "0081058903196",
+        "note": "Purely Elizabeth chocolate chip cookie granola, 11 oz; brand, flavor, package, UPC, and current West Seattle QFC price verified visually"
+      },
+      {
+        "productId": "3134126",
+        "directId": "0081507402000",
+        "note": "Chosen Foods 100% pure avocado-oil classic mayonnaise, 12 fl oz"
+      },
+      {
+        "productId": "18021451",
+        "directId": "0086174500001",
+        "note": "Vital Farms pasture-raised large brown eggs, 12 count"
+      },
+      {
+        "productId": "2788934",
+        "directId": "0004227201056",
+        "note": "Amy's gluten-free three cheese and kale bake bowl, 8.5 oz"
+      },
+      {
+        "productId": "54709",
+        "directId": "0001356261001",
+        "note": "Annie's gluten-free rice pasta and cheddar macaroni and cheese, 6 oz"
+      },
+      {
+        "productId": "2591776",
+        "directId": "0086102900011",
+        "note": "MALK organic unsweetened almond milk, 28 fl oz"
+      },
+      {
+        "productId": "395436",
+        "directId": "0005260305607",
+        "note": "Pacific Foods organic unsalted chicken bone broth, 32 fl oz"
+      },
+      {
+        "productId": "280043",
+        "directId": "0072225210090",
+        "note": "CLIF BAR classic chocolate chip single energy bar, 2.4 oz"
+      },
+      {
+        "productId": "287297",
+        "directId": "0004227200199",
+        "note": "Amy's organic Margherita pizza, single 13 oz frozen pizza"
+      },
+      {
+        "productId": "49798",
+        "directId": "0001356200045",
+        "note": "Annie's classic cheddar macaroni and cheese, single 6 oz box"
+      },
+      {
+        "productId": "24310",
+        "directId": "0001356230084",
+        "note": "Annie's organic shells and real aged cheddar macaroni and cheese, single 6 oz box"
+      },
+      {
+        "productId": "12932",
+        "directId": "0072225219204",
+        "note": "CLIF Kid ZBAR chocolate chip soft-baked snack bars, 6 count"
+      },
+      {
+        "productId": "24866",
+        "directId": "0072534229121",
+        "note": "Muir Glen organic fire-roasted diced tomatoes, single 14.5 oz can"
+      },
+      {
+        "productId": "25339",
+        "directId": "0001121000001",
+        "note": "TABASCO Original Red Pepper Sauce, single 2 fl oz bottle"
+      },
+      {
+        "productId": "24683",
+        "directId": "0005260305410",
+        "note": "Pacific Foods organic vegetable broth, single 32 fl oz carton"
+      },
+      {
+        "productId": "310485",
+        "directId": "0004749521004",
+        "note": "Nature's Bakery whole-wheat raspberry fig bar twin packs, 6 x 2 oz"
+      },
+      {
+        "productId": "26544524",
+        "directId": "0004150868102",
+        "note": "Sanpellegrino Aranciata Rossa orange and blood orange sparkling drink, 6 x 11.15 fl oz"
+      },
+      {
+        "productId": "26532540",
+        "directId": "0004150891355",
+        "note": "Sanpellegrino Limonata sparkling lemon drink, 6 x 11.15 fl oz"
+      },
+      {
+        "productId": "218717",
+        "directId": "0007430500116",
+        "note": "Bragg organic raw unfiltered apple cider vinegar with the mother, 16 fl oz"
+      },
+      {
+        "productId": "25648058",
+        "directId": "0001356212765",
+        "note": "Annie's Organic Berry Patch Bunny fruit snacks, 10 x 0.7 oz pouches"
+      },
+      {
+        "productId": "27038",
+        "directId": "0003361700703",
+        "note": "Wasa Multi Grain crispbread, 9.7 oz box (20 crispbreads)"
+      },
+      {
+        "productId": "24682",
+        "directId": "0005260305444",
+        "note": "Pacific Foods organic beef broth, 32 oz carton"
+      },
+      {
+        "productId": "18008978",
+        "directId": "0085518600620",
+        "note": "Stumptown original Nitro cold brew coffee, 10.3 fl oz can"
+      },
+      {
+        "productId": "94689837",
+        "directId": "0060265267403",
+        "note": "KIND Honey Oat breakfast protein bars, 6 twin-bar pouches (12 bars total)"
       }
     ]
   }

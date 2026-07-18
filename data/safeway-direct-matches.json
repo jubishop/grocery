@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-07-18T00:19:20.336Z",
+  "generatedAt": "2026-07-18T02:41:05.412Z",
   "storeId": "safeway",
   "source": "safeway.com",
   "methodology": "Conservative Safeway direct-catalog crosswalk requiring equivalent package quantity, agreement on protected organic/gluten-free variant claims, strong normalized product-name agreement that retains non-GMO and plant-based descriptors, and an unambiguous best candidate. Unmatched items are excluded from the current Safeway corpus rather than falling back to Instacart.",
   "counts": {
-    "instacartStoreProducts": 13971,
-    "directProductsCaptured": 5626,
-    "accepted": 2521,
-    "review": 834,
+    "instacartStoreProducts": 13975,
+    "directProductsCaptured": 5635,
+    "accepted": 2554,
+    "review": 827,
     "exactReview": 2,
     "acceptedByStoreCount": {
       "1": 970,
       "2": 724,
-      "3": 541,
-      "4": 286
+      "3": 544,
+      "4": 316
     }
   },
   "markupSummary": {
-    "comparedProducts": 2513,
-    "instacartHigherCount": 2422,
+    "comparedProducts": 2542,
+    "instacartHigherCount": 2451,
     "directHigherCount": 12,
     "samePriceCount": 79,
-    "totalInstacart": 17169.64,
-    "totalDirect": 14785.11,
+    "totalInstacart": 17375.36,
+    "totalDirect": 14962.52,
     "medianDifference": 0.8
   },
   "matches": [
@@ -895,6 +895,38 @@
       "instacartMarkupPercent": 20
     },
     {
+      "productId": "2788934",
+      "sourceProductIds": [
+        "2788934"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Amy's Kitchen Gluten Free Three Cheese Kale Bowl",
+      "instacartSize": "8.5 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/2788934-amy-s-kitchen-gluten-free-three-cheese-kale-bowl-8-5-oz?retailerSlug=safeway",
+      "directId": "960146385",
+      "directTitle": "Amy's Three Cheese Kale Bake Bowl - 8.5 Oz",
+      "directSize": "8.5 oz",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960146385.html",
+      "capturedAt": "2026-07-17T16:44:52.891Z",
+      "capturedQuery": "Amy's Kitchen Vegetable Lasagna",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "8.5 oz = 8.5 oz",
+      "manualReviewNote": "Amy's gluten-free three cheese and kale bake bowl, 8.5 oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 20
+    },
+    {
       "productId": "24504",
       "sourceProductIds": [
         "24504"
@@ -1045,6 +1077,37 @@
       "sizeEvidence": "9 oz = 9 oz",
       "priceDifference": 1.2,
       "instacartMarkupPercent": 20.7
+    },
+    {
+      "productId": "287297",
+      "sourceProductIds": [
+        "287297"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "Amy's Kitchen Margherita Pizza",
+      "instacartSize": "13 oz",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "960047109",
+      "directTitle": "Amy's Margherita Pizza - 13 Oz",
+      "directSize": "13 oz",
+      "directPrice": 10.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960047109.html",
+      "capturedAt": "2026-07-18T01:49:26.000Z",
+      "capturedQuery": "Amy Margherita Pizza 13 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "13 oz = 13 oz",
+      "manualReviewNote": "Amy's organic Margherita pizza, single 13 oz frozen pizza",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
     },
     {
       "productId": "35748207",
@@ -1530,6 +1593,103 @@
       "instacartMarkupPercent": 11.1
     },
     {
+      "productId": "54709",
+      "sourceProductIds": [
+        "54709",
+        "18259648"
+      ],
+      "storeIds": [
+        "metro",
+        "qfc",
+        "safeway",
+        "pcc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Annie's Gluten Free Rice Pasta and White Cheddar Cheese",
+      "instacartSize": "6 oz",
+      "instacartPrice": 5.99,
+      "instacartUrl": "https://www.instacart.com/products/18259648-annie-s-gluten-free-shell-pasta-creamy-white-cheddar-macaroni-and-cheese-6-000-oz?retailerSlug=safeway",
+      "directId": "960019689",
+      "directTitle": "Annies Homegrown Macaroni & Cheese Gluten Free Rice Pasta & Cheddar Box - 6 Oz",
+      "directSize": "6 oz",
+      "directPrice": 5.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960019689.html",
+      "capturedAt": "2026-07-17T16:22:59.702Z",
+      "capturedQuery": "Annie's",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "6 oz = 6 oz",
+      "manualReviewNote": "Annie's gluten-free rice pasta and cheddar macaroni and cheese, 6 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 9.1
+    },
+    {
+      "productId": "49798",
+      "sourceProductIds": [
+        "49798"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Annie's Macaroni and Classic Cheddar Mac and Cheese",
+      "instacartSize": "6 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/49798-annie-s-classic-cheddar-macaroni-and-cheese-pasta-mac-and-cheese-6-000-oz?retailerSlug=safeway",
+      "directId": "960010404",
+      "directTitle": "Annies Homegrown Macaroni & Cheese Classic Mild Cheddar Box - 6 Oz",
+      "directSize": "6 oz",
+      "directPrice": 3.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960010404.html",
+      "capturedAt": "2026-07-17T16:24:36.536Z",
+      "capturedQuery": "GOODLES",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "6 oz = 6 oz",
+      "manualReviewNote": "Annie's classic cheddar macaroni and cheese, single 6 oz box",
+      "priceDifference": 0.2,
+      "instacartMarkupPercent": 5.3
+    },
+    {
+      "productId": "25648058",
+      "sourceProductIds": [
+        "25648058"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Annie's Organic Berry Patch Bunny Fruit Flavored Snacks",
+      "instacartSize": "10 ct",
+      "instacartPrice": 10.99,
+      "instacartUrl": "https://www.instacart.com/products/25648058-annie-s-organic-berry-patch-bunny-fruit-snacks-gluten-free-10-count-7-000-oz?retailerSlug=safeway",
+      "directId": "970523808",
+      "directTitle": "Annies Homegrown Fruit Snack Berry Patch - 7 OZ",
+      "directSize": "7 oz",
+      "directPrice": 9.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970523808.html",
+      "capturedAt": "2026-07-17T16:22:59.702Z",
+      "capturedQuery": "Annie's",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "10 ct = retailer package 10 ct",
+      "manualReviewNote": "Annie's Organic Berry Patch Bunny fruit snacks, 10 pouches totaling 7 oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 15.8
+    },
+    {
       "productId": "33791",
       "sourceProductIds": [
         "33791"
@@ -1589,6 +1749,39 @@
       "sizeEvidence": "7.5 oz = 7.5 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 23.1
+    },
+    {
+      "productId": "24310",
+      "sourceProductIds": [
+        "24315",
+        "24310"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Annie's Organic Shells Pasta and Aged Cheddar Cheese",
+      "instacartSize": "6 oz",
+      "instacartPrice": 3.99,
+      "instacartUrl": "https://www.instacart.com/products/24315-annie-s-shells-aged-cheddar-macaroni-and-cheese-6-000-oz?retailerSlug=safeway",
+      "directId": "126250138",
+      "directTitle": "Annie's Homegrown Macaroni & Cheese Shells & Real Aged Cheddar Box - 6 Oz",
+      "directSize": "6 oz",
+      "directPrice": 3.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.126250138.html",
+      "capturedAt": "2026-07-17T16:24:36.536Z",
+      "capturedQuery": "GOODLES",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "6 oz = 6 oz",
+      "manualReviewNote": "Annie's organic shells and real aged cheddar macaroni and cheese, single 6 oz box",
+      "priceDifference": 0.2,
+      "instacartMarkupPercent": 5.3
     },
     {
       "productId": "10073",
@@ -7222,6 +7415,38 @@
       "instacartMarkupPercent": 20
     },
     {
+      "productId": "18718109",
+      "sourceProductIds": [
+        "18718109"
+      ],
+      "storeIds": [
+        "pcc",
+        "qfc",
+        "safeway",
+        "metro"
+      ],
+      "storeCount": 4,
+      "instacartName": "Bob's Red Mill Old Fashioned Rolled Oats, Gluten Free",
+      "instacartSize": "32 oz",
+      "instacartPrice": 10.99,
+      "instacartUrl": "https://www.instacart.com/products/18718109-bob-s-red-mill-old-fashioned-rolled-oats-gluten-free-32-0-oz?retailerSlug=safeway",
+      "directId": "960453543",
+      "directTitle": "Bob's Red Mill Gluten Free Old Fashion Rolled Oats - 32 Oz",
+      "directSize": "32 oz",
+      "directPrice": 9.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960453543.html",
+      "capturedAt": "2026-07-17T20:54:21.976Z",
+      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "32 oz = 32 oz",
+      "manualReviewNote": "Bob's Red Mill gluten-free old fashioned rolled oats, 32 oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 15.8
+    },
+    {
       "productId": "19772720",
       "sourceProductIds": [
         "19772720"
@@ -8785,6 +9010,40 @@
       "sizeEvidence": "4.5 oz = 4.5 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 13.1
+    },
+    {
+      "productId": "218717",
+      "sourceProductIds": [
+        "218717",
+        "23769898",
+        "32676672"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Bragg Organic Raw Unfiltered Apple Cider Vinegar",
+      "instacartSize": "16 fl oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/218717-bragg-organic-raw-unfiltered-apple-cider-vinegar-16-oz?retailerSlug=safeway",
+      "directId": "105450314",
+      "directTitle": "Bragg Vinegar Apple Cider - 16 Fl. Oz.",
+      "directSize": "16 fl oz",
+      "directPrice": 6.29,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.105450314.html",
+      "capturedAt": "2026-07-17T16:28:13.662Z",
+      "capturedQuery": "vinegar",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "16 fl oz = 16 fl oz",
+      "manualReviewNote": "Bragg organic raw unfiltered apple cider vinegar with the mother, 16 fl oz",
+      "priceDifference": 0.7,
+      "instacartMarkupPercent": 11.1
     },
     {
       "productId": "27408196",
@@ -14502,6 +14761,38 @@
       "instacartMarkupPercent": 14.3
     },
     {
+      "productId": "3134126",
+      "sourceProductIds": [
+        "3134126"
+      ],
+      "storeIds": [
+        "qfc",
+        "pcc",
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Chosen Foods Avocado Oil Based Mayonnaise",
+      "instacartSize": "12 fl oz",
+      "instacartPrice": 10.99,
+      "instacartUrl": "https://www.instacart.com/products/3134126-chosen-foods-avocado-oil-mayo-classic-12-0-oz?retailerSlug=safeway",
+      "directId": "960195951",
+      "directTitle": "Chosen Foods Mayonnaise Avocado Oil Mayo - 12 Fl. Oz.",
+      "directSize": "12 fl oz",
+      "directPrice": 9.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960195951.html",
+      "capturedAt": "2026-07-17T17:03:22.567Z",
+      "capturedQuery": "Primal Kitchen Avocado Oil Mayo",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "12 fl oz = 12 fl oz",
+      "manualReviewNote": "Chosen Foods classic avocado-oil mayonnaise, 12 fl oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 15.8
+    },
+    {
       "productId": "252796",
       "sourceProductIds": [
         "252796"
@@ -14739,6 +15030,38 @@
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 14.3
+    },
+    {
+      "productId": "280043",
+      "sourceProductIds": [
+        "280043"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "CLIF BAR Chocolate Chip Energy Bar",
+      "instacartSize": "2.4 oz",
+      "instacartPrice": 1.99,
+      "instacartUrl": "https://www.instacart.com/products/280043-clif-bar-chocolate-chip-energy-bar-2-4-oz?retailerSlug=safeway",
+      "directId": "149010344",
+      "directTitle": "CLIF BAR Chocolate Chip Energy Protein Bar - Each",
+      "directSize": "2 oz",
+      "directPrice": 1.67,
+      "directOriginalPrice": 1.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.149010344.html",
+      "capturedAt": "2026-07-17T16:23:21.203Z",
+      "capturedQuery": "CLIF",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "2.4 oz = retailer package 2 oz",
+      "manualReviewNote": "CLIF BAR classic chocolate chip single energy bar, 2.4 oz; exact flavor and single-bar package verified on Safeway product page",
+      "priceDifference": 0.32,
+      "instacartMarkupPercent": 19.2
     },
     {
       "productId": "44630791",
@@ -15236,6 +15559,39 @@
       "sizeEvidence": "6 oz = 6 oz",
       "priceDifference": 0.2,
       "instacartMarkupPercent": 11.2
+    },
+    {
+      "productId": "175345",
+      "sourceProductIds": [
+        "189368",
+        "175345"
+      ],
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc",
+        "pcc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Coombs Family Farms Organic Maple Syrup",
+      "instacartSize": "12 fl oz",
+      "instacartPrice": 14.99,
+      "instacartUrl": "https://www.instacart.com/products/175345-coombs-family-farms-organic-grade-a-dark-maple-syrup-12-oz?retailerSlug=safeway",
+      "directId": "960194584",
+      "directTitle": "Coombs Maple Syrup Orgnc Grd - 12 Fl. Oz.",
+      "directSize": "12 fl oz",
+      "directPrice": 12.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960194584.html",
+      "capturedAt": "2026-07-18T01:36:00.000Z",
+      "capturedQuery": "Coombs organic maple syrup 12 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "12 fl oz = 12 fl oz",
+      "manualReviewNote": "Coombs Family Farms organic grade A maple syrup, single 12 fl oz bottle",
+      "priceDifference": 2,
+      "instacartMarkupPercent": 15.4
     },
     {
       "productId": "29503315",
@@ -16152,6 +16508,38 @@
       "matchScore": 1,
       "matchMargin": 0.2444,
       "sizeEvidence": "5 ct = 5 ct",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "17096888",
+      "sourceProductIds": [
+        "17096888"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Dave's Killer Bread Epic Everything Organic Bagels",
+      "instacartSize": "16.75 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/17096888-dave-s-killer-bread-epic-everything-organic-bagels-16-75-oz?retailerSlug=safeway",
+      "directId": "960276898",
+      "directTitle": "Daves Killer Bread Everything Bagel Organic 5 Count - 16.75 Oz",
+      "directSize": "5 ct",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960276898.html",
+      "capturedAt": "2026-07-17T17:21:37.026Z",
+      "capturedQuery": "Dave's Killer Bread Thin Sliced Whole Wheat Organic Bread",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "16.75 oz = retailer package 5 ct",
+      "manualReviewNote": "Dave's Killer Bread Epic Everything organic bagels, 5 count and 16.75 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
     },
@@ -22333,6 +22721,38 @@
       "instacartMarkupPercent": 20.7
     },
     {
+      "productId": "26548580",
+      "sourceProductIds": [
+        "26548580"
+      ],
+      "storeIds": [
+        "pcc",
+        "safeway",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Goodles Cheddy Mac Creamy Protein Mac & Cheese",
+      "instacartSize": "6 oz",
+      "instacartPrice": 4.99,
+      "instacartUrl": "https://www.instacart.com/products/26548580-goodles-cheddy-mac-cheese-6-oz?retailerSlug=safeway",
+      "directId": "970475814",
+      "directTitle": "Goodles Cheddy Mac Creamy Cheddar And Macaroni - 6 Oz",
+      "directSize": "6 oz",
+      "directPrice": 4.29,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970475814.html",
+      "capturedAt": "2026-07-17T16:24:36.536Z",
+      "capturedQuery": "GOODLES",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "6 oz = 6 oz",
+      "manualReviewNote": "GOODLES Cheddy Mac creamy cheddar macaroni and cheese, single 6 oz box",
+      "priceDifference": 0.7,
+      "instacartMarkupPercent": 16.3
+    },
+    {
       "productId": "26548571",
       "sourceProductIds": [
         "26548571"
@@ -22896,6 +23316,38 @@
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1.2,
       "instacartMarkupPercent": 15.4
+    },
+    {
+      "productId": "27564",
+      "sourceProductIds": [
+        "27564"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "GT's Living Foods Guava Goddess",
+      "instacartSize": "16 fl oz",
+      "instacartPrice": 5.59,
+      "instacartUrl": "https://www.instacart.com/products/27564-gts-synergy-organic-kombucha-guava-goddess-16-fl-oz?retailerSlug=safeway",
+      "directId": "960071220",
+      "directTitle": "Synergy The Real Kombucha Guava Goddess - 16 Fl. Oz.",
+      "directSize": "",
+      "directPrice": 4.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960071220.html",
+      "capturedAt": "2026-07-17T18:49:59.209Z",
+      "capturedQuery": "Synergy Real Kombucha Honeycrisp Apple",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "16 fl oz = retailer package verified in title",
+      "manualReviewNote": "GT's SYNERGY Guava Goddess kombucha, single 16 fl oz bottle",
+      "priceDifference": 0.8,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "21994885",
@@ -31093,6 +31545,69 @@
       "instacartMarkupPercent": 20
     },
     {
+      "productId": "94689837",
+      "sourceProductIds": [
+        "94689837"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "KIND Honey Oat Breakfast Bars",
+      "instacartSize": "6 x 1.76 oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/94689837-kind-honey-oat-bars-1-each?retailerSlug=safeway",
+      "directId": "971363638",
+      "directTitle": "Kind Honey Oats Protein Breakfast Bars 6ct 1.76oz - 6 CT",
+      "directSize": "6 ct",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.971363638.html",
+      "capturedAt": "2026-07-17T16:22:12.406Z",
+      "capturedQuery": "KIND",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "10.56 oz = retailer package 6 ct",
+      "manualReviewNote": "KIND Honey Oat breakfast protein bars, 6 twin-bar pouches (6 x 1.76 oz)",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "254020",
+      "sourceProductIds": [
+        "254020"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "KIND Nut Bars, Caramel Almond and Sea Salt, 1.4 oz, 1 Count",
+      "instacartSize": "1.4 oz",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "960113871",
+      "directTitle": "KIND Caramel Almond & Sea Salt Gluten Free Snack Bar - 1.4 Oz",
+      "directSize": "1.4 oz",
+      "directPrice": 2.29,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960113871.html",
+      "capturedAt": "2026-07-18T02:00:51.000Z",
+      "capturedQuery": "KIND Caramel Almond Sea Salt Bar 1.4 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "1.4 oz = 1.4 oz",
+      "manualReviewNote": "KIND caramel almond and sea salt snack bar, single 1.4 oz bar",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
+    },
+    {
       "productId": "36844959",
       "sourceProductIds": [
         "36844959"
@@ -34827,6 +35342,38 @@
       "instacartMarkupPercent": 16
     },
     {
+      "productId": "29774",
+      "sourceProductIds": [
+        "29774"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "LÄRABAR Gluten Free Bar, Peanut Butter Chocolate Chip, Vegan",
+      "instacartSize": "1.6 oz",
+      "instacartPrice": 1.16,
+      "instacartUrl": "https://www.instacart.com/products/29774-larabar-fruit-nut-bar-peanut-butter-chocolate-chip-1-6-oz?retailerSlug=safeway",
+      "directId": "960057110",
+      "directTitle": "Larabar Food Bar Fruit & Nut Peanut Butter Chocolate Chip - 1.6 Oz",
+      "directSize": "1.6 oz",
+      "directPrice": 1,
+      "directOriginalPrice": 2.29,
+      "directUrl": "https://www.safeway.com/shop/product-details.960057110.html",
+      "capturedAt": "2026-07-17T18:35:25.837Z",
+      "capturedQuery": "LÄRABAR Gluten Free Bar, Peanut Butter Chocolate Chip, Vegan 1.6 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "1.6 oz = 1.6 oz",
+      "manualReviewNote": "LARABAR peanut butter chocolate chip fruit and nut bar, single 1.6 oz bar",
+      "priceDifference": 0.16,
+      "instacartMarkupPercent": 16
+    },
+    {
       "productId": "93349245",
       "sourceProductIds": [
         "93349245"
@@ -37733,6 +38280,38 @@
       "sizeEvidence": "8.5 oz = 8.5 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 15.8
+    },
+    {
+      "productId": "2591776",
+      "sourceProductIds": [
+        "2591776"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "MALK Almond Milk, Unsweetened",
+      "instacartSize": "28 fl oz",
+      "instacartPrice": 7.59,
+      "instacartUrl": "https://www.instacart.com/products/2591776-malk-milk-pure-almond-unsweetened-28-oz?retailerSlug=safeway",
+      "directId": "960322722",
+      "directTitle": "Malk Unsweetened Almond Milk - 28 Oz",
+      "directSize": "28 oz",
+      "directPrice": 6.49,
+      "directOriginalPrice": 6.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.960322722.html",
+      "capturedAt": "2026-07-17T18:50:48.891Z",
+      "capturedQuery": "MALK Almond Milk Vanilla",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "28 fl oz = retailer package 28 fl oz",
+      "manualReviewNote": "MALK organic unsweetened almond milk, 28 fl oz",
+      "priceDifference": 1.1,
+      "instacartMarkupPercent": 16.9
     },
     {
       "productId": "2588658",
@@ -40862,6 +41441,73 @@
       "instacartMarkupPercent": 18
     },
     {
+      "productId": "53380",
+      "sourceProductIds": [
+        "16293593",
+        "53380",
+        "17766893"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Muir Glen Organic Diced Fire Roasted Tomatoes",
+      "instacartSize": "28 oz",
+      "instacartPrice": 9.99,
+      "instacartUrl": "https://www.instacart.com/products/53380-muir-glen-organic-diced-fire-roasted-tomatoes-28-000-oz?retailerSlug=safeway",
+      "directId": "960152789",
+      "directTitle": "Muir Glen Tomatoes Organic Diced Fire Rosted - 28 Oz",
+      "directSize": "28 oz",
+      "directPrice": 8.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960152789.html",
+      "capturedAt": "2026-07-18T00:31:49.000Z",
+      "capturedQuery": "Muir Glen Organic Fire Roasted Diced Tomatoes 28 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "28 oz = 28 oz",
+      "manualReviewNote": "Muir Glen organic fire-roasted diced tomatoes, 28 oz; exact product, package, and current Safeway price verified",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 17.7
+    },
+    {
+      "productId": "24866",
+      "sourceProductIds": [
+        "17620120",
+        "24866"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Muir Glen Organic Diced Tomatoes, Fire Roasted",
+      "instacartSize": "14.5 oz",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/17620120-muir-glen-organic-diced-fire-roasted-tomatoes-14-500-oz?retailerSlug=safeway",
+      "directId": "121300355",
+      "directTitle": "Muir Glen Tomatoes Organic Diced Fire Rosted - 14.5 Oz",
+      "directSize": "14.5 oz",
+      "directPrice": 5.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.121300355.html",
+      "capturedAt": "2026-07-18T01:49:26.000Z",
+      "capturedQuery": "Muir Glen Fire Roasted Diced Tomatoes 14.5 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "14.5 oz = 14.5 oz",
+      "manualReviewNote": "Muir Glen organic fire-roasted diced tomatoes, single 14.5 oz can",
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 20.7
+    },
+    {
       "productId": "19516316",
       "sourceProductIds": [
         "19516316"
@@ -41848,6 +42494,38 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "8.459999999999999 oz = 8.399999999999999 oz",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 9.1
+    },
+    {
+      "productId": "310485",
+      "sourceProductIds": [
+        "310485"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Nature's Bakery Raspberry Fig Bar Twin Packs",
+      "instacartSize": "6 x 2 oz",
+      "instacartPrice": 5.99,
+      "instacartUrl": "https://www.instacart.com/products/310485-nature-s-bakery-whole-wheat-raspberry-fig-bar-2-oz?retailerSlug=safeway",
+      "directId": "960166981",
+      "directTitle": "Natures Bakery Fig Bar Stone Ground Whole Wheat Raspberry - 6-2 Oz",
+      "directSize": "12 oz",
+      "directPrice": 5.49,
+      "directOriginalPrice": 5.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.960166981.html",
+      "capturedAt": "2026-07-17T16:29:51.565Z",
+      "capturedQuery": "Naked Bread Organic Wheat Bread 26 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "12 oz = 12 oz",
+      "manualReviewNote": "Nature's Bakery whole-wheat raspberry fig bar twin packs, 6 x 2 oz",
       "priceDifference": 0.5,
       "instacartMarkupPercent": 9.1
     },
@@ -47116,6 +47794,38 @@
       "instacartMarkupPercent": 17.7
     },
     {
+      "productId": "73515",
+      "sourceProductIds": [
+        "73515"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Organic Valley® Whole Milk",
+      "instacartSize": "64 fl oz",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/73515-organic-valley-whole-milk-64-oz?retailerSlug=safeway",
+      "directId": "136050130",
+      "directTitle": "Organic Valley Milk Organic Whole - Half Gallon",
+      "directSize": "1 hg",
+      "directPrice": 6.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.136050130.html",
+      "capturedAt": "2026-07-17T18:50:20.170Z",
+      "capturedQuery": "Valley 2 Milk",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "64 fl oz = retailer package 1 hg",
+      "manualReviewNote": "Organic Valley organic whole milk, half gallon or 64 fl oz",
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 17.7
+    },
+    {
       "productId": "188984",
       "sourceProductIds": [
         "188984"
@@ -47845,36 +48555,6 @@
       "instacartMarkupPercent": 16.3
     },
     {
-      "productId": "17454430",
-      "sourceProductIds": [
-        "17454430"
-      ],
-      "storeIds": [
-        "qfc",
-        "safeway",
-        "metro"
-      ],
-      "storeCount": 3,
-      "instacartName": "Pacific Food Organic Chicken Bone Broth",
-      "instacartSize": "32 oz",
-      "instacartPrice": 10.99,
-      "instacartUrl": "https://www.instacart.com/products/17454430-pacific-food-organic-chicken-bone-broth-32-fl-oz?retailerSlug=safeway",
-      "directId": "960161304",
-      "directTitle": "Pacific Foods Organic Unsalted Chicken Bone Broth - 32 Oz",
-      "directSize": "32 oz",
-      "directPrice": 9.49,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960161304.html",
-      "capturedAt": "2026-07-17T18:50:24.714Z",
-      "capturedQuery": "Pacific Foods Low Sodium Free",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.9533,
-      "matchMargin": 0.0333,
-      "sizeEvidence": "32 oz = 32 oz",
-      "priceDifference": 1.5,
-      "instacartMarkupPercent": 15.8
-    },
-    {
       "productId": "44107537",
       "sourceProductIds": [
         "44107537"
@@ -47960,6 +48640,38 @@
       "manualReviewNote": "Pacific Foods low-sodium organic free-range chicken broth, 32 fl oz",
       "priceDifference": null,
       "instacartMarkupPercent": null
+    },
+    {
+      "productId": "24682",
+      "sourceProductIds": [
+        "24682"
+      ],
+      "storeIds": [
+        "pcc",
+        "qfc",
+        "safeway",
+        "metro"
+      ],
+      "storeCount": 4,
+      "instacartName": "Pacific Foods Organic Beef Broth",
+      "instacartSize": "32 fl oz",
+      "instacartPrice": 5.59,
+      "instacartUrl": "https://www.instacart.com/products/24682-pacific-foods-organic-beef-broth-32-fl-oz?retailerSlug=safeway",
+      "directId": "960152908",
+      "directTitle": "Pacific Foods Organic Beef Broth - 32 Oz",
+      "directSize": "32 oz",
+      "directPrice": 4.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960152908.html",
+      "capturedAt": "2026-07-17T18:50:24.714Z",
+      "capturedQuery": "Pacific Foods Low Sodium Free",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "32 fl oz = retailer package 32 fl oz",
+      "manualReviewNote": "Pacific Foods organic beef broth, 32 oz carton",
+      "priceDifference": 0.8,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "24591",
@@ -48361,6 +49073,38 @@
       "instacartMarkupPercent": 9.1
     },
     {
+      "productId": "395436",
+      "sourceProductIds": [
+        "395436"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Pacific Foods Organic Unsalted Chicken Bone Broth",
+      "instacartSize": "32 fl oz",
+      "instacartPrice": 10.99,
+      "instacartUrl": "https://www.instacart.com/products/395436-pacific-organic-unsalted-chicken-bone-broth-32-oz?retailerSlug=safeway",
+      "directId": "960161304",
+      "directTitle": "Pacific Foods Organic Unsalted Chicken Bone Broth - 32 Oz",
+      "directSize": "32 oz",
+      "directPrice": 9.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960161304.html",
+      "capturedAt": "2026-07-17T18:50:24.714Z",
+      "capturedQuery": "Pacific Foods Low Sodium Free",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "32 fl oz = retailer package 32 fl oz",
+      "manualReviewNote": "Pacific Foods organic unsalted chicken bone broth, 32 fl oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 15.8
+    },
+    {
       "productId": "17105275",
       "sourceProductIds": [
         "17105275"
@@ -48390,6 +49134,39 @@
       "sizeEvidence": "32 fl oz = 32 fl oz",
       "priceDifference": 0.5,
       "instacartMarkupPercent": 9.1
+    },
+    {
+      "productId": "24683",
+      "sourceProductIds": [
+        "24683",
+        "55087"
+      ],
+      "storeIds": [
+        "pcc",
+        "qfc",
+        "safeway",
+        "metro"
+      ],
+      "storeCount": 4,
+      "instacartName": "Pacific Foods Organic Vegetable Broth",
+      "instacartSize": "32 fl oz",
+      "instacartPrice": 5.59,
+      "instacartUrl": "https://www.instacart.com/products/24683-pacific-organic-vegetable-broth-32-oz?retailerSlug=safeway",
+      "directId": "125250087",
+      "directTitle": "Pacific Foods Organic Vegetable Broth - 32 Oz",
+      "directSize": "32 oz",
+      "directPrice": 4.79,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.125250087.html",
+      "capturedAt": "2026-07-17T18:50:24.714Z",
+      "capturedQuery": "Pacific Foods Low Sodium Free",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "32 fl oz = retailer package 32 fl oz",
+      "manualReviewNote": "Pacific Foods organic vegetable broth, single 32 fl oz carton",
+      "priceDifference": 0.8,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "27742839",
@@ -55629,6 +56406,37 @@
       "instacartMarkupPercent": 14.3
     },
     {
+      "productId": "2915433",
+      "sourceProductIds": [
+        "2915433"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "RXBAR Coconut Chocolate Protein Bar, 12g Protein",
+      "instacartSize": "1.8 oz",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "960254105",
+      "directTitle": "RXBAR Protein Bar Coconut Chocolate 12g Protein - 1.8 Oz",
+      "directSize": "1.8 oz",
+      "directPrice": 3.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960254105.html",
+      "capturedAt": "2026-07-17T15:24:09.645Z",
+      "capturedQuery": "RXBAR Protein Bar Peanut Butter Chocolate 1.8 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "1.8 oz = 1.8 oz",
+      "manualReviewNote": "RXBAR coconut chocolate protein bar, single 1.8 oz bar",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
+    },
+    {
       "productId": "26821497",
       "sourceProductIds": [
         "26821497"
@@ -56194,20 +57002,85 @@
       "instacartSize": "10 oz",
       "instacartPrice": 9.99,
       "instacartUrl": "https://www.instacart.com/products/48223-saffron-road-gluten-free-chicken-tikka-masala-with-basmati-rice-frozen-dinner-10-0-oz?retailerSlug=safeway",
-      "directId": "960099080",
-      "directTitle": "Saffron Road Chicken Biryani G... Frozen Meal - 10 Oz",
+      "directId": "960090888",
+      "directTitle": "Saffron Road Chicken Tikka Masala Gluten Free Indian Frozen Meal - 10 Oz",
       "directSize": "10 oz",
       "directPrice": 8.49,
       "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960099080.html",
+      "directUrl": "https://www.safeway.com/shop/product-details.960090888.html",
       "capturedAt": "2026-07-17T15:14:14.728Z",
       "capturedQuery": "Saffron Road Chicken Tikka Masala High Protein No Seed Oil Frozen Indian Meal 10 oz",
-      "matchMethod": "exact_query_name_size",
-      "matchScore": 0.61,
-      "matchMargin": 0.61,
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
       "sizeEvidence": "10 oz = 10 oz",
+      "manualReviewNote": "Saffron Road chicken tikka masala frozen meal, 10 oz; product-detail title and GTIN distinguish it from the similar chicken biryani result",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 17.7
+    },
+    {
+      "productId": "26544524",
+      "sourceProductIds": [
+        "26544524"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "San Pellegrino Italian Sparkling Drink Aranciata Rossa",
+      "instacartSize": "6 x 11.15 fl oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/26544524-san-pellegrino-aranciata-rossa-orange-blood-orange-flavor-italian-sparkling-drink-11-15-fl-oz?retailerSlug=safeway",
+      "directId": "970407834",
+      "directTitle": "Sanpellegrino Aranciata Rossa In Can - 6-11.15 Fl. Oz.",
+      "directSize": "66.9 fl oz",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970407834.html",
+      "capturedAt": "2026-07-18T02:30:39.000Z",
+      "capturedQuery": "Sanpellegrino Aranciata Rossa 6 pack",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "66.9 fl oz = 66.9 fl oz",
+      "manualReviewNote": "Sanpellegrino Aranciata Rossa orange and blood orange sparkling drink, 6 x 11.15 fl oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "26532540",
+      "sourceProductIds": [
+        "26532540"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "San Pellegrino Italian Sparkling Drink Limonata",
+      "instacartSize": "6 x 11.15 fl oz",
+      "instacartPrice": 8.99,
+      "instacartUrl": "https://www.instacart.com/products/26532540-san-pellegrino-limonata-lemon-italian-sparkling-drinks-6-ct?retailerSlug=safeway",
+      "directId": "970407835",
+      "directTitle": "San Pellegrino Limonata - 6-11.15 Oz",
+      "directSize": "66.9 oz",
+      "directPrice": 7.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.970407835.html",
+      "capturedAt": "2026-07-18T02:30:39.000Z",
+      "capturedQuery": "Sanpellegrino Limonata 6 pack",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "66.9 fl oz = retailer package 6 x 11.15 fl oz",
+      "manualReviewNote": "Sanpellegrino Limonata sparkling lemon drink, 6 x 11.15 fl oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 20
     },
     {
       "productId": "284121",
@@ -57617,6 +58490,38 @@
       "sizeEvidence": "1.5 lb = 24 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 14.3
+    },
+    {
+      "productId": "16694181",
+      "sourceProductIds": [
+        "16694181"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Siggi's Icelandic Style Skyr Non-Fat Yogurt, Vanilla",
+      "instacartSize": "5.3 oz",
+      "instacartPrice": 1.73,
+      "instacartUrl": "https://www.instacart.com/products/16694181-siggi-s-icelandic-style-skyr-non-fat-yogurt-vanilla-5-3-oz?retailerSlug=safeway",
+      "directId": "960062909",
+      "directTitle": "siggi's Vanilla Icelandic Skyr Nonfat Yogurt - 5.3 Oz",
+      "directSize": "5.3 oz",
+      "directPrice": 1.5,
+      "directOriginalPrice": 2.29,
+      "directUrl": "https://www.safeway.com/shop/product-details.960062909.html",
+      "capturedAt": "2026-07-17T21:47:42.073Z",
+      "capturedQuery": "Icelandic Provisions Vanilla Skyr 5.3 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "5.3 oz = 5.3 oz",
+      "manualReviewNote": "Siggi's vanilla nonfat skyr, single 5.3 oz cup",
+      "priceDifference": 0.23,
+      "instacartMarkupPercent": 15.3
     },
     {
       "productId": "37567862",
@@ -66901,6 +67806,38 @@
       "instacartMarkupPercent": 14.3
     },
     {
+      "productId": "18008978",
+      "sourceProductIds": [
+        "18008978"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Stumptown Original Nitro Cold Brew",
+      "instacartSize": "10.3 fl oz",
+      "instacartPrice": 5.99,
+      "instacartUrl": "https://www.instacart.com/products/18008978-stumptown-coffee-roasters-nitro-cold-brew-coffee-10-3-oz?retailerSlug=safeway",
+      "directId": "960294013",
+      "directTitle": "Stumptown Coffee Roasters Cold Brew Nitro - 10.3 Fl. Oz.",
+      "directSize": "10 fl oz",
+      "directPrice": 5.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960294013.html",
+      "capturedAt": "2026-07-17T16:23:09.231Z",
+      "capturedQuery": "Stumptown",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "10.3 fl oz = retailer package 10 fl oz",
+      "manualReviewNote": "Stumptown original Nitro cold brew coffee, 10.3 fl oz can",
+      "priceDifference": 0.5,
+      "instacartMarkupPercent": 9.1
+    },
+    {
       "productId": "73931456",
       "sourceProductIds": [
         "73931456"
@@ -68043,6 +68980,38 @@
       "instacartMarkupPercent": 20.7
     },
     {
+      "productId": "25339",
+      "sourceProductIds": [
+        "25339"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Tabasco Original Red Pepper Sauce",
+      "instacartSize": "2 oz",
+      "instacartPrice": 2.69,
+      "instacartUrl": "https://www.instacart.com/products/25339-tabasco-2oz-tabasco-pepper-sauce-2-fl-oz?retailerSlug=safeway",
+      "directId": "105400011",
+      "directTitle": "TABASCO Original Red Pepper Hot Sauce Mild Heat in Glass Bottle - 2 Fl. Oz.",
+      "directSize": "2 fl oz",
+      "directPrice": 2.29,
+      "directOriginalPrice": 2.79,
+      "directUrl": "https://www.safeway.com/shop/product-details.105400011.html",
+      "capturedAt": "2026-07-17T16:29:29.704Z",
+      "capturedQuery": "CHOLULA Original Hot Sauce 5 fl oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "2 oz = retailer package 2 fl oz",
+      "manualReviewNote": "TABASCO Original Red Pepper Sauce, single 2 fl oz bottle",
+      "priceDifference": 0.4,
+      "instacartMarkupPercent": 17.5
+    },
+    {
       "productId": "2679711",
       "sourceProductIds": [
         "2679711"
@@ -68159,6 +69128,37 @@
       "sizeEvidence": "7 oz = 7 oz",
       "priceDifference": 1.3,
       "instacartMarkupPercent": 15.3
+    },
+    {
+      "productId": "26862",
+      "sourceProductIds": [
+        "26862"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "instacartName": "TATE'S Gluten Free Chocolate Chip Cookies, Gluten Free Cookies 84.1 oz",
+      "instacartSize": "7 oz",
+      "instacartPrice": null,
+      "instacartUrl": "",
+      "directId": "960084453",
+      "directTitle": "Tate's Bake Shop Gluten Free Chocolate Chip Cookies - 7 Oz",
+      "directSize": "7 oz",
+      "directPrice": 8.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960084453.html",
+      "capturedAt": "2026-07-18T01:02:34.096Z",
+      "capturedQuery": "Tate's Bake Shop Gluten Free Chocolate Chip Cookies 7 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "7 oz = 7 oz",
+      "manualReviewNote": "Tate's Bake Shop gluten-free chocolate chip cookies, 7 oz; exact gluten-free variant, package, and current Safeway price verified",
+      "priceDifference": null,
+      "instacartMarkupPercent": null
     },
     {
       "productId": "110133490",
@@ -72011,6 +73011,38 @@
       "instacartMarkupPercent": 17
     },
     {
+      "productId": "18021451",
+      "sourceProductIds": [
+        "18021451"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Vital Farms Pasture-Raised Large Grade A Eggs, 12 count",
+      "instacartSize": "12 ct",
+      "instacartPrice": 10.99,
+      "instacartUrl": "https://www.instacart.com/products/18021451-vital-farms-pasture-raised-alfresco-eggs-12-12-ct?retailerSlug=safeway",
+      "directId": "960100459",
+      "directTitle": "Vital Farms Eggs Large - 12 Count",
+      "directSize": "12 ct",
+      "directPrice": 9.49,
+      "directOriginalPrice": 9.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.960100459.html",
+      "capturedAt": "2026-07-17T17:04:06.790Z",
+      "capturedQuery": "Vital Farms Pasture Raised Organic Large Grade A Eggs",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "12 ct = 12 ct",
+      "manualReviewNote": "Vital Farms pasture-raised large brown grade A eggs, 12 count; pasture-raised variant confirmed in Safeway product details",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 15.8
+    },
+    {
       "productId": "17818597",
       "sourceProductIds": [
         "17818597"
@@ -72068,6 +73100,38 @@
       "sizeEvidence": "5.3 oz = 5.3 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "27038",
+      "sourceProductIds": [
+        "27038"
+      ],
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "instacartName": "Wasa Multi Grain Crispbread - Multigrain Crackers, Non-GMO Ingredients, Fat Free",
+      "instacartSize": "20 ct",
+      "instacartPrice": 6.99,
+      "instacartUrl": "https://www.instacart.com/products/27038-wasa-multi-grain-swedish-crispbread-9-7-oz?retailerSlug=safeway",
+      "directId": "102020821",
+      "directTitle": "Wasa Crispbread Multi Grain Crackers - 9.7 Oz",
+      "directSize": "9.7 oz",
+      "directPrice": 5.99,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.102020821.html",
+      "capturedAt": "2026-07-17T21:39:43.582Z",
+      "capturedQuery": "Simple Mills Sundried Tomato Basil Almond Flour Crackers 4.25 oz",
+      "matchMethod": "human_reviewed_brand_variant_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "20 ct = retailer package 9 oz",
+      "manualReviewNote": "Wasa Multi Grain crispbread, 9.7 oz box (20 crispbreads)",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "19876682",
@@ -73511,99 +74575,6 @@
       "instacartMarkupPercent": 14.3
     },
     {
-      "productId": "18021451",
-      "sourceProductIds": [
-        "18021451"
-      ],
-      "storeIds": [
-        "metro",
-        "pcc",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 4,
-      "instacartName": "Vital Farms Pasture-Raised Large Grade A Eggs, 12 count",
-      "instacartSize": "12 ct",
-      "instacartPrice": 10.99,
-      "instacartUrl": "https://www.instacart.com/products/18021451-vital-farms-pasture-raised-alfresco-eggs-12-12-ct?retailerSlug=safeway",
-      "directId": "960100459",
-      "directTitle": "Vital Farms Eggs Large - 12 Count",
-      "directSize": "12 ct",
-      "directPrice": 9.49,
-      "directOriginalPrice": 9.99,
-      "directUrl": "https://www.safeway.com/shop/product-details.960100459.html",
-      "capturedAt": "2026-07-17T17:04:06.790Z",
-      "capturedQuery": "Vital Farms Pasture Raised Organic Large Grade A Eggs",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.88,
-      "matchMargin": 0.0529,
-      "sizeEvidence": "12 ct = 12 ct",
-      "priceDifference": 1.5,
-      "instacartMarkupPercent": 15.8
-    },
-    {
-      "productId": "18718109",
-      "sourceProductIds": [
-        "18718109"
-      ],
-      "storeIds": [
-        "pcc",
-        "qfc",
-        "safeway",
-        "metro"
-      ],
-      "storeCount": 4,
-      "instacartName": "Bob's Red Mill Old Fashioned Rolled Oats, Gluten Free",
-      "instacartSize": "32 oz",
-      "instacartPrice": 10.99,
-      "instacartUrl": "https://www.instacart.com/products/18718109-bob-s-red-mill-old-fashioned-rolled-oats-gluten-free-32-0-oz?retailerSlug=safeway",
-      "directId": "960453543",
-      "directTitle": "Bob's Red Mill Gluten Free Old Fashion Rolled Oats - 32 Oz",
-      "directSize": "32 oz",
-      "directPrice": 9.49,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960453543.html",
-      "capturedAt": "2026-07-17T20:54:21.976Z",
-      "capturedQuery": "Bob's Red Mill Organic Quick Cooking Rolled Oats 32 oz",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.864,
-      "matchMargin": 0.0789,
-      "sizeEvidence": "32 oz = 32 oz",
-      "priceDifference": 1.5,
-      "instacartMarkupPercent": 15.8
-    },
-    {
-      "productId": "16694181",
-      "sourceProductIds": [
-        "16694181"
-      ],
-      "storeIds": [
-        "metro",
-        "pcc",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 4,
-      "instacartName": "Siggi's Icelandic Style Skyr Non-Fat Yogurt, Vanilla",
-      "instacartSize": "5.3 oz",
-      "instacartPrice": 1.73,
-      "instacartUrl": "https://www.instacart.com/products/16694181-siggi-s-icelandic-style-skyr-non-fat-yogurt-vanilla-5-3-oz?retailerSlug=safeway",
-      "directId": "960062909",
-      "directTitle": "siggi's Vanilla Icelandic Skyr Nonfat Yogurt - 5.3 Oz",
-      "directSize": "5.3 oz",
-      "directPrice": 1.5,
-      "directOriginalPrice": 2.29,
-      "directUrl": "https://www.safeway.com/shop/product-details.960062909.html",
-      "capturedAt": "2026-07-17T21:47:42.073Z",
-      "capturedQuery": "Icelandic Provisions Vanilla Skyr 5.3 oz",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.775,
-      "matchMargin": 0.2516,
-      "sizeEvidence": "5.3 oz = 5.3 oz",
-      "priceDifference": 0.23,
-      "instacartMarkupPercent": 15.3
-    },
-    {
       "productId": "17651245",
       "sourceProductIds": [
         "17651245"
@@ -73697,37 +74668,6 @@
       "instacartMarkupPercent": 17.5
     },
     {
-      "productId": "310485",
-      "sourceProductIds": [
-        "310485"
-      ],
-      "storeIds": [
-        "metro",
-        "pcc",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "instacartName": "Nature's Bakery Raspberry Fig Bar Twin Packs",
-      "instacartSize": "6 x 2 oz",
-      "instacartPrice": 5.99,
-      "instacartUrl": "https://www.instacart.com/products/310485-nature-s-bakery-whole-wheat-raspberry-fig-bar-2-oz?retailerSlug=safeway",
-      "directId": "960166981",
-      "directTitle": "Natures Bakery Fig Bar Stone Ground Whole Wheat Raspberry - 6-2 Oz",
-      "directSize": "12 oz",
-      "directPrice": 5.49,
-      "directOriginalPrice": 5.99,
-      "directUrl": "https://www.safeway.com/shop/product-details.960166981.html",
-      "capturedAt": "2026-07-17T16:29:51.565Z",
-      "capturedQuery": "Naked Bread Organic Wheat Bread 26 oz",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.74,
-      "matchMargin": 0.1582,
-      "sizeEvidence": "12 oz = 12 oz",
-      "priceDifference": 0.5,
-      "instacartMarkupPercent": 9.1
-    },
-    {
       "productId": "310486",
       "sourceProductIds": [
         "310486"
@@ -73788,37 +74728,6 @@
       "sizeEvidence": "72 fl oz = 72 fl oz",
       "priceDifference": 2.5,
       "instacartMarkupPercent": 20
-    },
-    {
-      "productId": "3134126",
-      "sourceProductIds": [
-        "3134126"
-      ],
-      "storeIds": [
-        "qfc",
-        "pcc",
-        "metro",
-        "safeway"
-      ],
-      "storeCount": 4,
-      "instacartName": "Chosen Foods Avocado Oil Based Mayonnaise",
-      "instacartSize": "12 fl oz",
-      "instacartPrice": 10.99,
-      "instacartUrl": "https://www.instacart.com/products/3134126-chosen-foods-avocado-oil-mayo-classic-12-0-oz?retailerSlug=safeway",
-      "directId": "960195951",
-      "directTitle": "Chosen Foods Mayonnaise Avocado Oil Mayo - 12 Fl. Oz.",
-      "directSize": "12 fl oz",
-      "directPrice": 9.49,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.960195951.html",
-      "capturedAt": "2026-07-17T17:03:22.567Z",
-      "capturedQuery": "Primal Kitchen Avocado Oil Mayo",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.736,
-      "matchMargin": 0.736,
-      "sizeEvidence": "12 fl oz = 12 fl oz",
-      "priceDifference": 1.5,
-      "instacartMarkupPercent": 15.8
     },
     {
       "productId": "17314724",
@@ -74038,71 +74947,6 @@
       "instacartMarkupPercent": 16.7
     },
     {
-      "productId": "218717",
-      "sourceProductIds": [
-        "218717",
-        "23769898",
-        "32676672"
-      ],
-      "storeIds": [
-        "pcc",
-        "metro",
-        "safeway",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "instacartName": "Bragg Organic Raw Unfiltered Apple Cider Vinegar",
-      "instacartSize": "16 fl oz",
-      "instacartPrice": 6.99,
-      "instacartUrl": "https://www.instacart.com/products/218717-bragg-organic-raw-unfiltered-apple-cider-vinegar-16-oz?retailerSlug=safeway",
-      "directId": "970951077",
-      "directTitle": "Bragg Apple Cider Vinegar Honey Cayenne Organic - 16 FZ",
-      "directSize": "16 fl oz",
-      "directPrice": 10.49,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.970951077.html",
-      "capturedAt": "2026-07-17T16:25:34.963Z",
-      "capturedQuery": "Bragg",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.6543,
-      "matchMargin": 0.6543,
-      "sizeEvidence": "16 fl oz = 16 fl oz",
-      "priceDifference": -3.5,
-      "instacartMarkupPercent": -33.4
-    },
-    {
-      "productId": "24310",
-      "sourceProductIds": [
-        "24315",
-        "24310"
-      ],
-      "storeIds": [
-        "metro",
-        "pcc",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 4,
-      "instacartName": "Annie's Organic Shells Pasta and Aged Cheddar Cheese",
-      "instacartSize": "6 oz",
-      "instacartPrice": 3.99,
-      "instacartUrl": "https://www.instacart.com/products/24315-annie-s-shells-aged-cheddar-macaroni-and-cheese-6-000-oz?retailerSlug=safeway",
-      "directId": "126250007",
-      "directTitle": "Annie's Homegrown Macaroni & Cheese Organic Shells & White Cheddar Box - 6 Oz",
-      "directSize": "6 oz",
-      "directPrice": 5.79,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.126250007.html",
-      "capturedAt": "2026-07-17T16:22:59.702Z",
-      "capturedQuery": "Annie's",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.6416,
-      "matchMargin": 0.6416,
-      "sizeEvidence": "6 oz = 6 oz",
-      "priceDifference": -1.8,
-      "instacartMarkupPercent": -31.1
-    },
-    {
       "productId": "176638",
       "sourceProductIds": [
         "176638",
@@ -74133,37 +74977,6 @@
       "sizeEvidence": "16 ct = 16 ct",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
-    },
-    {
-      "productId": "26548580",
-      "sourceProductIds": [
-        "26548580"
-      ],
-      "storeIds": [
-        "pcc",
-        "safeway",
-        "metro",
-        "qfc"
-      ],
-      "storeCount": 4,
-      "instacartName": "Goodles Cheddy Mac Creamy Protein Mac & Cheese",
-      "instacartSize": "6 oz",
-      "instacartPrice": 4.99,
-      "instacartUrl": "https://www.instacart.com/products/26548580-goodles-cheddy-mac-cheese-6-oz?retailerSlug=safeway",
-      "directId": "970475814",
-      "directTitle": "Goodles Cheddy Mac Creamy Cheddar And Macaroni - 6 Oz",
-      "directSize": "6 oz",
-      "directPrice": 4.29,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.970475814.html",
-      "capturedAt": "2026-07-17T16:24:36.536Z",
-      "capturedQuery": "GOODLES",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.62,
-      "matchMargin": 0.083,
-      "sizeEvidence": "6 oz = 6 oz",
-      "priceDifference": 0.7,
-      "instacartMarkupPercent": 16.3
     },
     {
       "productId": "73901",
@@ -92142,6 +92955,34 @@
       "sizeEvidence": "12.75 oz = 12.75 oz",
       "priceDifference": 0.7,
       "instacartMarkupPercent": 16.3
+    },
+    {
+      "productId": "28368788",
+      "sourceProductIds": [
+        "28368788"
+      ],
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "instacartName": "TATE'S Gluten Free Lemon Cookies 7 oz",
+      "instacartSize": "7 oz",
+      "instacartPrice": 9.79,
+      "instacartUrl": "https://www.instacart.com/products/28368788-tate-s-bake-shop-cookies-gluten-free-lemon-7-oz?retailerSlug=safeway",
+      "directId": "960084453",
+      "directTitle": "Tate's Bake Shop Gluten Free Chocolate Chip Cookies - 7 Oz",
+      "directSize": "7 oz",
+      "directPrice": 8.49,
+      "directOriginalPrice": null,
+      "directUrl": "https://www.safeway.com/shop/product-details.960084453.html",
+      "capturedAt": "2026-07-18T01:02:34.096Z",
+      "capturedQuery": "Tate's Bake Shop Gluten Free Chocolate Chip Cookies 7 oz",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.7004,
+      "matchMargin": 0.7004,
+      "sizeEvidence": "7 oz = 7 oz",
+      "priceDifference": 1.3,
+      "instacartMarkupPercent": 15.3
     },
     {
       "productId": "19121834",

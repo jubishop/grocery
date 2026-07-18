@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-07-17T03:23:07.427Z",
-  "updatedAt": "2026-07-17T21:47:42.041Z",
+  "updatedAt": "2026-07-18T02:12:00.000Z",
   "source": "Amazon Whole Foods Market",
   "deliveryArea": "West Seattle, Seattle, WA 98116",
   "records": [
@@ -45915,6 +45915,258 @@
       "query": "Essential Baking Company Columbia Bread 32 oz",
       "category": "Bakery",
       "capturedAt": "2026-07-17T21:47:42.041Z"
+    },
+    {
+      "asin": "B06X9V7YWF",
+      "brand": "Nonna Pia's",
+      "imageUrl": "https://m.media-amazon.com/images/I/71uhImwmR2L._AC_UL320_.jpg",
+      "price": 9.99,
+      "title": "Nonna Pia's Classic Balsamic Glaze, 8.45 oz",
+      "productUrl": "https://www.amazon.com/dp/B06X9V7YWF",
+      "searchUrl": "https://www.amazon.com/s?k=Nonna%20Pia%27s%20Classic%20Balsamic%20Glaze%208.45%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Nonna Pia's Classic Balsamic Glaze 8.45 oz",
+      "category": "Oils, Vinegars & Spices",
+      "capturedAt": "2026-07-18T01:02:34.096Z"
+    },
+    {
+      "asin": "B00ALMAU48",
+      "brand": "Nature's Bakery",
+      "imageUrl": "https://m.media-amazon.com/images/I/81VTkTpGa5L._AC_UL320_.jpg",
+      "price": 5.29,
+      "title": "Blueberry Fig Bars, 2 Oz, 6 Ct",
+      "productUrl": "https://www.amazon.com/dp/B00ALMAU48",
+      "searchUrl": "https://www.amazon.com/s?k=Nature%27s%20Bakery%20Blueberry%20Fig%20Bars%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "query": "Nature's Bakery Blueberry Fig Bars 6 pack",
+      "category": "Bakery & Bread",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B009AE7WWQ",
+      "brand": "Nature's Bakery",
+      "imageUrl": "https://m.media-amazon.com/images/I/8139AyuwPBL._AC_UL320_.jpg",
+      "price": 5.29,
+      "title": "Raspberry Fig Bars, 2 Oz, 6 Ct",
+      "productUrl": "https://www.amazon.com/dp/B009AE7WWQ",
+      "searchUrl": "https://www.amazon.com/s?k=Nature%27s%20Bakery%20Raspberry%20Fig%20Bars%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "query": "Nature's Bakery Raspberry Fig Bars 6 pack",
+      "category": "Bakery & Bread",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B09LJHZF48",
+      "brand": "Sanpellegrino",
+      "imageUrl": "https://m.media-amazon.com/images/I/8109pf7qRVL._AC_UL320_.jpg",
+      "price": 5.93,
+      "title": "Sanpellegrino Italian Sparkling Drink Aranciata Rossa, Sparkling Orange and Blood Orange Beverage, 6 Pack",
+      "productUrl": "https://www.amazon.com/dp/B09LJHZF48",
+      "searchUrl": "https://www.amazon.com/s?k=San%20Pellegrino%20Aranciata%20Rossa%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "query": "San Pellegrino Aranciata Rossa 6 pack",
+      "category": "Beverages",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B099L7DMCK",
+      "brand": "Sanpellegrino",
+      "imageUrl": "https://m.media-amazon.com/images/I/818u57iTxOL._AC_UL320_.jpg",
+      "price": 5.93,
+      "title": "Sanpellegrino Italian Sparkling Drink Limonata, Sparkling Lemon Beverage, 6 Pack Of Cans 11.15 fl oz",
+      "productUrl": "https://www.amazon.com/dp/B099L7DMCK",
+      "searchUrl": "https://www.amazon.com/s?k=San%20Pellegrino%20Limonata%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "query": "San Pellegrino Limonata 6 pack",
+      "category": "Beverages",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B000R73XZ0",
+      "brand": "Bragg",
+      "imageUrl": "https://m.media-amazon.com/images/I/51KGJDniVqL._AC_UL320_.jpg",
+      "price": 4.99,
+      "title": "Vinegar Apple Cider Unf Org, 16 Ounce",
+      "productUrl": "https://www.amazon.com/dp/B000R73XZ0",
+      "searchUrl": "https://www.amazon.com/s?k=Bragg%20Organic%20Apple%20Cider%20Vinegar%2016%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Bragg Organic Apple Cider Vinegar 16 fl oz",
+      "category": "Condiments & Oils",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B00L9Z6KMM",
+      "brand": "Saffron Road",
+      "imageUrl": "https://m.media-amazon.com/images/I/91wWtBYy7CL._AC_UL320_.jpg",
+      "price": 7.69,
+      "title": "Saffron Road Chicken Tikka Masala, Frozen Indian Meal, 10 Oz",
+      "productUrl": "https://www.amazon.com/dp/B00L9Z6KMM",
+      "searchUrl": "https://www.amazon.com/s?k=Saffron%20Road%20Chicken%20Tikka%20Masala%2010%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Saffron Road Chicken Tikka Masala 10 oz",
+      "category": "Meat & Seafood",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B004SI9W7M",
+      "brand": "Pacific Foods",
+      "imageUrl": "https://m.media-amazon.com/images/I/81ta7hhGNNL._AC_UL320_.jpg",
+      "price": 4.49,
+      "title": "Organic Beef Broth, 32 oz",
+      "productUrl": "https://www.amazon.com/dp/B004SI9W7M",
+      "searchUrl": "https://www.amazon.com/s?k=Pacific%20Foods%20Organic%20Beef%20Broth%2032%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Pacific Foods Organic Beef Broth 32 oz",
+      "category": "Meat & Seafood",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B004307BD2",
+      "brand": "Blue Diamond",
+      "imageUrl": "https://m.media-amazon.com/images/I/81FiI3RR6cL._AC_UL320_.jpg",
+      "price": 2.99,
+      "title": "Blue Diamond, Almond Milk Vanilla Unsweetened, 32 Fl Oz",
+      "productUrl": "https://www.amazon.com/dp/B004307BD2",
+      "searchUrl": "https://www.amazon.com/s?k=Almond%20Breeze%20Unsweetened%20Vanilla%20Almondmilk%2032%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Almond Breeze Unsweetened Vanilla Almondmilk 32 fl oz",
+      "category": "Plant-Based",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B00430B6YM",
+      "brand": "Blue Diamond",
+      "imageUrl": "https://m.media-amazon.com/images/I/81s8UxDfRJL._AC_UL320_.jpg",
+      "price": 2.99,
+      "title": "Blue Diamond Unsweetened Original Almondmilk, 32 Fl Oz",
+      "productUrl": "https://www.amazon.com/dp/B00430B6YM",
+      "searchUrl": "https://www.amazon.com/s?k=Blue%20Diamond%20Unsweetened%20Original%20Almondmilk%2032%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Blue Diamond Unsweetened Original Almondmilk 32 fl oz",
+      "category": "Plant-Based",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B075QJ8M1K",
+      "brand": "Oatly",
+      "imageUrl": "https://m.media-amazon.com/images/I/81XNBAI0roL._AC_UL320_.jpg",
+      "price": 5.99,
+      "title": "Original Oat Milk, 64 oz",
+      "productUrl": "https://www.amazon.com/dp/B075QJ8M1K",
+      "searchUrl": "https://www.amazon.com/s?k=Oatly%20Oatmilk%2064%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Oatly Oatmilk 64 fl oz",
+      "category": "Plant-Based",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B0C17NY4KK",
+      "brand": "Annie's",
+      "imageUrl": "https://m.media-amazon.com/images/I/71K-UHBJnhL._AC_UL320_.jpg",
+      "price": 8.49,
+      "title": "Annie's Organic Berry Patch Bunny Fruit Snacks, 10 Pouches, 7 oz",
+      "productUrl": "https://www.amazon.com/dp/B0C17NY4KK",
+      "searchUrl": "https://www.amazon.com/s?k=Annie%27s%20Berry%20Patch%20Bunny%20Fruit%20Snacks%2010%20count&i=wholefoods&rh=n%3A18473610011",
+      "query": "Annie's Berry Patch Bunny Fruit Snacks 10 count",
+      "category": "Produce",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B000QSL5LY",
+      "brand": "Wasa",
+      "imageUrl": "https://m.media-amazon.com/images/I/61COR5yGhqL._AC_UL320_.jpg",
+      "price": 4.99,
+      "title": "Wasa Multi Grain Crispbread, 9.7 oz",
+      "productUrl": "https://www.amazon.com/dp/B000QSL5LY",
+      "searchUrl": "https://www.amazon.com/s?k=Wasa%20Multigrain%20Crispbread%2020%20count&i=wholefoods&rh=n%3A18473610011",
+      "query": "Wasa Multigrain Crispbread 20 count",
+      "category": "Snacks",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B01ESBNFUI",
+      "brand": "gimMe",
+      "imageUrl": "https://m.media-amazon.com/images/I/71XEJy9VqmL._AC_UL320_.jpg",
+      "price": 6.99,
+      "title": "gimMe Organic Sea Salt Roasted Seaweed Snacks, 6 Count",
+      "productUrl": "https://www.amazon.com/dp/B01ESBNFUI",
+      "searchUrl": "https://www.amazon.com/s?k=gimMe%20Organic%20Sea%20Salt%20Seaweed%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "query": "gimMe Organic Sea Salt Seaweed 6 pack",
+      "category": "Snacks",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B07DJPVX8W",
+      "brand": "Athletic Brewing",
+      "imageUrl": "https://m.media-amazon.com/images/I/510wfDx398L._AC_UL320_.jpg",
+      "price": 12.29,
+      "title": "Athletic Brewing Run Wild Non-Alcoholic IPA, 6 x 12 Fl Oz",
+      "productUrl": "https://www.amazon.com/dp/B07DJPVX8W",
+      "searchUrl": "https://www.amazon.com/s?k=Athletic%20Brewing%20Run%20Wild%20IPA%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "query": "Athletic Brewing Run Wild IPA 6 pack",
+      "category": "Other Groceries",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B06XYMK4DD",
+      "brand": "Stumptown",
+      "imageUrl": "https://m.media-amazon.com/images/I/81CMo1jH2aL._AC_UL320_.jpg",
+      "price": 4.99,
+      "title": "Stumptown Roasters Cold Brew Coffee Nitro Can, 10.3 oz",
+      "productUrl": "https://www.amazon.com/dp/B06XYMK4DD",
+      "searchUrl": "https://www.amazon.com/s?k=Stumptown%20Original%20Nitro%20Cold%20Brew%2010.3%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Stumptown Original Nitro Cold Brew 10.3 fl oz",
+      "category": "Other Groceries",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B07QR7MZLG",
+      "brand": "Annie's",
+      "imageUrl": "https://m.media-amazon.com/images/I/81sxfrGjPFL._AC_UL320_.jpg",
+      "price": 5.79,
+      "title": "Annie's Deluxe Macaroni and Cheese with Organic Pasta, Real White Cheddar Cheese and Shells, 11 oz",
+      "productUrl": "https://www.amazon.com/dp/B07QR7MZLG",
+      "searchUrl": "https://www.amazon.com/s?k=Annie%20Deluxe%20Shells%20Aged%20Cheddar%2011%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Annie Deluxe Shells Aged Cheddar 11 oz",
+      "category": "Dairy & Eggs",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B000O6EG7I",
+      "brand": "Organic Valley",
+      "imageUrl": "https://m.media-amazon.com/images/I/71QrTrBSusL._AC_UL320_.jpg",
+      "price": 6.99,
+      "title": "Organic Half and Half, 32 Ounce",
+      "productUrl": "https://www.amazon.com/dp/B000O6EG7I",
+      "searchUrl": "https://www.amazon.com/s?k=Organic%20Valley%20Half%20and%20Half%2032%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Organic Valley Half and Half 32 fl oz",
+      "category": "Dairy & Eggs",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B000O6GAUO",
+      "brand": "Organic Valley",
+      "imageUrl": "https://m.media-amazon.com/images/I/71cVmJPL2wL._AC_UL320_.jpg",
+      "price": 3.99,
+      "title": "Half & Half, 16 fl oz",
+      "productUrl": "https://www.amazon.com/dp/B000O6GAUO",
+      "searchUrl": "https://www.amazon.com/s?k=Organic%20Valley%20Half%20and%20Half%2016%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Organic Valley Half and Half 16 fl oz",
+      "category": "Dairy & Eggs",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B002VH4GY6",
+      "brand": "Nature's Path",
+      "imageUrl": "https://m.media-amazon.com/images/I/818nRaUgDqL._AC_UL320_.jpg",
+      "price": 5.19,
+      "title": "Nature's Path Flax Plus Red Berry Crunch Cereal, 10.6 oz",
+      "productUrl": "https://www.amazon.com/dp/B002VH4GY6",
+      "searchUrl": "https://www.amazon.com/s?k=Nature%27s%20Path%20Flax%20Plus%20Red%20Berry%20Crunch%2010.6%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "Nature's Path Flax Plus Red Berry Crunch 10.6 oz",
+      "category": "Breakfast & Cereal",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "asin": "B0FS82Z95B",
+      "brand": "KIND",
+      "imageUrl": "https://m.media-amazon.com/images/I/51cgO+wJaKL._AC_UL320_.jpg",
+      "price": 6.49,
+      "title": "Breakfast Protein Bars, Honey Oat, Gluten Free, Low Sodium, Healthy Snacks, 8g Protein, 6 Count (6 Packs of 2 Bars)",
+      "productUrl": "https://www.amazon.com/dp/B0FS82Z95B",
+      "searchUrl": "https://www.amazon.com/s?k=KIND%20Honey%20Oat%20Breakfast%20Bars%206%20count%201.76%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "KIND Honey Oat Breakfast Bars 6 count 1.76 oz",
+      "category": "Breakfast & Cereal",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
     }
   ],
   "queries": [
@@ -58010,6 +58262,186 @@
       ],
       "url": "https://www.amazon.com/s?k=Tillamook%20Pepper%20Jack%20Cheese%20Slices%208%20oz&i=wholefoods&rh=n%3A18473610011",
       "capturedAt": "2026-07-17T21:47:42.041Z"
+    },
+    {
+      "query": "Nature's Bakery Blueberry Fig Bars 6 pack",
+      "targetProductId": "310486",
+      "category": "Bakery & Bread",
+      "count": 1,
+      "asins": ["B00ALMAU48"],
+      "url": "https://www.amazon.com/s?k=Nature%27s%20Bakery%20Blueberry%20Fig%20Bars%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Nature's Bakery Raspberry Fig Bars 6 pack",
+      "targetProductId": "310485",
+      "category": "Bakery & Bread",
+      "count": 1,
+      "asins": ["B009AE7WWQ"],
+      "url": "https://www.amazon.com/s?k=Nature%27s%20Bakery%20Raspberry%20Fig%20Bars%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "San Pellegrino Aranciata Rossa 6 pack",
+      "targetProductId": "26544524",
+      "category": "Beverages",
+      "count": 1,
+      "asins": ["B09LJHZF48"],
+      "url": "https://www.amazon.com/s?k=San%20Pellegrino%20Aranciata%20Rossa%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "San Pellegrino Limonata 6 pack",
+      "targetProductId": "26532540",
+      "category": "Beverages",
+      "count": 1,
+      "asins": ["B099L7DMCK"],
+      "url": "https://www.amazon.com/s?k=San%20Pellegrino%20Limonata%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Bragg Organic Apple Cider Vinegar 16 fl oz",
+      "targetProductId": "218717",
+      "category": "Condiments & Oils",
+      "count": 1,
+      "asins": ["B000R73XZ0"],
+      "url": "https://www.amazon.com/s?k=Bragg%20Organic%20Apple%20Cider%20Vinegar%2016%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Saffron Road Chicken Tikka Masala 10 oz",
+      "targetProductId": "48223",
+      "category": "Meat & Seafood",
+      "count": 1,
+      "asins": ["B00L9Z6KMM"],
+      "url": "https://www.amazon.com/s?k=Saffron%20Road%20Chicken%20Tikka%20Masala%2010%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Pacific Foods Organic Beef Broth 32 oz",
+      "targetProductId": "24682",
+      "category": "Meat & Seafood",
+      "count": 1,
+      "asins": ["B004SI9W7M"],
+      "url": "https://www.amazon.com/s?k=Pacific%20Foods%20Organic%20Beef%20Broth%2032%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Almond Breeze Unsweetened Vanilla Almondmilk 32 fl oz",
+      "targetProductId": "25842",
+      "category": "Plant-Based",
+      "count": 1,
+      "asins": ["B004307BD2"],
+      "url": "https://www.amazon.com/s?k=Almond%20Breeze%20Unsweetened%20Vanilla%20Almondmilk%2032%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Blue Diamond Unsweetened Original Almondmilk 32 fl oz",
+      "targetProductId": "44922",
+      "category": "Plant-Based",
+      "count": 1,
+      "asins": ["B00430B6YM"],
+      "url": "https://www.amazon.com/s?k=Blue%20Diamond%20Unsweetened%20Original%20Almondmilk%2032%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Oatly Oatmilk 64 fl oz",
+      "targetProductId": "18384280",
+      "category": "Plant-Based",
+      "count": 1,
+      "asins": ["B075QJ8M1K"],
+      "url": "https://www.amazon.com/s?k=Oatly%20Oatmilk%2064%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Annie's Berry Patch Bunny Fruit Snacks 10 count",
+      "targetProductId": "25648058",
+      "category": "Produce",
+      "count": 1,
+      "asins": ["B0C17NY4KK"],
+      "url": "https://www.amazon.com/s?k=Annie%27s%20Berry%20Patch%20Bunny%20Fruit%20Snacks%2010%20count&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Wasa Multigrain Crispbread 20 count",
+      "targetProductId": "27038",
+      "category": "Snacks",
+      "count": 1,
+      "asins": ["B000QSL5LY"],
+      "url": "https://www.amazon.com/s?k=Wasa%20Multigrain%20Crispbread%2020%20count&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "gimMe Organic Sea Salt Seaweed 6 pack",
+      "targetProductId": "2612256",
+      "category": "Snacks",
+      "count": 1,
+      "asins": ["B01ESBNFUI"],
+      "url": "https://www.amazon.com/s?k=gimMe%20Organic%20Sea%20Salt%20Seaweed%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Athletic Brewing Run Wild IPA 6 pack",
+      "targetProductId": "19052357",
+      "category": "Other Groceries",
+      "count": 1,
+      "asins": ["B07DJPVX8W"],
+      "url": "https://www.amazon.com/s?k=Athletic%20Brewing%20Run%20Wild%20IPA%206%20pack&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Stumptown Original Nitro Cold Brew 10.3 fl oz",
+      "targetProductId": "18008978",
+      "category": "Other Groceries",
+      "count": 1,
+      "asins": ["B06XYMK4DD"],
+      "url": "https://www.amazon.com/s?k=Stumptown%20Original%20Nitro%20Cold%20Brew%2010.3%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Annie Deluxe Shells Aged Cheddar 11 oz",
+      "targetProductId": "24304",
+      "category": "Dairy & Eggs",
+      "count": 1,
+      "asins": ["B07QR7MZLG"],
+      "url": "https://www.amazon.com/s?k=Annie%20Deluxe%20Shells%20Aged%20Cheddar%2011%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Organic Valley Half and Half 32 fl oz",
+      "targetProductId": "29057",
+      "category": "Dairy & Eggs",
+      "count": 1,
+      "asins": ["B000O6EG7I"],
+      "url": "https://www.amazon.com/s?k=Organic%20Valley%20Half%20and%20Half%2032%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Organic Valley Half and Half 16 fl oz",
+      "targetProductId": "29040",
+      "category": "Dairy & Eggs",
+      "count": 1,
+      "asins": ["B000O6GAUO"],
+      "url": "https://www.amazon.com/s?k=Organic%20Valley%20Half%20and%20Half%2016%20fl%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "Nature's Path Flax Plus Red Berry Crunch 10.6 oz",
+      "targetProductId": "73551",
+      "category": "Breakfast & Cereal",
+      "count": 1,
+      "asins": ["B002VH4GY6"],
+      "url": "https://www.amazon.com/s?k=Nature%27s%20Path%20Flax%20Plus%20Red%20Berry%20Crunch%2010.6%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
+    },
+    {
+      "query": "KIND Honey Oat Breakfast Bars 6 count 1.76 oz",
+      "targetProductId": "94689837",
+      "category": "Breakfast & Cereal",
+      "count": 1,
+      "asins": ["B0FS82Z95B"],
+      "url": "https://www.amazon.com/s?k=KIND%20Honey%20Oat%20Breakfast%20Bars%206%20count%201.76%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-18T02:12:00.000Z"
     }
   ]
 }

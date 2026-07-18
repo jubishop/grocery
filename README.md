@@ -2,7 +2,7 @@
 
 An interactive public comparison of PCC Community Markets, Metropolitan Market, Safeway, QFC, and Whole Foods Market using a July 16–17, 2026 West Seattle price snapshot.
 
-The current corpus contains **3,748 products found at two or more stores** and **58,038 dated price observations**. The strict intersection contains **189 products found at all five stores**, while **770 accepted Whole Foods cross-source matches** make pairwise and subset comparisons substantially broader. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
+The current corpus contains **3,747 products found at two or more stores** and **58,048 dated price observations**. The strict intersection contains **257 products found at all five stores**, while **860 accepted Whole Foods cross-source matches** make pairwise and subset comparisons substantially broader. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
 
 Live site: <https://west-seattle-grocery-prices.jubishop.chatgpt.site/#top>
 
@@ -47,12 +47,12 @@ The schema separates stable `stores` and `products` from source-specific `produc
 - QFC: 4550 42nd Ave SW, Seattle, WA 98116
 - Whole Foods Market: 4755 Fauntleroy Way SW Ste 190, Seattle, WA 98116
 
-The four Instacart catalogs use the selected West Seattle delivery area. Amazon was set to Seattle 98116 with Whole Foods West Seattle selected for pickup. Catalog selection does not guarantee fulfillment from a particular branch.
+The PCC and Metropolitan Market Instacart catalogs use the selected West Seattle delivery area. Safeway and QFC use the direct pickup catalogs for the listed West Seattle stores. Amazon was set to Seattle 98116 with Whole Foods West Seattle selected for pickup.
 
 ## Price and matching methodology
 
 Current displayed prices are used, including member, club, and sale prices when shown; original prices are retained separately. Clip-once digital coupons and buy-multiple offers are not applied to the one-of-each comparison baskets.
 
-The four Instacart retailers are joined by identical product ID or a conservative same-SKU alias supported by equivalent brand, package quantity, and explicit organic, gluten-free, non-GMO, and plant-based claims; every original external ID is retained. Whole Foods and direct-store products are linked conservatively by brand, product or flavor tokens, equivalent package quantity, and agreement on organic and gluten-free variants, while non-GMO and plant-based descriptors remain part of the name score. A July 17 matching audit separated protected product variants, and an audited override file admits only human-reviewed same-SKU title variations. Ambiguous matches are excluded.
+The Instacart catalogs are joined by identical product ID or a conservative same-SKU alias supported by equivalent brand, package quantity, and explicit organic, gluten-free, non-GMO, and plant-based claims; every original external ID is retained. Whole Foods and direct-store products are linked conservatively by brand, product or flavor tokens, equivalent package quantity, and agreement on organic and gluten-free variants, while non-GMO and plant-based descriptors remain part of the name score. A July 17 matching audit separated protected product variants, and an audited override file admits only human-reviewed same-SKU title variations. Ambiguous matches are excluded.
 
-The requested 300-item strict five-store intersection has not yet been reached: the current exact-product corpus contains 189 defensible unique five-way matches. The site reports that shortfall directly and does not pad it with merely similar products.
+The requested 300-item strict five-store intersection has not yet been reached: the current exact-product corpus contains 257 defensible unique five-way matches. The site reports that shortfall directly and does not pad it with merely similar products.
