@@ -2,7 +2,7 @@
 
 An interactive public comparison of PCC Community Markets, Metropolitan Market, Safeway, QFC, and Whole Foods Market using a July 16–17, 2026 West Seattle price snapshot.
 
-The current corpus contains **3,747 products found at two or more stores** and **58,048 dated price observations**. The strict intersection contains **257 products found at all five stores**, while **860 accepted Whole Foods cross-source matches** make pairwise and subset comparisons substantially broader. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
+The current corpus contains **3,854 products found at two or more stores** and **58,048 dated price observations**. Of those, **1,123 products appear at three or more stores**, including **171 four-store products** and **257 products found at all five stores**. The corpus includes **896 accepted Whole Foods cross-source matches**, and every two-store pairing has at least **389 exact products** in common. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
 
 Live site: <https://west-seattle-grocery-prices.jubishop.chatgpt.site/#top>
 
