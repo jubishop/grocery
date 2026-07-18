@@ -2,7 +2,7 @@
 
 An interactive public comparison of PCC Community Markets, Metropolitan Market, Safeway, QFC, and Whole Foods Market using a July 16–17, 2026 West Seattle price snapshot.
 
-The current corpus contains **3,854 products found at two or more stores** and **58,048 dated price observations**. Of those, **1,123 products appear at three or more stores**, including **171 four-store products** and **257 products found at all five stores**. The corpus includes **896 accepted Whole Foods cross-source matches**, and every two-store pairing has at least **389 exact products** in common. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
+The current corpus contains **3,854 products found at two or more stores** and **31,576 dated price observations** from the price sources used by the comparison. Of those, **1,123 products appear at three or more stores**, including **171 four-store products** and **257 products found at all five stores**. The corpus includes **896 accepted Whole Foods cross-source matches**, and every two-store pairing has at least **389 exact products** in common. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
 
 Live site: <https://west-seattle-grocery-prices.jubishop.chatgpt.site/#top>
 
@@ -37,7 +37,7 @@ npm run data:build
 
 ## SQLite model
 
-The schema separates stable `stores` and `products` from source-specific `product_identifiers`, audited `product_matches`, dated `capture_runs`, row-level `price_observations`, and `capture_queries`. Every observation records its source, external product ID, observation date and timestamp, store, current and original prices, promotion state, price basis, product URL, and capture query. Future snapshots can be inserted as additional capture runs for historical price analysis.
+The schema separates stable `stores` and `products` from source-specific `product_identifiers`, audited `product_matches`, dated `capture_runs`, row-level `price_observations`, and `capture_queries`. Every observation records its source, external product ID, observation date and timestamp, store, current and original prices, promotion state, price basis, product URL, and capture query. Obsolete Safeway and QFC Instacart prices are excluded; their identifiers and query evidence remain for crosswalk auditing, and the direct-match artifacts preserve aggregate markup statistics. Future snapshots can be inserted as additional capture runs for historical price analysis.
 
 ## Store context
 
