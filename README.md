@@ -2,7 +2,9 @@
 
 An interactive public comparison of PCC Community Markets, Metropolitan Market, Safeway, QFC, and Whole Foods Market using a July 16–17, 2026 West Seattle price snapshot.
 
-The current corpus contains **3,854 products found at two or more stores** and **31,576 dated price observations** from the price sources used by the comparison. Of those, **1,123 products appear at three or more stores**, including **171 four-store products** and **257 products found at all five stores**. The corpus includes **896 accepted Whole Foods cross-source matches**, and every two-store pairing has at least **389 exact products** in common. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, category filters, product thumbnails, price-source links, and CSV export.
+The current corpus contains **3,854 products found at two or more stores** and **31,576 dated price observations** from the price sources used by the comparison. Of those, **1,123 products appear at three or more stores**, including **171 four-store products** and **257 products found at all five stores**. The corpus includes **896 accepted Whole Foods cross-source matches**, and every two-store pairing has at least **389 exact products** in common. The site supports any subset of stores, device-local shopping baskets with quantities and complete-store total ranking, pairwise and strict shared baskets, conservative catalog-claim filters for gluten-free and other diets, category filters, product thumbnails, price-source links, and CSV export.
+
+Diet filters match explicit wording in captured catalog titles. The gluten-free filter intentionally excludes naturally gluten-free foods without a visible claim and reminds celiac shoppers to verify the current package label, ingredients, and cross-contact information before buying.
 
 Live site: <https://west-seattle-grocery-prices.jubishop.chatgpt.site/#top>
 
