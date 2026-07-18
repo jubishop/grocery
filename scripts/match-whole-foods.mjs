@@ -1,19 +1,23 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { crossSourceQualifiersCompatible } from "./match-product-qualifiers.mjs";
+import {
+  crossSourceQualifiersCompatible,
+  numericProductVariantsCompatible,
+  productQualifierEvidence,
+} from "./match-product-qualifiers.mjs";
+import { looseProduceMatches } from "./match-loose-produce.mjs";
+import { looseMeatMatches } from "./match-loose-meat.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const instacartPath = path.join(root, "data/capture-checkpoint.json");
 const wholeFoodsPath = path.join(root, "data/whole-foods-capture-checkpoint.json");
 const outputPath = path.join(root, "data/whole-foods-matches.json");
-const overridesPath = path.join(root, "data/whole-foods-match-overrides.json");
 const aliasesPath = path.join(root, "data/instacart-aliases.json");
 
-const [instacart, wholeFoods, overrides, aliases] = await Promise.all([
+const [instacart, wholeFoods, aliases] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
   readFile(wholeFoodsPath, "utf8").then(JSON.parse),
-  readFile(overridesPath, "utf8").then(JSON.parse),
   readFile(aliasesPath, "utf8").then(JSON.parse),
 ]);
 
@@ -38,6 +42,9 @@ const allInstacart = [...groups.entries()]
       name: representative.name,
       size: representative.size || "",
       category: representative.category || "Other Groceries",
+      priceBasis: representative.priceBasis || "per item",
+      productUrl: representative.productUrl || "",
+      qualifierText: representative.qualifierText || "",
       storeIds: [...byStore.keys()],
       storeCount: byStore.size,
     };
@@ -140,10 +147,58 @@ function brandAgrees(instacartName, amazonBrand) {
 }
 
 const allMatches = [];
-const allReview = [];
-const allLowReview = [];
 const queryByKey = new Map(wholeFoods.queries.map((query) => [queryKey(query.query), query]));
 for (const item of allInstacart) {
+  const looseCandidates = wholeFoods.records.filter((candidate) => {
+    const left = {
+      name: item.name,
+      size: item.size,
+      category: item.category,
+      priceBasis: item.priceBasis,
+      productUrl: item.productUrl,
+      qualifierText: item.qualifierText,
+    };
+    const right = { ...candidate, category: candidate.category || item.category };
+    return looseProduceMatches(left, right) || looseMeatMatches(left, right);
+  });
+  if (looseCandidates.length === 1) {
+    const candidate = looseCandidates[0];
+    const isProduce = looseProduceMatches(
+      {
+        name: item.name,
+        size: item.size,
+        category: item.category,
+        priceBasis: item.priceBasis,
+        productUrl: item.productUrl,
+        qualifierText: item.qualifierText,
+      },
+      { ...candidate, category: candidate.category || item.category },
+    );
+    allMatches.push({
+      productId: item.id,
+      sourceProductIds: item.sourceProductIds,
+      instacartName: item.name,
+      instacartSize: item.size,
+      category: item.category,
+      storeIds: item.storeIds,
+      storeCount: item.storeCount,
+      asin: candidate.asin,
+      wholeFoodsTitle: candidate.title,
+      wholeFoodsPrice: candidate.price,
+      wholeFoodsUrl: candidate.productUrl,
+      wholeFoodsImageUrl: candidate.imageUrl,
+      capturedAt: candidate.capturedAt,
+      matchMethod: isProduce
+        ? "normalized_loose_produce_name_basis"
+        : "normalized_loose_meat_name_claims_basis",
+      matchScore: 1,
+      matchMargin: 1,
+      sizeEvidence: isProduce
+        ? "same loose produce name and selling basis"
+        : "same loose meat cut, protected claims, and per lb selling basis",
+    });
+    continue;
+  }
   const itemQuantity = quantity(item.size || item.name);
   if (!itemQuantity) continue;
   const expectedQuery = `${item.name} ${item.size || ""}`.trim();
@@ -157,7 +212,8 @@ for (const item of allInstacart) {
       const candidateQuantity = quantity(candidate.title);
       if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
       if (!brandAgrees(item.name, candidate.brand)) return null;
-      if (!crossSourceQualifiersCompatible(item.name, candidate.title)) return null;
+      if (!crossSourceQualifiersCompatible(productQualifierEvidence(item), productQualifierEvidence(candidate))) return null;
+      if (!numericProductVariantsCompatible(item.name, candidate.title)) return null;
       const score = tokenScore(item.name, candidate.title);
       return { candidate, candidateQuantity, score };
     })
@@ -169,7 +225,8 @@ for (const item of allInstacart) {
         const candidateQuantity = quantity(candidate.title);
         if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
         if (!brandAgrees(item.name, candidate.brand)) return null;
-        if (!crossSourceQualifiersCompatible(item.name, candidate.title)) return null;
+        if (!crossSourceQualifiersCompatible(productQualifierEvidence(item), productQualifierEvidence(candidate))) return null;
+        if (!numericProductVariantsCompatible(item.name, candidate.title)) return null;
         const score = tokenScore(item.name, candidate.title);
         return { candidate, candidateQuantity, score };
       })
@@ -203,88 +260,33 @@ for (const item of allInstacart) {
     sizeEvidence: `${itemQuantity.display} = ${best.candidateQuantity.display}`,
   };
   if (best.score >= 0.72 && (margin >= 0.08 || best.score >= 0.9)) allMatches.push(result);
-  else if (best.score >= 0.58) allReview.push(result);
-  else if (best.score >= 0.4) allLowReview.push(result);
 }
 
-const rejectedKeys = new Set((overrides.rejected ?? []).map((match) => `${match.productId}|${match.asin}`));
-for (const matches of [allMatches, allReview, allLowReview]) {
-  for (let index = matches.length - 1; index >= 0; index -= 1) {
-    if (rejectedKeys.has(`${matches[index].productId}|${matches[index].asin}`)) matches.splice(index, 1);
-  }
-}
-
-const reviewedByKey = new Map([...allMatches, ...allReview, ...allLowReview].map((match) => [`${match.productId}|${match.asin}`, match]));
-for (const override of overrides.accepted) {
-  const item = allInstacart.find((candidate) => candidate.id === override.productId || candidate.sourceProductIds.includes(override.productId));
-  if (!item) continue;
-  const key = `${item.id}|${override.asin}`;
-  if (allMatches.some((match) => `${match.productId}|${match.asin}` === key)) continue;
-  let reviewed = reviewedByKey.get(key);
-  if (!reviewed) {
-    const candidate = wholeFoods.records.find((record) => record.asin === override.asin);
-    const itemQuantity = quantity(item.size || item.name);
-    const candidateQuantity = candidate && quantity(candidate.title);
-    if (!candidate) continue;
-    reviewed = {
-      productId: item.id,
-      sourceProductIds: item.sourceProductIds,
-      instacartName: item.name,
-      instacartSize: item.size,
-      category: item.category,
-      storeIds: item.storeIds,
-      storeCount: item.storeCount,
-      asin: candidate.asin,
-      wholeFoodsTitle: candidate.title,
-      wholeFoodsPrice: candidate.price,
-      wholeFoodsUrl: candidate.productUrl,
-      wholeFoodsImageUrl: candidate.imageUrl,
-      capturedAt: candidate.capturedAt,
-      matchScore: Number(tokenScore(item.name, candidate.title).toFixed(4)),
-      matchMargin: 0,
-      sizeEvidence: itemQuantity && candidateQuantity
-        ? `${itemQuantity.display} = ${candidateQuantity.display}`
-        : `${item.size || "catalog package"} = human-reviewed retailer package`,
-    };
-  }
-  allMatches.push({ ...reviewed, matchMethod: "human_reviewed_brand_variant_size", manualReviewNote: override.note });
-}
 const uniqueMatches = [...allMatches]
-  .sort((a, b) => {
-    const aReviewed = a.matchMethod === "human_reviewed_brand_variant_size" ? 1 : 0;
-    const bReviewed = b.matchMethod === "human_reviewed_brand_variant_size" ? 1 : 0;
-    return b.storeCount - a.storeCount
-      || bReviewed - aReviewed
-      || b.matchScore - a.matchScore
-      || b.matchMargin - a.matchMargin
-      || a.productId.localeCompare(b.productId, undefined, { numeric: true });
-  })
-  .filter((match, index, matches) => matches.findIndex((candidate) => candidate.asin === match.asin) === index);
-const acceptedKeys = new Set(uniqueMatches.map((match) => `${match.productId}|${match.asin}`));
-const remainingReview = allReview.filter((match) => !acceptedKeys.has(`${match.productId}|${match.asin}`));
-const remainingLowReview = allLowReview.filter((match) => !acceptedKeys.has(`${match.productId}|${match.asin}`));
+  .sort((a, b) => (
+    b.storeCount - a.storeCount
+    || b.matchScore - a.matchScore
+    || b.matchMargin - a.matchMargin
+    || a.productId.localeCompare(b.productId, undefined, { numeric: true })
+  ))
+  .filter((match, index, matches) => (
+    matches.findIndex((candidate) => candidate.asin === match.asin) === index
+    && matches.findIndex((candidate) => candidate.productId === match.productId) === index
+  ));
 const matches = uniqueMatches.filter((match) => match.storeCount === 4);
-const review = remainingReview.filter((match) => match.storeCount === 4);
-const lowReview = remainingLowReview.filter((match) => match.storeCount === 4);
 
 const output = {
   generatedAt: new Date().toISOString(),
-  methodology: "Conservative automatic crosswalk: matching normalized brand, protected organic/gluten-free variant claims, product/flavor tokens including non-GMO and plant-based descriptors, and equivalent package quantity; ambiguous candidates are excluded.",
+  methodology: "Fully automatic conservative crosswalk requiring normalized brand and product agreement, equivalent package quantity and numeric variants, and agreement on protected product claims. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically.",
   counts: {
     instacartAllFour: allFour.length,
     wholeFoodsCaptured: wholeFoods.records.length,
     accepted: matches.length,
-    review: review.length,
-    lowReview: lowReview.length,
     acceptedAnyStoreCount: uniqueMatches.length,
     acceptedByStoreCount: Object.fromEntries([1, 2, 3, 4].map((count) => [count, uniqueMatches.filter((match) => match.storeCount === count).length])),
   },
   matches: matches.sort((a, b) => a.instacartName.localeCompare(b.instacartName)),
-  review: review.sort((a, b) => b.matchScore - a.matchScore || a.instacartName.localeCompare(b.instacartName)),
-  lowReview: lowReview.sort((a, b) => b.matchScore - a.matchScore || a.instacartName.localeCompare(b.instacartName)),
   allMatches: uniqueMatches.sort((a, b) => b.storeCount - a.storeCount || a.instacartName.localeCompare(b.instacartName)),
-  allReview: remainingReview.sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore || a.instacartName.localeCompare(b.instacartName)),
-  allLowReview: remainingLowReview.sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore || a.instacartName.localeCompare(b.instacartName)),
 };
 
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`);

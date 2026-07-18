@@ -41,7 +41,6 @@ CREATE TABLE product_matches (
   match_score REAL,
   match_margin REAL,
   match_evidence TEXT NOT NULL DEFAULT '',
-  reviewed_at TEXT NOT NULL,
   PRIMARY KEY (source, external_id, product_id)
 );
 

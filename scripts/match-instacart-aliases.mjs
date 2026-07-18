@@ -1,7 +1,11 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { productQualifiersCompatible } from "./match-product-qualifiers.mjs";
+import {
+  numericProductVariantsCompatible,
+  productQualifierEvidence,
+  productQualifiersCompatible,
+} from "./match-product-qualifiers.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const checkpointPath = path.join(root, "data/capture-checkpoint.json");
@@ -117,7 +121,11 @@ for (const candidates of buckets.values()) {
         .filter((candidate) => (
           candidate.storeId === targetStore
           && candidate.id !== record.id
-          && productQualifiersCompatible(record.name, candidate.name)
+          && productQualifiersCompatible(
+            productQualifierEvidence(record),
+            productQualifierEvidence(candidate),
+          )
+          && numericProductVariantsCompatible(record.name, candidate.name)
         ))
         .map((candidate) => ({ candidate, score: score(record.name, candidate.name) }))
         .filter((candidate) => candidate.score >= 0.82)
@@ -134,8 +142,6 @@ for (const candidates of buckets.values()) {
 }
 
 const evidence = [];
-const reviewEvidence = [];
-const acceptedPairKeys = new Set();
 for (const match of bestByRecordAndStore.values()) {
   const reverse = bestByRecordAndStore.get(`${match.candidate.storeId}|${match.candidate.id}|${match.record.storeId}`);
   if (!reverse || reverse.candidate.id !== match.record.id) continue;
@@ -143,7 +149,6 @@ for (const match of bestByRecordAndStore.values()) {
   const reverseStrong = reverse.score >= 0.9 && (reverse.margin >= 0.08 || reverse.score >= 0.98);
   if (!strong || !reverseStrong) continue;
   unionFind.union(match.record.id, match.candidate.id);
-  acceptedPairKeys.add([match.record.id, match.candidate.id].sort().join("|"));
   evidence.push({
     leftId: match.record.id,
     leftStore: match.record.storeId,
@@ -153,27 +158,6 @@ for (const match of bestByRecordAndStore.values()) {
     rightName: match.candidate.name,
     score: Number(match.score.toFixed(4)),
     method: "mutual_unique_brand_name_size",
-  });
-}
-
-for (const match of bestByRecordAndStore.values()) {
-  const reverse = bestByRecordAndStore.get(`${match.candidate.storeId}|${match.candidate.id}|${match.record.storeId}`);
-  if (!reverse || reverse.candidate.id !== match.record.id) continue;
-  const pairKey = [match.record.id, match.candidate.id].sort().join("|");
-  if (acceptedPairKeys.has(pairKey) || reviewEvidence.some((item) => item.pairKey === pairKey)) continue;
-  reviewEvidence.push({
-    pairKey,
-    leftId: match.record.id,
-    leftStore: match.record.storeId,
-    leftName: match.record.name,
-    leftSize: match.record.size,
-    rightId: match.candidate.id,
-    rightStore: match.candidate.storeId,
-    rightName: match.candidate.name,
-    rightSize: match.candidate.size,
-    score: Number(Math.min(match.score, reverse.score).toFixed(4)),
-    margin: Number(Math.min(match.margin, reverse.margin).toFixed(4)),
-    method: "mutual_brand_name_size_review",
   });
 }
 
@@ -202,7 +186,7 @@ for (const cluster of serializedClusters) for (const productId of cluster.produc
 
 const output = {
   generatedAt: new Date().toISOString(),
-  methodology: "Exact Instacart IDs are preserved, then retailer-specific duplicate IDs are joined only when brand, protected organic/gluten-free/non-GMO/plant-based claims, and equivalent package size agree and the normalized names are mutually unique high-confidence matches.",
+  methodology: "Exact Instacart IDs are preserved, then retailer-specific duplicate IDs are joined automatically only when brand, numeric variant, protected product claims, and equivalent package size agree and the normalized names are mutually unique high-confidence matches. Ambiguous candidates are excluded.",
   counts: {
     records: records.length,
     productIds: productIds.length,
@@ -213,7 +197,6 @@ const output = {
   aliases: aliasMap,
   clusters: serializedClusters,
   evidence,
-  reviewEvidence: reviewEvidence.sort((a, b) => b.score - a.score || b.margin - a.margin),
 };
 
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`);

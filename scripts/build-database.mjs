@@ -247,7 +247,7 @@ for (const record of wholeFoods.records) {
     name: record.title,
     size: sizeFromTitle(record.title),
     category: classifyProduct(record.title, [record.category ?? ""]),
-    priceBasis: "per item",
+    priceBasis: record.priceBasis || "per item",
     imageUrl: record.imageUrl,
     imagePath: "",
   });
@@ -292,7 +292,7 @@ const safewayRunId = `safeway-direct-west-seattle-${localDate(safewayStartedAt)}
 const qfcRunId = `qfc-direct-west-seattle-${localDate(qfcStartedAt)}`;
 const retainedInstacartPriceStoreIds = new Set(["pcc", "metro"]);
 const retainedInstacartPriceRecords = instacart.records.filter((record) => retainedInstacartPriceStoreIds.has(record.storeId));
-const methodology = "Current prices come from four explicit corpora: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, and Whole Foods West Seattle pickup on Amazon.com. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. Clip-once and buy-multiple coupons are not applied to a one-of-each basket. Instacart identical IDs are joined directly; retailer-specific aliases and every cross-source match require equivalent brand, variant, package quantity, and organic or conventional status. A July 17 matching audit separated organic products from similarly named conventional products before the current totals were calculated. Ambiguous matches are excluded. Safeway and QFC Instacart product identifiers and query evidence remain available for crosswalk auditing, but their obsolete item prices are omitted from SQLite; aggregate markup diagnostics remain in the direct-store matching artifacts.";
+const methodology = "Current prices come from four explicit corpora: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, and Whole Foods West Seattle pickup on Amazon.com. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. Clip-once and buy-multiple coupons are not applied to a one-of-each basket. All matching is automatic. Instacart identical IDs are joined directly; retailer-specific aliases and packaged cross-source matches require equivalent brand, numeric variant, package quantity, and protected product claims. Loose produce may match only when normalized name, organic status, variety wording, and selling basis agree. Loose raw meat and seafood may match only by exact normalized cut and an explicitly captured per-pound basis when organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims agree. Poultry additionally requires product-detail qualifier evidence on both sides. Ambiguous candidates are excluded automatically. Safeway and QFC Instacart product identifiers and query evidence remain available for crosswalk auditing, but their obsolete item prices are omitted from SQLite; aggregate markup diagnostics remain in the direct-store matching artifacts.";
 
 await rm(databasePath, { force: true });
 const database = new DatabaseSync(databasePath);
@@ -311,8 +311,8 @@ const insertIdentifier = database.prepare(`
   VALUES (?, ?, ?, ?, ?, ?)
 `);
 const insertMatch = database.prepare(`
-  INSERT INTO product_matches (source, external_id, product_id, match_method, match_score, match_margin, match_evidence, reviewed_at)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO product_matches (source, external_id, product_id, match_method, match_score, match_margin, match_evidence)
+  VALUES (?, ?, ?, ?, ?, ?, ?)
 `);
 const insertRun = database.prepare(`
   INSERT INTO capture_runs (id, started_at, completed_at, observation_date, delivery_area, source, methodology)
@@ -335,7 +335,7 @@ try {
   for (const store of stores) insertStore.run(store.id, store.slug, store.name, store.shortName, store.address, store.storeUrl, store.catalogSource, store.catalogUrl, store.color);
   for (const product of products) insertProduct.run(product.id, product.name, product.size, product.category, product.priceBasis, product.imageUrl, product.imagePath);
 
-  insertRun.run(instacartRunId, instacartStartedAt, instacartCompletedAt, localDate(instacartCompletedAt), "West Seattle, Seattle, WA", "Instacart", "Identical Instacart IDs plus conservative same-SKU retailer alias clusters; original external IDs are preserved.");
+  insertRun.run(instacartRunId, instacartStartedAt, instacartCompletedAt, localDate(instacartCompletedAt), "West Seattle, Seattle, WA", "Instacart", "Identical Instacart IDs plus automatic conservative same-SKU retailer alias clusters that require equivalent package quantity, numeric variants, and protected product claims; original external IDs are preserved and ambiguous candidates are excluded.");
   insertRun.run(wholeFoodsRunId, wholeFoodsStartedAt, wholeFoodsCompletedAt, localDate(wholeFoodsCompletedAt), "West Seattle, Seattle, WA 98116", "Amazon Whole Foods Market", matchData.methodology);
   insertRun.run(safewayRunId, safewayStartedAt, safewayCompletedAt, localDate(safewayCompletedAt), "2622 California Ave SW, Seattle, WA 98116", "Safeway.com", safewayMatches.methodology);
   insertRun.run(qfcRunId, qfcStartedAt, qfcCompletedAt, localDate(qfcCompletedAt), "4550 42nd Ave SW, Seattle, WA 98116", "QFC.com", qfcMatches.methodology);
@@ -354,12 +354,15 @@ try {
   for (const record of wholeFoods.records) {
     const match = matchByAsin.get(record.asin);
     const productId = match?.productId ?? `wf:${record.asin}`;
+    const observationPriceBasis = match?.matchMethod === "normalized_loose_meat_name_claims_basis"
+      ? "per lb"
+      : record.priceBasis || "per item";
     insertIdentifier.run("amazon_whole_foods", record.asin, productId, record.title, sizeFromTitle(record.title), record.productUrl);
-    if (match) insertMatch.run("amazon_whole_foods", record.asin, productId, match.matchMethod, match.matchScore, match.matchMargin, match.sizeEvidence, matchData.generatedAt);
+    if (match) insertMatch.run("amazon_whole_foods", record.asin, productId, match.matchMethod, match.matchScore, match.matchMargin, match.sizeEvidence);
     insertObservation.run(
       wholeFoodsRunId, "wholefoods", productId, "amazon_whole_foods", record.asin,
       new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(record.price * 100),
-      null, 0, "per item", record.productUrl, record.searchUrl || "", record.query || "", record.category || "",
+      null, 0, observationPriceBasis, record.productUrl, record.searchUrl || "", record.query || "", record.category || "",
     );
   }
 
@@ -386,13 +389,20 @@ try {
     for (const record of records) {
       const match = matchByDirectId.get(record.id);
       const productId = match?.productId ?? `${prefix}:${record.id}`;
+      const observationPriceBasis = !match
+        ? record.priceBasis || "per item"
+        : match.matchMethod === "normalized_loose_meat_name_claims_basis"
+          ? "per lb"
+          : match.matchMethod === "normalized_loose_produce_name_basis"
+            ? record.priceBasis || "per item"
+            : "per item";
       insertIdentifier.run(source, record.id, productId, record.title, record.size || sizeFromTitle(record.title), record.productUrl);
-      if (match) insertMatch.run(source, record.id, productId, match.matchMethod, match.matchScore, match.matchMargin, match.sizeEvidence, matches.generatedAt);
+      if (match) insertMatch.run(source, record.id, productId, match.matchMethod, match.matchScore, match.matchMargin, match.sizeEvidence);
       insertObservation.run(
         runId, storeId, productId, source, record.id,
         new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(record.price * 100),
         record.originalPrice == null ? null : Math.round(record.originalPrice * 100), record.sale ? 1 : 0,
-        record.priceBasis || "per item", record.productUrl, record.capturedUrl || "", record.query || "", record.category || "",
+        observationPriceBasis, record.productUrl, record.capturedUrl || "", record.query || "", record.category || "",
       );
     }
   }
