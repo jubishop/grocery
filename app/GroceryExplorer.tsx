@@ -798,7 +798,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <div className="corpus-ledger" aria-labelledby="ledger-heading">
             <div className="ledger-heading">
               <div><p className="eyebrow">Current data ledger</p><h3 id="ledger-heading">Everything in the working corpus.</h3></div>
-              <p>The SQLite database retains every dated observation, including older Safeway and QFC Instacart rows. The live comparison substitutes their direct-site prices.</p>
+              <p>The SQLite database stores only the price corpora used by the comparison. Safeway and QFC Instacart prices are omitted; their product identifiers and query evidence remain for crosswalk auditing, while the measured markup comparison survives as aggregate statistics.</p>
             </div>
             <div className="ledger-grid">
               <div><strong>{integer.format(data.summary.observationCount)}</strong><span>dated observations in SQLite</span></div>
@@ -917,7 +917,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <div className="source-section" aria-labelledby="source-heading">
             <div className="source-heading">
               <h3 id="source-heading">Where each price comes from</h3>
-              <p>Every price tile names its corpus. Historical Instacart observations for Safeway and QFC remain in SQLite, but never appear as their current prices.</p>
+              <p>Every price tile names its corpus. Safeway and QFC Instacart prices are excluded from SQLite; only non-price matching evidence and aggregate markup diagnostics remain.</p>
             </div>
             <div className="source-grid">
               {data.stores.map((store) => (

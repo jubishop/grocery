@@ -98,7 +98,7 @@ const stores = [
     sourceType: "Direct retailer pickup catalog",
     platformNote: "Current comparison prices come directly from Safeway's West Seattle pickup catalog.",
     pricingPolicyTitle: "Direct source",
-    pricingPolicySummary: "No Instacart Safeway prices are used in the current comparison. Older Instacart observations remain only as dated history in SQLite.",
+    pricingPolicySummary: "No Instacart Safeway prices are used in the current comparison or retained in SQLite. The direct-site matching artifact preserves aggregate Instacart-versus-Safeway markup statistics.",
     pricingPolicyUrl: "https://www.safeway.com/",
     termsUrl: "",
     markupContextUrl: "",
@@ -117,7 +117,7 @@ const stores = [
     sourceType: "Direct retailer pickup catalog",
     platformNote: "QFC.com is a native Kroger-platform catalog with Kroger UPCs and images, not an Instacart wrapper.",
     pricingPolicyTitle: "Direct source",
-    pricingPolicySummary: "No Instacart QFC prices are used in the current comparison. Older Instacart observations remain only as dated history in SQLite.",
+    pricingPolicySummary: "No Instacart QFC prices are used in the current comparison or retained in SQLite. The direct-site matching artifact preserves aggregate Instacart-versus-QFC markup statistics.",
     pricingPolicyUrl: "https://www.qfc.com/",
     termsUrl: "",
     markupContextUrl: "",
@@ -290,7 +290,9 @@ const instacartRunId = `instacart-west-seattle-${localDate(instacartStartedAt)}`
 const wholeFoodsRunId = `amazon-whole-foods-west-seattle-${localDate(wholeFoodsStartedAt)}`;
 const safewayRunId = `safeway-direct-west-seattle-${localDate(safewayStartedAt)}`;
 const qfcRunId = `qfc-direct-west-seattle-${localDate(qfcStartedAt)}`;
-const methodology = "Current prices come from four explicit corpora: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, and Whole Foods West Seattle pickup on Amazon.com. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. Clip-once and buy-multiple coupons are not applied to a one-of-each basket. Instacart identical IDs are joined directly; retailer-specific aliases and every cross-source match require equivalent brand, variant, package quantity, and organic or conventional status. A July 17 matching audit separated organic products from similarly named conventional products before the current totals were calculated. Ambiguous matches are excluded. Historical Instacart observations for Safeway and QFC remain in SQLite but are never used in the current comparison.";
+const retainedInstacartPriceStoreIds = new Set(["pcc", "metro"]);
+const retainedInstacartPriceRecords = instacart.records.filter((record) => retainedInstacartPriceStoreIds.has(record.storeId));
+const methodology = "Current prices come from four explicit corpora: PCC and Metropolitan Market on Instacart.com, Safeway's direct West Seattle pickup catalog on Safeway.com, QFC's direct West Seattle pickup catalog on QFC.com, and Whole Foods West Seattle pickup on Amazon.com. The lower displayed member, club, or sale price is used when the product card presents it as the current price; the higher regular price is retained separately. Clip-once and buy-multiple coupons are not applied to a one-of-each basket. Instacart identical IDs are joined directly; retailer-specific aliases and every cross-source match require equivalent brand, variant, package quantity, and organic or conventional status. A July 17 matching audit separated organic products from similarly named conventional products before the current totals were calculated. Ambiguous matches are excluded. Safeway and QFC Instacart product identifiers and query evidence remain available for crosswalk auditing, but their obsolete item prices are omitted from SQLite; aggregate markup diagnostics remain in the direct-store matching artifacts.";
 
 await rm(databasePath, { force: true });
 const database = new DatabaseSync(databasePath);
@@ -340,6 +342,7 @@ try {
 
   for (const record of instacart.records) {
     insertIdentifier.run("instacart", record.sourceProductId, record.id, record.name, record.size || "", record.productUrl);
+    if (!retainedInstacartPriceStoreIds.has(record.storeId)) continue;
     insertObservation.run(
       instacartRunId, record.storeId, record.id, "instacart", record.sourceProductId,
       new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(record.price * 100),
@@ -409,7 +412,6 @@ const latestRows = database.prepare(`
   FROM price_observations o
   JOIN products p ON p.id = o.product_id
   WHERE o.available = 1
-    AND NOT (o.source = 'instacart' AND o.store_id IN ('safeway', 'qfc'))
   ORDER BY o.observed_at
 `).all();
 
@@ -638,7 +640,7 @@ const siteData = {
   stores,
   summary: {
     capturedProducts: products.length,
-    observationCount: instacart.records.length + wholeFoods.records.length + safewayDirect.records.length + qfcDirect.records.length,
+    observationCount: retainedInstacartPriceRecords.length + wholeFoods.records.length + safewayDirect.records.length + qfcDirect.records.length,
     currentObservationCount: latestRows.length,
     comparableProducts: siteProducts.length,
     allStoreProducts: siteProducts.filter((product) => product.storeCount === stores.length).length,
