@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { DatabaseSync } from "node:sqlite";
 import test from "node:test";
 
 const databasePath = fileURLToPath(new URL("../data/grocery-prices.sqlite", import.meta.url));
 const siteDataPath = fileURLToPath(new URL("../data/site-data.json", import.meta.url));
+const publicSiteDataPath = fileURLToPath(new URL("../public/site-data.json", import.meta.url));
 
 test("SQLite excludes obsolete Safeway and QFC Instacart prices", () => {
   const database = new DatabaseSync(databasePath, { readOnly: true });
@@ -47,6 +48,25 @@ test("aggregate Safeway and QFC markup diagnostics remain available", () => {
     assert.ok(audit.totalInstacart > audit.totalDirect);
     assert.ok(audit.basketPercent > 0);
   }
+});
+
+test("the complete public catalog is reconstructed from host-safe chunks", () => {
+  const siteData = JSON.parse(readFileSync(siteDataPath, "utf8"));
+  const manifest = JSON.parse(readFileSync(publicSiteDataPath, "utf8"));
+
+  assert.equal(manifest.products, undefined);
+  assert.ok(manifest.productChunks.length > 1);
+  const chunks = manifest.productChunks.map((publicPath: string) => {
+    const chunkPath = fileURLToPath(new URL(`../public${publicPath}`, import.meta.url));
+    assert.ok(statSync(chunkPath).size < 25 * 1024 * 1024);
+    return JSON.parse(readFileSync(chunkPath, "utf8"));
+  });
+  const productIds = chunks.flat().map((product: any) => product.id);
+
+  assert.equal(productIds.length, siteData.products.length);
+  assert.equal(new Set(productIds).size, productIds.length);
+  assert.deepEqual(productIds, siteData.products.map((product: any) => product.id));
+  assert.equal(manifest.summary.searchableCatalogProducts, siteData.products.length);
 });
 
 test("retailer house brands stay in raw SQLite without bypassing strict matching", () => {

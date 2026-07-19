@@ -31,6 +31,7 @@ Then open <http://localhost:3000/#top>.
 - `data/schema.sql` defines the historical-ready relational schema.
 - `data/grocery-prices.sqlite` is the populated SQLite database committed with the site.
 - `data/site-data.json` is the generated five-core-store plus Trader Joe's overlay payload used by the app.
+- `public/site-data.json` is the browser manifest; `public/site-data-products/` contains the same searchable catalog in bounded product chunks so the full corpus can be hosted without trimming.
 - `data/products.csv` and `public/west-seattle-grocery-prices.csv` contain every current searchable product in wide CSV form; unmatched stores remain blank.
 - `public/images/` contains downloaded thumbnails from the earlier PCC/Metro capture; newer products use their captured source image URLs.
 - `data/products.json` is the original 298-item PCC/Metro snapshot retained as a legacy source artifact.

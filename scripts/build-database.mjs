@@ -1,6 +1,6 @@
 import { DatabaseSync } from "node:sqlite";
 import { existsSync } from "node:fs";
-import { readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -25,6 +25,8 @@ const schemaPath = path.join(root, "data/schema.sql");
 const databasePath = path.join(root, "data/grocery-prices.sqlite");
 const siteDataPath = path.join(root, "data/site-data.json");
 const publicSiteDataPath = path.join(root, "public/site-data.json");
+const publicProductChunksPath = path.join(root, "public/site-data-products");
+const publicProductChunkSize = 5_000;
 
 const [instacart, instacartWeightDetails, wholeFoods, matchData, aliases, safewayDirect, safewayMatches, qfcDirect, qfcMatches, traderJoes, traderJoesMatches, schema] = await Promise.all([
   readFile(instacartPath, "utf8").then(JSON.parse),
@@ -914,7 +916,23 @@ const siteData = {
 };
 
 await writeFile(siteDataPath, `${JSON.stringify(siteData, null, 2)}\n`);
-await writeFile(publicSiteDataPath, JSON.stringify(siteData));
+await rm(publicProductChunksPath, { force: true, recursive: true });
+await mkdir(publicProductChunksPath, { recursive: true });
+const productChunks = [];
+for (let index = 0; index < siteData.products.length; index += publicProductChunkSize) {
+  const chunkNumber = productChunks.length + 1;
+  const relativePath = `/site-data-products/products-${String(chunkNumber).padStart(3, "0")}.json`;
+  productChunks.push(relativePath);
+  await writeFile(
+    path.join(publicProductChunksPath, path.basename(relativePath)),
+    JSON.stringify(siteData.products.slice(index, index + publicProductChunkSize)),
+  );
+}
+const { products: _publicProducts, ...publicSiteMetadata } = siteData;
+await writeFile(publicSiteDataPath, JSON.stringify({
+  ...publicSiteMetadata,
+  productChunks,
+}));
 database.close();
 
 console.log(JSON.stringify({

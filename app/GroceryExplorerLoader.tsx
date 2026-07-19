@@ -3,6 +3,17 @@
 import { useEffect, useState } from "react";
 import GroceryExplorer, { type Dataset } from "./GroceryExplorer";
 
+type DatasetManifest = Omit<Dataset, "products"> & {
+  products?: Dataset["products"];
+  productChunks?: string[];
+};
+
+async function fetchJson<T>(url: string, signal: AbortSignal): Promise<T> {
+  const response = await fetch(url, { cache: "no-store", signal });
+  if (!response.ok) throw new Error(`Price data request failed with ${response.status}`);
+  return response.json() as Promise<T>;
+}
+
 export default function GroceryExplorerLoader() {
   const [data, setData] = useState<Dataset | null>(null);
   const [error, setError] = useState(false);
@@ -12,10 +23,15 @@ export default function GroceryExplorerLoader() {
     const controller = new AbortController();
     setError(false);
 
-    fetch("/site-data.json", { cache: "no-store", signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Price data request failed with ${response.status}`);
-        return response.json() as Promise<Dataset>;
+    fetchJson<DatasetManifest>("/site-data.json", controller.signal)
+      .then(async (manifest) => {
+        const { productChunks = [], products, ...metadata } = manifest;
+        if (products) return { ...metadata, products } as Dataset;
+        if (productChunks.length === 0) throw new Error("Price data manifest has no product chunks");
+        const chunks = await Promise.all(
+          productChunks.map((url) => fetchJson<Dataset["products"]>(url, controller.signal)),
+        );
+        return { ...metadata, products: chunks.flat() } as Dataset;
       })
       .then((nextData) => {
         setData(nextData);
@@ -38,7 +54,7 @@ export default function GroceryExplorerLoader() {
         <p>
           {error
             ? "The site is online, but its grocery data could not be downloaded. Please try once more."
-            : "Preparing five full West Seattle catalogs plus Trader Joe’s commodity matches…"}
+            : "Preparing five core West Seattle catalogs plus Trader Joe’s published catalog…"}
         </p>
         {error
           ? <button type="button" onClick={() => setAttempt((value) => value + 1)}>Try again</button>
