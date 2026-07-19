@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T04:49:31.278Z",
+  "generatedAt": "2026-07-19T07:46:06.318Z",
   "storeId": "traderjoes",
   "source": "traderjoes.com",
   "methodology": "Fully automatic strict Trader Joe's commodity crosswalk. Prepared, seasoned, mixed, novelty, and first-party-exclusive products are rejected before matching. Plain produce requires the same normalized variety, organic status, selling basis, and exact fixed package quantity when packaged. Raw meat and seafood require the same normalized raw cut, an explicit per-pound basis, and exact agreement on all protected production, cut, grade, frozen, and animal-raising claims. Eggs, dairy, baking staples, beans, grains, oils, salt, and plain cheese require an exact controlled commodity signature plus exact package quantity. A candidate is accepted only when it has strictly greater existing store coverage than every other matching canonical group; tied source candidates and duplicate target assignments are excluded automatically.",
@@ -302,9 +302,8 @@
     },
     {
       "productId": "297310",
-      "currentStoreCount": 2,
+      "currentStoreCount": 1,
       "currentStoreIds": [
-        "qfc",
         "safeway"
       ],
       "traderJoesId": "091082",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T04:49:34.732Z",
+  "generatedAt": "2026-07-19T07:46:09.794Z",
   "methodology": "Fully automatic conservative crosswalk requiring normalized brand and product agreement, equivalent package quantity and numeric variants, agreement on protected product claims, and no conflicting packaged-product state. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Exact product-targeted searches may accept only their first priced result after all automatic compatibility gates pass. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Retailer-exclusive house brands and ambiguous candidates are excluded automatically.",
   "counts": {
     "instacartAllFour": 471,

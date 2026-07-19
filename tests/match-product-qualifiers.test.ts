@@ -311,6 +311,68 @@ test("packaged product variants reject flavor, protein, format, and preparation 
   );
   for (const [left, right] of [
     [
+      "Certified Angus Beef 90% Lean Ground Beef Chuck",
+      "Certified Angus Ground Beef 90% Lean Sirloin",
+    ],
+    [
+      "Jif Creamy Peanut Butter",
+      "Jif Creamy Natural Peanut Butter",
+    ],
+    [
+      "Monster Energy Ultra Zero Sugar Energy Drink 12 Pack",
+      "Monster Energy Ultra Variety Pack 12 Pack",
+    ],
+    [
+      "Rao's Roasted Garlic Pasta Sauce",
+      "Rao's Creamy Roasted Garlic Pasta Sauce",
+    ],
+    [
+      "Welch's 100% Grape Juice",
+      "Welch's 100% White Grape Juice",
+    ],
+    [
+      "Alani Nu Cotton Candy Energy Drink black cherry",
+      "Alani Nu Purple Cotton Candy Energy Drink",
+    ],
+  ]) {
+    assert.equal(
+      packagedProductVariantsCompatible(left, right),
+      false,
+      `${left} should not match ${right}`,
+    );
+  }
+  for (const [left, right] of [
+    [
+      "Bakery Fresh Traditional Variety Cookies",
+      "Bakery Fresh Traditional Variety Pack Cookies",
+    ],
+    [
+      "Flavortown O.G. Buffalo Wing Sauce",
+      "Flavortown O.G. Buffalo Sauce, Classic Wing and Chicken Tender Dipping Sauce",
+    ],
+    [
+      "MaraNatha Natural Creamy Raw Almond Butter",
+      "MaraNatha Creamy Raw California Almond Butter",
+    ],
+    [
+      `Annie's Deluxe Shells and Aged Cheddar Pasta and Cheese Sauce ${
+        productUrlVariantHints("https://www.instacart.com/products/24304-annie-s-deluxe-rich-creamy-shells-aged-cheddar-macaroni-cheese-sauce")
+      }`,
+      "Annies Homegrown Macaroni & Cheese Sauce Creamy Deluxe Aged Cheddar Box",
+    ],
+    [
+      "Perdue Chicken Tenders Gluten Free Organic",
+      "PERDUE SIMPLY SMART ORGANIC Gluten Free Breaded Chicken Breast Tenders",
+    ],
+  ]) {
+    assert.equal(
+      packagedProductVariantsCompatible(left, right),
+      true,
+      `${left} should match ${right}`,
+    );
+  }
+  for (const [left, right] of [
+    [
       "Annie's Gluten Free Rice Pasta and Cheddar Cheese",
       "Annie's Gluten Free Rice Pasta and White Cheddar Cheese",
     ],

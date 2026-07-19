@@ -477,15 +477,33 @@ try {
           : match.matchMethod === "normalized_loose_produce_name_basis"
             ? record.priceBasis || "per item"
             : "per item";
+      const packagedMatchUsesCapturedTotal = (
+        observationPriceBasis === "per item"
+        && record.priceBasis === "per lb"
+        && Number.isFinite(record.rawCapturedPrice)
+        && record.rawCapturedPrice > 0
+      );
+      const observationPrice = packagedMatchUsesCapturedTotal
+        ? record.rawCapturedPrice
+        : record.price;
+      const observationOriginalPrice = packagedMatchUsesCapturedTotal
+        ? record.rawCapturedOriginalPrice ?? null
+        : record.originalPrice;
+      const observationPricingMode = packagedMatchUsesCapturedTotal
+        ? "fixed_price"
+        : record.pricingMode || (observationPriceBasis === "per lb" ? "unit_price_per_lb" : "fixed_price");
+      const observationEstimatedItemPrice = packagedMatchUsesCapturedTotal
+        ? null
+        : record.estimatedItemPrice;
       insertIdentifier.run(source, record.id, productId, record.title, record.size || sizeFromTitle(record.title), record.productUrl);
       if (match) insertMatch.run(source, record.id, productId, match.matchMethod, match.matchScore, match.matchMargin, match.sizeEvidence);
       insertObservation.run(
         runId, storeId, productId, source, record.id,
-        new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(record.price * 100),
-        record.originalPrice == null ? null : Math.round(record.originalPrice * 100), record.sale ? 1 : 0,
+        new Date(record.capturedAt).toISOString(), localDate(record.capturedAt), Math.round(observationPrice * 100),
+        observationOriginalPrice == null ? null : Math.round(observationOriginalPrice * 100), record.sale ? 1 : 0,
         observationPriceBasis, record.productUrl, record.capturedUrl || "", record.query || "", record.category || "",
-        1, "", record.pricingMode || (observationPriceBasis === "per lb" ? "unit_price_per_lb" : "fixed_price"),
-        record.estimatedItemPrice == null ? null : Math.round(record.estimatedItemPrice * 100),
+        1, "", observationPricingMode,
+        observationEstimatedItemPrice == null ? null : Math.round(observationEstimatedItemPrice * 100),
         record.estimatedWeightLb ?? null,
       );
     }

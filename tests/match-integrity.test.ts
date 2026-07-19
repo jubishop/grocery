@@ -256,6 +256,23 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     )),
     "QFC's FO abbreviation should reproduce the exact 10 fl oz Lea & Perrins match",
   );
+  assert.ok(
+    qfcMatches.matches.some((match: Record<string, string>) => (
+      match.productId === "59115150"
+      && match.directId === "0002338411115"
+      && Number(match.directPrice) === 6.99
+      && match.directSize === "3 oz"
+    )),
+    "QFC's informational pound rate must not hide the exact fixed 3 oz smoked ahi match",
+  );
+  assert.ok(
+    qfcMatches.matches.some((match: Record<string, string>) => (
+      match.productId === "57006829"
+      && match.directId === "0003760037858"
+      && Number(match.directPrice) === 9.99
+    )),
+    "QFC packaged matches must use the captured package total rather than its unit-rate display",
+  );
   assert.equal(
     qfcMatches.matches.some((match: Record<string, string>) => (
       match.productId === "25601" && match.directId === "0003997802330"
@@ -277,7 +294,6 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     ["16408707", "0007110000606"],
     ["2797093", "0061126926373"],
     ["16346265", "0000000094062"],
-    ["59115150", "0002338411115"],
   ]) {
     assert.equal(
       qfcMatches.matches.some((match: Record<string, string>) => (
@@ -354,6 +370,12 @@ test("live produce and meat captures produce strict cross-store comparisons", as
   assert.equal(groundBeef.prices.safeway.price, 8.49);
   assert.equal(groundBeef.prices.traderjoes.priceBasis, "per lb");
   assert.equal(groundBeef.prices.traderjoes.price, 6.49);
+
+  const porkLoin: any = byId.get("57006829");
+  assert.equal(porkLoin.prices.qfc.price, 9.99);
+  assert.equal(porkLoin.prices.qfc.priceBasis, "per item");
+  assert.equal(porkLoin.prices.qfc.pricingMode, "fixed_price");
+  assert.equal(porkLoin.prices.qfc.estimatedItemPrice, null);
 
   const celeryRoot: any = byId.get("16383572");
   assert.deepEqual(Object.keys(celeryRoot.prices).sort(), ["metro", "pcc"]);

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T04:49:33.386Z",
+  "generatedAt": "2026-07-19T07:46:08.583Z",
   "storeId": "safeway",
   "source": "safeway.com",
   "methodology": "Fully automatic conservative Safeway direct-catalog crosswalk requiring equivalent package quantity and numeric variants, agreement on protected product claims, no conflicting packaged-product state, strong normalized product-name agreement, and an unambiguous best candidate. Captured first-party product-detail qualifier evidence supplements abbreviated search-card titles when checking product state; it cannot weaken or bypass a protected-claim conflict. Safeway structured total sizes override title-level serving sizes only when they form a clear integer multipack. Same-retailer direct prices that are both several dollars and more than 2.5 times above the captured Instacart price are retained as raw evidence but excluded from comparisons as likely stale-card, hidden-multipack, or selling-basis anomalies. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Retailer-exclusive house brands are excluded from packaged matching, while exact loose commodity produce and meat may still match after retailer branding is removed. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically without falling back to Instacart.",
@@ -9,19 +9,19 @@
     "directMatchingCandidates": 8230,
     "accepted": 2329,
     "acceptedByStoreCount": {
-      "1": 730,
+      "1": 729,
       "2": 817,
       "3": 545,
-      "4": 237
+      "4": 238
     }
   },
   "markupSummary": {
     "comparedProducts": 2322,
-    "instacartHigherCount": 2246,
-    "directHigherCount": 9,
+    "instacartHigherCount": 2245,
+    "directHigherCount": 10,
     "samePriceCount": 67,
-    "totalInstacart": 16095.49,
-    "totalDirect": 13756.32,
+    "totalInstacart": 16096.49,
+    "totalDirect": 13865.57,
     "medianDifference": 0.8
   },
   "matches": [
@@ -3972,7 +3972,7 @@
       "capturedQuery": "catalog-prefix:br:page:1",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.96,
-      "matchMargin": 0.34,
+      "matchMargin": 0.96,
       "sizeEvidence": "14 fl oz = 14 fl oz",
       "priceDifference": 0.5,
       "instacartMarkupPercent": 11.1
@@ -7939,7 +7939,7 @@
       "directId": "960152201",
       "directTitle": "Bob's Red Mill Whole Wheat Stone Ground Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 1.16,
+      "directPrice": 5.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960152201.html",
       "capturedAt": "2026-07-19T01:46:09.654Z",
@@ -7948,8 +7948,8 @@
       "matchScore": 0.93,
       "matchMargin": 0.93,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 5.83,
-      "instacartMarkupPercent": 502.6
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 20.7
     },
     {
       "productId": "19032743",
@@ -8626,7 +8626,7 @@
       "directId": "117100189",
       "directTitle": "Bob's Red Mill All Purpose Unbleached White Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 1.16,
+      "directPrice": 5.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.117100189.html",
       "capturedAt": "2026-07-19T03:48:55.433Z",
@@ -8635,8 +8635,8 @@
       "matchScore": 0.9689,
       "matchMargin": 0.9689,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 5.83,
-      "instacartMarkupPercent": 502.6
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 20.7
     },
     {
       "productId": "16912956",
@@ -8657,7 +8657,7 @@
       "directId": "960061026",
       "directTitle": "Bob's Red Mill Organic All Purpose Unbleached White Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 2.6,
+      "directPrice": 12.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960061026.html",
       "capturedAt": "2026-07-19T01:46:09.654Z",
@@ -8666,8 +8666,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 12.39,
-      "instacartMarkupPercent": 476.5
+      "priceDifference": 2,
+      "instacartMarkupPercent": 15.4
     },
     {
       "productId": "20562019",
@@ -11825,7 +11825,7 @@
       "capturedQuery": "Cobram Estate Olive Oil Extra",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9689,
-      "matchMargin": 0.9689,
+      "matchMargin": 0.3769,
       "sizeEvidence": "16.9 fl oz = 16.9 fl oz",
       "priceDifference": 3,
       "instacartMarkupPercent": 17.7
@@ -14176,8 +14176,8 @@
       "directId": "960129763",
       "directTitle": "Hand Trimmed Boneless Skinless Chicken Breast - 2 Lb",
       "directSize": "2 lb",
-      "directPrice": 4.49,
-      "directOriginalPrice": null,
+      "directPrice": 8.98,
+      "directOriginalPrice": 11.98,
       "directUrl": "https://www.safeway.com/shop/product-details.960129763.html",
       "capturedAt": "2026-07-19T03:48:23.588Z",
       "capturedQuery": "catalog-letter:b",
@@ -14185,8 +14185,8 @@
       "matchScore": 0.9067,
       "matchMargin": 0.9067,
       "sizeEvidence": "2 lb = 2 lb",
-      "priceDifference": 0.2,
-      "instacartMarkupPercent": 4.5
+      "priceDifference": -4.29,
+      "instacartMarkupPercent": -47.8
     },
     {
       "productId": "16409742",
@@ -20644,7 +20644,7 @@
       "capturedQuery": "catalog-prefix:ou:page:1",
       "matchMethod": "normalized_name_size",
       "matchScore": 0.9067,
-      "matchMargin": 0.9067,
+      "matchMargin": 0.3248,
       "sizeEvidence": "16.9 fl oz = 16.9 fl oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 14.3
@@ -21070,8 +21070,8 @@
       "directId": "960092045",
       "directTitle": "Foster Farms Classic Chicken Patties - 28 Oz",
       "directSize": "28 oz",
-      "directPrice": 3.36,
-      "directOriginalPrice": null,
+      "directPrice": 5.99,
+      "directOriginalPrice": 7.99,
       "directUrl": "https://www.safeway.com/shop/product-details.960092045.html",
       "capturedAt": "2026-07-17T15:07:06.379Z",
       "capturedQuery": "chicken",
@@ -21079,8 +21079,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "28 oz = 28 oz",
-      "priceDifference": 3.63,
-      "instacartMarkupPercent": 108
+      "priceDifference": 1,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "43661",
@@ -21100,8 +21100,8 @@
       "directId": "188660214",
       "directTitle": "Foster Farms Classic Crispy Chicken Strips - 24 Oz",
       "directSize": "24 oz",
-      "directPrice": 5.28,
-      "directOriginalPrice": null,
+      "directPrice": 7.99,
+      "directOriginalPrice": 10.99,
       "directUrl": "https://www.safeway.com/shop/product-details.188660214.html",
       "capturedAt": "2026-07-17T15:07:06.379Z",
       "capturedQuery": "chicken",
@@ -21109,8 +21109,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "24 oz = 24 oz",
-      "priceDifference": 3.71,
-      "instacartMarkupPercent": 70.3
+      "priceDifference": 1,
+      "instacartMarkupPercent": 12.5
     },
     {
       "productId": "103139066",
@@ -23628,8 +23628,8 @@
       "directId": "117100030",
       "directTitle": "Gold Medal Bleached Enriched Presifted All Purpose Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 1,
-      "directOriginalPrice": null,
+      "directPrice": 4.99,
+      "directOriginalPrice": 5.79,
       "directUrl": "https://www.safeway.com/shop/product-details.117100030.html",
       "capturedAt": "2026-07-19T03:48:55.433Z",
       "capturedQuery": "catalog-prefix:ap:page:1",
@@ -23637,8 +23637,8 @@
       "matchScore": 0.895,
       "matchMargin": 0.215,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 4.99,
-      "instacartMarkupPercent": 499
+      "priceDifference": 1,
+      "instacartMarkupPercent": 20
     },
     {
       "productId": "2718145",
@@ -23774,8 +23774,8 @@
       "directId": "117100031",
       "directTitle": "Gold Medal Flour All-Purpose Unbleached - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 1,
-      "directOriginalPrice": null,
+      "directPrice": 4.99,
+      "directOriginalPrice": 5.79,
       "directUrl": "https://www.safeway.com/shop/product-details.117100031.html",
       "capturedAt": "2026-07-19T03:48:55.433Z",
       "capturedQuery": "catalog-prefix:ap:page:1",
@@ -23783,8 +23783,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 4.99,
-      "instacartMarkupPercent": 499
+      "priceDifference": 1,
+      "instacartMarkupPercent": 20
     },
     {
       "productId": "16409225",
@@ -23917,8 +23917,8 @@
       "directId": "126150438",
       "directTitle": "Golden Star Thai Hom Mali Jasmine Rice - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 3,
-      "directOriginalPrice": null,
+      "directPrice": 14.99,
+      "directOriginalPrice": 17.99,
       "directUrl": "https://www.safeway.com/shop/product-details.126150438.html",
       "capturedAt": "2026-07-19T03:57:05.705Z",
       "capturedQuery": "catalog-prefix:ri:page:1",
@@ -23926,8 +23926,8 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 13.99,
-      "instacartMarkupPercent": 466.3
+      "priceDifference": 2,
+      "instacartMarkupPercent": 13.3
     },
     {
       "productId": "16295688",
@@ -24331,7 +24331,7 @@
       "capturedQuery": "California Olive Ranch Extra Virgin",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 1,
+      "matchMargin": 0.4952,
       "sizeEvidence": "750 ml = 750 ml",
       "priceDifference": 2,
       "instacartMarkupPercent": 13.3
@@ -28077,7 +28077,7 @@
       "capturedQuery": "Hillshire Farm",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 0.2429,
+      "matchMargin": 1,
       "sizeEvidence": "9 oz = 9 oz",
       "priceDifference": 1,
       "instacartMarkupPercent": 20
@@ -29802,8 +29802,8 @@
       "directId": "970486226",
       "directTitle": "Jaffa Avocado Medium Hot Salsa -16 Oz",
       "directSize": "16 oz",
-      "directPrice": 4.96,
-      "directOriginalPrice": null,
+      "directPrice": 4.99,
+      "directOriginalPrice": 5.49,
       "directUrl": "https://www.safeway.com/shop/product-details.970486226.html",
       "capturedAt": "2026-07-17T15:07:26.926Z",
       "capturedQuery": "avocado",
@@ -29811,8 +29811,8 @@
       "matchScore": 0.9533,
       "matchMargin": 0.9533,
       "sizeEvidence": "16 oz = 16 oz",
-      "priceDifference": 0.93,
-      "instacartMarkupPercent": 18.8
+      "priceDifference": 0.9,
+      "instacartMarkupPercent": 18
     },
     {
       "productId": "2197320",
@@ -33684,7 +33684,7 @@
       "directId": "960436651",
       "directTitle": "King Arthur Organic Non-GMO Project Verified 100% No Preservatives Unbleached All-Purpose Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 2.3,
+      "directPrice": 11.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960436651.html",
       "capturedAt": "2026-07-19T03:48:55.433Z",
@@ -33693,8 +33693,8 @@
       "matchScore": 0.8886,
       "matchMargin": 0.1136,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 16.69,
-      "instacartMarkupPercent": 725.7
+      "priceDifference": 7.5,
+      "instacartMarkupPercent": 65.3
     },
     {
       "productId": "53845",
@@ -33714,7 +33714,7 @@
       "directId": "970008885",
       "directTitle": "King Arthur 100% Organic Non-GMO Project Verified No Preservatives Unbleached Bread Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 2.4,
+      "directPrice": 11.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.970008885.html",
       "capturedAt": "2026-07-19T01:46:09.654Z",
@@ -33723,8 +33723,8 @@
       "matchScore": 0.96,
       "matchMargin": 0.1583,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 11.59,
-      "instacartMarkupPercent": 482.9
+      "priceDifference": 2,
+      "instacartMarkupPercent": 16.7
     },
     {
       "productId": "24059",
@@ -33745,7 +33745,7 @@
       "directId": "117100058",
       "directTitle": "King Arthur Non-GMO Project Verified Certified Kosher No Preservatives All Purpose Unbleached Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 1.7,
+      "directPrice": 8.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.117100058.html",
       "capturedAt": "2026-07-19T03:48:55.433Z",
@@ -33754,8 +33754,8 @@
       "matchScore": 0.8961,
       "matchMargin": 0.1057,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 8.29,
-      "instacartMarkupPercent": 487.6
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 17.7
     },
     {
       "productId": "24879922",
@@ -33861,7 +33861,7 @@
       "directId": "960118804",
       "directTitle": "King Arthur Baking Company Stone Ground White Whole Wheat Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 2,
+      "directPrice": 9.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960118804.html",
       "capturedAt": "2026-07-19T01:46:09.654Z",
@@ -33870,8 +33870,8 @@
       "matchScore": 1,
       "matchMargin": 0.3222,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 9.99,
-      "instacartMarkupPercent": 499.5
+      "priceDifference": 2,
+      "instacartMarkupPercent": 20
     },
     {
       "productId": "24060",
@@ -33892,7 +33892,7 @@
       "directId": "117100132",
       "directTitle": "King Arthur Non-GMO Project Verified Certified Kosher No Preservatives Unbleached Bread Flour - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 2,
+      "directPrice": 9.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.117100132.html",
       "capturedAt": "2026-07-19T03:48:55.433Z",
@@ -33901,8 +33901,8 @@
       "matchScore": 0.7867,
       "matchMargin": 0.0984,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 9.99,
-      "instacartMarkupPercent": 499.5
+      "priceDifference": 2,
+      "instacartMarkupPercent": 20
     },
     {
       "productId": "37934",
@@ -35796,7 +35796,7 @@
       "directId": "960031979",
       "directTitle": "Krusteaz Buttermilk Pancake Mix - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 1.9,
+      "directPrice": 9.49,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960031979.html",
       "capturedAt": "2026-07-19T03:54:27.607Z",
@@ -35805,8 +35805,8 @@
       "matchScore": 0.944,
       "matchMargin": 0.944,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 9.09,
-      "instacartMarkupPercent": 478.4
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 15.8
     },
     {
       "productId": "31878",
@@ -38677,7 +38677,7 @@
       "directId": "960021862",
       "directTitle": "Mandarins Clementine Prepacked Bag - 3 Lb",
       "directSize": "3 lb",
-      "directPrice": 2.33,
+      "directPrice": 6.99,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.960021862.html",
       "capturedAt": "2026-07-19T03:51:12.243Z",
@@ -38686,8 +38686,8 @@
       "matchScore": 0.93,
       "matchMargin": 0.93,
       "sizeEvidence": "3 lb = 3 lb",
-      "priceDifference": 5.66,
-      "instacartMarkupPercent": 242.9
+      "priceDifference": 1,
+      "instacartMarkupPercent": 14.3
     },
     {
       "productId": "16753495",
@@ -43341,35 +43341,6 @@
       "instacartMarkupPercent": 17.7
     },
     {
-      "productId": "199133",
-      "sourceProductIds": [
-        "199133"
-      ],
-      "storeIds": [
-        "metro",
-        "safeway"
-      ],
-      "storeCount": 2,
-      "instacartName": "Napoleon Co. Olive Oil, Extra Virgin",
-      "instacartSize": "16.9 fl oz",
-      "instacartPrice": 10.99,
-      "instacartUrl": "https://www.instacart.com/products/199133-napoleon-co-extra-virgin-olive-oil-16-9-fl-oz?retailerSlug=safeway",
-      "directId": "960069607",
-      "directTitle": "Napoleon Olive Oil Extra Virgin - 16.9 Fl. Oz.",
-      "directSize": "16.9 fl oz",
-      "directPrice": 9.49,
-      "directOriginalPrice": 12.49,
-      "directUrl": "https://www.safeway.com/shop/product-details.960069607.html",
-      "capturedAt": "2026-07-17T16:28:11.278Z",
-      "capturedQuery": "olive oil",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.8,
-      "matchMargin": 0.8,
-      "sizeEvidence": "16.9 fl oz = 16.9 fl oz",
-      "priceDifference": 1.5,
-      "instacartMarkupPercent": 15.8
-    },
-    {
       "productId": "199134",
       "sourceProductIds": [
         "199134"
@@ -43397,6 +43368,35 @@
       "sizeEvidence": "8.5 fl oz = 8.5 fl oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 20
+    },
+    {
+      "productId": "199133",
+      "sourceProductIds": [
+        "199133"
+      ],
+      "storeIds": [
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "instacartName": "Napoleon Co. Olive Oil, Extra Virgin",
+      "instacartSize": "16.9 fl oz",
+      "instacartPrice": 10.99,
+      "instacartUrl": "https://www.instacart.com/products/199133-napoleon-co-extra-virgin-olive-oil-16-9-fl-oz?retailerSlug=safeway",
+      "directId": "960069607",
+      "directTitle": "Napoleon Olive Oil Extra Virgin - 16.9 Fl. Oz.",
+      "directSize": "16.9 fl oz",
+      "directPrice": 9.49,
+      "directOriginalPrice": 12.49,
+      "directUrl": "https://www.safeway.com/shop/product-details.960069607.html",
+      "capturedAt": "2026-07-17T16:28:11.278Z",
+      "capturedQuery": "olive oil",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.8,
+      "matchMargin": 0.2182,
+      "sizeEvidence": "16.9 fl oz = 16.9 fl oz",
+      "priceDifference": 1.5,
+      "instacartMarkupPercent": 15.8
     },
     {
       "productId": "199192",
@@ -46637,8 +46637,8 @@
       "directId": "960120669",
       "directTitle": "Oscar Mayer Bun-Length Beef Franks Hot Dogs 8 Count",
       "directSize": "8 ct",
-      "directPrice": 4.32,
-      "directOriginalPrice": null,
+      "directPrice": 3.99,
+      "directOriginalPrice": 7.99,
       "directUrl": "https://www.safeway.com/shop/product-details.960120669.html",
       "capturedAt": "2026-07-19T03:55:40.058Z",
       "capturedQuery": "catalog-prefix:om:page:1",
@@ -46646,8 +46646,8 @@
       "matchScore": 0.8038,
       "matchMargin": 0.8038,
       "sizeEvidence": "8 ct = 8 ct",
-      "priceDifference": -1.44,
-      "instacartMarkupPercent": -33.3
+      "priceDifference": -1.11,
+      "instacartMarkupPercent": -27.8
     },
     {
       "productId": "35250",
@@ -46902,8 +46902,8 @@
       "directId": "960120598",
       "directTitle": "Oscar Mayer Classic Beef Franks Hot Dogs 10 Count",
       "directSize": "10 ct",
-      "directPrice": 4.32,
-      "directOriginalPrice": null,
+      "directPrice": 3.99,
+      "directOriginalPrice": 7.99,
       "directUrl": "https://www.safeway.com/shop/product-details.960120598.html",
       "capturedAt": "2026-07-19T03:55:40.058Z",
       "capturedQuery": "catalog-prefix:om:page:1",
@@ -46911,8 +46911,8 @@
       "matchScore": 0.965,
       "matchMargin": 0.2094,
       "sizeEvidence": "10 ct = 10 ct",
-      "priceDifference": 0.37,
-      "instacartMarkupPercent": 8.6
+      "priceDifference": 0.7,
+      "instacartMarkupPercent": 17.5
     },
     {
       "productId": "75083",
@@ -48195,34 +48195,6 @@
       "sizeEvidence": "4.6 oz = 4.6 oz",
       "priceDifference": 0.19,
       "instacartMarkupPercent": 15.2
-    },
-    {
-      "productId": "41997265",
-      "sourceProductIds": [
-        "41997265"
-      ],
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "instacartName": "PB2 Peanut Butter Spread, Zero Added Sugar, Creamy, Natural",
-      "instacartSize": "16 oz",
-      "instacartPrice": 6.99,
-      "instacartUrl": "https://www.instacart.com/products/41997265-pb2-natural-creamy-peanut-butter-spread-16-00-oz?retailerSlug=safeway",
-      "directId": "970976333",
-      "directTitle": "Pb2 Spread Peanut Butter Creamy - 16 OZ",
-      "directSize": "16 oz",
-      "directPrice": 5.79,
-      "directOriginalPrice": null,
-      "directUrl": "https://www.safeway.com/shop/product-details.970976333.html",
-      "capturedAt": "2026-07-19T03:55:49.453Z",
-      "capturedQuery": "catalog-prefix:pb:page:1",
-      "matchMethod": "normalized_name_size",
-      "matchScore": 0.895,
-      "matchMargin": 0.2617,
-      "sizeEvidence": "16 oz = 16 oz",
-      "priceDifference": 1.2,
-      "instacartMarkupPercent": 20.7
     },
     {
       "productId": "2728030",
@@ -51242,7 +51214,7 @@
       "capturedQuery": "Primal Kitchen Avocado Oil Mayo",
       "matchMethod": "normalized_name_size",
       "matchScore": 1,
-      "matchMargin": 0.463,
+      "matchMargin": 1,
       "sizeEvidence": "10 oz = 10 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 14.3
@@ -53750,6 +53722,37 @@
       "sizeEvidence": "16 oz = 16 oz",
       "priceDifference": 1.5,
       "instacartMarkupPercent": 17.7
+    },
+    {
+      "productId": "24808",
+      "sourceProductIds": [
+        "24808"
+      ],
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "instacartName": "Rao's Marinara Sauce",
+      "instacartSize": "24 oz",
+      "instacartPrice": 7.99,
+      "instacartUrl": "https://www.instacart.com/products/24808-rao-s-homemade-marinara-sauce-24-oz?retailerSlug=safeway",
+      "directId": "128350474",
+      "directTitle": "Rao's Homemade Marinara Sauce - 24 Oz",
+      "directSize": "24 oz",
+      "directPrice": 6.99,
+      "directOriginalPrice": 10.99,
+      "directUrl": "https://www.safeway.com/shop/product-details.128350474.html",
+      "capturedAt": "2026-07-17T18:50:29.288Z",
+      "capturedQuery": "Mezzetta Family Recipes Marinara Sauce",
+      "matchMethod": "normalized_name_size",
+      "matchScore": 0.93,
+      "matchMargin": 0.338,
+      "sizeEvidence": "24 oz = 24 oz",
+      "priceDifference": 1,
+      "instacartMarkupPercent": 14.3
     },
     {
       "productId": "24809",
@@ -60029,7 +60032,7 @@
       "directId": "117100084",
       "directTitle": "Stone-Buhr Flour Whole Wheat - 5 Lb",
       "directSize": "5 lb",
-      "directPrice": 1.36,
+      "directPrice": 6.79,
       "directOriginalPrice": null,
       "directUrl": "https://www.safeway.com/shop/product-details.117100084.html",
       "capturedAt": "2026-07-19T03:55:46.564Z",
@@ -60038,8 +60041,8 @@
       "matchScore": 1,
       "matchMargin": 0.2996,
       "sizeEvidence": "5 lb = 5 lb",
-      "priceDifference": 6.63,
-      "instacartMarkupPercent": 487.5
+      "priceDifference": 1.2,
+      "instacartMarkupPercent": 17.7
     },
     {
       "productId": "52692731",

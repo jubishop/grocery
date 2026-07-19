@@ -142,15 +142,23 @@ function directRecordQuantity(storeId, titleQuantity, sizeQuantity) {
   return titleQuantity;
 }
 
+function directPackagePrice(record) {
+  const capturedPackagePrice = Number(record.rawCapturedPrice);
+  return Number.isFinite(capturedPackagePrice) && capturedPackagePrice > 0
+    ? capturedPackagePrice
+    : record.price;
+}
+
 function directPriceIsPlausible(item, record) {
-  if (!Number.isFinite(item.instacartPrice) || !Number.isFinite(record.price)) return true;
+  const directPrice = directPackagePrice(record);
+  if (!Number.isFinite(item.instacartPrice) || !Number.isFinite(directPrice)) return true;
   // These are two captures of the same retailer. A direct price that is both
   // several dollars and more than 2.5x above its Instacart counterpart is a
   // strong signal of a stale card, selling-basis mismatch, or hidden
   // multipack. Keep the raw capture, but do not publish it as a comparison.
   return !(
-    record.price - item.instacartPrice > 3
-    && record.price / item.instacartPrice > 2.5
+    directPrice - item.instacartPrice > 3
+    && directPrice / item.instacartPrice > 2.5
   );
 }
 
@@ -201,8 +209,9 @@ function tokenScoreSets(left, right) {
 }
 
 const genericLeadingWords = new Set([
-  "classic", "extra", "farmstyle", "fresh", "large", "medium", "natural",
-  "organic", "original", "premium", "small", "traditional", "value", "whole",
+  "california", "classic", "extra", "farmstyle", "fresh", "large", "medium",
+  "natural", "organic", "original", "premium", "small", "traditional",
+  "value", "whole",
 ]);
 const brandAliases = new Map([
   ["maeve", "seattle"],
@@ -550,6 +559,9 @@ for (const item of storeItems) {
     continue;
   }
   const margin = best.score - (next?.score ?? 0);
+  const directPrice = directPackagePrice(best.record);
+  const directOriginalPrice = best.record.rawCapturedOriginalPrice
+    ?? best.record.originalPrice;
   const result = {
     productId: item.productId,
     sourceProductIds: item.sourceProductIds,
@@ -562,8 +574,8 @@ for (const item of storeItems) {
     directId: best.record.id,
     directTitle: best.record.title,
     directSize: storeId === "safeway" ? best.record.quantity.display : best.record.size,
-    directPrice: best.record.price,
-    directOriginalPrice: best.record.originalPrice,
+    directPrice,
+    directOriginalPrice,
     directUrl: best.record.productUrl,
     capturedAt: best.record.capturedAt,
     capturedQuery: best.record.query,
@@ -577,10 +589,10 @@ for (const item of storeItems) {
     sizeEvidence: `${item.quantity.display} = ${best.record.quantity.display}`,
     priceDifference: item.instacartPrice == null
       ? null
-      : Number((item.instacartPrice - best.record.price).toFixed(2)),
+      : Number((item.instacartPrice - directPrice).toFixed(2)),
     instacartMarkupPercent: item.instacartPrice == null
       ? null
-      : Number(((item.instacartPrice / best.record.price - 1) * 100).toFixed(1)),
+      : Number(((item.instacartPrice / directPrice - 1) * 100).toFixed(1)),
   };
   const isAccepted = (
     exactQueryRecords.length

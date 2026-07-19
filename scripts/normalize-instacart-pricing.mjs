@@ -314,10 +314,47 @@ export function normalizeInstacartRecords(records, details) {
 
 const fixedPackagePattern = /\b(?:bag|bagged|bowl|bunch|clamshell|count|ct|cut|diced|florets|pack|peeled|prepacked|sliced|stalks|tray)\b/i;
 const rawMeatPattern = /\b(?:beef|bison|chicken|cod|crab|fish|halibut|lamb|lobster|pork|salmon|scallop|shrimp|steak|trout|turkey|veal)\b/i;
+const preparedMeatPattern = /\b(?:bacon|breaded|burger|cooked|corned|deli|frank|grilled|hot dog|jerky|kabob|marinated|meatball|meatloaf|nugget|patty|roasted|sausage|seasoned|shredded|skewer|smoked|stuffed)\b/i;
 const looseProducePattern = /\b(?:apple|avocado|banana|broccoli|cabbage|celery root|cucumber|eggplant|grapefruit|jalapeno|lemon|lime|melon|orange|onion|parsnip|pepper|pluot|squash|tomato|yam)\b/i;
 
+function isQfcDirectRecord(record) {
+  return String(record?.storeId ?? "").toLowerCase() === "qfc"
+    || String(record?.source ?? "").toLowerCase() === "qfc.com"
+    || /\bqfc\.com\b/i.test([
+      record?.capturedUrl,
+      record?.productUrl,
+    ].filter(Boolean).join(" "));
+}
+
+function isQfcFixedPackageUnitRate(record) {
+  if (!isQfcDirectRecord(record)) return false;
+  if (String(record?.priceBasis ?? "").toLowerCase() !== "per lb") return false;
+  if (!String(record?.size ?? "").trim()) return false;
+
+  // Kroger/QFC random-weight labels use 13-digit identifiers beginning with
+  // 002. Those products are genuinely sold by weight even when the card also
+  // shows an approximate package size. Standard UPC products instead show an
+  // informational $/lb rate beside a fixed package price.
+  if (/^002\d{10}$/.test(String(record?.id ?? ""))) return false;
+
+  // Raw meat and seafood may join the loose-commodity matcher through their
+  // explicit unit rate. If the same record instead earns an exact packaged
+  // match, the matcher and database restore its captured package total.
+  const title = String(record?.title ?? record?.name ?? "");
+  const rawMeat = /\b(?:meat|seafood)\b/i.test(String(record?.category ?? ""))
+    && rawMeatPattern.test(title)
+    && !preparedMeatPattern.test(title)
+    && !/\b(?:meatless|plant based|vegan|vegetarian)\b/i.test(title);
+  return !rawMeat;
+}
+
 export function isDirectVariableWeightRecord(record) {
-  if (String(record?.priceBasis ?? "").toLowerCase() === "per lb") return true;
+  if (
+    String(record?.priceBasis ?? "").toLowerCase() === "per lb"
+    && !isQfcFixedPackageUnitRate(record)
+  ) {
+    return true;
+  }
   if (String(record?.size ?? "").trim()) return false;
   const parsed = parseCapturedUnitText(record?.unitText);
   if (parsed.unitPrice == null) return false;
@@ -331,9 +368,11 @@ export function normalizeDirectStoreRecord(record) {
   const rawPerPound = String(record?.priceBasis ?? "").toLowerCase() === "per lb";
   const parsed = parseCapturedUnitText(record?.unitText);
   const ambiguousPackageCount = isAmbiguousSingleServingBeverageRecord(record);
+  const qfcFixedPackageUnitRate = isQfcFixedPackageUnitRate(record);
   if (!isDirectVariableWeightRecord(record)) {
     return {
       ...record,
+      priceBasis: qfcFixedPackageUnitRate ? "per item" : record.priceBasis,
       pricingMode: ambiguousPackageCount ? "ambiguous_package_count" : "fixed_price",
       comparisonEligible: !ambiguousPackageCount,
       exclusionReason: ambiguousPackageCount ? "ambiguous_package_count" : "",
@@ -370,6 +409,7 @@ export function normalizeDirectStoreRecord(record) {
   return {
     ...record,
     rawCapturedPrice: record.price,
+    rawCapturedOriginalPrice: record.originalPrice,
     price: parsed.unitPrice,
     originalPrice: null,
     priceBasis: "per lb",

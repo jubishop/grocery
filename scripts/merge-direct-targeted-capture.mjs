@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { looseMeatKey } from "./match-loose-meat.mjs";
+import { isDirectVariableWeightRecord } from "./normalize-instacart-pricing.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const supportedStores = new Map([
@@ -123,10 +124,41 @@ for (const incomingRecord of incoming.records ?? []) {
   }
 }
 
+const normalizedRecords = records.map((record) => {
+  const scopedRecord = {
+    ...record,
+    storeId,
+    source: expectedSource,
+  };
+  if (storeId === "qfc" && /\/\s*lb\b/i.test(String(scopedRecord.unitText ?? ""))) {
+    const poundRateCandidate = {
+      ...scopedRecord,
+      priceBasis: "per lb",
+    };
+    return {
+      ...scopedRecord,
+      priceBasis: isDirectVariableWeightRecord(poundRateCandidate)
+        ? "per lb"
+        : "per item",
+    };
+  }
+  if (
+    storeId === "qfc"
+    && String(scopedRecord.priceBasis ?? "").toLowerCase() === "per lb"
+    && !isDirectVariableWeightRecord(scopedRecord)
+  ) {
+    return {
+      ...scopedRecord,
+      priceBasis: "per item",
+    };
+  }
+  return scopedRecord;
+});
+
 const output = {
   ...checkpoint,
   capturedAt: incoming.capturedAt ?? checkpoint.capturedAt,
-  records,
+  records: normalizedRecords,
   queries,
 };
 const temporaryPath = `${checkpointPath}.tmp`;

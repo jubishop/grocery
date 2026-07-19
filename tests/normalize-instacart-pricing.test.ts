@@ -155,6 +155,90 @@ test("fixed packages keep their each price despite informational unit text", () 
   assert.equal(oranges.pricingMode, "fixed_price");
 });
 
+test("QFC fixed packages ignore informational pound rates from legacy captures", () => {
+  const cereal = normalizeDirectStoreRecord({
+    id: "0001600012183",
+    storeId: "qfc",
+    source: "qfc.com",
+    title: "General Mills Lucky Charms Giant Size Cereal",
+    category: "Breakfast & Cereal",
+    size: "26.1 oz",
+    price: 6.99,
+    priceBasis: "per lb",
+    unitText: "$4.29/lb",
+  });
+  assert.equal(cereal.price, 6.99);
+  assert.equal(cereal.priceBasis, "per item");
+  assert.equal(cereal.pricingMode, "fixed_price");
+  assert.equal(cereal.estimatedItemPrice, undefined);
+});
+
+test("QFC random-weight labels remain per-pound with an approximate size", () => {
+  const steak = normalizeDirectStoreRecord({
+    id: "0027224750000",
+    storeId: "qfc",
+    source: "qfc.com",
+    title: "Angus Beef Tri Tip Steak Family Pack",
+    category: "Meat & Seafood",
+    size: "1 lb",
+    price: 14.49,
+    priceBasis: "per lb",
+    unitText: "$14.49/lb",
+  });
+  assert.equal(steak.price, 14.49);
+  assert.equal(steak.priceBasis, "per lb");
+  assert.equal(steak.pricingMode, "unit_price_per_lb");
+});
+
+test("QFC raw meat exposes a pound rate while retaining its package-total provenance", () => {
+  const groundBeef = normalizeDirectStoreRecord({
+    id: "0085002506607",
+    storeId: "qfc",
+    source: "qfc.com",
+    title: "Certified Angus Beef 80% Lean Ground Beef Chuck",
+    category: "Meat & Seafood",
+    size: "16 oz",
+    price: 9.49,
+    priceBasis: "per lb",
+    unitText: "$9.49/lb",
+  });
+  assert.equal(groundBeef.price, 9.49);
+  assert.equal(groundBeef.priceBasis, "per lb");
+  assert.equal(groundBeef.pricingMode, "unit_price_per_lb");
+  assert.equal(groundBeef.rawCapturedPrice, 9.49);
+
+  const porkLoin = normalizeDirectStoreRecord({
+    id: "0003760037858",
+    storeId: "qfc",
+    source: "qfc.com",
+    title: "Hormel Lemon Garlic Pork Loin Filet",
+    category: "Meat & Seafood",
+    size: "1.5 lbs",
+    price: 9.99,
+    priceBasis: "per lb",
+    unitText: "$6.66/lb",
+  });
+  assert.equal(porkLoin.price, 6.66);
+  assert.equal(porkLoin.priceBasis, "per lb");
+  assert.equal(porkLoin.pricingMode, "final_cost_by_weight");
+  assert.equal(porkLoin.estimatedItemPrice, 9.99);
+
+  const smokedTuna = normalizeDirectStoreRecord({
+    id: "0002338411115",
+    storeId: "qfc",
+    source: "qfc.com",
+    title: "Sesame Crusted Smoked Ahi Tuna",
+    category: "Meat & Seafood",
+    size: "3 oz",
+    price: 6.99,
+    priceBasis: "per lb",
+    unitText: "$36.79/lb",
+  });
+  assert.equal(smokedTuna.price, 6.99);
+  assert.equal(smokedTuna.priceBasis, "per item");
+  assert.equal(smokedTuna.pricingMode, "fixed_price");
+});
+
 test("fixed packages ignore prose-form informational unit prices", () => {
   const oil = normalizeDirectStoreRecord({
     title: "Organic Extra Virgin Olive Oil",
