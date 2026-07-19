@@ -257,6 +257,7 @@ function ProductCard({
   const available = productPrices(product, selected);
   const winners = lowestStores(product, selected);
   const spread = spreadFor(product, selected);
+  const imageSource = product.imagePath || product.imageUrl;
   const basketUnitLabel = product.priceBasis === "per lb" ? "lb" : "item";
   const basketQuantityLabel = product.priceBasis === "per lb"
     ? `${basketQuantity} ${basketQuantity === 1 ? "pound" : "pounds"}`
@@ -273,19 +274,21 @@ function ProductCard({
     <article className="product-card">
       <div className="product-main">
         <div className="product-image-wrap">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="product-image"
-            src={product.imagePath || product.imageUrl}
-            alt=""
-            loading="lazy"
-            width="96"
-            height="96"
-            onError={(event) => {
-              if (event.currentTarget.src !== product.imageUrl) event.currentTarget.src = product.imageUrl;
-              else event.currentTarget.style.visibility = "hidden";
-            }}
-          />
+          {imageSource && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              className="product-image"
+              src={imageSource}
+              alt=""
+              loading="lazy"
+              width="96"
+              height="96"
+              onError={(event) => {
+                if (product.imageUrl && event.currentTarget.src !== product.imageUrl) event.currentTarget.src = product.imageUrl;
+                else event.currentTarget.style.visibility = "hidden";
+              }}
+            />
+          )}
         </div>
         <div className="product-copy">
           <div className="product-kicker">
@@ -696,21 +699,24 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
                     const availableStoreCount = selected.filter((storeId) => (
                       hasUsablePrice(product, storeId, selected)
                     )).length;
+                    const basketImageSource = product.imagePath || product.imageUrl;
                     return (
                       <li key={product.id}>
                         <div className="basket-item-image">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={product.imagePath || product.imageUrl}
-                            alt=""
-                            loading="lazy"
-                            width="58"
-                            height="58"
-                            onError={(event) => {
-                              if (event.currentTarget.src !== product.imageUrl) event.currentTarget.src = product.imageUrl;
-                              else event.currentTarget.style.visibility = "hidden";
-                            }}
-                          />
+                          {basketImageSource && (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={basketImageSource}
+                              alt=""
+                              loading="lazy"
+                              width="58"
+                              height="58"
+                              onError={(event) => {
+                                if (product.imageUrl && event.currentTarget.src !== product.imageUrl) event.currentTarget.src = product.imageUrl;
+                                else event.currentTarget.style.visibility = "hidden";
+                              }}
+                            />
+                          )}
                         </div>
                         <div className="basket-item-copy">
                           <strong>{product.name}</strong>
