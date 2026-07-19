@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-07-19T02:29:21.069Z",
+  "generatedAt": "2026-07-19T04:49:34.732Z",
   "methodology": "Fully automatic conservative crosswalk requiring normalized brand and product agreement, equivalent package quantity and numeric variants, agreement on protected product claims, and no conflicting packaged-product state. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Exact product-targeted searches may accept only their first priced result after all automatic compatibility gates pass. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Retailer-exclusive house brands and ambiguous candidates are excluded automatically.",
   "counts": {
-    "instacartAllFour": 468,
-    "wholeFoodsCaptured": 3850,
-    "wholeFoodsMatchingCandidates": 3379,
+    "instacartAllFour": 471,
+    "wholeFoodsCaptured": 4199,
+    "wholeFoodsMatchingCandidates": 3679,
     "accepted": 134,
-    "acceptedAnyStoreCount": 678,
+    "acceptedAnyStoreCount": 711,
     "acceptedByStoreCount": {
-      "1": 225,
-      "2": 183,
-      "3": 136,
+      "1": 249,
+      "2": 191,
+      "3": 137,
       "4": 134
     }
   },
@@ -24,10 +24,10 @@
       "instacartSize": "20 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B003UWNJSA",
@@ -232,10 +232,10 @@
       "instacartSize": "14.7 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B002HQIHNC",
@@ -260,8 +260,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07HM58L4H",
@@ -388,10 +388,10 @@
       "instacartSize": "20 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0011CZ6HI",
@@ -414,10 +414,10 @@
       "instacartSize": "8 oz",
       "category": "Oils, Vinegars & Spices",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00016LAFM",
@@ -442,8 +442,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0CS3Y136M",
@@ -466,10 +466,10 @@
       "instacartSize": "16 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "pcc",
-        "safeway",
         "metro",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00A8PIB0S",
@@ -492,10 +492,10 @@
       "instacartSize": "32 oz",
       "category": "Breakfast Foods",
       "storeIds": [
+        "metro",
         "pcc",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07C9KRVNT",
@@ -571,9 +571,9 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0004MU1AS",
@@ -597,9 +597,9 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000V5PBTE",
@@ -624,8 +624,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B08W3GNBM8",
@@ -672,12 +672,12 @@
       ],
       "instacartName": "Boursin Garlic & Fine Herbs Spreadable Gourmet Cheese",
       "instacartSize": "5.3 oz",
-      "category": "Deli",
+      "category": "Cheese",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000QG1TIU",
@@ -700,10 +700,10 @@
       "instacartSize": "4.5 oz",
       "category": "Baking Essentials",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B002863BIW",
@@ -752,10 +752,10 @@
       "instacartSize": "20 ct",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0797JWPCK",
@@ -802,7 +802,7 @@
       ],
       "instacartName": "Chobani Extra Creamy Oatmilk",
       "instacartSize": "52 fl oz",
-      "category": "Beverages",
+      "category": "Milk Alternatives",
       "storeIds": [
         "metro",
         "pcc",
@@ -934,10 +934,10 @@
       "instacartSize": "5 fl oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B008NUQA8A",
@@ -958,12 +958,12 @@
       ],
       "instacartName": "cocojune Organic Pure Coconut Cultured Coconut",
       "instacartSize": "16 oz",
-      "category": "Dairy & Eggs",
+      "category": "Plant-Based Alternatives",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B08L91VXKQ",
@@ -986,9 +986,9 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "qfc",
-        "pcc",
         "metro",
+        "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 4,
@@ -1010,12 +1010,12 @@
       ],
       "instacartName": "Culture Pop Soda Strawberry & Rhubarb",
       "instacartSize": "12 fl oz",
-      "category": "Beverages",
+      "category": "Other Groceries",
       "storeIds": [
+        "metro",
         "pcc",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0B9TCWSNC",
@@ -1195,9 +1195,9 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
-        "safeway",
         "pcc",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0DDML6GW8",
@@ -1299,8 +1299,8 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
-        "qfc",
         "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 4,
@@ -1351,9 +1351,9 @@
       "category": "Deli",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B002DQP04U",
@@ -1376,10 +1376,10 @@
       "instacartSize": "12.95 oz",
       "category": "Deli",
       "storeIds": [
-        "safeway",
-        "pcc",
         "metro",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B002DQP054",
@@ -1480,10 +1480,10 @@
       "instacartSize": "4 oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B005BD4ZJS",
@@ -1506,10 +1506,10 @@
       "instacartSize": "4 oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0078DSELY",
@@ -1532,10 +1532,10 @@
       "instacartSize": "7 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000R96F1C",
@@ -1662,9 +1662,9 @@
       "instacartSize": "32 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "qfc",
-        "pcc",
         "metro",
+        "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 4,
@@ -1792,10 +1792,10 @@
       "instacartSize": "22 oz",
       "category": "Baking Essentials",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B008C2C9U2",
@@ -1872,8 +1872,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0725SCFBX",
@@ -1898,8 +1898,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0728D62ML",
@@ -1922,10 +1922,10 @@
       "instacartSize": "10 fl oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000R2Z2WM",
@@ -1946,12 +1946,12 @@
       ],
       "instacartName": "MALK Almond Milk, Vanilla",
       "instacartSize": "28 fl oz",
-      "category": "Beverages",
+      "category": "Dairy & Eggs",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0785WCCYS",
@@ -2026,10 +2026,10 @@
       "instacartSize": "22.5 oz",
       "category": "Bakery & Bread",
       "storeIds": [
-        "pcc",
-        "safeway",
         "metro",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B087DLT45Q",
@@ -2055,8 +2055,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0D79PWJPP",
@@ -2105,10 +2105,10 @@
       "instacartSize": "20 oz",
       "category": "Bakery & Bread",
       "storeIds": [
-        "pcc",
-        "safeway",
         "metro",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0D87QCPGX",
@@ -2183,10 +2183,10 @@
       "instacartSize": "5.9 oz",
       "category": "Dry Goods & Pasta",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0059G5JSI",
@@ -2237,10 +2237,10 @@
       "instacartSize": "12 fl oz",
       "category": "Other Groceries",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B09VPYS1CP",
@@ -2263,10 +2263,10 @@
       "instacartSize": "5 oz",
       "category": "Produce",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00H3R2OV6",
@@ -2289,10 +2289,10 @@
       "instacartSize": "1 ct",
       "category": "Produce",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B078159D6K",
@@ -2315,10 +2315,10 @@
       "instacartSize": "",
       "category": "Produce",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07812N26Q",
@@ -2368,9 +2368,9 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
+        "pcc",
         "qfc",
-        "safeway",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000O6EG5K",
@@ -2381,7 +2381,7 @@
       "capturedAt": "2026-07-17T04:10:29.187Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.8875,
-      "matchMargin": 0.8875,
+      "matchMargin": 0.4518,
       "sizeEvidence": "16 fl oz = 16 fl oz"
     },
     {
@@ -2498,10 +2498,10 @@
       "instacartSize": "32 fl oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
+        "metro",
         "pcc",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000R7ZMLI",
@@ -2548,12 +2548,12 @@
       ],
       "instacartName": "Perfect Bar Dark Chocolate Chip Peanut Butter Protein Bar, Gluten-Free 2.3 oz",
       "instacartSize": "2.3 oz",
-      "category": "Other Groceries",
+      "category": "Snacks & Candy",
       "storeIds": [
-        "safeway",
+        "metro",
         "pcc",
         "qfc",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B076CKWRYD",
@@ -2576,10 +2576,10 @@
       "instacartSize": "",
       "category": "Produce",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07HHGK3TF",
@@ -2602,9 +2602,9 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "qfc",
-        "pcc",
         "metro",
+        "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 4,
@@ -2628,10 +2628,10 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B09G9B91J3",
@@ -2654,10 +2654,10 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07813N6LQ",
@@ -2678,7 +2678,7 @@
       ],
       "instacartName": "Primal Kitchen Organic Unsweetened Squeeze Ketchup",
       "instacartSize": "1.16 lb",
-      "category": "Condiments & Sauces",
+      "category": "Buns & condiments",
       "storeIds": [
         "metro",
         "pcc",
@@ -2704,7 +2704,7 @@
       ],
       "instacartName": "Primal Kitchen Squeeze Mayo Made with Avocado Oil",
       "instacartSize": "17 fl oz",
-      "category": "Condiments & Sauces",
+      "category": "Buns & condiments",
       "storeIds": [
         "metro",
         "pcc",
@@ -2732,10 +2732,10 @@
       "instacartSize": "11 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "qfc",
-        "safeway",
+        "metro",
         "pcc",
-        "metro"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0CJVMHYDH",
@@ -2760,8 +2760,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B01M6TJBA6",
@@ -2784,10 +2784,10 @@
       "instacartSize": "10 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00L9Z6KMM",
@@ -2804,11 +2804,11 @@
     {
       "productId": "27573",
       "sourceProductIds": [
-        "16914182",
-        "27573"
+        "27573",
+        "16914182"
       ],
       "instacartName": "San Pellegrino Sparkling Natural Mineral Water",
-      "instacartSize": "33.8 fl oz",
+      "instacartSize": "1 L",
       "category": "Beverages",
       "storeIds": [
         "metro",
@@ -2822,11 +2822,11 @@
       "wholeFoodsPrice": 3.19,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B07PVYZBCF",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61+0iaMHYdL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-19T00:45:56.220Z",
+      "capturedAt": "2026-07-19T04:06:10.218Z",
       "matchMethod": "targeted_query_brand_name_size",
       "matchScore": 0.71,
       "matchMargin": 0.71,
-      "sizeEvidence": "33.8 fl oz = 1 l"
+      "sizeEvidence": "1 l = 1 l"
     },
     {
       "productId": "17074096",
@@ -2848,7 +2848,7 @@
       "wholeFoodsPrice": 1.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B008QMZ1RG",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71RHApJY7CL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-19T00:45:56.220Z",
+      "capturedAt": "2026-07-19T04:06:10.218Z",
       "matchMethod": "targeted_query_brand_name_size",
       "matchScore": 0.825,
       "matchMargin": 0.825,
@@ -2952,7 +2952,7 @@
       "wholeFoodsPrice": 5.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B08QYB28ZW",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81n3-zLYYmL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:30:57.261Z",
+      "capturedAt": "2026-07-19T04:06:18.472Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.85,
       "matchMargin": 0.85,
@@ -2965,7 +2965,7 @@
       ],
       "instacartName": "Spindrift Sparkling Water Grapefruit",
       "instacartSize": "8 x 12 fl oz",
-      "category": "Beverages",
+      "category": "Drinks",
       "storeIds": [
         "metro",
         "pcc",
@@ -2991,7 +2991,7 @@
       ],
       "instacartName": "Spindrift Unsweetened Blood Orange Tangerine Sparkling Water",
       "instacartSize": "8 x 12 fl oz",
-      "category": "Beverages",
+      "category": "Drinks",
       "storeIds": [
         "metro",
         "pcc",
@@ -3045,10 +3045,10 @@
       "instacartSize": "10.3 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B06XYMK4DD",
@@ -3072,9 +3072,9 @@
       "category": "Beverages",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000QJAGC2",
@@ -3098,9 +3098,9 @@
       "category": "Other Groceries",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0D95ZJGRC",
@@ -3125,8 +3125,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0F29N597D",
@@ -3149,10 +3149,10 @@
       "instacartSize": "7 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B06XZM52NQ",
@@ -3177,8 +3177,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000N33948",
@@ -3255,8 +3255,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000R4B9MW",
@@ -3281,8 +3281,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000O6I9YY",
@@ -3305,10 +3305,10 @@
       "instacartSize": "4.2 oz",
       "category": "Snacks & Candy",
       "storeIds": [
+        "metro",
         "pcc",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B01DX6EAHG",
@@ -3331,10 +3331,10 @@
       "instacartSize": "8 oz",
       "category": "Deli",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07GT6857V",
@@ -3357,10 +3357,10 @@
       "instacartSize": "7.05 oz",
       "category": "Deli",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07FYWCFLN",
@@ -3461,10 +3461,10 @@
       "instacartSize": "5.3 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000I4OVQM",
@@ -3487,10 +3487,10 @@
       "instacartSize": "5 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00CQ7PUIM",
@@ -3515,10 +3515,10 @@
       "instacartSize": "20 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B003UWNJSA",
@@ -3723,10 +3723,10 @@
       "instacartSize": "14.7 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B002HQIHNC",
@@ -3751,8 +3751,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07HM58L4H",
@@ -3879,10 +3879,10 @@
       "instacartSize": "20 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0011CZ6HI",
@@ -3905,10 +3905,10 @@
       "instacartSize": "8 oz",
       "category": "Oils, Vinegars & Spices",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00016LAFM",
@@ -3933,8 +3933,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0CS3Y136M",
@@ -3957,10 +3957,10 @@
       "instacartSize": "16 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "pcc",
-        "safeway",
         "metro",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00A8PIB0S",
@@ -3983,10 +3983,10 @@
       "instacartSize": "32 oz",
       "category": "Breakfast Foods",
       "storeIds": [
+        "metro",
         "pcc",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07C9KRVNT",
@@ -4062,9 +4062,9 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0004MU1AS",
@@ -4088,9 +4088,9 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000V5PBTE",
@@ -4115,8 +4115,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B08W3GNBM8",
@@ -4163,12 +4163,12 @@
       ],
       "instacartName": "Boursin Garlic & Fine Herbs Spreadable Gourmet Cheese",
       "instacartSize": "5.3 oz",
-      "category": "Deli",
+      "category": "Cheese",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000QG1TIU",
@@ -4191,10 +4191,10 @@
       "instacartSize": "4.5 oz",
       "category": "Baking Essentials",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B002863BIW",
@@ -4243,10 +4243,10 @@
       "instacartSize": "20 ct",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0797JWPCK",
@@ -4293,7 +4293,7 @@
       ],
       "instacartName": "Chobani Extra Creamy Oatmilk",
       "instacartSize": "52 fl oz",
-      "category": "Beverages",
+      "category": "Milk Alternatives",
       "storeIds": [
         "metro",
         "pcc",
@@ -4425,10 +4425,10 @@
       "instacartSize": "5 fl oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B008NUQA8A",
@@ -4449,12 +4449,12 @@
       ],
       "instacartName": "cocojune Organic Pure Coconut Cultured Coconut",
       "instacartSize": "16 oz",
-      "category": "Dairy & Eggs",
+      "category": "Plant-Based Alternatives",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B08L91VXKQ",
@@ -4477,9 +4477,9 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "qfc",
-        "pcc",
         "metro",
+        "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 4,
@@ -4501,12 +4501,12 @@
       ],
       "instacartName": "Culture Pop Soda Strawberry & Rhubarb",
       "instacartSize": "12 fl oz",
-      "category": "Beverages",
+      "category": "Other Groceries",
       "storeIds": [
+        "metro",
         "pcc",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0B9TCWSNC",
@@ -4686,9 +4686,9 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
-        "safeway",
         "pcc",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0DDML6GW8",
@@ -4790,8 +4790,8 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
-        "qfc",
         "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 4,
@@ -4842,9 +4842,9 @@
       "category": "Deli",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B002DQP04U",
@@ -4867,10 +4867,10 @@
       "instacartSize": "12.95 oz",
       "category": "Deli",
       "storeIds": [
-        "safeway",
-        "pcc",
         "metro",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B002DQP054",
@@ -4971,10 +4971,10 @@
       "instacartSize": "4 oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B005BD4ZJS",
@@ -4997,10 +4997,10 @@
       "instacartSize": "4 oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0078DSELY",
@@ -5023,10 +5023,10 @@
       "instacartSize": "7 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000R96F1C",
@@ -5153,9 +5153,9 @@
       "instacartSize": "32 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "qfc",
-        "pcc",
         "metro",
+        "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 4,
@@ -5283,10 +5283,10 @@
       "instacartSize": "22 oz",
       "category": "Baking Essentials",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B008C2C9U2",
@@ -5363,8 +5363,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0725SCFBX",
@@ -5389,8 +5389,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0728D62ML",
@@ -5413,10 +5413,10 @@
       "instacartSize": "10 fl oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000R2Z2WM",
@@ -5437,12 +5437,12 @@
       ],
       "instacartName": "MALK Almond Milk, Vanilla",
       "instacartSize": "28 fl oz",
-      "category": "Beverages",
+      "category": "Dairy & Eggs",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0785WCCYS",
@@ -5517,10 +5517,10 @@
       "instacartSize": "22.5 oz",
       "category": "Bakery & Bread",
       "storeIds": [
-        "pcc",
-        "safeway",
         "metro",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B087DLT45Q",
@@ -5546,8 +5546,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0D79PWJPP",
@@ -5596,10 +5596,10 @@
       "instacartSize": "20 oz",
       "category": "Bakery & Bread",
       "storeIds": [
-        "pcc",
-        "safeway",
         "metro",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0D87QCPGX",
@@ -5674,10 +5674,10 @@
       "instacartSize": "5.9 oz",
       "category": "Dry Goods & Pasta",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0059G5JSI",
@@ -5728,10 +5728,10 @@
       "instacartSize": "12 fl oz",
       "category": "Other Groceries",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B09VPYS1CP",
@@ -5754,10 +5754,10 @@
       "instacartSize": "5 oz",
       "category": "Produce",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00H3R2OV6",
@@ -5780,10 +5780,10 @@
       "instacartSize": "1 ct",
       "category": "Produce",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B078159D6K",
@@ -5806,10 +5806,10 @@
       "instacartSize": "",
       "category": "Produce",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07812N26Q",
@@ -5859,9 +5859,9 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
+        "pcc",
         "qfc",
-        "safeway",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000O6EG5K",
@@ -5872,7 +5872,7 @@
       "capturedAt": "2026-07-17T04:10:29.187Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.8875,
-      "matchMargin": 0.8875,
+      "matchMargin": 0.4518,
       "sizeEvidence": "16 fl oz = 16 fl oz"
     },
     {
@@ -5989,10 +5989,10 @@
       "instacartSize": "32 fl oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
+        "metro",
         "pcc",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000R7ZMLI",
@@ -6039,12 +6039,12 @@
       ],
       "instacartName": "Perfect Bar Dark Chocolate Chip Peanut Butter Protein Bar, Gluten-Free 2.3 oz",
       "instacartSize": "2.3 oz",
-      "category": "Other Groceries",
+      "category": "Snacks & Candy",
       "storeIds": [
-        "safeway",
+        "metro",
         "pcc",
         "qfc",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B076CKWRYD",
@@ -6067,10 +6067,10 @@
       "instacartSize": "",
       "category": "Produce",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07HHGK3TF",
@@ -6093,9 +6093,9 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "qfc",
-        "pcc",
         "metro",
+        "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 4,
@@ -6119,10 +6119,10 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B09G9B91J3",
@@ -6145,10 +6145,10 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07813N6LQ",
@@ -6169,7 +6169,7 @@
       ],
       "instacartName": "Primal Kitchen Organic Unsweetened Squeeze Ketchup",
       "instacartSize": "1.16 lb",
-      "category": "Condiments & Sauces",
+      "category": "Buns & condiments",
       "storeIds": [
         "metro",
         "pcc",
@@ -6195,7 +6195,7 @@
       ],
       "instacartName": "Primal Kitchen Squeeze Mayo Made with Avocado Oil",
       "instacartSize": "17 fl oz",
-      "category": "Condiments & Sauces",
+      "category": "Buns & condiments",
       "storeIds": [
         "metro",
         "pcc",
@@ -6223,10 +6223,10 @@
       "instacartSize": "11 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "qfc",
-        "safeway",
+        "metro",
         "pcc",
-        "metro"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0CJVMHYDH",
@@ -6251,8 +6251,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B01M6TJBA6",
@@ -6275,10 +6275,10 @@
       "instacartSize": "10 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00L9Z6KMM",
@@ -6295,11 +6295,11 @@
     {
       "productId": "27573",
       "sourceProductIds": [
-        "16914182",
-        "27573"
+        "27573",
+        "16914182"
       ],
       "instacartName": "San Pellegrino Sparkling Natural Mineral Water",
-      "instacartSize": "33.8 fl oz",
+      "instacartSize": "1 L",
       "category": "Beverages",
       "storeIds": [
         "metro",
@@ -6313,11 +6313,11 @@
       "wholeFoodsPrice": 3.19,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B07PVYZBCF",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61+0iaMHYdL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-19T00:45:56.220Z",
+      "capturedAt": "2026-07-19T04:06:10.218Z",
       "matchMethod": "targeted_query_brand_name_size",
       "matchScore": 0.71,
       "matchMargin": 0.71,
-      "sizeEvidence": "33.8 fl oz = 1 l"
+      "sizeEvidence": "1 l = 1 l"
     },
     {
       "productId": "17074096",
@@ -6339,7 +6339,7 @@
       "wholeFoodsPrice": 1.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B008QMZ1RG",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71RHApJY7CL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-19T00:45:56.220Z",
+      "capturedAt": "2026-07-19T04:06:10.218Z",
       "matchMethod": "targeted_query_brand_name_size",
       "matchScore": 0.825,
       "matchMargin": 0.825,
@@ -6443,7 +6443,7 @@
       "wholeFoodsPrice": 5.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B08QYB28ZW",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81n3-zLYYmL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:30:57.261Z",
+      "capturedAt": "2026-07-19T04:06:18.472Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.85,
       "matchMargin": 0.85,
@@ -6456,7 +6456,7 @@
       ],
       "instacartName": "Spindrift Sparkling Water Grapefruit",
       "instacartSize": "8 x 12 fl oz",
-      "category": "Beverages",
+      "category": "Drinks",
       "storeIds": [
         "metro",
         "pcc",
@@ -6482,7 +6482,7 @@
       ],
       "instacartName": "Spindrift Unsweetened Blood Orange Tangerine Sparkling Water",
       "instacartSize": "8 x 12 fl oz",
-      "category": "Beverages",
+      "category": "Drinks",
       "storeIds": [
         "metro",
         "pcc",
@@ -6536,10 +6536,10 @@
       "instacartSize": "10.3 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B06XYMK4DD",
@@ -6563,9 +6563,9 @@
       "category": "Beverages",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000QJAGC2",
@@ -6589,9 +6589,9 @@
       "category": "Other Groceries",
       "storeIds": [
         "metro",
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0D95ZJGRC",
@@ -6616,8 +6616,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B0F29N597D",
@@ -6640,10 +6640,10 @@
       "instacartSize": "7 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B06XZM52NQ",
@@ -6668,8 +6668,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000N33948",
@@ -6746,8 +6746,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000R4B9MW",
@@ -6772,8 +6772,8 @@
       "storeIds": [
         "metro",
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000O6I9YY",
@@ -6796,10 +6796,10 @@
       "instacartSize": "4.2 oz",
       "category": "Snacks & Candy",
       "storeIds": [
+        "metro",
         "pcc",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B01DX6EAHG",
@@ -6822,10 +6822,10 @@
       "instacartSize": "8 oz",
       "category": "Deli",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07GT6857V",
@@ -6848,10 +6848,10 @@
       "instacartSize": "7.05 oz",
       "category": "Deli",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B07FYWCFLN",
@@ -6952,10 +6952,10 @@
       "instacartSize": "5.3 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B000I4OVQM",
@@ -6978,10 +6978,10 @@
       "instacartSize": "5 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
         "metro",
-        "safeway",
-        "qfc"
+        "pcc",
+        "qfc",
+        "safeway"
       ],
       "storeCount": 4,
       "asin": "B00CQ7PUIM",
@@ -7004,9 +7004,9 @@
       "instacartSize": "59 fl oz",
       "category": "Beverages",
       "storeIds": [
+        "metro",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0BCBNG8LS",
@@ -7079,8 +7079,8 @@
       "instacartSize": "13 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "qfc"
       ],
       "storeCount": 3,
@@ -7104,8 +7104,8 @@
       "instacartSize": "14.1 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -7356,8 +7356,8 @@
       "category": "Frozen",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000YMZU1I",
@@ -7381,8 +7381,8 @@
       "category": "Frozen",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000RUQOOO",
@@ -7406,8 +7406,8 @@
       "category": "Frozen",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000R49HUS",
@@ -7431,8 +7431,8 @@
       "category": "Frozen",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000R4BCZQ",
@@ -7455,8 +7455,8 @@
       "instacartSize": "10 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "qfc"
       ],
       "storeCount": 3,
@@ -7480,8 +7480,8 @@
       "instacartSize": "16 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -7506,8 +7506,8 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0C111GR8Z",
@@ -7532,8 +7532,8 @@
       "category": "Produce",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000P717MI",
@@ -7681,9 +7681,9 @@
       "instacartSize": "40 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "safeway",
+        "metro",
         "pcc",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B00PO9DHB6",
@@ -7706,9 +7706,9 @@
       "instacartSize": "16 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "qfc",
+        "metro",
         "pcc",
-        "metro"
+        "qfc"
       ],
       "storeCount": 3,
       "asin": "B07CD5V33W",
@@ -7756,9 +7756,9 @@
       "instacartSize": "16.9 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
+        "metro",
         "pcc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0CJ9RBLTP",
@@ -7781,8 +7781,8 @@
       "instacartSize": "16.9 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -7806,8 +7806,8 @@
       "instacartSize": "16.9 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -7832,8 +7832,8 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0DPLK4LQ6",
@@ -7857,8 +7857,8 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B00R4G6JIU",
@@ -7882,8 +7882,8 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
-        "pcc"
+        "pcc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000WLJSRS",
@@ -7912,14 +7912,14 @@
       ],
       "storeCount": 3,
       "asin": "B0CPR193YN",
-      "wholeFoodsTitle": "BRAMI Sponsored Ad - Curly Macaroni Protein Pasta, 12 OZ",
+      "wholeFoodsTitle": "Brami Curly Macaroni Protein Pasta, 12 OZ",
       "wholeFoodsPrice": 3.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B0CPR193YN",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71hOLJl4lPL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:03:53.739Z",
+      "capturedAt": "2026-07-19T04:07:13.514Z",
       "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.7708,
-      "matchMargin": 0.247,
+      "matchScore": 0.95,
+      "matchMargin": 0.4262,
       "sizeEvidence": "12 oz = 12 oz"
     },
     {
@@ -7982,8 +7982,8 @@
       "category": "Oils, Vinegars & Spices",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B00CO1YXL0",
@@ -8041,7 +8041,7 @@
       "wholeFoodsPrice": 5.49,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B00DTXEBSM",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/815a+UMuZDL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T06:02:08.616Z",
+      "capturedAt": "2026-07-19T04:06:10.218Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 1,
       "matchMargin": 0.3464,
@@ -8082,8 +8082,8 @@
       "category": "Beverages",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B00I3X2DWY",
@@ -8132,8 +8132,8 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B002GVJZS4",
@@ -8182,8 +8182,8 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B07Z1F8LK3",
@@ -8207,8 +8207,8 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B07CR2J5Y9",
@@ -8257,8 +8257,8 @@
       "category": "Condiments & Sauces",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B00K2441E0",
@@ -8279,11 +8279,11 @@
       ],
       "instacartName": "Chosen Foods Avocado Oil Cooking Spray",
       "instacartSize": "4.7 fl oz",
-      "category": "Oils, Vinegars & Spices",
+      "category": "Oils, Vinegars, & Spices",
       "storeIds": [
+        "pcc",
         "qfc",
-        "safeway",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B088B493SX",
@@ -8304,10 +8304,10 @@
       ],
       "instacartName": "cocojune Organic Pure Coconut Cultured Coconut",
       "instacartSize": "4 oz",
-      "category": "Dairy & Eggs",
+      "category": "Plant-Based Alternatives",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -8357,8 +8357,8 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "qfc",
-        "pcc"
+        "pcc",
+        "qfc"
       ],
       "storeCount": 3,
       "asin": "B004SI9NHQ",
@@ -8379,10 +8379,10 @@
       ],
       "instacartName": "Culture Pop Soda Orange Mango & Lime",
       "instacartSize": "4 x 12 fl oz",
-      "category": "Beverages",
+      "category": "Other Groceries",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -8407,8 +8407,8 @@
       "category": "Dairy & Eggs",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B00Y9EST06",
@@ -8506,8 +8506,8 @@
       "instacartSize": "1 lb",
       "category": "Dry Goods & Pasta",
       "storeIds": [
-        "qfc",
         "metro",
+        "qfc",
         "safeway"
       ],
       "storeCount": 3,
@@ -8731,9 +8731,9 @@
       "instacartSize": "17.2 oz",
       "category": "Breakfast Foods",
       "storeIds": [
+        "metro",
         "qfc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0DT1JXN6L",
@@ -8957,8 +8957,8 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B00COQZDUU",
@@ -9056,8 +9056,8 @@
       "instacartSize": "32 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -9079,10 +9079,10 @@
       ],
       "instacartName": "LATE JULY Snacks Nacho Cheese Tortilla Chips",
       "instacartSize": "6 oz",
-      "category": "Other Groceries",
+      "category": "Snacks & Candy",
       "storeIds": [
-        "qfc",
         "pcc",
+        "qfc",
         "safeway"
       ],
       "storeCount": 3,
@@ -9129,7 +9129,7 @@
       ],
       "instacartName": "Milkadamia Unsweetened Vanilla",
       "instacartSize": "32 fl oz",
-      "category": "Beverages",
+      "category": "Plant-Based Alternatives",
       "storeIds": [
         "metro",
         "pcc",
@@ -9254,11 +9254,11 @@
       ],
       "instacartName": "Nature Valley Oats 'n Honey Crunchy Granola Bars",
       "instacartSize": "8.94 oz",
-      "category": "Breakfast & Cereal",
+      "category": "Snacks & Candy",
       "storeIds": [
-        "safeway",
+        "metro",
         "qfc",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0036ANN4Q",
@@ -9266,7 +9266,7 @@
       "wholeFoodsPrice": 5.39,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B0036ANN4Q",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81PMNzclx8L._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T04:13:01.362Z",
+      "capturedAt": "2026-07-19T04:06:01.415Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.9571,
       "matchMargin": 0.9571,
@@ -9281,8 +9281,8 @@
       "instacartSize": "6.3 oz",
       "category": "Dry Goods & Pasta",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -9379,10 +9379,10 @@
       ],
       "instacartName": "OLIPOP Peaches & Cream",
       "instacartSize": "12 fl oz",
-      "category": "Beverages",
+      "category": "Other Groceries",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -9406,8 +9406,8 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -9431,9 +9431,9 @@
       "instacartSize": "8 oz",
       "category": "Dairy & Eggs",
       "storeIds": [
+        "metro",
         "pcc",
-        "qfc",
-        "metro"
+        "qfc"
       ],
       "storeCount": 3,
       "asin": "B0097HA64W",
@@ -9481,9 +9481,9 @@
       "instacartSize": "32 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "safeway",
+        "metro",
         "pcc",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0789FRTNB",
@@ -9506,9 +9506,9 @@
       "instacartSize": "32 fl oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
+        "metro",
         "pcc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B008YAW8VM",
@@ -9532,8 +9532,8 @@
       "category": "Beverages",
       "storeIds": [
         "metro",
-        "safeway",
-        "pcc"
+        "pcc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000R7829M",
@@ -9557,8 +9557,8 @@
       "category": "Snacks & Candy",
       "storeIds": [
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0C4BFQ4QD",
@@ -9582,8 +9582,8 @@
       "category": "Beverages",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0C34QZD1L",
@@ -9631,8 +9631,8 @@
       "instacartSize": "4 x 12 fl oz",
       "category": "Other Groceries",
       "storeIds": [
-        "qfc",
         "metro",
+        "qfc",
         "safeway"
       ],
       "storeCount": 3,
@@ -9656,8 +9656,8 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "qfc"
       ],
       "storeCount": 3,
@@ -9681,8 +9681,8 @@
       "instacartSize": "4 x 12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "qfc",
         "metro",
+        "qfc",
         "safeway"
       ],
       "storeCount": 3,
@@ -9704,7 +9704,7 @@
       ],
       "instacartName": "Primal Kitchen Organic and Unsweetened Ketchup",
       "instacartSize": "11.3 oz",
-      "category": "Condiments & Sauces",
+      "category": "Buns & condiments",
       "storeIds": [
         "metro",
         "pcc",
@@ -9731,9 +9731,9 @@
       "instacartSize": "11 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "safeway",
+        "metro",
         "pcc",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B09RL8CFXH",
@@ -9756,9 +9756,9 @@
       "instacartSize": "12 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "safeway",
+        "pcc",
         "qfc",
-        "pcc"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B092RYYQ9G",
@@ -9779,11 +9779,11 @@
       ],
       "instacartName": "Quinn Snacks Pretzel Nuggets, Creamy Peanut Butter Filled",
       "instacartSize": "7 oz",
-      "category": "Snacks & Candy",
+      "category": "Snacks",
       "storeIds": [
-        "qfc",
+        "metro",
         "pcc",
-        "metro"
+        "qfc"
       ],
       "storeCount": 3,
       "asin": "B07MBT3WDB",
@@ -9807,8 +9807,8 @@
       "category": "Beverages",
       "storeIds": [
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B074KL78Z9",
@@ -9831,8 +9831,8 @@
       "instacartSize": "6 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -9856,8 +9856,8 @@
       "instacartSize": "1.8 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "qfc"
       ],
       "storeCount": 3,
@@ -9882,8 +9882,8 @@
       "category": "Snacks & Candy",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B075NCV1VM",
@@ -9907,8 +9907,8 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "qfc",
-        "pcc"
+        "pcc",
+        "qfc"
       ],
       "storeCount": 3,
       "asin": "B0BHLS1P8T",
@@ -9954,11 +9954,11 @@
       ],
       "instacartName": "Siete Salsa, Roja, Casera Style, Mild",
       "instacartSize": "10.5 oz",
-      "category": "Snacks & Candy",
+      "category": "Condiments & Sauces",
       "storeIds": [
+        "metro",
         "pcc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0C17X4GHY",
@@ -9981,9 +9981,9 @@
       "instacartSize": "10.5 oz",
       "category": "Condiments & Sauces",
       "storeIds": [
+        "metro",
         "pcc",
-        "safeway",
-        "metro"
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0C17Y2MRS",
@@ -10016,7 +10016,7 @@
       "wholeFoodsPrice": 5.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B08QYMDFFN",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/814DyKQ5SEL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T20:51:26.992Z",
+      "capturedAt": "2026-07-19T04:07:44.075Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.8588,
       "matchMargin": 0.8588,
@@ -10054,7 +10054,7 @@
       ],
       "instacartName": "Spindrift Unsweetened Non-Alcoholic Nojito Sparkling Water",
       "instacartSize": "8 x 12 fl oz",
-      "category": "Beverages",
+      "category": "Summer Party Hosting",
       "storeIds": [
         "metro",
         "qfc",
@@ -10079,11 +10079,11 @@
       ],
       "instacartName": "Stella Artois 0.0 Non Alcoholic Beer, 6 Pack - 11.2 Fl Oz Bottles",
       "instacartSize": "6 x 11.2 fl oz",
-      "category": "Beverages",
+      "category": "Non-Alcoholic",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B0BRP8BY8X",
@@ -10107,8 +10107,8 @@
       "category": "Beverages",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B01EN6KSCQ",
@@ -10157,8 +10157,8 @@
       "category": "Breakfast Foods",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000VK84P2",
@@ -10181,8 +10181,8 @@
       "instacartSize": "16 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "safeway"
       ],
       "storeCount": 3,
@@ -10232,8 +10232,8 @@
       "category": "Beverages",
       "storeIds": [
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B09NF8CP1R",
@@ -10256,8 +10256,8 @@
       "instacartSize": "7 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
         "metro",
+        "pcc",
         "qfc"
       ],
       "storeCount": 3,
@@ -10282,8 +10282,8 @@
       "category": "Snacks & Candy",
       "storeIds": [
         "metro",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B078K4PY96",
@@ -10304,10 +10304,10 @@
       ],
       "instacartName": "TAZO Tea Skinny Chai Latte Black Tea Concentrate",
       "instacartSize": "32 fl oz",
-      "category": "Other Groceries",
+      "category": "Beverages",
       "storeIds": [
-        "qfc",
         "metro",
+        "qfc",
         "safeway"
       ],
       "storeCount": 3,
@@ -10332,8 +10332,8 @@
       "category": "Beverages",
       "storeIds": [
         "pcc",
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 3,
       "asin": "B000VPL27E",
@@ -10346,6 +10346,30 @@
       "matchScore": 0.8,
       "matchMargin": 0.8,
       "sizeEvidence": "16 ct = 16 ct"
+    },
+    {
+      "productId": "17378846",
+      "sourceProductIds": [
+        "17378846"
+      ],
+      "instacartName": "UNREAL Milk Chocolate Gems",
+      "instacartSize": "5 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B078K6X494",
+      "wholeFoodsTitle": "Milk Chocolate Gems, 5 oz",
+      "wholeFoodsPrice": 7.19,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B078K6X494",
+      "capturedAt": "2026-07-19T04:05:59.815Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.925,
+      "matchMargin": 0.925,
+      "sizeEvidence": "5 oz = 5 oz"
     },
     {
       "productId": "17264530",
@@ -10406,8 +10430,8 @@
       "instacartSize": "19 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B076CLTSH7",
@@ -10430,8 +10454,8 @@
       "instacartSize": "1.98 oz",
       "category": "Other Groceries",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B0D4FCHPFV",
@@ -10566,6 +10590,29 @@
       "sizeEvidence": "7.5 oz = 7.5 oz"
     },
     {
+      "productId": "44792",
+      "sourceProductIds": [
+        "44792"
+      ],
+      "instacartName": "Annie's Organic Whole Grain Honey Graham Crackers",
+      "instacartSize": "14.4 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "asin": "B0055B5DYW",
+      "wholeFoodsTitle": "Annie's Organic Honey Graham Crackers, Made With Whole Grain, 14.4 oz",
+      "wholeFoodsPrice": 6.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0055B5DYW",
+      "capturedAt": "2026-07-19T04:06:10.218Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "14.4 oz = 14.4 oz"
+    },
+    {
       "productId": "205873",
       "sourceProductIds": [
         "205873"
@@ -10646,8 +10693,8 @@
       "instacartSize": "5 oz",
       "category": "Other Groceries",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0DD1TTB12",
@@ -10692,7 +10739,7 @@
       ],
       "instacartName": "Back to Nature Round Classic Crackers",
       "instacartSize": "6.5 oz",
-      "category": "Other Groceries",
+      "category": "Snacks & Candy",
       "storeIds": [
         "metro",
         "pcc"
@@ -10766,8 +10813,8 @@
       "instacartSize": "5 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B078YDXVJT",
@@ -10838,8 +10885,8 @@
       "instacartSize": "24 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B00IV6N3YK",
@@ -10886,8 +10933,8 @@
       "instacartSize": "9 oz",
       "category": "Frozen",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0CDZMS9S7",
@@ -10958,8 +11005,8 @@
       "instacartSize": "22 oz",
       "category": "Baking Essentials",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B07XB35PWL",
@@ -11054,8 +11101,8 @@
       "instacartSize": "32 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B01KAQQD9U",
@@ -11118,6 +11165,29 @@
       "sizeEvidence": "5 lb = 5 lb"
     },
     {
+      "productId": "2614344",
+      "sourceProductIds": [
+        "2614344"
+      ],
+      "instacartName": "Boiron Arnicare Gel",
+      "instacartSize": "1.5 oz",
+      "category": "Muscle & Joint Care",
+      "storeIds": [
+        "metro",
+        "pcc"
+      ],
+      "storeCount": 2,
+      "asin": "B01CMDX3ZG",
+      "wholeFoodsTitle": "Boiron Arnicare Bruise Gel for Relief of Pain, Inflammation or Swelling, Soreness, and Discoloration - Non-greasy and Fragrance-Free - 1.5 oz",
+      "wholeFoodsPrice": 9.02,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01CMDX3ZG",
+      "capturedAt": "2026-07-19T04:08:20.828Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.76,
+      "matchMargin": 0.76,
+      "sizeEvidence": "1.5 oz = 1.5 oz"
+    },
+    {
       "productId": "34680799",
       "sourceProductIds": [
         "34680799"
@@ -11126,8 +11196,8 @@
       "instacartSize": "16.9 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0CJ9QGQT7",
@@ -11150,8 +11220,8 @@
       "instacartSize": "32 fl oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0958YFYWK",
@@ -11174,8 +11244,8 @@
       "instacartSize": "32 fl oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0958TY8GS",
@@ -11246,8 +11316,8 @@
       "instacartSize": "16 fl oz",
       "category": "Oils, Vinegars & Spices",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B0CMR15YZ8",
@@ -11282,7 +11352,7 @@
       "capturedAt": "2026-07-17T06:08:00.623Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.7789,
-      "matchMargin": 0.1618,
+      "matchMargin": 0.1589,
       "sizeEvidence": "12 oz = 12 oz"
     },
     {
@@ -11486,8 +11556,8 @@
       "instacartSize": "16.9 fl oz",
       "category": "Oils, Vinegars & Spices",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B005CT8R90",
@@ -11654,8 +11724,8 @@
       "instacartSize": "10 oz",
       "category": "Other Groceries",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0DD4KPXVW",
@@ -11676,10 +11746,10 @@
       ],
       "instacartName": "Chicas Sea Salt Authentic Corn Tortilla Chips",
       "instacartSize": "11 oz",
-      "category": "Other Groceries",
+      "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0DD4JTNLC",
@@ -11750,8 +11820,8 @@
       "instacartSize": "5 fl oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B000NURB1S",
@@ -11870,8 +11940,8 @@
       "instacartSize": "4 x 12 fl oz",
       "category": "Other Groceries",
       "storeIds": [
-        "safeway",
-        "metro"
+        "metro",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B0DLBLSZJL",
@@ -12006,6 +12076,29 @@
       "sizeEvidence": "1 lb = 16 oz"
     },
     {
+      "productId": "17559088",
+      "sourceProductIds": [
+        "17559088"
+      ],
+      "instacartName": "Drizzilicious Mini Rice Cake Bites, Smores!",
+      "instacartSize": "4 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "asin": "B076CQWW3R",
+      "wholeFoodsTitle": "Drizzilicious S'more's Bites Mini Rice Cakes, 4 OZ",
+      "wholeFoodsPrice": 5.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B076CQWW3R",
+      "capturedAt": "2026-07-19T04:06:10.218Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "4 oz = 4 oz"
+    },
+    {
       "productId": "23144",
       "sourceProductIds": [
         "23144"
@@ -12110,8 +12203,8 @@
       "instacartSize": "32 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0013JPQ2Y",
@@ -12204,7 +12297,7 @@
       ],
       "instacartName": "Elmhurst Unsweetened Almond Milk",
       "instacartSize": "32 fl oz",
-      "category": "Dairy & Eggs",
+      "category": "Plant-Based Alternatives",
       "storeIds": [
         "metro",
         "pcc"
@@ -12228,7 +12321,7 @@
       ],
       "instacartName": "Elmhurst Unsweetened Cashew Milk",
       "instacartSize": "32 fl oz",
-      "category": "Beverages",
+      "category": "Plant-Based Alternatives",
       "storeIds": [
         "metro",
         "pcc"
@@ -12254,8 +12347,8 @@
       "instacartSize": "32 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B078WVT2BC",
@@ -12276,7 +12369,7 @@
       ],
       "instacartName": "Elmhurst Unsweetened Oat Milk",
       "instacartSize": "32 fl oz",
-      "category": "Dairy & Eggs",
+      "category": "Milk Alternatives",
       "storeIds": [
         "metro",
         "pcc"
@@ -12398,8 +12491,8 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B07FZ17JW9",
@@ -12470,8 +12563,8 @@
       "instacartSize": "32 oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B01B2OVUAG",
@@ -12499,14 +12592,14 @@
       ],
       "storeCount": 2,
       "asin": "B0B6WWVLP9",
-      "wholeFoodsTitle": "Sponsored Hero Bread Classic White Bread, 15.9 OZ",
+      "wholeFoodsTitle": "Hero Bread Classic White Bread, 15.9 OZ",
       "wholeFoodsPrice": 9.59,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B0B6WWVLP9",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71usf3dZUTL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:30:57.262Z",
+      "capturedAt": "2026-07-19T04:07:13.514Z",
       "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.94,
-      "matchMargin": 0.94,
+      "matchScore": 1,
+      "matchMargin": 1,
       "sizeEvidence": "15.9 oz = 15.9 oz"
     },
     {
@@ -12612,10 +12705,10 @@
       ],
       "instacartName": "Icelandic Provisions Oatmilk Peach Skyr",
       "instacartSize": "5 oz",
-      "category": "Other Groceries",
+      "category": "Dairy & Eggs",
       "storeIds": [
-        "safeway",
-        "pcc"
+        "pcc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B0CC3R3ZCR",
@@ -12854,8 +12947,8 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0792T5STG",
@@ -12911,7 +13004,7 @@
       "wholeFoodsPrice": 5.79,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B000VHNOSM",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/51LEa1NoYoL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-18T21:38:55.534Z",
+      "capturedAt": "2026-07-19T04:05:51.333Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.9143,
       "matchMargin": 0.2343,
@@ -12950,8 +13043,8 @@
       "instacartSize": "4 x 9 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B074PZZ7LY",
@@ -13046,8 +13139,8 @@
       "instacartSize": "6 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B071HXVHRG",
@@ -13094,8 +13187,8 @@
       "instacartSize": "15.5 oz",
       "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0CMJQM5M6",
@@ -13116,10 +13209,10 @@
       ],
       "instacartName": "Late July Mild Salsa",
       "instacartSize": "15.5 oz",
-      "category": "Snacks & Candy",
+      "category": "Condiments & Sauces",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0CMJRKG16",
@@ -13166,8 +13259,8 @@
       "instacartSize": "16.9 fl oz",
       "category": "Oils, Vinegars & Spices",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B078WGKK8G",
@@ -13358,8 +13451,8 @@
       "instacartSize": "",
       "category": "Bakery & Bread",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B083XVLQT3",
@@ -13382,8 +13475,8 @@
       "instacartSize": "20 oz",
       "category": "Bakery & Bread",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B000LR4XJ6",
@@ -13454,8 +13547,8 @@
       "instacartSize": "6.75 oz",
       "category": "Dry Goods & Pasta",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B005UGA1O4",
@@ -13478,8 +13571,8 @@
       "instacartSize": "8 oz",
       "category": "Dairy & Eggs",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B004KYXQZS",
@@ -13598,8 +13691,8 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0BZ9NTXRG",
@@ -13622,8 +13715,8 @@
       "instacartSize": "2 lb",
       "category": "Produce",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B07FY873SS",
@@ -13638,6 +13731,30 @@
       "sizeEvidence": "2 lb = 32 oz"
     },
     {
+      "productId": "2748190",
+      "sourceProductIds": [
+        "2748190"
+      ],
+      "instacartName": "Organic Cucumber",
+      "instacartSize": "",
+      "category": "Produce",
+      "storeIds": [
+        "metro",
+        "pcc"
+      ],
+      "storeCount": 2,
+      "asin": "B001PLETDC",
+      "wholeFoodsTitle": "Organic Cucumber",
+      "wholeFoodsPrice": 0.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B001PLETDC",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/719QWPLb0hL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:49:21.495Z",
+      "matchMethod": "normalized_loose_produce_name_basis",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "same loose produce name and selling basis"
+    },
+    {
       "productId": "16614359",
       "sourceProductIds": [
         "16614359"
@@ -13646,8 +13763,8 @@
       "instacartSize": "1 ct",
       "category": "Produce",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B078834HB1",
@@ -13694,8 +13811,8 @@
       "instacartSize": "8 oz",
       "category": "Dairy & Eggs",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B000YD3KJ6",
@@ -13716,7 +13833,7 @@
       ],
       "instacartName": "Organic Valley® Organic Shredded Parmesan Cheese",
       "instacartSize": "4 oz",
-      "category": "Deli",
+      "category": "Cheese",
       "storeIds": [
         "metro",
         "pcc"
@@ -13742,8 +13859,8 @@
       "instacartSize": "32 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B078B26J88",
@@ -13766,8 +13883,8 @@
       "instacartSize": "64 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B000VK2CQO",
@@ -13862,8 +13979,8 @@
       "instacartSize": "12 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B0CQ8SDM5K",
@@ -13886,8 +14003,8 @@
       "instacartSize": "12 oz",
       "category": "Breakfast Foods",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B006X1P13G",
@@ -13950,28 +14067,74 @@
       "sizeEvidence": "11 oz = 11 oz"
     },
     {
+      "productId": "19777242",
+      "sourceProductIds": [
+        "19777242"
+      ],
+      "instacartName": "Q Mixers Light Tonic Water, Premium Cocktail Mixer",
+      "instacartSize": "4 x 7.5 fl oz",
+      "category": "Spirits",
+      "storeIds": [
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 2,
+      "asin": "B08DPBCR9D",
+      "wholeFoodsTitle": "Q Mixers Light Tonic Water, 7.5 Fluid Ounces, 4 Pack",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08DPBCR9D",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.94,
+      "matchMargin": 0.94,
+      "sizeEvidence": "30 fl oz = 30 fl oz"
+    },
+    {
       "productId": "3251158",
       "sourceProductIds": [
         "3251158"
       ],
       "instacartName": "Quinn Snacks Sea Salt Pretzel Sticks",
       "instacartSize": "5.6 oz",
-      "category": "Snacks & Candy",
+      "category": "Snacks",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B01G2GIPRA",
-      "wholeFoodsTitle": "Sponsored Quinn Pretzel Sticks Sea Salt, 5.6 Ounce",
+      "wholeFoodsTitle": "Quinn, Pretzel Sticks Sea Salt, 5.6 Ounce",
       "wholeFoodsPrice": 4.49,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B01G2GIPRA",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71ib8DHZEnL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T20:51:26.991Z",
+      "capturedAt": "2026-07-19T04:05:59.814Z",
       "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.7976,
-      "matchMargin": 0.7976,
+      "matchScore": 0.95,
+      "matchMargin": 0.95,
       "sizeEvidence": "5.6 oz = 5.6 oz"
+    },
+    {
+      "productId": "23832",
+      "sourceProductIds": [
+        "23832"
+      ],
+      "instacartName": "R.W. Knudsen Family Organic Just Tart Cherry Juice",
+      "instacartSize": "32 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 2,
+      "asin": "B000RAF7F6",
+      "wholeFoodsTitle": "Family Organic Just Tart Cherry Juice, 32 Ounces",
+      "wholeFoodsPrice": 13.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B000RAF7F6",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.95,
+      "sizeEvidence": "32 fl oz = 32 fl oz"
     },
     {
       "productId": "20541847",
@@ -14052,10 +14215,10 @@
       ],
       "instacartName": "RXBAR Blueberry Protein Bars, Protein Snack",
       "instacartSize": "5 x 1.8 oz",
-      "category": "Other Groceries",
+      "category": "Snacks",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B0823BY2P8",
@@ -14076,10 +14239,10 @@
       ],
       "instacartName": "RXBAR Chocolate Sea Salt Protein Bars, Protein Snack",
       "instacartSize": "5 x 1.8 oz",
-      "category": "Snacks & Candy",
+      "category": "Snacks",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B0823CKH32",
@@ -14100,10 +14263,10 @@
       ],
       "instacartName": "RXBAR Peanut Butter Chocolate Protein Bars, Protein Snack",
       "instacartSize": "5 x 1.8 oz",
-      "category": "Other Groceries",
+      "category": "Snacks & Candy",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B0823C1Y9T",
@@ -14414,8 +14577,8 @@
       "instacartSize": "2.31 oz",
       "category": "Oils, Vinegars & Spices",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B000WS1KEU",
@@ -14438,8 +14601,8 @@
       "instacartSize": "2.72 oz",
       "category": "Oils, Vinegars & Spices",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B00ZK8YJ5O",
@@ -14462,8 +14625,8 @@
       "instacartSize": "16 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B089CCL9B4",
@@ -14510,8 +14673,8 @@
       "instacartSize": "16 fl oz",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B083FKRPZT",
@@ -14556,10 +14719,10 @@
       ],
       "instacartName": "TATE'S Lemon Cookies",
       "instacartSize": "7.01 oz",
-      "category": "Snacks & Sweets",
+      "category": "Snacks & Candy",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B083LL79RJ",
@@ -14582,8 +14745,8 @@
       "instacartSize": "7 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "safeway",
-        "qfc"
+        "qfc",
+        "safeway"
       ],
       "storeCount": 2,
       "asin": "B078K5VT3Z",
@@ -14606,8 +14769,8 @@
       "instacartSize": "5.6 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B0CMKRPSPK",
@@ -14630,8 +14793,8 @@
       "instacartSize": "5.6 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B08BLQKS4L",
@@ -14678,8 +14841,8 @@
       "instacartSize": "16 ct",
       "category": "Beverages",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B00073J0JC",
@@ -14691,6 +14854,31 @@
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.925,
       "matchMargin": 0.2317,
+      "sizeEvidence": "16 ct = 16 ct"
+    },
+    {
+      "productId": "28009",
+      "sourceProductIds": [
+        "28009",
+        "2570453"
+      ],
+      "instacartName": "Traditional Medicinals Organic Smooth Move Peppermint, Caffeine Free Laxative Tea",
+      "instacartSize": "16 ct",
+      "category": "Laxatives",
+      "storeIds": [
+        "metro",
+        "pcc"
+      ],
+      "storeCount": 2,
+      "asin": "B008AI4FE6",
+      "wholeFoodsTitle": "Traditional Medicinals Tea Peppermint Organic, 16 ct",
+      "wholeFoodsPrice": 6.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B008AI4FE6",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81kCZL1QzlL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:00:16.630Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.85,
+      "matchMargin": 0.2833,
       "sizeEvidence": "16 ct = 16 ct"
     },
     {
@@ -14719,6 +14907,29 @@
       "sizeEvidence": "12 ct = 12 ct"
     },
     {
+      "productId": "19275502",
+      "sourceProductIds": [
+        "19275502"
+      ],
+      "instacartName": "Vive Organic Immunity Boost Cayenne, Ginger & Turmeric Shot",
+      "instacartSize": "2 oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc",
+        "qfc"
+      ],
+      "storeCount": 2,
+      "asin": "B08QFTBMHJ",
+      "wholeFoodsTitle": "Vive Organic Immunity Boost Vitamin C, Ginger & Turmeric Shot (2oz bottle)",
+      "wholeFoodsPrice": 2.8,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08QFTBMHJ",
+      "capturedAt": "2026-07-19T04:06:50.520Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.8034,
+      "matchMargin": 0.8034,
+      "sizeEvidence": "2 oz = 2 oz"
+    },
+    {
       "productId": "79302",
       "sourceProductIds": [
         "79302"
@@ -14727,8 +14938,8 @@
       "instacartSize": "5.3 oz",
       "category": "Snacks & Candy",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B000V9XM1O",
@@ -14775,8 +14986,8 @@
       "instacartSize": "5 oz",
       "category": "Canned Goods & Soups",
       "storeIds": [
-        "pcc",
-        "metro"
+        "metro",
+        "pcc"
       ],
       "storeCount": 2,
       "asin": "B00MFNCW7E",
@@ -14789,6 +15000,28 @@
       "matchScore": 0.6933,
       "matchMargin": 0.6933,
       "sizeEvidence": "5 oz = 5 oz"
+    },
+    {
+      "productId": "16479685",
+      "sourceProductIds": [
+        "16479685"
+      ],
+      "instacartName": "A to Z Wineworks Oregon Pinot Noir",
+      "instacartSize": "750 ml",
+      "category": "Wine",
+      "storeIds": [
+        "pcc"
+      ],
+      "storeCount": 1,
+      "asin": "B002CMLEVS",
+      "wholeFoodsTitle": "A To Z Wineworks Oregon Pinot Noir, 750 ml",
+      "wholeFoodsPrice": 19.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B002CMLEVS",
+      "capturedAt": "2026-07-19T04:06:18.472Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.5643,
+      "sizeEvidence": "750 ml = 750 ml"
     },
     {
       "productId": "16627218",
@@ -14858,6 +15091,28 @@
       "matchScore": 0.85,
       "matchMargin": 0.175,
       "sizeEvidence": "7.5 oz = 7.5 oz"
+    },
+    {
+      "productId": "50964",
+      "sourceProductIds": [
+        "50964"
+      ],
+      "instacartName": "Andalou Naturals Sheer Tint Brightening Vitamin C Broad Spectrum SPF 30 Beauty Balm",
+      "instacartSize": "2 fl oz",
+      "category": "Cosmetics",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B00DGDEVZ8",
+      "wholeFoodsTitle": "Andalou Naturals Sheer Tint SPF 30 Vitamin C Beauty Balm, 2 FZ",
+      "wholeFoodsPrice": 19.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00DGDEVZ8",
+      "capturedAt": "2026-07-19T04:06:50.521Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.8034,
+      "matchMargin": 0.8034,
+      "sizeEvidence": "2 fl oz = 2 fl oz"
     },
     {
       "productId": "30871",
@@ -15251,6 +15506,29 @@
       "sizeEvidence": "14.4 fl oz = 14.4 fl oz"
     },
     {
+      "productId": "25484927",
+      "sourceProductIds": [
+        "25484927"
+      ],
+      "instacartName": "Best Day Brewing Non-Alcoholic Hazy IPA",
+      "instacartSize": "6 x 12 fl oz",
+      "category": "Non-Alcoholic",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B0B1RW8PTP",
+      "wholeFoodsTitle": "BEST DAY BREWING Non Alcoholic Hazy IPA, 6pk, 12 Fl Oz Cans",
+      "wholeFoodsPrice": 12.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0B1RW8PTP",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61oIEZJZGlL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:00:07.931Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.91,
+      "matchMargin": 0.91,
+      "sizeEvidence": "72 fl oz = 72 fl oz"
+    },
+    {
       "productId": "24658",
       "sourceProductIds": [
         "24658"
@@ -15631,14 +15909,14 @@
       ],
       "storeCount": 1,
       "asin": "B0BMR743T6",
-      "wholeFoodsTitle": "Sponsored BRAMI Radiatori Italian Protein Pasta, Low Carb, High Fiber, Non-GMO, Keto, Made in Italy, Semolina Pasta, Fortified with Healthy Lupini Beans, 12oz",
+      "wholeFoodsTitle": "Brami Radiatori Italian Protein Pasta, Low Carb, High Fiber, Non-GMO, Keto, Made in Italy, Semolina Pasta, Fortified with Healthy Lupini Beans, 12oz",
       "wholeFoodsPrice": 3.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B0BMR743T6",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71Ab7RgyBBL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-17T21:47:42.041Z",
+      "capturedAt": "2026-07-19T04:07:13.514Z",
       "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.775,
-      "matchMargin": 0.155,
+      "matchScore": 0.7789,
+      "matchMargin": 0.1589,
       "sizeEvidence": "12 oz = 12 oz"
     },
     {
@@ -16056,6 +16334,28 @@
       "sizeEvidence": "20 ct = 20 ct"
     },
     {
+      "productId": "24012303",
+      "sourceProductIds": [
+        "24012303"
+      ],
+      "instacartName": "Château d’Esclans Whispering Angel Rosé",
+      "instacartSize": "750 ml",
+      "category": "Wine",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B08XNPNMMG",
+      "wholeFoodsTitle": "Chateau d’Esclans Whispering Angel Rose, 750mL",
+      "wholeFoodsPrice": 27.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08XNPNMMG",
+      "capturedAt": "2026-07-19T04:06:52.476Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.95,
+      "sizeEvidence": "750 ml = 750 ml"
+    },
+    {
       "productId": "30039240",
       "sourceProductIds": [
         "30039240"
@@ -16146,6 +16446,50 @@
       "matchScore": 0.7976,
       "matchMargin": 0.6276,
       "sizeEvidence": "34 fl oz = 34 fl oz"
+    },
+    {
+      "productId": "485188",
+      "sourceProductIds": [
+        "485188"
+      ],
+      "instacartName": "Columbia Gorge Organic Organic Juice - Tangerine",
+      "instacartSize": "15.2 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc"
+      ],
+      "storeCount": 1,
+      "asin": "B07Q2K4KMY",
+      "wholeFoodsTitle": "COLUMBIA GORGE Organic Juice, Super C, 15.2 Fl Oz",
+      "wholeFoodsPrice": 5.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07Q2K4KMY",
+      "capturedAt": "2026-07-19T04:06:50.521Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.7314,
+      "matchMargin": 0.7314,
+      "sizeEvidence": "15.2 fl oz = 15.2 fl oz"
+    },
+    {
+      "productId": "54972",
+      "sourceProductIds": [
+        "54972"
+      ],
+      "instacartName": "Columbia Gorge Organic Strawberry Super C Smoothie",
+      "instacartSize": "15.2 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc"
+      ],
+      "storeCount": 1,
+      "asin": "B0785VQ2H3",
+      "wholeFoodsTitle": "Columbia Gorge Organic Strawberry Super C Juice, 15.2 FZ",
+      "wholeFoodsPrice": 5.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0785VQ2H3",
+      "capturedAt": "2026-07-19T04:06:50.521Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.7708,
+      "matchMargin": 0.7708,
+      "sizeEvidence": "15.2 fl oz = 15.2 fl oz"
     },
     {
       "productId": "105967610",
@@ -16424,6 +16768,72 @@
       "sizeEvidence": "16.9 fl oz = 16.9 fl oz"
     },
     {
+      "productId": "50885",
+      "sourceProductIds": [
+        "50885"
+      ],
+      "instacartName": "DERMA E Day Cream, Hydrating",
+      "instacartSize": "2 oz",
+      "category": "Skin Care",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B01M5AO1NX",
+      "wholeFoodsTitle": "Derma E Vitamin C Renewing Face Moisturizer, 2 Oz, Brightening and Hydrating Facial Skin Renewing Cream, Anti-Aging Wrinkle Cream for Women, Day and Night Moisturizer for Face",
+      "wholeFoodsPrice": 24.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01M5AO1NX",
+      "capturedAt": "2026-07-19T04:06:50.521Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.775,
+      "matchMargin": 0.2026,
+      "sizeEvidence": "2 oz = 2 oz"
+    },
+    {
+      "productId": "16947947",
+      "sourceProductIds": [
+        "16947947"
+      ],
+      "instacartName": "DERMA E Night Cream, Intense, Vitamin C",
+      "instacartSize": "2 oz",
+      "category": "Skin Care",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B01M7OZSJH",
+      "wholeFoodsTitle": "DERMA-E Vitamin C Intense Night Cream, 2 Oz, Brightening and Hydrating Facial Skin Renewing Cream, Anti-Aging Overnight Face Moisturizer for Skincare and Youthful Radiance",
+      "wholeFoodsPrice": 24.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01M7OZSJH",
+      "capturedAt": "2026-07-19T04:05:51.331Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.7833,
+      "matchMargin": 0.1527,
+      "sizeEvidence": "2 oz = 2 oz"
+    },
+    {
+      "productId": "21444433",
+      "sourceProductIds": [
+        "21444433"
+      ],
+      "instacartName": "DERMA E Weightless Moisturizer, Vitamin C, SPF 45",
+      "instacartSize": "2 fl oz",
+      "category": "Skin Care",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B08P4SD7TZ",
+      "wholeFoodsTitle": "Derma E Vitamin C Weightless Moisturizer SPF 45, 2 Fl Oz, Skin Brightening Face Cream with Mineral UVA/UVB Sunscreen, Hydrating Face Moisturizer with SPF for Lines, Wrinkles and Uneven Tone",
+      "wholeFoodsPrice": 24.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08P4SD7TZ",
+      "capturedAt": "2026-07-19T04:06:50.521Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.7789,
+      "matchMargin": 0.7789,
+      "sizeEvidence": "2 fl oz = 2 fl oz"
+    },
+    {
       "productId": "94399187",
       "sourceProductIds": [
         "94399187"
@@ -16591,7 +17001,7 @@
       ],
       "instacartName": "Field Roast Signature Stadium Plant-Based Hot Dogs",
       "instacartSize": "10 oz",
-      "category": "Deli",
+      "category": "Sales",
       "storeIds": [
         "pcc"
       ],
@@ -16604,7 +17014,7 @@
       "capturedAt": "2026-07-17T07:43:05.635Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.8225,
-      "matchMargin": 0.8225,
+      "matchMargin": 0.3907,
       "sizeEvidence": "10 oz = 10 oz"
     },
     {
@@ -16637,7 +17047,7 @@
       ],
       "instacartName": "Frontera Gourmet Mexican Medium Double Roasted Tomato Salsa",
       "instacartSize": "16 oz",
-      "category": "Snacks & Candy",
+      "category": "Snacks",
       "storeIds": [
         "pcc"
       ],
@@ -16930,13 +17340,35 @@
       "sizeEvidence": "16.9 fl oz = 16.9 fl oz"
     },
     {
+      "productId": "3276989",
+      "sourceProductIds": [
+        "3276989"
+      ],
+      "instacartName": "Groundwork Coffee Organic Venice, Dark Roast, Whole Bean",
+      "instacartSize": "12 oz",
+      "category": "Beverages",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B00J7YDZES",
+      "wholeFoodsTitle": "GROUNDWORK B*tches Brew Whole Bean Coffee Dark Roast Blend - USDA Organic Signature Blend Coffee Beans - 12oz Bag (Pack of 1)",
+      "wholeFoodsPrice": 18.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00J7YDZES",
+      "capturedAt": "2026-07-19T04:05:51.331Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.7525,
+      "matchMargin": 0.7525,
+      "sizeEvidence": "12 oz = 12 oz"
+    },
+    {
       "productId": "29109161",
       "sourceProductIds": [
         "29109161"
       ],
       "instacartName": "GT's Classic Kombucha Chardonnay",
       "instacartSize": "10 fl oz",
-      "category": "Beverages",
+      "category": "Hard Kombuchas",
       "storeIds": [
         "pcc"
       ],
@@ -16959,7 +17391,7 @@
       ],
       "instacartName": "GT's Classic Kombucha Divine Grape",
       "instacartSize": "10 fl oz",
-      "category": "Other Groceries",
+      "category": "Hard Kombuchas",
       "storeIds": [
         "pcc"
       ],
@@ -16982,7 +17414,7 @@
       ],
       "instacartName": "GT's Classic Kombucha Gingerade",
       "instacartSize": "10 fl oz",
-      "category": "Beverages",
+      "category": "Hard Kombuchas",
       "storeIds": [
         "pcc"
       ],
@@ -17227,6 +17659,28 @@
       "matchScore": 0.7875,
       "matchMargin": 0.7875,
       "sizeEvidence": "15 oz = 15 oz"
+    },
+    {
+      "productId": "28260778",
+      "sourceProductIds": [
+        "28260778"
+      ],
+      "instacartName": "High J Orchards Applesauce, Chunky, Honeycrisp",
+      "instacartSize": "16 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "qfc"
+      ],
+      "storeCount": 1,
+      "asin": "B0B811VBKS",
+      "wholeFoodsTitle": "High J Orchards Chnky Honeycrisp Applesauce, 16 OZ",
+      "wholeFoodsPrice": 6.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0B811VBKS",
+      "capturedAt": "2026-07-19T04:05:59.815Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.76,
+      "matchMargin": 0.76,
+      "sizeEvidence": "16 oz = 16 oz"
     },
     {
       "productId": "20281172",
@@ -17620,6 +18074,28 @@
       "sizeEvidence": "48 fl oz = 48 fl oz"
     },
     {
+      "productId": "33244",
+      "sourceProductIds": [
+        "33244"
+      ],
+      "instacartName": "La Marca Prosecco Sparkling Wine",
+      "instacartSize": "750 ml",
+      "category": "Champagne & Sparkling Wine",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B08P3CQ1L1",
+      "wholeFoodsTitle": "La Marca Prosecco Rose D.O.C, Sparkling Wine, 750 mL Bottle",
+      "wholeFoodsPrice": 17.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08P3CQ1L1",
+      "capturedAt": "2026-07-19T04:06:52.476Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9143,
+      "matchMargin": 0.9143,
+      "sizeEvidence": "750 ml = 750 ml"
+    },
+    {
       "productId": "70454146",
       "sourceProductIds": [
         "70454146"
@@ -17919,6 +18395,29 @@
       "sizeEvidence": "5.5 oz = 5.5 oz"
     },
     {
+      "productId": "2619327",
+      "sourceProductIds": [
+        "2619327"
+      ],
+      "instacartName": "MadeGood Mixed Berry Granola Bars",
+      "instacartSize": "6 x 0.85 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B01GQYQKBQ",
+      "wholeFoodsTitle": "MadeGood Granola Mixed Berry Bars, 6ct, 5.09 oz.",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01GQYQKBQ",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71v-sJpX0xL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-19T04:07:12.050Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.95,
+      "sizeEvidence": "5.1 oz = 5.09 oz"
+    },
+    {
       "productId": "25414807",
       "sourceProductIds": [
         "25414807"
@@ -17931,14 +18430,14 @@
       ],
       "storeCount": 1,
       "asin": "B0FC6V1FKL",
-      "wholeFoodsTitle": "Magic Mind Sponsored Ad - Original Mental Performance Shot, 2 Fl Oz",
+      "wholeFoodsTitle": "Magic Mind Original Mental Performance Shot, 2 Fl Oz",
       "wholeFoodsPrice": 3.74,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B0FC6V1FKL",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/51gKBv4rzrL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:00:36.769Z",
+      "capturedAt": "2026-07-19T04:07:47.109Z",
       "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.9,
-      "matchMargin": 0.9,
+      "matchScore": 0.9571,
+      "matchMargin": 0.9571,
       "sizeEvidence": "2 fl oz = 2 fl oz"
     },
     {
@@ -18078,6 +18577,28 @@
       "matchScore": 0.94,
       "matchMargin": 0.94,
       "sizeEvidence": "10 oz = 10 oz"
+    },
+    {
+      "productId": "81834",
+      "sourceProductIds": [
+        "81834"
+      ],
+      "instacartName": "Mrs. Meyer's Clean Day Liquid Dish Soap",
+      "instacartSize": "16 fl oz",
+      "category": "Cleaning Solutions",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B0009ET8YQ",
+      "wholeFoodsTitle": "Mrs. meyer's clean day dish soap, 16 fl oz",
+      "wholeFoodsPrice": 5.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0009ET8YQ",
+      "capturedAt": "2026-07-19T04:06:10.218Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.825,
+      "matchMargin": 0.825,
+      "sizeEvidence": "16 fl oz = 16 fl oz"
     },
     {
       "productId": "17624354",
@@ -19029,7 +19550,7 @@
       ],
       "instacartName": "Primal Kitchen Organic Avocado Oil",
       "instacartSize": "500 ml",
-      "category": "Oils, Vinegars & Spices",
+      "category": "Oils, Vinegars, & Spices",
       "storeIds": [
         "pcc"
       ],
@@ -19067,6 +19588,160 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "11 oz = 11 oz"
+    },
+    {
+      "productId": "17379860",
+      "sourceProductIds": [
+        "17379860"
+      ],
+      "instacartName": "Q Mixers Ginger Ale, Premium Cocktail Mixer",
+      "instacartSize": "4 x 7.5 fl oz",
+      "category": "Spirits",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B07FYJQ45M",
+      "wholeFoodsTitle": "Q Mixers Ginger Ale, 7.5 Fluid Ounces, 4 Pack",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07FYJQ45M",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.925,
+      "matchMargin": 0.5,
+      "sizeEvidence": "30 fl oz = 30 fl oz"
+    },
+    {
+      "productId": "17379865",
+      "sourceProductIds": [
+        "17379865"
+      ],
+      "instacartName": "Q Mixers Premium Tonic Water",
+      "instacartSize": "4 x 7.5 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B07FYLP2T4",
+      "wholeFoodsTitle": "Q Mixers Tonic Water, Premium Cocktail Mixer Made with Real Ingredients, 7.5 fl oz cans (Pack of 4)",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07FYLP2T4",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.8125,
+      "matchMargin": 0.8125,
+      "sizeEvidence": "30 fl oz = 30 fl oz"
+    },
+    {
+      "productId": "23836",
+      "sourceProductIds": [
+        "23836"
+      ],
+      "instacartName": "R.W. Knudsen Family Morning Juice",
+      "instacartSize": "32 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc"
+      ],
+      "storeCount": 1,
+      "asin": "B0005ZXE9O",
+      "wholeFoodsTitle": "R.W. Knudsen Morning Juice Blend, 32 fl oz",
+      "wholeFoodsPrice": 6.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0005ZXE9O",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.88,
+      "matchMargin": 0.88,
+      "sizeEvidence": "32 fl oz = 32 fl oz"
+    },
+    {
+      "productId": "16409964",
+      "sourceProductIds": [
+        "16409964"
+      ],
+      "instacartName": "R.W. Knudsen Family Organic Blueberry Pomegranate Juice",
+      "instacartSize": "32 fl oz",
+      "category": "Other Groceries",
+      "storeIds": [
+        "qfc"
+      ],
+      "storeCount": 1,
+      "asin": "B000YM9RLC",
+      "wholeFoodsTitle": "Organic Blueberry Pomegranate Juice, 32 fz",
+      "wholeFoodsPrice": 4.19,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B000YM9RLC",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.76,
+      "matchMargin": 0.76,
+      "sizeEvidence": "32 fl oz = 32 fl oz"
+    },
+    {
+      "productId": "81539",
+      "sourceProductIds": [
+        "81539"
+      ],
+      "instacartName": "R.W. Knudsen Family Organic Cranberry Pomegranate Juice Blend",
+      "instacartSize": "32 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc"
+      ],
+      "storeCount": 1,
+      "asin": "B000RAH54C",
+      "wholeFoodsTitle": "Family Organic Cranberry Pomegranate Juice Blend, 32 Ounces",
+      "wholeFoodsPrice": 5.04,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B000RAH54C",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.95,
+      "sizeEvidence": "32 fl oz = 32 fl oz"
+    },
+    {
+      "productId": "23841",
+      "sourceProductIds": [
+        "23841"
+      ],
+      "instacartName": "R.W. Knudsen Family Organic Pear Juice",
+      "instacartSize": "32 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc"
+      ],
+      "storeCount": 1,
+      "asin": "B01CGGGD7Y",
+      "wholeFoodsTitle": "R.W. Knudsen Family Organic Pear Juice, 32 Ounces",
+      "wholeFoodsPrice": 5.04,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01CGGGD7Y",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "32 fl oz = 32 fl oz"
+    },
+    {
+      "productId": "285070",
+      "sourceProductIds": [
+        "285070"
+      ],
+      "instacartName": "R.W. Knudsen Family Organic Prune Juice",
+      "instacartSize": "32 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "pcc"
+      ],
+      "storeCount": 1,
+      "asin": "B00032HE0O",
+      "wholeFoodsTitle": "R.W. Knudsen Organic Prune Juice, 32 fl oz (Pack of 1)",
+      "wholeFoodsPrice": 7.56,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00032HE0O",
+      "capturedAt": "2026-07-19T04:06:01.416Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.94,
+      "matchMargin": 0.94,
+      "sizeEvidence": "32 fl oz = 32 fl oz"
     },
     {
       "productId": "27834893",
@@ -19506,6 +20181,72 @@
       "sizeEvidence": "2 lb = 32 oz"
     },
     {
+      "productId": "2699539",
+      "sourceProductIds": [
+        "2699539"
+      ],
+      "instacartName": "Strawberries",
+      "instacartSize": "16 oz",
+      "category": "Produce",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B000P6J0SM",
+      "wholeFoodsTitle": "Strawberries, 1 Lb",
+      "wholeFoodsPrice": 3.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B000P6J0SM",
+      "capturedAt": "2026-07-19T04:06:50.521Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "16 oz = 1 lb"
+    },
+    {
+      "productId": "50935388",
+      "sourceProductIds": [
+        "50935388"
+      ],
+      "instacartName": "Suja Organic Ginger Love Cold Pressed Juice Drink, 32 fl oz Bottle",
+      "instacartSize": "32 fl oz",
+      "category": "Condiments & Oils",
+      "storeIds": [
+        "qfc"
+      ],
+      "storeCount": 1,
+      "asin": "B0D1YQ4P8Q",
+      "wholeFoodsTitle": "Suja, Juice Ginger Love Organic, 32 Fl Oz",
+      "wholeFoodsPrice": 9.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0D1YQ4P8Q",
+      "capturedAt": "2026-07-19T04:06:50.521Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.88,
+      "matchMargin": 0.88,
+      "sizeEvidence": "32 fl oz = 32 fl oz"
+    },
+    {
+      "productId": "21688461",
+      "sourceProductIds": [
+        "21688461"
+      ],
+      "instacartName": "Suja Organic Immunity Strawberry Guava Cold Pressed Juice Drink",
+      "instacartSize": "12 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "qfc"
+      ],
+      "storeCount": 1,
+      "asin": "B083FK646P",
+      "wholeFoodsTitle": "Suja Organic Immunity Strawberry Guava Cold Pressed Juice Drink, 12 fl oz Bottle",
+      "wholeFoodsPrice": 2.7,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B083FK646P",
+      "capturedAt": "2026-07-19T04:06:50.521Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9455,
+      "matchMargin": 0.9455,
+      "sizeEvidence": "12 fl oz = 12 fl oz"
+    },
+    {
       "productId": "2570461",
       "sourceProductIds": [
         "2570461"
@@ -19650,7 +20391,7 @@
       ],
       "instacartName": "The Honest Kitchen Whole Food Clusters Grain Free Beef Dry Dog Food, 5 lb Bag",
       "instacartSize": "5 lb",
-      "category": "Canned & Soup",
+      "category": "Dogs",
       "storeIds": [
         "pcc"
       ],
@@ -19673,7 +20414,7 @@
       ],
       "instacartName": "The Honest Kitchen Whole Food Clusters Whole Grain Chicken & Oat Dry Dog Food, 5 lb Bag",
       "instacartSize": "5 lb",
-      "category": "Canned & Soup",
+      "category": "Dogs",
       "storeIds": [
         "pcc"
       ],

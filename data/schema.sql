@@ -96,9 +96,15 @@ CREATE INDEX price_observations_store_date
   ON price_observations (store_id, observation_date DESC, observed_at DESC);
 CREATE INDEX price_observations_run_store
   ON price_observations (run_id, store_id);
+CREATE INDEX price_observations_current_comparison
+  ON price_observations (comparison_eligible, available, product_id, price_basis);
+CREATE INDEX price_observations_source_external
+  ON price_observations (source, external_id);
 CREATE INDEX product_identifiers_product
   ON product_identifiers (product_id);
 CREATE INDEX product_matches_product
   ON product_matches (product_id);
 CREATE INDEX capture_queries_run_store
   ON capture_queries (run_id, store_id);
+CREATE INDEX capture_queries_store_query
+  ON capture_queries (store_id, query, captured_at DESC);

@@ -22,6 +22,8 @@
     "data:ingest:trader-joes": "npm run data:match:trader-joes && npm run data:compile",
     "data:frontier": "node scripts/analyze-match-frontier.mjs",
     "data:merge-weights": "node scripts/merge-instacart-weight-details.mjs",
+    "data:merge:instacart": "node scripts/merge-instacart-capture.mjs",
+    "data:merge:trader-joes": "node scripts/merge-trader-joes-capture.mjs",
     "data:build": "npm run data:match && npm run data:compile",
     "data:refine": "node scripts/refine-dataset.mjs",
     "data:csv": "node scripts/generate-csv.mjs",

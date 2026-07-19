@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -33,9 +33,13 @@ for (const record of incoming.records ?? []) {
     searchRank: _searchRank,
     ...sourceRecord
   } = record;
+  const existing = records.get(record.asin) ?? {};
+  const nonEmptySourceRecord = Object.fromEntries(
+    Object.entries(sourceRecord).filter(([, value]) => value !== "" && value != null),
+  );
   records.set(record.asin, {
-    ...records.get(record.asin),
-    ...sourceRecord,
+    ...existing,
+    ...nonEmptySourceRecord,
   });
 }
 
@@ -51,7 +55,9 @@ const output = {
   )),
 };
 
-await writeFile(checkpointPath, `${JSON.stringify(output, null, 2)}\n`);
+const temporaryPath = `${checkpointPath}.tmp`;
+await writeFile(temporaryPath, `${JSON.stringify(output, null, 2)}\n`);
+await rename(temporaryPath, checkpointPath);
 console.log(JSON.stringify({
   previousRecords: checkpoint.records.length,
   incomingRecords: incoming.records?.length ?? 0,

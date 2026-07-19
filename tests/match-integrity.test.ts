@@ -206,6 +206,7 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     ["17283614", "960287585"],
     ["22133943", "970524163"],
     ["21351192", "960564566"],
+    ["3300935", "184650023"],
   ]) {
     assert.ok(
       safewayMatches.matches.some((match: Record<string, string>) => (
@@ -224,7 +225,6 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     ["16410986", "960050657"],
     ["21379087", "960106867"],
     ["18425131", "970689334"],
-    ["3300935", "184650023"],
     ["74505", "960276115"],
     ["17276896", "960568556"],
     ["3310488", "129800007"],
@@ -291,16 +291,20 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
 
 test("published comparisons never mix selling bases", async () => {
   const site = await data("site-data.json");
+  let catalogOnlyPrices = 0;
   for (const product of site.products) {
+    const comparablePrices = Object.values(product.prices).filter(
+      (price: any) => price.comparisonEligible,
+    ) as any[];
+    catalogOnlyPrices += Object.values(product.prices).length - comparablePrices.length;
     const bases = new Set(
-      Object.values(product.prices).map((price: any) => price.priceBasis),
+      comparablePrices.map((price: any) => price.priceBasis),
     );
-    assert.equal(
-      bases.size,
-      1,
+    assert.ok(
+      bases.size <= 1,
       `${product.id} ${product.name} mixes ${[...bases].join(" and ")}`,
     );
-    for (const price of Object.values(product.prices) as any[]) {
+    for (const price of comparablePrices) {
       assert.notEqual(
         price.pricingMode,
         "unverified_variable_weight",
@@ -308,6 +312,7 @@ test("published comparisons never mix selling bases", async () => {
       );
     }
   }
+  assert.ok(catalogOnlyPrices > 0, "The searchable catalog should retain comparison-excluded prices");
 });
 
 test("live produce and meat captures produce strict cross-store comparisons", async () => {

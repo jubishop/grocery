@@ -49,6 +49,8 @@ type Price = {
   estimatedItemPrice: number | null;
   estimatedWeightLb: number | null;
   sourceTitle: string;
+  comparisonEligible: boolean;
+  exclusionReason: string;
 };
 
 type Product = {
@@ -61,6 +63,7 @@ type Product = {
   imagePath: string;
   searchAliases: string[];
   storeCount: number;
+  comparableStoreCount: number;
   prices: Partial<Record<StoreId, Price>>;
 };
 
@@ -95,8 +98,10 @@ export type Dataset = {
   stores: Store[];
   summary: {
     capturedProducts: number;
+    searchableCatalogProducts: number;
     observationCount: number;
     currentObservationCount: number;
+    comparisonEligibleObservationCount: number;
     normalizedWeightObservations: number;
     excludedUnverifiedWeightObservations: number;
     excludedIncompatibleBasisObservations: number;
@@ -107,6 +112,7 @@ export type Dataset = {
     coreAllStoreProducts: number;
     traderJoesComparableProducts: number;
     traderJoesEligibleProducts: number;
+    traderJoesCatalogProducts: number;
     acceptedTraderJoesMatches: number;
     distribution: Record<string, number>;
     queryCount: number;
@@ -184,6 +190,11 @@ const priceSourceLabels: Record<string, { label: string; action: string }> = {
   amazon_whole_foods: { label: "Amazon.com", action: "View pickup price" },
   "traderjoes.com": { label: "TraderJoes.com", action: "View catalog price" },
 };
+const comparisonExclusionLabels: Record<string, string> = {
+  unverified_variable_weight_price: "selling unit unverified",
+  ambiguous_package_count: "package count ambiguous",
+  incompatible_product_price_basis: "selling basis conflicts",
+};
 const basketStorageKey = "west-seattle-grocery-basket-v1";
 
 function ArrowIcon() {
@@ -205,8 +216,15 @@ function SearchIcon() {
 function productPrices(product: Product, selected: StoreId[]) {
   return selected.flatMap((storeId) => {
     const price = product.prices[storeId];
-    return price ? [{ storeId, ...price }] : [];
+    return price && (selected.length === 1 || price.comparisonEligible)
+      ? [{ storeId, ...price }]
+      : [];
   });
+}
+
+function hasUsablePrice(product: Product, storeId: StoreId, selected: StoreId[]) {
+  const price = product.prices[storeId];
+  return Boolean(price && (selected.length === 1 || price.comparisonEligible));
 }
 
 function spreadFor(product: Product, selected: StoreId[]) {
@@ -243,7 +261,9 @@ function ProductCard({
   const basketQuantityLabel = product.priceBasis === "per lb"
     ? `${basketQuantity} ${basketQuantity === 1 ? "pound" : "pounds"}`
     : `${basketQuantity} ${basketQuantity === 1 ? "item" : "items"}`;
-  const winnerLabel = winners.length === available.length
+  const winnerLabel = available.length === 1
+    ? `${stores.find((store) => store.id === available[0].storeId)?.shortName} catalog price`
+    : winners.length === available.length
     ? "Same price"
     : winners.length > 1
       ? `${winners.map((id) => stores.find((store) => store.id === id)?.shortName).join(" + ")} tie`
@@ -270,7 +290,11 @@ function ProductCard({
         <div className="product-copy">
           <div className="product-kicker">
             <span>{product.category}</span>
-            <span>{product.storeCount} stores</span>
+            <span>
+              {product.comparableStoreCount >= 2 && product.storeCount > product.comparableStoreCount
+                ? `${product.comparableStoreCount} comparable · ${product.storeCount} captured`
+                : `${product.storeCount} ${product.storeCount === 1 ? "store" : "stores"}`}
+            </span>
             {diet !== "all" && <span className="diet-claim-badge">{getDietOption(diet).badge}</span>}
           </div>
           <h3>{product.name}</h3>
@@ -290,9 +314,10 @@ function ProductCard({
               </div>
             );
           }
+          const catalogOnly = !price.comparisonEligible;
           return (
             <a
-              className={`store-price ${winners.includes(storeId) ? "lowest-price" : ""}`}
+              className={`store-price ${catalogOnly ? "catalog-only-price" : winners.includes(storeId) ? "lowest-price" : ""}`}
               href={price.url}
               target="_blank"
               rel="noreferrer"
@@ -301,7 +326,11 @@ function ProductCard({
             >
               <span>{store.shortName}</span>
               <div><strong>{money.format(price.price)}</strong>{price.originalPrice !== null && <s>{money.format(price.originalPrice)}</s>}</div>
-              <small>{price.priceBasis}{price.pricingMode === "final_cost_by_weight" ? " · weight-normalized" : ""}</small>
+              <small>
+                {price.priceBasis}
+                {price.pricingMode === "final_cost_by_weight" ? " · weight-normalized" : ""}
+                {catalogOnly ? ` · catalog only (${comparisonExclusionLabels[price.exclusionReason] ?? "comparison excluded"})` : ""}
+              </small>
               <small className="price-source">{price.sale ? "sale shown · " : ""}{priceSourceLabels[price.source]?.label ?? price.source}</small>
               {price.sourceTitle && price.sourceTitle !== product.name && <small className="price-alias">{price.sourceTitle}</small>}
               <small>{priceSourceLabels[price.source]?.action ?? "View source"} ↗</small>
@@ -313,7 +342,7 @@ function ProductCard({
       <div className="product-result">
         <div className="product-result-copy">
           <span>{winnerLabel}</span>
-          <strong>{spread > 0 ? `${money.format(spread)} spread` : "Exact tie"}</strong>
+          <strong>{available.length === 1 ? "No strict cross-store match yet" : spread > 0 ? `${money.format(spread)} spread` : "Exact tie"}</strong>
         </div>
         <button
           className={`basket-add-button ${basketQuantity > 0 ? "active" : ""}`}
@@ -380,12 +409,14 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
   }, [basket, basketLoaded]);
 
   const allSelectedProducts = useMemo(() => data.products.filter((product) => {
-    const count = selected.filter((storeId) => product.prices[storeId]).length;
+    const count = selected.filter((storeId) => hasUsablePrice(product, storeId, selected)).length;
     if (selected.length === 1) return count === 1;
     return requireAll ? count === selected.length : count >= 2;
   }), [data.products, selected, requireAll]);
 
-  const strictCommonProducts = useMemo(() => data.products.filter((product) => selected.every((storeId) => product.prices[storeId])), [data.products, selected]);
+  const strictCommonProducts = useMemo(() => data.products.filter((product) => (
+    selected.every((storeId) => hasUsablePrice(product, storeId, selected))
+  )), [data.products, selected]);
 
   const filtered = useMemo(() => {
     const items = allSelectedProducts.filter((product) => {
@@ -448,7 +479,11 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       id: product.id,
       name: product.name,
       quantity,
-      prices: product.prices,
+      prices: Object.fromEntries(selected.flatMap((storeId) => (
+        hasUsablePrice(product, storeId, selected)
+          ? [[storeId, product.prices[storeId]]]
+          : []
+      ))),
     })),
     selected,
   ), [basketItems, selected]);
@@ -550,9 +585,9 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <section className="hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">West Seattle · direct + marketplace snapshot · {integer.format(data.summary.comparableProducts)} comparable products</p>
-            <h1>Five full catalogs.<br /><em>Plus Trader Joe’s where it matches.</em></h1>
+            <h1>Five core catalogs.<br /><em>Plus every published Trader Joe’s listing.</em></h1>
             <p className="hero-deck">
-              PCC, Metropolitan Market, Safeway, QFC, and Whole Foods form the core comparison. Every core two-store pairing has at least <strong>{integer.format(minimumCorePairCount)} confidently matched products</strong>. Trader Joe’s joins separately through <strong>{integer.format(data.summary.traderJoesComparableProducts)} strict commodity matches</strong>.
+              PCC, Metropolitan Market, Safeway, QFC, and Whole Foods form the core comparison. Search <strong>{integer.format(data.summary.searchableCatalogProducts)} current catalog products</strong>; comparisons appear only where identity and selling units are compatible. Trader Joe’s joins cross-store results through <strong>{integer.format(data.summary.traderJoesComparableProducts)} strict commodity matches</strong>.
             </p>
             <div className="hero-actions">
               <a className="primary-button" href="#basket">Build your basket <ArrowIcon /></a>
@@ -576,7 +611,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
             {traderJoesPerformance && (
               <p className="performance-panel-overlay">
                 <strong>Trader Joe’s commodity overlay</strong>
-                {integer.format(traderJoesPerformance.comparableProducts)} matched products · not ranked against the five full catalogs
+                {integer.format(traderJoesPerformance.comparableProducts)} matched products · not ranked against the five core stores
               </p>
             )}
           </div>
@@ -593,7 +628,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
       <section className="content-section compare-section" id="compare" aria-labelledby="compare-heading">
         <div className="section-intro split-intro">
           <div><p className="eyebrow">Interactive comparison</p><h2 id="compare-heading">Choose your stores.</h2></div>
-          <p>With two stores selected, every result is shared. With three or more, choose broad pairwise coverage or require every selected store. Trader Joe’s is optional because its web catalog is intentionally partial.</p>
+          <p>With one store selected, search its full retained catalog—including products without a match yet. With two stores selected, every result is shared. Trader Joe’s is optional because its published website does not represent every physical-store product.</p>
         </div>
 
         <div className="store-selector" aria-label="Stores to compare">
@@ -612,7 +647,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
                 <span>
                   <strong>{store.name}</strong>
                   <small>{store.coverageMode === "commodity-overlay"
-                    ? active ? "Commodity overlay included" : "Add commodity overlay"
+                    ? active ? "Catalog + commodity matches included" : "Add published catalog"
                     : active ? "Included" : "Add to comparison"}</small>
                 </span>
               </button>
@@ -658,7 +693,9 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
 
                 <ul className="basket-item-list">
                   {basketItems.map(({ product, quantity }) => {
-                    const availableStoreCount = selected.filter((storeId) => product.prices[storeId]).length;
+                    const availableStoreCount = selected.filter((storeId) => (
+                      hasUsablePrice(product, storeId, selected)
+                    )).length;
                     return (
                       <li key={product.id}>
                         <div className="basket-item-image">
@@ -863,6 +900,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
             </div>
             <div className="ledger-grid">
               <div><strong>{integer.format(data.summary.observationCount)}</strong><span>dated observations in SQLite</span></div>
+              <div><strong>{integer.format(data.summary.searchableCatalogProducts)}</strong><span>searchable current catalog products</span></div>
               <div><strong>{integer.format(data.summary.comparableProducts)}</strong><span>products comparable in 2+ stores</span></div>
               <div><strong>{integer.format(data.summary.acceptedCrossSourceMatches)}</strong><span>accepted Whole Foods links</span></div>
               <div><strong>{integer.format(data.summary.directReplacements.safeway)}</strong><span>accepted Safeway direct links</span></div>
@@ -878,7 +916,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
               <i aria-hidden="true">→</i>
               <div className="funnel-result"><span>Confirmed across all five core stores</span><strong>{integer.format(data.summary.coreAllStoreProducts)}</strong></div>
             </div>
-            <p className="funnel-note">The two middle sets overlap but are not nested: the final core-five count is their intersection. Separately, Trader Joe’s contributes {integer.format(data.summary.traderJoesEligibleProducts)} plain-commodity observations and {integer.format(data.summary.traderJoesComparableProducts)} products with strict matches to at least one core store. Its private-label and prepared exclusives are not used to dilute the core coverage number.</p>
+            <p className="funnel-note">The two middle sets overlap but are not nested: the final core-five count is their intersection. Separately, all {integer.format(data.summary.traderJoesCatalogProducts)} captured Trader Joe’s products are searchable; {integer.format(data.summary.traderJoesEligibleProducts)} plain commodities are eligible for automatic matching and {integer.format(data.summary.traderJoesComparableProducts)} have strict matches to at least one core store. Private-label and prepared exclusives stay catalog-only and do not dilute the core coverage number.</p>
           </div>
 
           <div className="research-context-grid">
@@ -909,7 +947,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <div className="category-grid">
           {dynamicCategories.map((entry) => (
             <article className="category-card" key={entry.name}>
-              <div><h3>{entry.name}</h3><span>{entry.count} products</span></div>
+              <div><h3>{entry.name}</h3><span>{entry.count} {entry.count === 1 ? "product" : "products"}</span></div>
               <div className="category-prices">
                 {selected.map((storeId) => (
                   <p className={entry.leader === storeId ? "category-leader" : ""} key={storeId}>
@@ -926,7 +964,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
         <div className="content-section products-inner">
           <div className="section-intro split-intro">
             <div><p className="eyebrow">Build your basket</p><h2 id="products-heading">Find it. Price it. Add it.</h2></div>
-            <p>Add the exact products you plan to buy, then use the basket shortcut to compare complete totals. Cross-source links require the same product or a strict plain-commodity signature with matching qualifiers and selling unit; a blank price means no confident current match was captured.</p>
+            <p>Select one store to search its full retained catalog, or select multiple stores to see strict matches. Cross-source links require the same product or a plain-commodity signature with matching qualifiers and selling unit; a blank price means no confident current match was captured.</p>
           </div>
 
           <div className="filter-panel">
@@ -1027,7 +1065,7 @@ export default function GroceryExplorer({ data }: { data: Dataset }) {
           <div className="store-locations">
             {data.stores.map((store) => <a key={store.id} href={store.storeUrl} target="_blank" rel="noreferrer"><span>{store.name}</span><span>{store.address}</span></a>)}
           </div>
-          <div className="footer-links"><a href="/west-seattle-grocery-prices.csv" download>Download {integer.format(data.summary.comparableProducts)} comparable products as CSV <ArrowIcon /></a><a href="https://github.com/jubishop/grocery" target="_blank" rel="noreferrer">SQLite database + source on GitHub <ArrowIcon /></a></div>
+          <div className="footer-links"><a href="/west-seattle-grocery-prices.csv" download>Download {integer.format(data.summary.searchableCatalogProducts)} current catalog products as CSV <ArrowIcon /></a><a href="https://github.com/jubishop/grocery" target="_blank" rel="noreferrer">SQLite database + source on GitHub <ArrowIcon /></a></div>
         </div>
       </footer>
     </main>

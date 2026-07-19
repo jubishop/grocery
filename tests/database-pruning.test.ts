@@ -49,10 +49,10 @@ test("aggregate Safeway and QFC markup diagnostics remain available", () => {
   }
 });
 
-test("unmatched retailer house brands stay out of the active comparison database", () => {
+test("retailer house brands stay in raw SQLite without bypassing strict matching", () => {
   const database = new DatabaseSync(databasePath, { readOnly: true });
   try {
-    const forbiddenStandalone = database.prepare(`
+    const retainedStandalone = database.prepare(`
       SELECT COUNT(*) AS count
       FROM product_identifiers AS identifier
       WHERE (
@@ -100,13 +100,46 @@ test("unmatched retailer house brands stay out of the active comparison database
         )
       )
     `).get() as { count: number };
+    const comparisonLeaks = database.prepare(`
+      SELECT COUNT(*) AS count
+      FROM product_matches AS match
+      JOIN product_identifiers AS identifier
+        ON identifier.source = match.source
+       AND identifier.external_id = match.external_id
+      WHERE match.match_method NOT IN (
+        'normalized_loose_meat_name_claims_basis',
+        'normalized_loose_produce_name_basis'
+      )
+      AND ((
+        identifier.source = 'amazon_whole_foods'
+        AND (
+          identifier.source_title LIKE '365 by Whole Foods Market%'
+          OR identifier.source_title LIKE 'Whole Foods Market%'
+        )
+      ) OR (
+        identifier.source = 'safeway.com'
+        AND (
+          identifier.source_title LIKE 'Signature Select%'
+          OR identifier.source_title LIKE 'O Organics%'
+          OR identifier.source_title LIKE 'Open Nature%'
+        )
+      ) OR (
+        identifier.source = 'qfc.com'
+        AND (
+          identifier.source_title LIKE 'Kroger%'
+          OR identifier.source_title LIKE 'Simple Truth%'
+          OR identifier.source_title LIKE 'Private Selection%'
+        )
+      ))
+    `).get() as { count: number };
     const siteData = JSON.parse(readFileSync(siteDataPath, "utf8"));
 
-    assert.equal(forbiddenStandalone.count, 0);
-    assert.ok(siteData.summary.excludedSourceExclusiveRecords.instacart > 0);
-    assert.ok(siteData.summary.excludedSourceExclusiveRecords.wholefoods > 0);
-    assert.ok(siteData.summary.excludedSourceExclusiveRecords.safeway > 0);
-    assert.ok(siteData.summary.excludedSourceExclusiveRecords.qfc > 0);
+    assert.ok(retainedStandalone.count > 0);
+    assert.equal(comparisonLeaks.count, 0);
+    assert.ok(siteData.summary.retainedSourceExclusiveRecords.instacart > 0);
+    assert.ok(siteData.summary.retainedSourceExclusiveRecords.wholefoods > 0);
+    assert.ok(siteData.summary.retainedSourceExclusiveRecords.safeway > 0);
+    assert.ok(siteData.summary.retainedSourceExclusiveRecords.qfc > 0);
   } finally {
     database.close();
   }
@@ -134,7 +167,13 @@ test("weighted estimates retain provenance but only verified unit rates are comp
       WHERE comparison_eligible = 0
         AND exclusion_reason = 'unverified_variable_weight_price'
     `).get() as { count: number };
+    const retainedCurrentProducts = database.prepare(`
+      SELECT COUNT(DISTINCT product_id) AS count
+      FROM price_observations
+      WHERE available = 1
+    `).get() as { count: number };
     const siteData = JSON.parse(readFileSync(siteDataPath, "utf8"));
+    const catalogOnly = siteData.products.find((product: any) => product.id === "105962797");
 
     assert.deepEqual(celery.map((row) => ({ ...row })), [
       {
@@ -159,6 +198,11 @@ test("weighted estimates retain provenance but only verified unit rates are comp
     assert.equal(celeryProduct.price_basis, "per lb");
     assert.equal(excluded.count, siteData.summary.excludedUnverifiedWeightObservations);
     assert.ok(excluded.count > 0);
+    assert.equal(siteData.products.length, retainedCurrentProducts.count);
+    assert.ok(catalogOnly);
+    assert.equal(catalogOnly.comparableStoreCount, 0);
+    assert.equal(catalogOnly.prices.metro.comparisonEligible, false);
+    assert.equal(catalogOnly.prices.metro.exclusionReason, "unverified_variable_weight_price");
   } finally {
     database.close();
   }
@@ -189,9 +233,13 @@ test("Trader Joe's is published as a searchable commodity overlay", () => {
     const siteData = JSON.parse(readFileSync(siteDataPath, "utf8"));
     const traderJoes = siteData.stores.find((store: { id: string }) => store.id === "traderjoes");
     const traderProducts = siteData.products.filter((product: any) => product.prices.traderjoes);
+    const traderComparableProducts = traderProducts.filter((product: any) => (
+      product.comparableStoreCount >= 2
+      && product.prices.traderjoes.comparisonEligible
+    ));
     const coreStoreIds = ["pcc", "metro", "safeway", "qfc", "wholefoods"];
     const coreAllStoreProducts = siteData.products.filter((product: any) => (
-      coreStoreIds.every((storeId) => product.prices[storeId])
+      coreStoreIds.every((storeId) => product.prices[storeId]?.comparisonEligible)
     )).length;
     const butter = traderProducts.find((product: any) => (
       product.searchAliases.includes("Butter Quarters, Salted")
@@ -201,9 +249,11 @@ test("Trader Joe's is published as a searchable commodity overlay", () => {
     assert.equal(siteData.summary.coreStoreCount, 5);
     assert.equal(siteData.summary.coreAllStoreProducts, coreAllStoreProducts);
     assert.ok(coreAllStoreProducts > 0);
-    assert.equal(observations.count, siteData.summary.traderJoesEligibleProducts);
+    assert.equal(observations.count, siteData.summary.traderJoesCatalogProducts);
+    assert.ok(siteData.summary.traderJoesCatalogProducts > siteData.summary.traderJoesEligibleProducts);
     assert.equal(matches.count, siteData.summary.acceptedTraderJoesMatches);
-    assert.equal(traderProducts.length, siteData.summary.traderJoesComparableProducts);
+    assert.equal(traderProducts.length, siteData.summary.traderJoesCatalogProducts);
+    assert.equal(traderComparableProducts.length, siteData.summary.traderJoesComparableProducts);
     assert.ok(butter);
     assert.equal(butter.prices.traderjoes.sourceTitle, "Butter Quarters, Salted");
     assert.equal(forbiddenPaths.count, 0);

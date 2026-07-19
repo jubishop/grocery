@@ -12,6 +12,7 @@ const columns = [
   ["category", "category"],
   ["price_basis", "priceBasis"],
   ["stores_available", "storeCount"],
+  ["stores_comparable", "comparableStoreCount"],
   ["local_image", "imagePath"],
   ["source_image_url", "imageUrl"],
 ];
@@ -21,6 +22,9 @@ for (const store of data.stores) {
   columns.push([`${store.id}_original_price`, `prices.${store.id}.originalPrice`]);
   columns.push([`${store.id}_sale`, `prices.${store.id}.sale`]);
   columns.push([`${store.id}_source`, `prices.${store.id}.source`]);
+  columns.push([`${store.id}_price_basis`, `prices.${store.id}.priceBasis`]);
+  columns.push([`${store.id}_comparison_eligible`, `prices.${store.id}.comparisonEligible`]);
+  columns.push([`${store.id}_exclusion_reason`, `prices.${store.id}.exclusionReason`]);
   columns.push([`${store.id}_catalog_url`, `prices.${store.id}.url`]);
 }
 

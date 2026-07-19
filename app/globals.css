@@ -440,6 +440,9 @@ a.store-price:hover { background: white; box-shadow: inset 0 0 0 1px var(--store
 .store-price small { margin-top: 3px; color: var(--muted); font-size: .58rem; }
 .store-price .price-source { color: var(--store-color); font-weight: 800; }
 .store-price .price-alias { max-width: 18ch; overflow: hidden; color: #6b4a43; text-overflow: ellipsis; white-space: nowrap; }
+.catalog-only-price { border-top-color: #a66a20; background: #f5eee2; }
+.catalog-only-price > span,
+.catalog-only-price .price-source { color: #7f5018; }
 .unavailable-price { border-top-color: #c8cac6; }
 .unavailable-price > span { color: var(--muted); }
 .unavailable-price strong { margin-top: 5px; color: #979c97; font-size: .7rem; }
