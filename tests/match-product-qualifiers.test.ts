@@ -701,6 +701,10 @@ test("packaged product variants reject flavor, protein, format, and preparation 
       "ALOHA Chocolate Chip Cookie Dough Protein Bar 5pk 1.98 oz",
       "ALOHA Chocolate Chip Cookie Dough Protein Bar 1.98 oz",
     ],
+    [
+      "Organic English Seedless Cucumber 1 ct",
+      "Organic Cucumber 1 ct",
+    ],
   ]) {
     assert.equal(
       packagedProductVariantsCompatible(left, right),

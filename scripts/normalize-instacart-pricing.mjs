@@ -46,6 +46,7 @@ function money(match) {
 
 export function parseInstacartProductDetailText(text) {
   const visibleText = String(text ?? "");
+  const currentPriceLine = visibleText.match(/Current price:[^\n]*/i)?.[0] ?? "";
   const directUnitMatch = visibleText.match(
     /Current price:\s*\$([\d,]+(?:\.\d{1,2})?)\s*\/\s*(lb|lbs?|pounds?|oz|ounces?|kg|kilograms?|g|grams?)\b/i,
   );
@@ -66,6 +67,12 @@ export function parseInstacartProductDetailText(text) {
     ? weightInPounds(averageWeightMatch[1], averageWeightMatch[2])
     : null;
   const finalCostByWeight = /Final cost by weight/i.test(visibleText);
+  const verifiedItemPrice = (
+    currentPriceLine
+    && !/\beach\s*\(est\.?\)|\/\s*(?:lb|lbs?|pounds?|oz|ounces?|kg|kilograms?|g|grams?)\b/i.test(currentPriceLine)
+  )
+    ? money(currentPriceLine.match(/\$([\d,]+(?:\.\d{1,2})?)/))
+    : null;
 
   if (unitPrice != null && (finalCostByWeight || directUnitMatch)) {
     return {
@@ -76,6 +83,21 @@ export function parseInstacartProductDetailText(text) {
       sourceUnit: anyUnitMatch[2].toLowerCase(),
       estimatedItemPrice: money(estimatedItemMatch),
       estimatedWeightLb,
+      comparisonEligible: true,
+      exclusionReason: "",
+    };
+  }
+
+  if (!finalCostByWeight && verifiedItemPrice != null) {
+    return {
+      pricingMode: "fixed_price",
+      priceBasis: "per item",
+      itemPrice: verifiedItemPrice,
+      unitPrice: null,
+      sourceUnitPrice: null,
+      sourceUnit: "",
+      estimatedItemPrice: null,
+      estimatedWeightLb: null,
       comparisonEligible: true,
       exclusionReason: "",
     };
@@ -168,6 +190,19 @@ export function validateInstacartWeightDetail(detail) {
   if (!detail?.id || !detail?.storeId || !detail?.productUrl) {
     throw new Error("Instacart weight detail requires id, storeId, and productUrl");
   }
+  if (detail?.pricingMode === "fixed_price") {
+    const itemPrice = positiveNumber(detail.itemPrice);
+    if (detail.priceBasis !== "per item" || itemPrice == null) {
+      throw new Error(`Invalid fixed-price detail for ${instacartPricingKey(detail)}`);
+    }
+    return {
+      ...detail,
+      itemPrice: roundedCurrency(itemPrice),
+      unitPrice: null,
+      estimatedItemPrice: null,
+      estimatedWeightLb: null,
+    };
+  }
   if (!["final_cost_by_weight", "unit_price_per_lb"].includes(detail?.pricingMode)) {
     throw new Error(`Unsupported Instacart pricing mode for ${instacartPricingKey(detail)}`);
   }
@@ -206,6 +241,23 @@ export function normalizeInstacartRecord(record, detail = null) {
     }
     if (verified.productUrl !== record.productUrl) {
       throw new Error(`Instacart weight detail URL mismatch for ${key}`);
+    }
+    if (verified.pricingMode === "fixed_price") {
+      return {
+        ...record,
+        rawCapturedPrice: record.price,
+        price: verified.itemPrice,
+        priceBasis: "per item",
+        pricingMode: "fixed_price",
+        estimatedItemPrice: null,
+        estimatedWeightLb: null,
+        sourceUnitPrice: null,
+        sourceUnit: "",
+        comparisonEligible: true,
+        exclusionReason: "",
+        capturedAt: verified.capturedAt ?? record.capturedAt,
+        capturedUrl: verified.productUrl,
+      };
     }
     return {
       ...record,

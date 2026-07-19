@@ -95,7 +95,7 @@ function quantity(text) {
   if (slashPack) return normalizeQuantity(Number(slashPack[2]) * Number(slashPack[1]), slashPack[3]);
   const hyphenPack = value.match(/\b(\d+)\s*-\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (hyphenPack) return normalizeQuantity(Number(hyphenPack[2]) * Number(hyphenPack[1]), hyphenPack[3]);
-  const multipack = value.match(/\b(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const multipack = value.match(/\b(\d+)\s*[x×-]\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (multipack) return normalizeQuantity(Number(multipack[2]) * Number(multipack[1]), multipack[3]);
   const packOf = value.match(/\b(\d+)\s*(?:pack|pk)\s*[,/-]?\s*(?:of\s+)?(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (packOf) return normalizeQuantity(Number(packOf[1]) * Number(packOf[2]), packOf[3]);
@@ -111,6 +111,45 @@ function quantitiesAgree(left, right) {
   if (!left || !right || left.dimension !== right.dimension) return false;
   const tolerance = left.dimension === "count" ? 0 : Math.max(0.08, Math.min(left.amount, right.amount) * 0.025);
   return Math.abs(left.amount - right.amount) <= tolerance;
+}
+
+function directRecordQuantity(storeId, titleQuantity, sizeQuantity) {
+  if (storeId !== "safeway") return sizeQuantity ?? titleQuantity;
+  if (!titleQuantity || !sizeQuantity) return titleQuantity ?? sizeQuantity;
+
+  // Safeway's card-level size rounds some decimals down (for example 9.5 oz
+  // can appear as 9 oz), so the title normally remains the better source.
+  // However, Safeway also omits the pack count from some titles while its
+  // structured size contains the total package volume (7 fl oz vs 28 fl oz
+  // for a four-pack). Prefer that total only when it is a clear integer
+  // multiple, rather than treating a multipack as one serving.
+  if (
+    titleQuantity.dimension === sizeQuantity.dimension
+    && sizeQuantity.amount > titleQuantity.amount
+  ) {
+    const multiple = sizeQuantity.amount / titleQuantity.amount;
+    const roundedMultiple = Math.round(multiple);
+    if (
+      roundedMultiple >= 2
+      && roundedMultiple <= 24
+      && Math.abs(multiple - roundedMultiple) <= 0.08
+    ) {
+      return sizeQuantity;
+    }
+  }
+  return titleQuantity;
+}
+
+function directPriceIsPlausible(item, record) {
+  if (!Number.isFinite(item.instacartPrice) || !Number.isFinite(record.price)) return true;
+  // These are two captures of the same retailer. A direct price that is both
+  // several dollars and more than 2.5x above its Instacart counterpart is a
+  // strong signal of a stale card, selling-basis mismatch, or hidden
+  // multipack. Keep the raw capture, but do not publish it as a comparison.
+  return !(
+    record.price - item.instacartPrice > 3
+    && record.price / item.instacartPrice > 2.5
+  );
 }
 
 function quantityBucket(parsed) {
@@ -263,9 +302,7 @@ const directRecordsWithQuantity = direct.records
     // "9.5 oz" becomes "9 oz"), while the full card title retains it. QFC's
     // structured size is reliable and avoids mistaking nutrition claims in a
     // title for package quantity.
-    const recordQuantity = storeId === "safeway"
-      ? titleQuantity ?? sizeQuantity
-      : sizeQuantity ?? titleQuantity;
+    const recordQuantity = directRecordQuantity(storeId, titleQuantity, sizeQuantity);
     return { ...record, quantity: recordQuantity };
   })
   .filter((record) => record.quantity);
@@ -432,6 +469,7 @@ for (const item of storeItems) {
         metadata.brandTokens,
         score,
       )
+      && directPriceIsPlausible(item, record)
       && variantsCompatible(
         item,
         record,
@@ -499,7 +537,7 @@ const output = {
   generatedAt: new Date().toISOString(),
   storeId,
   source: config.source,
-  methodology: `Fully automatic conservative ${config.displayName} direct-catalog crosswalk requiring equivalent package quantity and numeric variants, agreement on protected product claims, no conflicting packaged-product state, strong normalized product-name agreement, and an unambiguous best candidate. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Retailer-exclusive house brands are excluded from packaged matching, while exact loose commodity produce and meat may still match after retailer branding is removed. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically without falling back to Instacart.`,
+  methodology: `Fully automatic conservative ${config.displayName} direct-catalog crosswalk requiring equivalent package quantity and numeric variants, agreement on protected product claims, no conflicting packaged-product state, strong normalized product-name agreement, and an unambiguous best candidate. Safeway structured total sizes override title-level serving sizes only when they form a clear integer multipack. Same-retailer direct prices that are both several dollars and more than 2.5 times above the captured Instacart price are retained as raw evidence but excluded from comparisons as likely stale-card, hidden-multipack, or selling-basis anomalies. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Retailer-exclusive house brands are excluded from packaged matching, while exact loose commodity produce and meat may still match after retailer branding is removed. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically without falling back to Instacart.`,
   counts: {
     instacartStoreProducts: storeItems.length,
     directProductsCaptured: direct.records.length,

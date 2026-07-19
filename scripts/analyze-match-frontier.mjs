@@ -9,6 +9,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dataPath = (name) => path.join(root, "data", name);
 const limitArgument = process.argv.find((argument) => argument.startsWith("--limit="));
 const limit = Math.max(1, Number(limitArgument?.split("=")[1] ?? 40));
+const sourceArgument = process.argv.find((argument) => argument.startsWith("--source="));
+const selectedSource = sourceArgument?.split("=")[1] ?? "";
 
 const [
   instacart,
@@ -46,16 +48,32 @@ for (const record of records) {
     sourceProductIds: new Set(),
     records: [],
     eligibleStoreIds: new Set(),
+    eligibleStoreIdsByBasis: new Map(),
   };
   group.records.push(record);
   group.sourceProductIds.add(record.id);
-  if (record.comparisonEligible !== false) group.eligibleStoreIds.add(record.storeId);
+  if (record.comparisonEligible !== false) {
+    group.eligibleStoreIds.add(record.storeId);
+    const basis = record.priceBasis || "per item";
+    const basisStoreIds = group.eligibleStoreIdsByBasis.get(basis) ?? new Set();
+    basisStoreIds.add(record.storeId);
+    group.eligibleStoreIdsByBasis.set(basis, basisStoreIds);
+  }
   groups.set(productId, group);
 }
 
-function representative(group) {
+function dominantBasis(group) {
+  return [...group.eligibleStoreIdsByBasis.entries()]
+    .sort((left, right) => (
+      right[1].size - left[1].size
+      || left[0].localeCompare(right[0])
+    ))[0] ?? ["", new Set()];
+}
+
+function representative(group, priceBasis) {
   const eligible = group.records.filter((record) => record.comparisonEligible !== false);
-  return (eligible.length ? eligible : group.records)
+  const sameBasis = eligible.filter((record) => (record.priceBasis || "per item") === priceBasis);
+  return (sameBasis.length ? sameBasis : eligible.length ? eligible : group.records)
     .toSorted((left, right) => (
       String(right.name ?? "").length - String(left.name ?? "").length
       || String(left.id).localeCompare(String(right.id), undefined, { numeric: true })
@@ -63,15 +81,17 @@ function representative(group) {
 }
 
 const groupItems = [...groups.values()].map((group) => {
-  const record = representative(group);
+  const [priceBasis, eligibleStoreIds] = dominantBasis(group);
+  const record = representative(group, priceBasis);
   return {
     productId: group.productId,
     sourceProductIds: [...group.sourceProductIds],
     name: record?.name ?? "",
     size: record?.size ?? "",
     category: record?.category ?? "Other Groceries",
-    storeIds: [...group.eligibleStoreIds].sort(),
-    storeCount: group.eligibleStoreIds.size,
+    priceBasis,
+    storeIds: [...eligibleStoreIds].sort(),
+    storeCount: eligibleStoreIds.size,
     productUrl: record?.productUrl ?? "",
     comparisonEligible: group.records.some((item) => item.comparisonEligible !== false),
   };
@@ -163,17 +183,110 @@ const instacartMissingStore = groupItems
   .sort((left, right) => left.missingStoreId.localeCompare(right.missingStoreId) || left.name.localeCompare(right.name))
   .slice(0, limit);
 
+const coreSourceSets = new Map([
+  ["wholeFoods", matchedProductIds.wholeFoods],
+  ["safewayDirect", matchedProductIds.safeway],
+  ["qfcDirect", matchedProductIds.qfc],
+]);
+const coreHistoryKeys = new Map([
+  ["wholeFoods", "wholeFoods"],
+  ["safewayDirect", "safeway"],
+  ["qfcDirect", "qfc"],
+]);
+const coreFiveGaps = groupItems
+  .filter((item) => (
+    item.comparisonEligible
+    && item.storeCount === 4
+    && !isSourceExclusiveProduct("instacart", item)
+  ))
+  .map((item) => {
+    const query = `${item.name} ${item.size}`.trim();
+    const missingSources = [...coreSourceSets.entries()]
+      .filter(([, matchedIds]) => !matchedIds.has(item.productId))
+      .map(([source]) => source);
+    const attempts = Object.fromEntries(missingSources.map((source) => {
+      const history = histories[coreHistoryKeys.get(source)];
+      const prior = history.targeted.get(String(item.productId))
+        ?? history.normalized.get(history.key(query));
+      return [source, {
+        previouslyTargeted: Boolean(prior),
+        lastAttemptedAt: prior?.capturedAt ?? null,
+        priorResultCount: prior?.count ?? null,
+      }];
+    }));
+    const untriedMissingSources = missingSources.filter((source) => (
+      !attempts[source].previouslyTargeted
+    ));
+    return {
+      ...item,
+      query,
+      missingSources,
+      untriedMissingSources,
+      nextSource: untriedMissingSources[0] ?? missingSources[0] ?? null,
+      attempts,
+      priority: (
+        (4 - missingSources.length) * 1000
+        + (untriedMissingSources.length ? 100 : 0)
+        + (/\b(?:produce|meat|seafood|dairy|eggs)\b/i.test(item.category) ? 5 : 0)
+      ),
+    };
+  })
+  .filter((item) => item.missingSources.length > 0)
+  .sort((left, right) => (
+    right.priority - left.priority
+    || left.name.localeCompare(right.name)
+  ))
+  .slice(0, limit);
+
+const rawStoreIdsByCanonicalId = new Map();
+const storeIdsBySourceProductId = new Map();
+for (const record of records) {
+  const canonicalId = aliases.aliases[record.id] ?? record.id;
+  const canonicalStoreIds = rawStoreIdsByCanonicalId.get(canonicalId) ?? new Set();
+  canonicalStoreIds.add(record.storeId);
+  rawStoreIdsByCanonicalId.set(canonicalId, canonicalStoreIds);
+  const sourceStoreIds = storeIdsBySourceProductId.get(record.id) ?? new Set();
+  sourceStoreIds.add(record.storeId);
+  storeIdsBySourceProductId.set(record.id, sourceStoreIds);
+}
+
 const unresolved = records
   .filter((record) => record.comparisonEligible === false)
-  .map((record) => ({
-    storeId: record.storeId,
-    productId: record.id,
-    name: record.name,
-    size: record.size ?? "",
-    price: record.price,
-    productUrl: record.productUrl,
-    exclusionReason: record.exclusionReason,
-  }));
+  .map((record) => {
+    const canonicalProductId = aliases.aliases[record.id] ?? record.id;
+    const group = groups.get(canonicalProductId);
+    const eligibleStoreIds = [...(group?.eligibleStoreIds ?? [])].sort();
+    const capturedStoreIds = [...(rawStoreIdsByCanonicalId.get(canonicalProductId) ?? [])].sort();
+    const sameSourceIdStoreIds = [...(storeIdsBySourceProductId.get(record.id) ?? [])].sort();
+    const commodityCategory = /\b(?:produce|meat|seafood)\b/i.test(record.category ?? "");
+    const priority = (
+      eligibleStoreIds.length * 100
+      + sameSourceIdStoreIds.length * 30
+      + capturedStoreIds.length * 10
+      + (commodityCategory ? 20 : 0)
+      + (record.exclusionReason === "unverified_variable_weight_price" ? 10 : 0)
+    );
+    return {
+      storeId: record.storeId,
+      productId: record.id,
+      canonicalProductId,
+      name: record.name,
+      size: record.size ?? "",
+      category: record.category ?? "Other Groceries",
+      price: record.price,
+      productUrl: record.productUrl,
+      exclusionReason: record.exclusionReason,
+      eligibleStoreIds,
+      capturedStoreIds,
+      sameSourceIdStoreIds,
+      priority,
+    };
+  })
+  .sort((left, right) => (
+    right.priority - left.priority
+    || left.canonicalProductId.localeCompare(right.canonicalProductId, undefined, { numeric: true })
+    || left.storeId.localeCompare(right.storeId)
+  ));
 
 const traderJoesMatchedIds = new Set(traderJoesMatches.matches.map((match) => match.traderJoesId));
 const traderJoesEligibleIds = new Set(traderJoesMatches.eligibleIds);
@@ -224,10 +337,18 @@ const output = {
     wholeFoods: sourceTargets("wholeFoods", matchedProductIds.wholeFoods),
     safewayDirect: sourceTargets("safeway", matchedProductIds.safeway),
     qfcDirect: sourceTargets("qfc", matchedProductIds.qfc),
+    coreFiveGaps,
     instacartMissingStore,
     unresolvedComparisons: unresolved.slice(0, limit),
     traderJoesUnmatched,
   },
 };
 
-console.log(JSON.stringify(output, null, 2));
+if (selectedSource) {
+  if (!Object.hasOwn(output.targets, selectedSource)) {
+    throw new Error(`Unknown frontier source: ${selectedSource}`);
+  }
+  console.log(JSON.stringify(output.targets[selectedSource], null, 2));
+} else {
+  console.log(JSON.stringify(output, null, 2));
+}

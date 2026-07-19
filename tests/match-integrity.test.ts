@@ -216,6 +216,9 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     ["24728786", "970104123"],
     ["16410986", "960050657"],
     ["21379087", "960106867"],
+    ["18425131", "970689334"],
+    ["3300935", "184650023"],
+    ["74505", "960276115"],
   ]) {
     assert.equal(
       safewayMatches.matches.some((match: Record<string, string>) => (
@@ -245,6 +248,8 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     ["18613960", "0002113150699"],
     ["16408707", "0007110000606"],
     ["2797093", "0061126926373"],
+    ["16346265", "0000000094062"],
+    ["59115150", "0002338411115"],
   ]) {
     assert.equal(
       qfcMatches.matches.some((match: Record<string, string>) => (

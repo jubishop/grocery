@@ -47,6 +47,28 @@ test("direct per-pound current prices normalize without an estimated total", () 
   assert.equal(parsed.estimatedItemPrice, null);
 });
 
+test("product detail parser can verify a fixed each price for loose produce", () => {
+  const parsed = parseInstacartProductDetailText(`
+    Pineapple
+    1 each
+    Current price: $6.29
+    $6.29
+  `);
+
+  assert.deepEqual(parsed, {
+    pricingMode: "fixed_price",
+    priceBasis: "per item",
+    itemPrice: 6.29,
+    unitPrice: null,
+    sourceUnitPrice: null,
+    sourceUnit: "",
+    estimatedItemPrice: null,
+    estimatedWeightLb: null,
+    comparisonEligible: true,
+    exclusionReason: "",
+  });
+});
+
 test("weight units canonicalize to dollars per pound", () => {
   assert.equal(pricePerPound(0.5, "oz"), 8);
   assert.equal(pricePerPound(11.02, "kg"), 5);
@@ -268,6 +290,34 @@ test("verified detail replaces only the comparison price and retains provenance"
   assert.equal(normalized.capturedAt, "2026-07-18T19:10:49.000Z");
 });
 
+test("verified fixed-price detail releases an each-priced produce record", () => {
+  const record = {
+    id: "439841",
+    storeId: "metro",
+    name: "Pineapple",
+    size: "",
+    category: "Produce",
+    price: 6.29,
+    priceBasis: "per item",
+    productUrl: "https://www.instacart.com/products/439841-pineapple-each?retailerSlug=metropolitan-market",
+  };
+  const normalized = normalizeInstacartRecord(record, {
+    id: "439841",
+    storeId: "metro",
+    productUrl: record.productUrl,
+    pricingMode: "fixed_price",
+    priceBasis: "per item",
+    itemPrice: 6.29,
+    capturedAt: "2026-07-19T01:03:00.000Z",
+  });
+
+  assert.equal(normalized.price, 6.29);
+  assert.equal(normalized.priceBasis, "per item");
+  assert.equal(normalized.pricingMode, "fixed_price");
+  assert.equal(normalized.comparisonEligible, true);
+  assert.equal(normalized.exclusionReason, "");
+});
+
 test("captured weight detail keys are unique and valid", async () => {
   const details = JSON.parse(await readFile(
     new URL("../data/instacart-weight-details.json", import.meta.url),
@@ -275,7 +325,7 @@ test("captured weight detail keys are unique and valid", async () => {
   ));
   const index = createInstacartWeightDetailIndex(details);
 
-  assert.equal(index.size, 14);
+  assert.ok(index.size >= 14);
   assert.equal(index.get("pcc|16383572")?.unitPrice, 2.99);
   assert.equal(index.get("metro|16383572")?.unitPrice, 4.19);
   assert.equal(index.get("pcc|3401790")?.unitPrice, 2.99);

@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-19T00:38:48.778Z",
+  "generatedAt": "2026-07-19T01:14:01.683Z",
   "methodology": "Fully automatic conservative crosswalk requiring normalized brand and product agreement, equivalent package quantity and numeric variants, agreement on protected product claims, and no conflicting packaged-product state. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Exact product-targeted searches may accept only their first priced result after all automatic compatibility gates pass. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Retailer-exclusive house brands and ambiguous candidates are excluded automatically.",
   "counts": {
     "instacartAllFour": 468,
     "wholeFoodsCaptured": 3848,
-    "wholeFoodsMatchingCandidates": 3376,
-    "accepted": 125,
-    "acceptedAnyStoreCount": 652,
+    "wholeFoodsMatchingCandidates": 3378,
+    "accepted": 128,
+    "acceptedAnyStoreCount": 653,
     "acceptedByStoreCount": {
-      "1": 220,
+      "1": 219,
       "2": 178,
-      "3": 129,
-      "4": 125
+      "3": 128,
+      "4": 128
     }
   },
   "matches": [
@@ -2229,6 +2229,32 @@
       "sizeEvidence": "1 ct = 1 ct"
     },
     {
+      "productId": "16616963",
+      "sourceProductIds": [
+        "16616963"
+      ],
+      "instacartName": "Organic Romaine Lettuce",
+      "instacartSize": "",
+      "category": "Produce",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B07812N26Q",
+      "wholeFoodsTitle": "Organic Romaine Lettuce, 1 Each",
+      "wholeFoodsPrice": 3.69,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07812N26Q",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/817jgVBD70L._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:49:27.515Z",
+      "matchMethod": "normalized_loose_produce_name_basis",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "same loose produce name and selling basis"
+    },
+    {
       "productId": "73517",
       "sourceProductIds": [
         "73517"
@@ -2409,6 +2435,32 @@
       "matchScore": 0.9727,
       "matchMargin": 0.9727,
       "sizeEvidence": "2.3 oz = 2.3 oz"
+    },
+    {
+      "productId": "439841",
+      "sourceProductIds": [
+        "439841"
+      ],
+      "instacartName": "Pineapple",
+      "instacartSize": "",
+      "category": "Produce",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B07HHGK3TF",
+      "wholeFoodsTitle": "Pineapple, 1 Each",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07HHGK3TF",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71twrl8ehjL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:49:30.524Z",
+      "matchMethod": "normalized_loose_produce_name_basis",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "same loose produce name and selling basis"
     },
     {
       "productId": "17379091",
@@ -2619,6 +2671,33 @@
       "sizeEvidence": "10 oz = 10 oz"
     },
     {
+      "productId": "27573",
+      "sourceProductIds": [
+        "16914182",
+        "27573"
+      ],
+      "instacartName": "San Pellegrino Sparkling Natural Mineral Water",
+      "instacartSize": "33.8 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "asin": "B07PVYZBCF",
+      "wholeFoodsTitle": "S.Pellegrino Sparkling Natural Mineral Water 1L Glass Bottle",
+      "wholeFoodsPrice": 3.19,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07PVYZBCF",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61+0iaMHYdL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-19T00:45:56.220Z",
+      "matchMethod": "targeted_query_brand_name_size",
+      "matchScore": 0.71,
+      "matchMargin": 0.71,
+      "sizeEvidence": "33.8 fl oz = 1 l"
+    },
+    {
       "productId": "17074096",
       "sourceProductIds": [
         "17074096"
@@ -2638,7 +2717,7 @@
       "wholeFoodsPrice": 1.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B008QMZ1RG",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71RHApJY7CL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-19T00:05:16.023Z",
+      "capturedAt": "2026-07-19T00:45:56.220Z",
       "matchMethod": "targeted_query_brand_name_size",
       "matchScore": 0.825,
       "matchMargin": 0.825,
@@ -5484,6 +5563,32 @@
       "sizeEvidence": "1 ct = 1 ct"
     },
     {
+      "productId": "16616963",
+      "sourceProductIds": [
+        "16616963"
+      ],
+      "instacartName": "Organic Romaine Lettuce",
+      "instacartSize": "",
+      "category": "Produce",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B07812N26Q",
+      "wholeFoodsTitle": "Organic Romaine Lettuce, 1 Each",
+      "wholeFoodsPrice": 3.69,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07812N26Q",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/817jgVBD70L._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:49:27.515Z",
+      "matchMethod": "normalized_loose_produce_name_basis",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "same loose produce name and selling basis"
+    },
+    {
       "productId": "73517",
       "sourceProductIds": [
         "73517"
@@ -5664,6 +5769,32 @@
       "matchScore": 0.9727,
       "matchMargin": 0.9727,
       "sizeEvidence": "2.3 oz = 2.3 oz"
+    },
+    {
+      "productId": "439841",
+      "sourceProductIds": [
+        "439841"
+      ],
+      "instacartName": "Pineapple",
+      "instacartSize": "",
+      "category": "Produce",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B07HHGK3TF",
+      "wholeFoodsTitle": "Pineapple, 1 Each",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07HHGK3TF",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71twrl8ehjL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:49:30.524Z",
+      "matchMethod": "normalized_loose_produce_name_basis",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "same loose produce name and selling basis"
     },
     {
       "productId": "17379091",
@@ -5874,6 +6005,33 @@
       "sizeEvidence": "10 oz = 10 oz"
     },
     {
+      "productId": "27573",
+      "sourceProductIds": [
+        "16914182",
+        "27573"
+      ],
+      "instacartName": "San Pellegrino Sparkling Natural Mineral Water",
+      "instacartSize": "33.8 fl oz",
+      "category": "Beverages",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "asin": "B07PVYZBCF",
+      "wholeFoodsTitle": "S.Pellegrino Sparkling Natural Mineral Water 1L Glass Bottle",
+      "wholeFoodsPrice": 3.19,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B07PVYZBCF",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61+0iaMHYdL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-19T00:45:56.220Z",
+      "matchMethod": "targeted_query_brand_name_size",
+      "matchScore": 0.71,
+      "matchMargin": 0.71,
+      "sizeEvidence": "33.8 fl oz = 1 l"
+    },
+    {
       "productId": "17074096",
       "sourceProductIds": [
         "17074096"
@@ -5893,7 +6051,7 @@
       "wholeFoodsPrice": 1.99,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B008QMZ1RG",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71RHApJY7CL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-19T00:05:16.023Z",
+      "capturedAt": "2026-07-19T00:45:56.220Z",
       "matchMethod": "targeted_query_brand_name_size",
       "matchScore": 0.825,
       "matchMargin": 0.825,
@@ -9301,31 +9459,6 @@
       "sizeEvidence": "16 oz = 16 oz"
     },
     {
-      "productId": "186321",
-      "sourceProductIds": [
-        "186321"
-      ],
-      "instacartName": "SARATOGA Sparkling Spring Water, Glass Water Bottle, 28 Oz",
-      "instacartSize": "28 fl oz",
-      "category": "Beverages",
-      "storeIds": [
-        "pcc",
-        "qfc",
-        "safeway"
-      ],
-      "storeCount": 3,
-      "asin": "B01B6SHCKK",
-      "wholeFoodsTitle": "Sparkling Water Bottles - Carbonated Spring Bottled Water - Glass Bottles - 28 Fl Oz",
-      "wholeFoodsPrice": 3.29,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B01B6SHCKK",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61TiJ7WSGXL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-19T00:05:16.023Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.9,
-      "matchMargin": 0.15,
-      "sizeEvidence": "28 fl oz = 28 fl oz"
-    },
-    {
       "productId": "29697302",
       "sourceProductIds": [
         "29697302"
@@ -12624,7 +12757,7 @@
       "wholeFoodsPrice": 1.83,
       "wholeFoodsUrl": "https://www.amazon.com/dp/B005E0SLUW",
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/61y6Sf91FKL._AC_UL320_.jpg",
-      "capturedAt": "2026-07-19T00:05:16.023Z",
+      "capturedAt": "2026-07-19T00:45:56.220Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 1,
       "matchMargin": 0.325,
@@ -13539,7 +13672,7 @@
       "capturedAt": "2026-07-17T07:00:19.974Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.925,
-      "matchMargin": 0.1917,
+      "matchMargin": 0.925,
       "sizeEvidence": "28 fl oz = 28 fl oz"
     },
     {
@@ -15377,7 +15510,7 @@
       "capturedAt": "2026-07-19T00:05:14.010Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.7976,
-      "matchMargin": 0.7976,
+      "matchMargin": 0.6276,
       "sizeEvidence": "34 fl oz = 34 fl oz"
     },
     {
@@ -18116,29 +18249,6 @@
       "matchScore": 0.97,
       "matchMargin": 0.97,
       "sizeEvidence": "2.3 oz = 2.3 oz"
-    },
-    {
-      "productId": "17090525",
-      "sourceProductIds": [
-        "17090525"
-      ],
-      "instacartName": "Pineapple",
-      "instacartSize": "1 ct",
-      "category": "Produce",
-      "storeIds": [
-        "safeway"
-      ],
-      "storeCount": 1,
-      "asin": "B07HHGK3TF",
-      "wholeFoodsTitle": "Pineapple, 1 Each",
-      "wholeFoodsPrice": 3.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B07HHGK3TF",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71twrl8ehjL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:49:30.524Z",
-      "matchMethod": "normalized_loose_produce_name_basis",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "same loose produce name and selling basis"
     },
     {
       "productId": "20164671",

@@ -504,6 +504,15 @@ export function packagedProductVariantsCompatible(leftValue, rightValue) {
       states("diced tomatoes", "crushed tomatoes", "whole peeled tomatoes", "tomato sauce", "tomato paste"),
       /\btomato(?:es)?\b/,
     ),
+    stateClaimConflict(
+      leftText,
+      rightText,
+      aliases([
+        ["english", "english"],
+        ["seedless", "english"],
+      ]),
+      /\bcucumbers?\b/,
+    ),
     presenceConflict(leftText, rightText, /\bfire roasted\b/, /\btomato(?:es)?\b/),
     presenceConflict(leftText, rightText, /\bpetite\b/, /\btomato(?:es)?\b/),
     presenceConflict(leftText, rightText, /\bbasil\b/, /\b(?:soup|sauce|tomato(?:es)?)\b/),
