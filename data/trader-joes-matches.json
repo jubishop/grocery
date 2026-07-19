@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T01:14:08.830Z",
+  "generatedAt": "2026-07-19T02:29:17.915Z",
   "storeId": "traderjoes",
   "source": "traderjoes.com",
   "methodology": "Fully automatic strict Trader Joe's commodity crosswalk. Prepared, seasoned, mixed, novelty, and first-party-exclusive products are rejected before matching. Plain produce requires the same normalized variety, organic status, selling basis, and exact fixed package quantity when packaged. Raw meat and seafood require the same normalized raw cut, an explicit per-pound basis, and exact agreement on all protected production, cut, grade, frozen, and animal-raising claims. Eggs, dairy, baking staples, beans, grains, oils, salt, and plain cheese require an exact controlled commodity signature plus exact package quantity. A candidate is accepted only when it has strictly greater existing store coverage than every other matching canonical group; tied source candidates and duplicate target assignments are excluded automatically.",
@@ -7,14 +7,14 @@
     "capturedProducts": 391,
     "commodityEligible": 151,
     "excludedExclusiveOrPrepared": 240,
-    "accepted": 10,
-    "unmatchedEligible": 141,
+    "accepted": 11,
+    "unmatchedEligible": 140,
     "ambiguousSourceCandidates": 6,
     "ambiguousTargetAssignments": 0,
     "acceptedByFamily": {
       "beans": 1,
       "butter": 1,
-      "cheese": 0,
+      "cheese": 1,
       "eggs": 2,
       "flour": 1,
       "milk": 0,
@@ -353,6 +353,26 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "conventional|pasture-raised|not-free-range|large|brown|eggs; exact package quantity"
+    },
+    {
+      "productId": "203774",
+      "currentStoreCount": 1,
+      "currentStoreIds": [
+        "qfc"
+      ],
+      "traderJoesId": "081085",
+      "traderJoesTitle": "Shredded Mozzarella Cheese",
+      "traderJoesSize": "16 Oz",
+      "traderJoesPrice": 4.49,
+      "traderJoesUrl": "https://www.traderjoes.com/home/products/pdp/shredded-mozzarella-cheese-081085",
+      "capturedAt": "2026-07-18T20:53:50.847Z",
+      "commodityFamily": "cheese",
+      "canonicalName": "Tillamook Farmstyle Mozzarella Shredded Cheese, 16oz",
+      "canonicalSize": "454 g",
+      "matchMethod": "strict_generic_commodity_signature_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "conventional|mozzarella|||shredded||not-labeled-natural|cheese; exact package quantity"
     },
     {
       "productId": "2699539",

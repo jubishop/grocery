@@ -127,11 +127,72 @@ function queryHistory(queries) {
   return { targeted, normalized, key };
 }
 
+function searchQuery(item) {
+  const name = String(item.name ?? "").trim();
+  const size = String(item.size ?? "").trim();
+  if (!size) return name;
+  const normalize = (value) => String(value)
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9.]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+  const normalizedName = normalize(name);
+  const normalizedSize = normalize(size);
+  return normalizedName.endsWith(` ${normalizedSize}`) || normalizedName === normalizedSize
+    ? name
+    : `${name} ${size}`.trim();
+}
+
 const histories = {
   wholeFoods: queryHistory(wholeFoodsCapture.queries),
   safeway: queryHistory(safewayCapture.queries),
   qfc: queryHistory(qfcCapture.queries),
 };
+const capturedRecordsBySource = {
+  wholeFoods: new Map(wholeFoodsCapture.records.map((record) => [String(record.asin), record])),
+  safeway: new Map(safewayCapture.records.map((record) => [String(record.id), record])),
+  qfc: new Map(qfcCapture.records.map((record) => [String(record.id), record])),
+};
+const capturedRecordsByQuery = Object.fromEntries(
+  Object.entries(capturedRecordsBySource).map(([source, recordsById]) => {
+    const recordsByQuery = new Map();
+    for (const record of recordsById.values()) {
+      const queryKey = histories[source].key(record.query);
+      if (!queryKey) continue;
+      const records = recordsByQuery.get(queryKey) ?? [];
+      records.push(record);
+      recordsByQuery.set(queryKey, records);
+    }
+    for (const records of recordsByQuery.values()) {
+      records.sort((left, right) => (
+        String(right.capturedAt ?? "").localeCompare(String(left.capturedAt ?? ""))
+      ));
+    }
+    return [source, recordsByQuery];
+  }),
+);
+
+function capturedCandidates(source, query, candidateLimit = 8) {
+  const resultIds = query?.asins ?? query?.ids ?? [];
+  const capturedRecords = resultIds.length
+    ? resultIds.map((id) => capturedRecordsBySource[source].get(String(id)))
+    : capturedRecordsByQuery[source].get(histories[source].key(query?.query)) ?? [];
+  return capturedRecords
+    .filter(Boolean)
+    .slice(0, candidateLimit)
+    .map((record) => ({
+      id: String(record.asin ?? record.id),
+      title: record.title ?? record.name ?? "",
+      size: record.detailSize ?? record.size ?? "",
+      price: record.price ?? null,
+      priceBasis: record.priceBasis ?? "per item",
+      unitText: record.unitText ?? "",
+      detailEvidenceCaptured: Boolean(record.detailText || record.qualifierText || record.detailSize),
+      productUrl: record.productUrl ?? "",
+    }));
+}
 
 function sourceTargets(source, matchedIds) {
   const history = histories[source];
@@ -145,7 +206,7 @@ function sourceTargets(source, matchedIds) {
       && !isSourceExclusiveProduct("instacart", item)
     ))
     .map((item) => {
-      const query = `${item.name} ${item.size}`.trim();
+      const query = searchQuery(item);
       const prior = history.targeted.get(String(item.productId))
         ?? history.normalized.get(history.key(query));
       return {
@@ -154,6 +215,7 @@ function sourceTargets(source, matchedIds) {
         previouslyTargeted: Boolean(prior),
         lastAttemptedAt: prior?.capturedAt ?? null,
         priorResultCount: prior?.count ?? null,
+        capturedCandidates: capturedCandidates(source, prior),
         priority: (
           item.storeCount * 100
           + (prior ? 0 : 25)
@@ -178,7 +240,7 @@ const instacartMissingStore = groupItems
   .map((item) => ({
     ...item,
     missingStoreId: storeIds.find((storeId) => !item.storeIds.includes(storeId)),
-    query: `${item.name} ${item.size}`.trim(),
+    query: searchQuery(item),
   }))
   .sort((left, right) => left.missingStoreId.localeCompare(right.missingStoreId) || left.name.localeCompare(right.name))
   .slice(0, limit);
@@ -200,7 +262,7 @@ const coreFiveGaps = groupItems
     && !isSourceExclusiveProduct("instacart", item)
   ))
   .map((item) => {
-    const query = `${item.name} ${item.size}`.trim();
+    const query = searchQuery(item);
     const missingSources = [...coreSourceSets.entries()]
       .filter(([, matchedIds]) => !matchedIds.has(item.productId))
       .map(([source]) => source);
@@ -212,6 +274,7 @@ const coreFiveGaps = groupItems
         previouslyTargeted: Boolean(prior),
         lastAttemptedAt: prior?.capturedAt ?? null,
         priorResultCount: prior?.count ?? null,
+        capturedCandidates: capturedCandidates(coreHistoryKeys.get(source), prior),
       }];
     }));
     const untriedMissingSources = missingSources.filter((source) => (

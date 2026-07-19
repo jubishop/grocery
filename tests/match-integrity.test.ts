@@ -66,6 +66,7 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     assert.equal(new Set(matches.map((match) => match.productId)).size, matches.length);
     assert.equal(new Set(matches.map((match) => match[externalKey === "id" ? "directId" : "asin"])).size, matches.length);
     const sourceById = new Map(sourceRecords.map((record) => [record[externalKey], record]));
+    const usesCapturedDetailEvidence = sourceName !== "amazon_whole_foods";
 
     for (const match of matches) {
       assert.doesNotMatch(match.matchMethod, /human|manual|override|review/i);
@@ -98,8 +99,8 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
           )
           && numericProductVariantsCompatible(candidate.name, source.title)
           && packagedProductVariantsCompatible(
-            `${candidate.name} ${candidate.size ?? ""} ${productUrlVariantHints(candidate.productUrl)}`,
-            `${source.title} ${source.size ?? ""} ${productUrlVariantHints(source.productUrl)}`,
+            `${candidate.name} ${candidate.size ?? ""} ${usesCapturedDetailEvidence ? candidate.qualifierText ?? "" : ""} ${productUrlVariantHints(candidate.productUrl)}`,
+            `${source.title} ${source.size ?? ""} ${usesCapturedDetailEvidence ? source.qualifierText ?? "" : ""} ${productUrlVariantHints(source.productUrl)}`,
           )
         )));
         assert.equal(
@@ -184,6 +185,7 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     ["16290443", "B0GFXLR11T"],
     ["134238", "B084114YHX"],
     ["22327171", "B00NWJE9NK"],
+    ["19316696", "B0CJ1SPF3V"],
   ]) {
     assert.equal(
       wholeFoodsMatches.allMatches.some((match: Record<string, string>) => (
@@ -199,6 +201,11 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     ["40439735", "970784648"],
     ["30845593", "971151053"],
     ["29132", "960076404"],
+    ["82281", "121300144"],
+    ["56401", "184810161"],
+    ["17283614", "960287585"],
+    ["22133943", "970524163"],
+    ["21351192", "960564566"],
   ]) {
     assert.ok(
       safewayMatches.matches.some((match: Record<string, string>) => (
@@ -219,6 +226,9 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
     ["18425131", "970689334"],
     ["3300935", "184650023"],
     ["74505", "960276115"],
+    ["17276896", "960568556"],
+    ["3310488", "129800007"],
+    ["38360", "960051609"],
   ]) {
     assert.equal(
       safewayMatches.matches.some((match: Record<string, string>) => (
@@ -228,6 +238,24 @@ test("generated crosswalks are one-to-one and reproduce their automatic evidence
       `${productId} must not use rejected Safeway variant ${rejectedDirectId}`,
     );
   }
+  assert.ok(
+    qfcMatches.matches.some((match: Record<string, string>) => (
+      match.productId === "24060" && match.directId === "0007101204105"
+    )),
+    "Verified QFC product-detail qualifiers should recover the abbreviated King Arthur flour card",
+  );
+  assert.ok(
+    qfcMatches.matches.some((match: Record<string, string>) => (
+      match.productId === "16290425" && match.directId === "0001356230215"
+    )),
+    "QFC one-to-one assignment should retain the exact Annie's Cheddar Bunnies match",
+  );
+  assert.ok(
+    qfcMatches.matches.some((match: Record<string, string>) => (
+      match.productId === "41098" && match.directId === "0005160000001"
+    )),
+    "QFC's FO abbreviation should reproduce the exact 10 fl oz Lea & Perrins match",
+  );
   assert.equal(
     qfcMatches.matches.some((match: Record<string, string>) => (
       match.productId === "25601" && match.directId === "0003997802330"
@@ -284,7 +312,13 @@ test("published comparisons never mix selling bases", async () => {
 
 test("live produce and meat captures produce strict cross-store comparisons", async () => {
   const site = await data("site-data.json");
+  const safewayCapture = await data("safeway-direct-capture-checkpoint.json");
   const byId = new Map(site.products.map((product: any) => [product.id, product]));
+  assert.equal(
+    safewayCapture.records.find((record: any) => record.id === "188100054")?.category,
+    "Meat & Seafood",
+    "Unrelated targeted searches must not downgrade a raw per-pound meat record",
+  );
 
   const navelOrange: any = byId.get("3401790");
   assert.deepEqual(Object.keys(navelOrange.prices).sort(), ["metro", "pcc", "safeway"]);

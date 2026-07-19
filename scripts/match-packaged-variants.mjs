@@ -1,13 +1,14 @@
 function normalizedText(value) {
   return String(value ?? "")
+    .replace(/[®™©]/g, "")
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[®™©]/g, "")
     .replace(/&/g, " and ")
     .replace(/×/g, " x ")
     .replace(/[’']/g, "")
     .toLowerCase()
     .replace(/\bunsweetned\b/g, "unsweetened")
+    .replace(/\bwhite kidney beans?\b/g, "cannellini beans")
     .replace(/\bapple cider vinegar\b/g, "cider vinegar")
     .replace(/[^a-z0-9]+/g, " ")
     .trim()
@@ -146,6 +147,8 @@ const asymmetricVariantGuards = [
   { pattern: /\bchip\b/, context: /\bice cream\b/ },
   { pattern: /\bdill\b/, context: /\b(?:tartar|sauce)\b/ },
   { pattern: /\bturkey\b/, context: /\bchili\b/ },
+  { pattern: /\b(?:baconator|bacon)\b/, context: /\bchili\b/ },
+  { pattern: /\bbutter chicken\b/, context: /\b(?:broth|stock)\b/ },
   { pattern: /\bgreen\b/, context: /\bolives?\b/ },
   { pattern: /\btoffee\b/, context: /\bchocolate\b/ },
   { pattern: /\bmexican style\b/, context: /\bsour cream\b/ },
@@ -193,6 +196,7 @@ const asymmetricVariantGuards = [
   { pattern: /\bground pepper\b/, context: /\b(?:chip|chips|crisp|crisps)\b/ },
   { pattern: /\bprobiotic\b/, context: /\btea\b/ },
   { pattern: /\bstring cheese\b/, context: /\b(?:cheese|mozzarella)\b/ },
+  { pattern: /\bsmoked\b/, context: /\b(?:cheese|mozzarella)\b/ },
   { pattern: /\bcheese\b/, context: /\b(?:jerky|meat)\s+sticks?\b|\bsticks?\b.*\b(?:jerky|meat|beef|turkey|pork)\b/ },
   { pattern: /\bbitches brew\b/, context: /\b(?:coffee|cold brew|nitro)\b/ },
   { pattern: /\b(?:double belgian|belgian)\b/, context: /\b(?:ice cream|chocolate)\b/ },
@@ -501,7 +505,17 @@ export function packagedProductVariantsCompatible(leftValue, rightValue) {
     stateClaimConflict(
       leftText,
       rightText,
-      states("diced tomatoes", "crushed tomatoes", "whole peeled tomatoes", "tomato sauce", "tomato paste"),
+      aliases([
+        ["diced tomatoes", "diced tomatoes"],
+        ["tomatoes diced", "diced tomatoes"],
+        ["crushed tomatoes", "crushed tomatoes"],
+        ["tomatoes crushed", "crushed tomatoes"],
+        ["whole peeled tomatoes", "whole peeled tomatoes"],
+        ["peeled whole tomatoes", "whole peeled tomatoes"],
+        ["tomatoes whole peeled", "whole peeled tomatoes"],
+        ["tomato sauce", "tomato sauce"],
+        ["tomato paste", "tomato paste"],
+      ]),
       /\btomato(?:es)?\b/,
     ),
     stateClaimConflict(
@@ -636,6 +650,12 @@ export function packagedProductVariantsCompatible(leftValue, rightValue) {
         ["green chili", "green"],
       ]),
       /\b(?:habanero|hot sauce)\b/,
+    ),
+    stateClaimConflict(
+      leftText,
+      rightText,
+      states("mild", "medium", "hot"),
+      /\b(?:chiles?|chilis?|chilies|jalapenos?|enchilada|salsa)\b/,
     ),
     stateConflict(
       leftText,
@@ -791,6 +811,8 @@ export function packagedProductVariantsCompatible(leftValue, rightValue) {
         ["apricot", "apricot"],
         ["raisin", "raisin"],
         ["butterscotch", "butterscotch"],
+        ["butter crunch", "butter crunch"],
+        ["snickerdoodle", "snickerdoodle"],
         ["cinnamon", "cinnamon"],
         ["rosemary", "rosemary"],
         ["cracked pepper", "cracked pepper"],
@@ -838,6 +860,7 @@ export function packagedProductVariantsCompatible(leftValue, rightValue) {
         ["caramel", "caramel"],
         ["raisins", "raisin"],
         ["mixed berry", "mixed berry"],
+        ["very berry", "very berry"],
         ["bbq", "barbecue"],
         ["barbecue", "barbecue"],
         ["barbeque", "barbecue"],
@@ -857,6 +880,37 @@ export function packagedProductVariantsCompatible(leftValue, rightValue) {
       ]),
       /\b(?:cheese|cheddar|chao)\b/,
     ),
+    stateClaimConflict(
+      leftText,
+      rightText,
+      aliases([
+        ["black", "black"],
+        ["black beans", "black"],
+        ["black bean", "black"],
+        ["white", "white"],
+        ["white beans", "white"],
+        ["white bean", "white"],
+        ["pinto", "pinto"],
+        ["pinto beans", "pinto"],
+        ["pinto bean", "pinto"],
+        ["kidney", "kidney"],
+        ["kidney beans", "kidney"],
+        ["kidney bean", "kidney"],
+        ["cannellini", "cannellini"],
+        ["cannellini beans", "cannellini"],
+        ["cannellini bean", "cannellini"],
+        ["garbanzo", "garbanzo"],
+        ["garbanzo beans", "garbanzo"],
+        ["garbanzo bean", "garbanzo"],
+        ["chickpeas", "garbanzo"],
+        ["chickpea", "garbanzo"],
+        ["navy beans", "navy"],
+        ["navy bean", "navy"],
+        ["great northern beans", "great northern"],
+        ["great northern bean", "great northern"],
+      ]),
+      /\bbeans?\b/,
+    ),
     stateConflict(
       leftText,
       rightText,
@@ -874,6 +928,31 @@ export function packagedProductVariantsCompatible(leftValue, rightValue) {
         ["log", "log"],
       ]),
       /\bmozzarella\b/,
+    ),
+    stateClaimConflict(
+      leftText,
+      rightText,
+      aliases([
+        ["baby spinach", "spinach"],
+        ["spinach", "spinach"],
+        ["baby arugula", "arugula"],
+        ["arugula", "arugula"],
+        ["spring mix", "spring mix"],
+        ["supergreens", "supergreens"],
+      ]),
+      /\b(?:salad|greens?|spinach|arugula|spring mix)\b/,
+    ),
+    stateClaimConflict(
+      leftText,
+      rightText,
+      states("original", "natural", "creamy"),
+      /\b(?:sunbutter|sunflower seed butter|sunflower butter)\b/,
+    ),
+    stateClaimConflict(
+      leftText,
+      rightText,
+      states("caesar supreme", "chopped caesar"),
+      /\b(?:caesar|salad kit)\b/,
     ),
     stateConflict(leftText, rightText, states("lightly salted", "salted")),
     presenceConflict(leftText, rightText, /\bair fried\b/, /\b(?:chip|chips)\b/),

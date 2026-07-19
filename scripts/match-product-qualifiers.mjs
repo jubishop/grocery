@@ -10,11 +10,23 @@ function qualifierText(value) {
 
 export function protectedQualifierClaims(value) {
   const normalized = qualifierText(value);
+  // "Organic Girl" is a brand name, not by itself a product-level organic
+  // claim. Remove one brand occurrence so a title still needs a separate
+  // "organic" token (for example, "Organic Girl Organic Baby Spinach") to
+  // qualify as organic.
   const productLevelOrganicText = normalized
+    .replace(/\borganic\s*girl\b/, "brand")
     .replace(/\bmade\s+with\s+organic\b/g, "made with")
     .replace(/\b\d+(?:\.\d+)?\s*(?:percent\s*)?organic\s+ingredients?\b/g, " ")
     .replace(/\borganic\s+ingredients?\b/g, " ");
-  const leanMatch = normalized.match(/\b(\d{2})\s*(?:percent\s*)?lean\b|\b(\d{2})\s+\d{1,2}\b/);
+  const explicitLeanMatch = normalized.match(/\b(\d{2})\s*(?:percent\s*)?lean\b/);
+  const leanRatioMatch = [...normalized.matchAll(/\b(\d{2})\s+(\d{1,2})\b/g)]
+    .find((match) => {
+      const lean = Number(match[1]);
+      const fat = Number(match[2]);
+      return lean >= 50 && fat > 0 && lean + fat === 100;
+    });
+  const leanPercent = explicitLeanMatch?.[1] ?? leanRatioMatch?.[1] ?? null;
   const gradeMatch = normalized.match(/\busda\s*(prime|choice|select)\b/)
     ?? (/\bbeef\b/.test(normalized) ? normalized.match(/\b(prime|choice)\b/) : null);
   const frozenState = /\bnever frozen\b/.test(normalized)
@@ -64,7 +76,7 @@ export function protectedQualifierClaims(value) {
         ? "skin on"
         : null,
     frozenState,
-    leanPercent: leanMatch?.[1] ?? leanMatch?.[2] ?? null,
+    leanPercent,
     grade: gradeMatch?.[1] ?? null,
     angus: /\bangus\b/.test(normalized),
     wagyu: /\bwagyu\b/.test(normalized),

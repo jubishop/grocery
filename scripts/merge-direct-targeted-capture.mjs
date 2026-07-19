@@ -2,6 +2,8 @@ import { readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { looseMeatKey } from "./match-loose-meat.mjs";
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const supportedStores = new Map([
   ["safeway", "safeway.com"],
@@ -71,6 +73,9 @@ for (const query of incoming.queries ?? []) {
 
 const records = [...(checkpoint.records ?? [])];
 const recordIndex = new Map(records.map((record, index) => [String(record.id), index]));
+const isCommodityCategory = (category) => (
+  /^(?:produce|meat\s*(?:&|and)\s*seafood)$/i.test(String(category ?? "").trim())
+);
 for (const incomingRecord of incoming.records ?? []) {
   if (!incomingRecord.id) throw new Error("Incoming direct-store record is missing an id");
   if (incomingRecord.storeId && incomingRecord.storeId !== storeId) {
@@ -88,12 +93,28 @@ for (const incomingRecord of incoming.records ?? []) {
   } = incomingRecord;
   const id = String(sourceRecord.id);
   const existingIndex = recordIndex.get(id);
+  const existingRecord = existingIndex == null ? null : records[existingIndex];
   const normalizedRecord = {
-    ...(existingIndex == null ? {} : records[existingIndex]),
+    ...(existingRecord ?? {}),
     ...sourceRecord,
     storeId,
     source: expectedSource,
   };
+  if (
+    existingRecord
+    && isCommodityCategory(existingRecord.category)
+    && !isCommodityCategory(sourceRecord.category)
+  ) {
+    // Targeted searches can return unrelated products. Do not let a later
+    // sauce or snack query erase a previously captured produce/meat category.
+    normalizedRecord.category = existingRecord.category;
+  }
+  if (looseMeatKey({ ...normalizedRecord, category: "Meat & Seafood" })) {
+    // A new unrelated search can be the first time a raw per-pound cut appears.
+    // Its title, basis, and protected preparation guard are stronger category
+    // evidence than the category of the query that happened to return it.
+    normalizedRecord.category = "Meat & Seafood";
+  }
   if (existingIndex == null) {
     recordIndex.set(id, records.length);
     records.push(normalizedRecord);

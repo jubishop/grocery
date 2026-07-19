@@ -154,6 +154,22 @@ test("ingredient-level organic wording is not promoted to a whole-product organi
     protectedQualifierClaims("Amy's Organic Macaroni and Cheese").organic,
     true,
   );
+  assert.equal(
+    protectedQualifierClaims("Organic Girl Baby Arugula").organic,
+    false,
+  );
+  assert.equal(
+    protectedQualifierClaims("Organic Girl Organic Baby Spinach").organic,
+    true,
+  );
+  assert.equal(
+    protectedQualifierClaims("Field Roast Smoked Apple Sage Sausage - 12.9 Oz").leanPercent,
+    null,
+  );
+  assert.equal(
+    protectedQualifierClaims("80/20 Ground Beef").leanPercent,
+    "80",
+  );
 });
 
 test("cross-source matching protects dietary and formulation variants", () => {
@@ -253,6 +269,20 @@ test("packaged product variants reject flavor, protein, format, and preparation 
   );
   assert.equal(
     packagedProductVariantsCompatible(
+      "Cento All Purpose Crushed Tomatoes",
+      "Cento Tomatoes Crushed All Purpose",
+    ),
+    true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Eden Foods Cannellini White Kidney Beans",
+      "Eden Foods Organic White Kidney Beans",
+    ),
+    true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
       "Muir Glen Organic Diced Tomatoes",
       "Muir Glen Organic Petite Diced Tomatoes",
     ),
@@ -313,12 +343,23 @@ test("packaged product variants reject flavor, protein, format, and preparation 
     ["NILLA Vanilla Wafers", "NILLA Mini Vanilla Wafers"],
     ["Häagen-Dazs Coffee Ice Cream", "Häagen-Dazs Coffee Chip Ice Cream"],
     ["Hormel Chili with Beans", "Hormel Turkey Chili with Beans"],
+    ["Wendy's Baconator Chili With Beans, Beef & Bacon", "Wendy's Chili With Beans"],
+    ["Kettle & Fire Classic Chicken Bone Broth", "Kettle & Fire Butter Chicken Bone Broth"],
+    ["S&W White Chili Beans", "S&W Premium Chili Beans"],
+    ["S&W Black Chili Beans", "S&W White Chili Beans"],
+    ["BelGioioso Fresh Mozzarella Cheese Ball", "BelGioioso Smoked Fresh Mozzarella Cheese Ball"],
+    ["Organic Girl Baby Spinach & Arugula", "Organic Girl Baby Arugula"],
+    ["SunButter Original Sunflower Seed Butter", "SunButter Natural Sunflower Butter"],
+    ["Fresh Express Caesar Supreme Salad Kit", "Fresh Express Chopped Caesar Salad Kit"],
     ["Celestial Seasonings Throat Coat Tea", "Celestial Seasonings Eucalyptus Throat Coat Tea"],
     ["Jell-O Vanilla Pudding", "Jell-O French Vanilla Pudding"],
     ["Betty Crocker Chocolate Chip Cookie Mix", "Betty Crocker Oatmeal Chocolate Chip Cookie Mix"],
     ["Mountain Dew Zero Sugar Soda", "Mountain Dew Baja Blast Zero Sugar Soda"],
     ["Eden Foods Organic Pumpkin Seeds", "Eden Foods Organic Spicy Pumpkin Seeds"],
     ["Dandies Vegan Vanilla Marshmallows", "Dandies Vegan Vanilla Mini Marshmallows"],
+    ["Tate's Butter Crunch Cookies", "Tate's Snickerdoodle Cookies"],
+    ["Ortega Fire Roasted Hot Diced Green Chiles", "Ortega Fire Roasted Diced Green Chiles"],
+    ["Gerber Very Berry Fruit and Veggie Melts", "Gerber Fruit and Veggie Melts"],
     ["Bumble Bee Solid White Albacore Tuna", "Bumble Bee Solid White Albacore Tuna in Vegetable Oil"],
     ["Häagen-Dazs Chocolate Chip Ice Cream", "Häagen-Dazs Chocolate Chip Cookie Dough Ice Cream"],
     ["Yogi Egyptian Licorice Tea", "Yogi Egyptian Licorice Mint Tea"],

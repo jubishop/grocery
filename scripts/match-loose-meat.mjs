@@ -66,9 +66,9 @@ const singularTokens = new Map([
 
 function plain(value) {
   return String(value ?? "")
+    .replace(/[®™©]/g, "")
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[®™©]/g, "")
     .replace(/[’']/g, "")
     .toLowerCase();
 }

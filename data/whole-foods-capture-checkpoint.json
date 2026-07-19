@@ -1,6 +1,6 @@
 {
   "startedAt": "2026-07-17T03:23:07.427Z",
-  "updatedAt": "2026-07-19T00:45:56.220Z",
+  "updatedAt": "2026-07-19T02:14:46.885Z",
   "source": "Amazon Whole Foods Market",
   "deliveryArea": "West Seattle, Seattle, WA 98116",
   "records": [
@@ -5706,15 +5706,15 @@
     },
     {
       "asin": "B006LRMI5G",
-      "brand": "Tate's Bake Shop Gluten Free Chocolate Chip Cookies, Gluten Free Cookies, 7 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/712J631nE+L._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tate's Bake Shop Gluten Free Chocolate Chip Cookies, Gluten Free Cookies, 7 oz",
       "productUrl": "https://www.amazon.com/dp/B006LRMI5G",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T18:30:03.219Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B006M4HU2O",
@@ -7434,15 +7434,15 @@
     },
     {
       "asin": "B00EQD66ZU",
-      "brand": "Tate's Bake Shop Double Chocolate Chip Cookies, 7 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/81GXxl57m8L._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tate's Bake Shop Double Chocolate Chip Cookies, 7 oz",
       "productUrl": "https://www.amazon.com/dp/B00EQD66ZU",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B00EQD8022",
@@ -12918,15 +12918,15 @@
     },
     {
       "asin": "B06XZM52NQ",
-      "brand": "Tate's Bake Shop, Chocolate Chip Cookies, 7 Ounce",
-      "imageUrl": "https://m.media-amazon.com/images/I/71odot8zmpL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tate's Bake Shop, Chocolate Chip Cookies, 7 Ounce",
       "productUrl": "https://www.amazon.com/dp/B06XZM52NQ",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T18:30:03.219Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B06Y2CFX49",
@@ -13578,15 +13578,15 @@
     },
     {
       "asin": "B073DH2R1F",
-      "brand": "Tate's Bake Shop Coconut Crisp Cookies, 7 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/71h5gTseKAL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tate's Bake Shop Coconut Crisp Cookies, 7 oz",
       "productUrl": "https://www.amazon.com/dp/B073DH2R1F",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B073HDL7C4",
@@ -17550,15 +17550,15 @@
     },
     {
       "asin": "B078K4PY96",
-      "brand": "Tates Bake Shop Oatmeal Raisin Cookies, 7 OZ",
-      "imageUrl": "https://m.media-amazon.com/images/I/81vjbPeleEL._AC_UL320_.jpg",
+      "brand": "tates",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tates Bake Shop Oatmeal Raisin Cookies, 7 OZ",
       "productUrl": "https://www.amazon.com/dp/B078K4PY96",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B078K4XDCX",
@@ -17598,15 +17598,15 @@
     },
     {
       "asin": "B078K5VT3Z",
-      "brand": "Tates Bake Shop Chocolate Chip Walnut Cookies, 7 OZ",
-      "imageUrl": "https://m.media-amazon.com/images/I/719E2vl-Y-L._AC_UL320_.jpg",
+      "brand": "tates",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tates Bake Shop Chocolate Chip Walnut Cookies, 7 OZ",
       "productUrl": "https://www.amazon.com/dp/B078K5VT3Z",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B078K66KLK",
@@ -18390,15 +18390,15 @@
     },
     {
       "asin": "B079Z99JKW",
-      "brand": "Tate's Bake Shop Tiny Chocolate Chip Cookies, 1 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/91Dqo2tJyaL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 1.49,
       "title": "Tate's Bake Shop Tiny Chocolate Chip Cookies, 1 oz",
       "productUrl": "https://www.amazon.com/dp/B079Z99JKW",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B079ZLV3VC",
@@ -24688,15 +24688,15 @@
     },
     {
       "asin": "B083LL79RJ",
-      "brand": "Tate's Bake Shop Lemon Cookies, 7 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/71PNiS9hGpL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tate's Bake Shop Lemon Cookies, 7 oz",
       "productUrl": "https://www.amazon.com/dp/B083LL79RJ",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B083PY9YWG",
@@ -25779,16 +25779,28 @@
       "capturedAt": "2026-07-17T06:01:34.282Z"
     },
     {
+      "asin": "B089WHVLNV",
+      "brand": "whole",
+      "imageUrl": "",
+      "price": 6.49,
+      "productUrl": "https://www.amazon.com/dp/B089WHVLNV",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "title": "Whole Foods Market, Cookie Chocolate Chip Mini 18 Count, 12 Ounce",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
+      "category": "Snacks & Candy",
+      "capturedAt": "2026-07-19T02:14:46.885Z"
+    },
+    {
       "asin": "B089WHWTN1",
-      "brand": "Whole Foods Market, Cookie Chocolate Chip 6 Count, 12.6 Ounce",
-      "imageUrl": "https://m.media-amazon.com/images/I/71PSGkYX-vL._AC_UL320_.jpg",
+      "brand": "whole",
+      "imageUrl": "",
       "price": 6.49,
       "title": "Whole Foods Market, Cookie Chocolate Chip 6 Count, 12.6 Ounce",
       "productUrl": "https://www.amazon.com/dp/B089WHWTN1",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B08B4D3C8N",
@@ -28073,6 +28085,18 @@
       "query": "Franz Gluten Free Mountain White Bread 18 oz",
       "category": "Bakery & Bread",
       "capturedAt": "2026-07-17T18:29:32.875Z"
+    },
+    {
+      "asin": "B08XNKSWBY",
+      "brand": "matt's",
+      "imageUrl": "",
+      "price": 4.99,
+      "productUrl": "https://www.amazon.com/dp/B08XNKSWBY",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "title": "Matt's Bakery | Chocolate Chip Cookies | Soft-Baked, Non-GMO, All-Natural Ingredients; Single Pack of Cookies (10.5oz)",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
+      "category": "Snacks & Candy",
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B08XPNCGHS",
@@ -34904,15 +34928,15 @@
     },
     {
       "asin": "B0C7D4ZMHM",
-      "brand": "Tate's Bake Shop Salted Caramel Chocolate Chip Cookies, 6.5 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/81vjbyWDu4L._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tate's Bake Shop Salted Caramel Chocolate Chip Cookies, 6.5 oz",
       "productUrl": "https://www.amazon.com/dp/B0C7D4ZMHM",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B0C8797YN3",
@@ -35564,15 +35588,15 @@
     },
     {
       "asin": "B0CJ1SPF3V",
-      "brand": "Tate's Bake Shop Snickerdoodle Cookies, 7 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/71cJUVQBZgL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 6.79,
       "title": "Tate's Bake Shop Snickerdoodle Cookies, 7 oz",
       "productUrl": "https://www.amazon.com/dp/B0CJ1SPF3V",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B0CJ1WBJ9H",
@@ -35588,27 +35612,27 @@
     },
     {
       "asin": "B0CJ1WR1HW",
-      "brand": "Tate's Bake Shop Tiny Chocolate Chip Cookies, 5.5 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/71Ljg8JLRoL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 7.49,
       "title": "Tate's Bake Shop Tiny Chocolate Chip Cookies, 5.5 oz",
       "productUrl": "https://www.amazon.com/dp/B0CJ1WR1HW",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B0CJ238XC3",
-      "brand": "Tate's Bake Shop Tiny Snickerdoodle Cookies, 5.5 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/71ROFnWhmwL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 7.49,
       "title": "Tate's Bake Shop Tiny Snickerdoodle Cookies, 5.5 oz",
       "productUrl": "https://www.amazon.com/dp/B0CJ238XC3",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B0CJ2SDHWC",
@@ -40088,27 +40112,27 @@
     },
     {
       "asin": "B0DGVRKCLC",
-      "brand": "Tate's Bake Shop Soft Baked Cookies, Chocolate Chip, 8 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/815j40622hL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 7.49,
       "title": "Tate's Bake Shop Soft Baked Cookies, Chocolate Chip, 8 oz",
       "productUrl": "https://www.amazon.com/dp/B0DGVRKCLC",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B0DGW4DCLS",
-      "brand": "Tate's Bake Shop Soft Baked Cookies, Dark Chocolate Chunk, 8 oz",
-      "imageUrl": "https://m.media-amazon.com/images/I/81qR-YJSEsL._AC_UL320_.jpg",
+      "brand": "tate's",
+      "imageUrl": "",
       "price": 7.49,
       "title": "Tate's Bake Shop Soft Baked Cookies, Dark Chocolate Chunk, 8 oz",
       "productUrl": "https://www.amazon.com/dp/B0DGW4DCLS",
-      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz%207%20oz&i=wholefoods&rh=n%3A18473610011",
-      "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",
+      "searchUrl": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
       "category": "Snacks & Candy",
-      "capturedAt": "2026-07-17T19:15:23.563Z"
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "asin": "B0DGY6R58H",
@@ -57333,6 +57357,33 @@
       "count": 32,
       "url": "https://www.amazon.com/s?k=Tate's%20Bake%20Shop&i=wholefoods&rh=n%3A18473610011",
       "capturedAt": "2026-07-17T03:26:27.436Z"
+    },
+    {
+      "query": "TATE'S Chocolate Chip Cookies 7 oz",
+      "targetProductId": "3239255",
+      "category": "Targeted current four-store gap",
+      "count": 17,
+      "asins": [
+        "B06XZM52NQ",
+        "B00EQD66ZU",
+        "B078K5VT3Z",
+        "B006LRMI5G",
+        "B0DGVRKCLC",
+        "B079Z99JKW",
+        "B0C7D4ZMHM",
+        "B0CJ1WR1HW",
+        "B078K4PY96",
+        "B0DGW4DCLS",
+        "B083LL79RJ",
+        "B089WHWTN1",
+        "B073DH2R1F",
+        "B08XNKSWBY",
+        "B089WHVLNV",
+        "B0CJ1SPF3V",
+        "B0CJ238XC3"
+      ],
+      "url": "https://www.amazon.com/s?k=TATE'S%20Chocolate%20Chip%20Cookies%207%20oz&i=wholefoods&rh=n%3A18473610011",
+      "capturedAt": "2026-07-19T02:14:46.885Z"
     },
     {
       "query": "TATE'S Chocolate Chip Cookies 7 oz 7 oz",

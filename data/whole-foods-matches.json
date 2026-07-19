@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-19T01:14:01.683Z",
+  "generatedAt": "2026-07-19T02:29:21.069Z",
   "methodology": "Fully automatic conservative crosswalk requiring normalized brand and product agreement, equivalent package quantity and numeric variants, agreement on protected product claims, and no conflicting packaged-product state. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Exact product-targeted searches may accept only their first priced result after all automatic compatibility gates pass. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Retailer-exclusive house brands and ambiguous candidates are excluded automatically.",
   "counts": {
     "instacartAllFour": 468,
-    "wholeFoodsCaptured": 3848,
-    "wholeFoodsMatchingCandidates": 3378,
-    "accepted": 128,
-    "acceptedAnyStoreCount": 653,
+    "wholeFoodsCaptured": 3850,
+    "wholeFoodsMatchingCandidates": 3379,
+    "accepted": 134,
+    "acceptedAnyStoreCount": 678,
     "acceptedByStoreCount": {
-      "1": 219,
-      "2": 178,
-      "3": 128,
-      "4": 128
+      "1": 225,
+      "2": 183,
+      "3": 136,
+      "4": 134
     }
   },
   "matches": [
@@ -246,7 +246,7 @@
       "capturedAt": "2026-07-17T04:11:51.427Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.76,
-      "matchMargin": 0.085,
+      "matchMargin": 0.76,
       "sizeEvidence": "14.7 oz = 14.7 oz"
     },
     {
@@ -272,7 +272,7 @@
       "capturedAt": "2026-07-18T21:36:51.134Z",
       "matchMethod": "targeted_query_brand_name_size",
       "matchScore": 0.8333,
-      "matchMargin": 0.4333,
+      "matchMargin": 0.8333,
       "sizeEvidence": "8.5 oz = 8.4 oz"
     },
     {
@@ -1342,6 +1342,32 @@
       "sizeEvidence": "24 oz = 24 oz"
     },
     {
+      "productId": "29430",
+      "sourceProductIds": [
+        "29430"
+      ],
+      "instacartName": "Field Roast Grain Meat Sausages, Vegetarian, Italian",
+      "instacartSize": "368 g",
+      "category": "Deli",
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc",
+        "pcc"
+      ],
+      "storeCount": 4,
+      "asin": "B002DQP04U",
+      "wholeFoodsTitle": "Field Roast Italian Sausage, 12.95 OZ",
+      "wholeFoodsPrice": 7.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B002DQP04U",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81pypc8UkQL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:43:08.356Z",
+      "matchMethod": "exact_query_brand_name_size",
+      "matchScore": 0.8714,
+      "matchMargin": 0.8714,
+      "sizeEvidence": "368 g = 12.95 oz"
+    },
+    {
       "productId": "56401",
       "sourceProductIds": [
         "56401"
@@ -1446,6 +1472,32 @@
       "sizeEvidence": "16 fl oz = 16 fl oz"
     },
     {
+      "productId": "16290814",
+      "sourceProductIds": [
+        "16290814"
+      ],
+      "instacartName": "HATCH Diced Green Chili Mild",
+      "instacartSize": "4 oz",
+      "category": "Condiments & Sauces",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B005BD4ZJS",
+      "wholeFoodsTitle": "Hatch Chili Company Mild Diced Chiles, 4 OZ",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B005BD4ZJS",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81lJyyzi9HL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T06:28:53.617Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.76,
+      "matchMargin": 0.76,
+      "sizeEvidence": "4 oz = 4 oz"
+    },
+    {
       "productId": "24956",
       "sourceProductIds": [
         "24956"
@@ -1468,7 +1520,7 @@
       "capturedAt": "2026-07-17T06:28:53.617Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.95,
-      "matchMargin": 0.4014,
+      "matchMargin": 0.95,
       "sizeEvidence": "4 oz = 4 oz"
     },
     {
@@ -1574,6 +1626,32 @@
       "matchScore": 0.9143,
       "matchMargin": 0.3818,
       "sizeEvidence": "8 oz = 8 oz"
+    },
+    {
+      "productId": "17276896",
+      "sourceProductIds": [
+        "17276896"
+      ],
+      "instacartName": "Kettle & Fire Classic Chicken Bone Broth",
+      "instacartSize": "16.9 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "asin": "B01MZ02D7A",
+      "wholeFoodsTitle": "Kettle & Fire Bone Broth, Chicken, 16.9 Oz",
+      "wholeFoodsPrice": 7.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01MZ02D7A",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71evrsXL4SL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:38:54.399Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.95,
+      "sizeEvidence": "16.9 oz = 16.9 oz"
     },
     {
       "productId": "21351192",
@@ -2359,6 +2437,59 @@
       "sizeEvidence": "32 fl oz = 32 fl oz"
     },
     {
+      "productId": "27471019",
+      "sourceProductIds": [
+        "27471019",
+        "42038009"
+      ],
+      "instacartName": "Pacific Foods Organic Chicken and Wild Rice Soup",
+      "instacartSize": "16.3 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "asin": "B0B5V77FSZ",
+      "wholeFoodsTitle": "Organic Chicken and Wild Rice Soup, 16.3 oz Can",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0B5V77FSZ",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81JgQC0ejdL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-19T00:05:20.111Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9571,
+      "matchMargin": 0.9571,
+      "sizeEvidence": "16.3 oz = 16.3 oz"
+    },
+    {
+      "productId": "21510537",
+      "sourceProductIds": [
+        "21510537"
+      ],
+      "instacartName": "Pacific Foods Organic Cream of Chicken Soup",
+      "instacartSize": "10.5 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "asin": "B08BDB17ZR",
+      "wholeFoodsTitle": "Sponsored Pacific Foods Organic Cream of Chicken Soup, 10.5 oz Can",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08BDB17ZR",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81kLCVZFRoL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T18:27:14.012Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9143,
+      "matchMargin": 0.9143,
+      "sizeEvidence": "10.5 oz = 10.5 oz"
+    },
+    {
       "productId": "3066624",
       "sourceProductIds": [
         "3066624"
@@ -3008,6 +3139,32 @@
       "matchScore": 0.8071,
       "matchMargin": 0.8071,
       "sizeEvidence": "16 fl oz = 16 fl oz"
+    },
+    {
+      "productId": "3239255",
+      "sourceProductIds": [
+        "3239255"
+      ],
+      "instacartName": "TATE'S Chocolate Chip Cookies 7 oz",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B06XZM52NQ",
+      "wholeFoodsTitle": "Tate's Bake Shop, Chocolate Chip Cookies, 7 Ounce",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B06XZM52NQ",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "targeted_query_brand_name_size",
+      "matchScore": 0.9,
+      "matchMargin": 0.9,
+      "sizeEvidence": "7 oz = 7 oz"
     },
     {
       "productId": "85423",
@@ -3580,7 +3737,7 @@
       "capturedAt": "2026-07-17T04:11:51.427Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.76,
-      "matchMargin": 0.085,
+      "matchMargin": 0.76,
       "sizeEvidence": "14.7 oz = 14.7 oz"
     },
     {
@@ -3606,7 +3763,7 @@
       "capturedAt": "2026-07-18T21:36:51.134Z",
       "matchMethod": "targeted_query_brand_name_size",
       "matchScore": 0.8333,
-      "matchMargin": 0.4333,
+      "matchMargin": 0.8333,
       "sizeEvidence": "8.5 oz = 8.4 oz"
     },
     {
@@ -4676,6 +4833,32 @@
       "sizeEvidence": "24 oz = 24 oz"
     },
     {
+      "productId": "29430",
+      "sourceProductIds": [
+        "29430"
+      ],
+      "instacartName": "Field Roast Grain Meat Sausages, Vegetarian, Italian",
+      "instacartSize": "368 g",
+      "category": "Deli",
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc",
+        "pcc"
+      ],
+      "storeCount": 4,
+      "asin": "B002DQP04U",
+      "wholeFoodsTitle": "Field Roast Italian Sausage, 12.95 OZ",
+      "wholeFoodsPrice": 7.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B002DQP04U",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81pypc8UkQL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:43:08.356Z",
+      "matchMethod": "exact_query_brand_name_size",
+      "matchScore": 0.8714,
+      "matchMargin": 0.8714,
+      "sizeEvidence": "368 g = 12.95 oz"
+    },
+    {
       "productId": "56401",
       "sourceProductIds": [
         "56401"
@@ -4780,6 +4963,32 @@
       "sizeEvidence": "16 fl oz = 16 fl oz"
     },
     {
+      "productId": "16290814",
+      "sourceProductIds": [
+        "16290814"
+      ],
+      "instacartName": "HATCH Diced Green Chili Mild",
+      "instacartSize": "4 oz",
+      "category": "Condiments & Sauces",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B005BD4ZJS",
+      "wholeFoodsTitle": "Hatch Chili Company Mild Diced Chiles, 4 OZ",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B005BD4ZJS",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81lJyyzi9HL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T06:28:53.617Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.76,
+      "matchMargin": 0.76,
+      "sizeEvidence": "4 oz = 4 oz"
+    },
+    {
       "productId": "24956",
       "sourceProductIds": [
         "24956"
@@ -4802,7 +5011,7 @@
       "capturedAt": "2026-07-17T06:28:53.617Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.95,
-      "matchMargin": 0.4014,
+      "matchMargin": 0.95,
       "sizeEvidence": "4 oz = 4 oz"
     },
     {
@@ -4908,6 +5117,32 @@
       "matchScore": 0.9143,
       "matchMargin": 0.3818,
       "sizeEvidence": "8 oz = 8 oz"
+    },
+    {
+      "productId": "17276896",
+      "sourceProductIds": [
+        "17276896"
+      ],
+      "instacartName": "Kettle & Fire Classic Chicken Bone Broth",
+      "instacartSize": "16.9 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "asin": "B01MZ02D7A",
+      "wholeFoodsTitle": "Kettle & Fire Bone Broth, Chicken, 16.9 Oz",
+      "wholeFoodsPrice": 7.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B01MZ02D7A",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71evrsXL4SL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:38:54.399Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.95,
+      "sizeEvidence": "16.9 oz = 16.9 oz"
     },
     {
       "productId": "21351192",
@@ -5693,6 +5928,59 @@
       "sizeEvidence": "32 fl oz = 32 fl oz"
     },
     {
+      "productId": "27471019",
+      "sourceProductIds": [
+        "27471019",
+        "42038009"
+      ],
+      "instacartName": "Pacific Foods Organic Chicken and Wild Rice Soup",
+      "instacartSize": "16.3 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "asin": "B0B5V77FSZ",
+      "wholeFoodsTitle": "Organic Chicken and Wild Rice Soup, 16.3 oz Can",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0B5V77FSZ",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81JgQC0ejdL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-19T00:05:20.111Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9571,
+      "matchMargin": 0.9571,
+      "sizeEvidence": "16.3 oz = 16.3 oz"
+    },
+    {
+      "productId": "21510537",
+      "sourceProductIds": [
+        "21510537"
+      ],
+      "instacartName": "Pacific Foods Organic Cream of Chicken Soup",
+      "instacartSize": "10.5 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "qfc",
+        "safeway"
+      ],
+      "storeCount": 4,
+      "asin": "B08BDB17ZR",
+      "wholeFoodsTitle": "Sponsored Pacific Foods Organic Cream of Chicken Soup, 10.5 oz Can",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08BDB17ZR",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81kLCVZFRoL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T18:27:14.012Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9143,
+      "matchMargin": 0.9143,
+      "sizeEvidence": "10.5 oz = 10.5 oz"
+    },
+    {
       "productId": "3066624",
       "sourceProductIds": [
         "3066624"
@@ -6344,6 +6632,32 @@
       "sizeEvidence": "16 fl oz = 16 fl oz"
     },
     {
+      "productId": "3239255",
+      "sourceProductIds": [
+        "3239255"
+      ],
+      "instacartName": "TATE'S Chocolate Chip Cookies 7 oz",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 4,
+      "asin": "B06XZM52NQ",
+      "wholeFoodsTitle": "Tate's Bake Shop, Chocolate Chip Cookies, 7 Ounce",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B06XZM52NQ",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "targeted_query_brand_name_size",
+      "matchScore": 0.9,
+      "matchMargin": 0.9,
+      "sizeEvidence": "7 oz = 7 oz"
+    },
+    {
       "productId": "85423",
       "sourceProductIds": [
         "85423"
@@ -6753,7 +7067,7 @@
       "capturedAt": "2026-07-17T21:30:57.262Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.8333,
-      "matchMargin": 0.3976,
+      "matchMargin": 0.6208,
       "sizeEvidence": "9 oz = 9 oz"
     },
     {
@@ -6782,6 +7096,31 @@
       "sizeEvidence": "13 oz = 13 oz"
     },
     {
+      "productId": "24506",
+      "sourceProductIds": [
+        "24506"
+      ],
+      "instacartName": "Amy's Kitchen No Chicken Noodle Soup",
+      "instacartSize": "14.1 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B004T32VLK",
+      "wholeFoodsTitle": "Amy's Soup Noodle No Chicken, 14.1 Ounce",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B004T32VLK",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81hKll70yhL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T19:14:33.813Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "14.1 oz = 14.1 oz"
+    },
+    {
       "productId": "35680230",
       "sourceProductIds": [
         "35680230"
@@ -6803,7 +7142,7 @@
       "capturedAt": "2026-07-17T19:13:59.968Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 1,
-      "matchMargin": 0.67,
+      "matchMargin": 1,
       "sizeEvidence": "9 oz = 9 oz"
     },
     {
@@ -7407,6 +7746,81 @@
       "matchScore": 0.91,
       "matchMargin": 0.91,
       "sizeEvidence": "20 oz = 20 oz"
+    },
+    {
+      "productId": "34789807",
+      "sourceProductIds": [
+        "34789807"
+      ],
+      "instacartName": "Bonafide Provisions Beef Bone Broth, Organic",
+      "instacartSize": "16.9 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "pcc",
+        "safeway",
+        "metro"
+      ],
+      "storeCount": 3,
+      "asin": "B0CJ9RBLTP",
+      "wholeFoodsTitle": "Bonafide Provisions Organic Beef Bone Broth, 16.9 OZ",
+      "wholeFoodsPrice": 7.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0CJ9RBLTP",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91YcDJMmTqL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:38:54.399Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "16.9 oz = 16.9 oz"
+    },
+    {
+      "productId": "34680564",
+      "sourceProductIds": [
+        "34680564"
+      ],
+      "instacartName": "Bonafide Provisions Chicken Bone Broth, No Salt Added, Organic",
+      "instacartSize": "16.9 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B0CJ9RR2W3",
+      "wholeFoodsTitle": "Bonafide Provisions Bone Broth Chicken No Salt Added Organic, 16.9 Ounce",
+      "wholeFoodsPrice": 7.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0CJ9RR2W3",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91bFGBGcr6L._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:01:55.298Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "16.9 oz = 16.9 oz"
+    },
+    {
+      "productId": "34455905",
+      "sourceProductIds": [
+        "34455905"
+      ],
+      "instacartName": "Bonafide Provisions Chicken Bone Broth, Organic",
+      "instacartSize": "16.9 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B0CJ9SWR88",
+      "wholeFoodsTitle": "Bonafide Provisions Bone Broth Chicken Organic, 16.9 Ounce",
+      "wholeFoodsPrice": 7.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0CJ9SWR88",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91EgMZRM28L._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T07:01:55.298Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "16.9 oz = 16.9 oz"
     },
     {
       "productId": "64412215",
@@ -8334,6 +8748,31 @@
       "sizeEvidence": "17.2 oz = 17.2 oz"
     },
     {
+      "productId": "16908263",
+      "sourceProductIds": [
+        "16908263"
+      ],
+      "instacartName": "Kettle & Fire Bone Broth, Classic Beef",
+      "instacartSize": "16.9 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B093M6J7FH",
+      "wholeFoodsTitle": "Kettle & Fire Regenerative Agriculture Beef Bone Broth, 16.9 OZ",
+      "wholeFoodsPrice": 9.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B093M6J7FH",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81c5qzhsLpL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T03:25:57.633Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.7708,
+      "matchMargin": 0.7708,
+      "sizeEvidence": "16.9 oz = 16.9 oz"
+    },
+    {
       "productId": "20964495",
       "sourceProductIds": [
         "20964495"
@@ -9009,6 +9448,31 @@
       "sizeEvidence": "8 oz = 8 oz"
     },
     {
+      "productId": "27471036",
+      "sourceProductIds": [
+        "27471036"
+      ],
+      "instacartName": "Pacific Foods Organic Chicken Noodle Soup",
+      "instacartSize": "16.1 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc",
+        "safeway"
+      ],
+      "storeCount": 3,
+      "asin": "B09PLZJYW9",
+      "wholeFoodsTitle": "Sponsored Pacific Foods Soup Chicken Noodle Organic, 16.1 Ounce",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B09PLZJYW9",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81Q8R1hjJFL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T18:27:51.187Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.2186,
+      "sizeEvidence": "16.1 oz = 16.1 oz"
+    },
+    {
       "productId": "3360975",
       "sourceProductIds": [
         "3360975"
@@ -9505,7 +9969,7 @@
       "capturedAt": "2026-07-17T19:15:34.993Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.94,
-      "matchMargin": 0.18,
+      "matchMargin": 0.94,
       "sizeEvidence": "10.5 oz = 10.5 oz"
     },
     {
@@ -9530,7 +9994,7 @@
       "capturedAt": "2026-07-17T19:15:34.993Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 1,
-      "matchMargin": 0.325,
+      "matchMargin": 1,
       "sizeEvidence": "10.5 oz = 10.5 oz"
     },
     {
@@ -9782,6 +10246,56 @@
       "matchScore": 0.7562,
       "matchMargin": 0.7562,
       "sizeEvidence": "16 fl oz = 16 fl oz"
+    },
+    {
+      "productId": "26862",
+      "sourceProductIds": [
+        "26862"
+      ],
+      "instacartName": "TATE'S Gluten Free Chocolate Chip Cookies, Gluten Free Cookies 84.1 oz",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "pcc",
+        "metro",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B006LRMI5G",
+      "wholeFoodsTitle": "Tate's Bake Shop Gluten Free Chocolate Chip Cookies, Gluten Free Cookies, 7 oz",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B006LRMI5G",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.925,
+      "matchMargin": 0.925,
+      "sizeEvidence": "7 oz = 7 oz"
+    },
+    {
+      "productId": "26865",
+      "sourceProductIds": [
+        "26865"
+      ],
+      "instacartName": "TATE'S Oatmeal Raisin Cookies 7 oz",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro",
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 3,
+      "asin": "B078K4PY96",
+      "wholeFoodsTitle": "Tates Bake Shop Oatmeal Raisin Cookies, 7 OZ",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B078K4PY96",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9,
+      "matchMargin": 0.9,
+      "sizeEvidence": "7 oz = 7 oz"
     },
     {
       "productId": "20240524",
@@ -10602,6 +11116,30 @@
       "matchScore": 0.8909,
       "matchMargin": 0.8909,
       "sizeEvidence": "5 lb = 5 lb"
+    },
+    {
+      "productId": "34680799",
+      "sourceProductIds": [
+        "34680799"
+      ],
+      "instacartName": "Bonafide Provisions Beef Bone Broth, No Salt Added, Organic",
+      "instacartSize": "16.9 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "pcc",
+        "metro"
+      ],
+      "storeCount": 2,
+      "asin": "B0CJ9QGQT7",
+      "wholeFoodsTitle": "Bonafide Provisions Organic No Salt Added Beef Bone Broth, 16.9 OZ",
+      "wholeFoodsPrice": 7.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0CJ9QGQT7",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91MoBXJOv8L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T20:38:54.399Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 1,
+      "sizeEvidence": "16.9 oz = 16.9 oz"
     },
     {
       "productId": "25003325",
@@ -11512,7 +12050,7 @@
       "capturedAt": "2026-07-17T03:26:15.957Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.7314,
-      "matchMargin": 0.1989,
+      "matchMargin": 0.7314,
       "sizeEvidence": "15 oz = 15 oz"
     },
     {
@@ -11536,7 +12074,31 @@
       "capturedAt": "2026-07-17T03:26:15.957Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.95,
-      "matchMargin": 0.2186,
+      "matchMargin": 0.95,
+      "sizeEvidence": "15 oz = 15 oz"
+    },
+    {
+      "productId": "53246",
+      "sourceProductIds": [
+        "53246"
+      ],
+      "instacartName": "Eden Foods Kidney (dark red) Beans, organic",
+      "instacartSize": "15 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "pcc"
+      ],
+      "storeCount": 2,
+      "asin": "B00060PDFQ",
+      "wholeFoodsTitle": "Eden Organic Kidney Beans - 15 oz. can",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00060PDFQ",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/912V+nBKb1L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T03:26:15.957Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.7314,
+      "matchMargin": 0.7314,
       "sizeEvidence": "15 oz = 15 oz"
     },
     {
@@ -12544,7 +13106,7 @@
       "capturedAt": "2026-07-17T19:15:34.993Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.9,
-      "matchMargin": 0.2464,
+      "matchMargin": 0.9,
       "sizeEvidence": "15.5 oz = 15.5 oz"
     },
     {
@@ -12568,7 +13130,7 @@
       "capturedAt": "2026-07-17T18:30:07.997Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.9,
-      "matchMargin": 0.2464,
+      "matchMargin": 0.9,
       "sizeEvidence": "15.5 oz = 15.5 oz"
     },
     {
@@ -12594,30 +13156,6 @@
       "matchScore": 0.9625,
       "matchMargin": 0.9625,
       "sizeEvidence": "6 oz = 6 oz"
-    },
-    {
-      "productId": "2619902",
-      "sourceProductIds": [
-        "2619902"
-      ],
-      "instacartName": "Los Roast Green Chile, New Mexico, Medium",
-      "instacartSize": "16 oz",
-      "category": "Snacks & Candy",
-      "storeIds": [
-        "pcc",
-        "qfc"
-      ],
-      "storeCount": 2,
-      "asin": "B08BQ849D5",
-      "wholeFoodsTitle": "Los Roast Salsa New Mexico Green Chile, 16 Ounce",
-      "wholeFoodsPrice": 8.99,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B08BQ849D5",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81YcMF1ClbL._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T07:04:36.400Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.825,
-      "matchMargin": 0.825,
-      "sizeEvidence": "16 oz = 16 oz"
     },
     {
       "productId": "521570",
@@ -13580,6 +14118,30 @@
       "sizeEvidence": "9 oz = 9.1 oz"
     },
     {
+      "productId": "115614",
+      "sourceProductIds": [
+        "115614"
+      ],
+      "instacartName": "San Merican Tomatoes, Crushed, No Salt Added",
+      "instacartSize": "14.5 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "asin": "B007IX20E6",
+      "wholeFoodsTitle": "San Merican Tomato No Salt Added Crushed Tomatoes, 14.5 OZ",
+      "wholeFoodsPrice": 3.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B007IX20E6",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/51EbEyfIBiL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T04:03:32.029Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9625,
+      "matchMargin": 0.9625,
+      "sizeEvidence": "14.5 oz = 14.5 oz"
+    },
+    {
       "productId": "23854",
       "sourceProductIds": [
         "23854"
@@ -13962,6 +14524,78 @@
       "matchScore": 0.7643,
       "matchMargin": 0.511,
       "sizeEvidence": "16 fl oz = 16 fl oz"
+    },
+    {
+      "productId": "17441541",
+      "sourceProductIds": [
+        "17441541"
+      ],
+      "instacartName": "TATE'S Coconut Crisp Cookies 7 oz",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro",
+        "safeway"
+      ],
+      "storeCount": 2,
+      "asin": "B073DH2R1F",
+      "wholeFoodsTitle": "Tate's Bake Shop Coconut Crisp Cookies, 7 oz",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B073DH2R1F",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9,
+      "matchMargin": 0.9,
+      "sizeEvidence": "7 oz = 7 oz"
+    },
+    {
+      "productId": "20989226",
+      "sourceProductIds": [
+        "20989226"
+      ],
+      "instacartName": "TATE'S Lemon Cookies",
+      "instacartSize": "7.01 oz",
+      "category": "Snacks & Sweets",
+      "storeIds": [
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 2,
+      "asin": "B083LL79RJ",
+      "wholeFoodsTitle": "Tate's Bake Shop Lemon Cookies, 7 oz",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B083LL79RJ",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.88,
+      "matchMargin": 0.88,
+      "sizeEvidence": "7.01 oz = 7 oz"
+    },
+    {
+      "productId": "30864",
+      "sourceProductIds": [
+        "30864"
+      ],
+      "instacartName": "TATE'S Walnut Chocolate Chip Cookies",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "safeway",
+        "qfc"
+      ],
+      "storeCount": 2,
+      "asin": "B078K5VT3Z",
+      "wholeFoodsTitle": "Tates Bake Shop Chocolate Chip Walnut Cookies, 7 OZ",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B078K5VT3Z",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9143,
+      "matchMargin": 0.9143,
+      "sizeEvidence": "7 oz = 7 oz"
     },
     {
       "productId": "21158315",
@@ -16016,7 +16650,7 @@
       "capturedAt": "2026-07-17T07:04:36.400Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.925,
-      "matchMargin": 0.5905,
+      "matchMargin": 0.925,
       "sizeEvidence": "16 oz = 16 oz"
     },
     {
@@ -16522,7 +17156,7 @@
       "capturedAt": "2026-07-17T20:51:26.992Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.825,
-      "matchMargin": 0.45,
+      "matchMargin": 0.5371,
       "sizeEvidence": "15 oz = 15 oz"
     },
     {
@@ -16545,7 +17179,7 @@
       "capturedAt": "2026-07-19T00:05:20.111Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 1,
-      "matchMargin": 0.7167,
+      "matchMargin": 1,
       "sizeEvidence": "15 oz = 15 oz"
     },
     {
@@ -16568,7 +17202,7 @@
       "capturedAt": "2026-07-17T21:30:57.262Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.9625,
-      "matchMargin": 0.6746,
+      "matchMargin": 0.9625,
       "sizeEvidence": "15 oz = 15 oz"
     },
     {
@@ -16729,7 +17363,7 @@
       "capturedAt": "2026-07-17T03:26:13.370Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 1,
-      "matchMargin": 0.3464,
+      "matchMargin": 1,
       "sizeEvidence": "13 oz = 13 oz"
     },
     {
@@ -16936,7 +17570,7 @@
       "capturedAt": "2026-07-17T21:47:42.041Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.8,
-      "matchMargin": 0.4182,
+      "matchMargin": 0.8,
       "sizeEvidence": "255 g = 9 oz"
     },
     {
@@ -17007,29 +17641,6 @@
       "matchScore": 0.7947,
       "matchMargin": 0.2531,
       "sizeEvidence": "25.4 fl oz = 25.4 fl oz"
-    },
-    {
-      "productId": "39801297",
-      "sourceProductIds": [
-        "39801297"
-      ],
-      "instacartName": "Late July Salsa Verde with Roasted Tomatillos",
-      "instacartSize": "15.5 oz",
-      "category": "Snacks & Candy",
-      "storeIds": [
-        "pcc"
-      ],
-      "storeCount": 1,
-      "asin": "B0CMJQ75BW",
-      "wholeFoodsTitle": "Late July Snacks Salsa Verde with Roasted Tomatillos, Medium, 15.5 oz Jar",
-      "wholeFoodsPrice": 6.49,
-      "wholeFoodsUrl": "https://www.amazon.com/dp/B0CMJQ75BW",
-      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/81Nt4HlNJ-L._AC_UL960_FMwebp_QL65_.jpg",
-      "capturedAt": "2026-07-17T06:28:58.947Z",
-      "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.9,
-      "matchMargin": 0.9,
-      "sizeEvidence": "15.5 oz = 15.5 oz"
     },
     {
       "productId": "93348843",
@@ -17398,6 +18009,29 @@
       "matchScore": 0.9,
       "matchMargin": 0.9,
       "sizeEvidence": "16 oz = 16 oz"
+    },
+    {
+      "productId": "25110212",
+      "sourceProductIds": [
+        "25110212"
+      ],
+      "instacartName": "Matt's Bakery Cookies, Soft-Baked, Chocolate Chip",
+      "instacartSize": "10.5 oz",
+      "category": "Snacks & Candy",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B08XNKSWBY",
+      "wholeFoodsTitle": "Matt's Bakery | Chocolate Chip Cookies | Soft-Baked, Non-GMO, All-Natural Ingredients; Single Pack of Cookies (10.5oz)",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08XNKSWBY",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.8615,
+      "matchMargin": 0.8615,
+      "sizeEvidence": "10.5 oz = 10.5 oz"
     },
     {
       "productId": "82933",
@@ -17970,8 +18604,8 @@
       "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71XFd1cjqvL._AC_UL320_.jpg",
       "capturedAt": "2026-07-17T04:10:34.407Z",
       "matchMethod": "normalized_brand_name_size",
-      "matchScore": 0.8222,
-      "matchMargin": 0.2056,
+      "matchScore": 0.9455,
+      "matchMargin": 0.2101,
       "sizeEvidence": "48 fl oz = 48 fl oz"
     },
     {
@@ -18134,6 +18768,29 @@
       "matchScore": 0.94,
       "matchMargin": 0.94,
       "sizeEvidence": "48 oz = 48 oz"
+    },
+    {
+      "productId": "40072937",
+      "sourceProductIds": [
+        "40072937"
+      ],
+      "instacartName": "Pacific Foods Organic Chicken Tortilla Soup",
+      "instacartSize": "16.3 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B08HL1WF5B",
+      "wholeFoodsTitle": "Pacific Foods Soup Chicken Tortilla Style With Rice Organic, 16.3 Ounce",
+      "wholeFoodsPrice": 4.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B08HL1WF5B",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/91h-e2skElL._AC_UL960_FMwebp_QL65_.jpg",
+      "capturedAt": "2026-07-17T06:02:14.116Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.2186,
+      "sizeEvidence": "16.3 oz = 16.3 oz"
     },
     {
       "productId": "25883",
@@ -18431,8 +19088,54 @@
       "capturedAt": "2026-07-17T03:24:02.612Z",
       "matchMethod": "normalized_brand_name_size",
       "matchScore": 0.9571,
-      "matchMargin": 0.9571,
+      "matchMargin": 0.4246,
       "sizeEvidence": "20.6 oz = 20.6 oz"
+    },
+    {
+      "productId": "27834863",
+      "sourceProductIds": [
+        "27834863"
+      ],
+      "instacartName": "Rao's Made For Home Meat Trio Frozen Pizza",
+      "instacartSize": "20.8 oz",
+      "category": "Frozen",
+      "storeIds": [
+        "metro"
+      ],
+      "storeCount": 1,
+      "asin": "B0B8151PSS",
+      "wholeFoodsTitle": "Rao's Made For Home Meat Trio Frozen Pizza, 20.8 oz",
+      "wholeFoodsPrice": 14.29,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0B8151PSS",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/914WjlkfKGL._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T03:24:02.612Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 1,
+      "matchMargin": 0.48,
+      "sizeEvidence": "20.8 oz = 20.8 oz"
+    },
+    {
+      "productId": "46580610",
+      "sourceProductIds": [
+        "46580610"
+      ],
+      "instacartName": "Rao's Made For Home Tuscan Style Beef Stew Soup",
+      "instacartSize": "15.5 oz",
+      "category": "Canned Goods & Soups",
+      "storeIds": [
+        "qfc"
+      ],
+      "storeCount": 1,
+      "asin": "B0CRSQ8RHS",
+      "wholeFoodsTitle": "Rao’s Made For Home Tuscan-Style Beef Soup, 15.5 oz",
+      "wholeFoodsPrice": 6.99,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0CRSQ8RHS",
+      "wholeFoodsImageUrl": "https://m.media-amazon.com/images/I/71FUcFdsP8L._AC_UL320_.jpg",
+      "capturedAt": "2026-07-17T03:24:02.612Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.95,
+      "matchMargin": 0.95,
+      "sizeEvidence": "15.5 oz = 15.5 oz"
     },
     {
       "productId": "27834757",
@@ -18847,6 +19550,75 @@
       "matchScore": 0.9,
       "matchMargin": 0.9,
       "sizeEvidence": "11.4 oz = 323.1 g"
+    },
+    {
+      "productId": "64087130",
+      "sourceProductIds": [
+        "64087130"
+      ],
+      "instacartName": "Tate's Bake Shop Dark Chocolate Chunk Cookies",
+      "instacartSize": "8 oz",
+      "category": "Snacks & Sweets",
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "asin": "B0DGW4DCLS",
+      "wholeFoodsTitle": "Tate's Bake Shop Soft Baked Cookies, Dark Chocolate Chunk, 8 oz",
+      "wholeFoodsPrice": 7.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0DGW4DCLS",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9333,
+      "matchMargin": 0.9333,
+      "sizeEvidence": "8 oz = 8 oz"
+    },
+    {
+      "productId": "62966367",
+      "sourceProductIds": [
+        "62966367"
+      ],
+      "instacartName": "TATE'S Chocolate Chip Cookies 8 oz",
+      "instacartSize": "8 oz",
+      "category": "Snacks & Sweets",
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "asin": "B0DGVRKCLC",
+      "wholeFoodsTitle": "Tate's Bake Shop Soft Baked Cookies, Chocolate Chip, 8 oz",
+      "wholeFoodsPrice": 7.49,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B0DGVRKCLC",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.85,
+      "matchMargin": 0.85,
+      "sizeEvidence": "8 oz = 8 oz"
+    },
+    {
+      "productId": "80031",
+      "sourceProductIds": [
+        "80031"
+      ],
+      "instacartName": "TATE'S Double Chocolate Chip Cookies 7 oz",
+      "instacartSize": "7 oz",
+      "category": "Snacks & Sweets",
+      "storeIds": [
+        "safeway"
+      ],
+      "storeCount": 1,
+      "asin": "B00EQD66ZU",
+      "wholeFoodsTitle": "Tate's Bake Shop Double Chocolate Chip Cookies, 7 oz",
+      "wholeFoodsPrice": 6.79,
+      "wholeFoodsUrl": "https://www.amazon.com/dp/B00EQD66ZU",
+      "wholeFoodsImageUrl": "",
+      "capturedAt": "2026-07-19T02:14:46.885Z",
+      "matchMethod": "normalized_brand_name_size",
+      "matchScore": 0.9143,
+      "matchMargin": 0.9143,
+      "sizeEvidence": "7 oz = 7 oz"
     },
     {
       "productId": "44500569",

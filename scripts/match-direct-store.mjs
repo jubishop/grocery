@@ -23,6 +23,8 @@ const instacartPath = path.join(root, "data/capture-checkpoint.json");
 const instacartWeightDetailsPath = path.join(root, "data/instacart-weight-details.json");
 const aliasesPath = path.join(root, "data/instacart-aliases.json");
 const storeId = process.argv[2] ?? "safeway";
+const debugProductArgument = process.argv.find((argument) => argument.startsWith("--debug-product="));
+const debugProductId = debugProductArgument?.split("=")[1] ?? "";
 const configs = {
   safeway: {
     displayName: "Safeway",
@@ -53,7 +55,7 @@ const unitAliases = new Map([
   ["ounce", "oz"], ["ounces", "oz"], ["oz", "oz"],
   ["pound", "lb"], ["pounds", "lb"], ["lb", "lb"], ["lbs", "lb"],
   ["fluid ounce", "fl oz"], ["fluid ounces", "fl oz"], ["fl ounce", "fl oz"], ["fl ounces", "fl oz"], ["fl oz", "fl oz"],
-  ["fz", "fl oz"],
+  ["fo", "fl oz"], ["fz", "fl oz"],
   ["milliliter", "ml"], ["milliliters", "ml"], ["ml", "ml"],
   ["liter", "l"], ["liters", "l"], ["litre", "l"], ["litres", "l"], ["l", "l"],
   ["gram", "g"], ["grams", "g"], ["g", "g"],
@@ -63,9 +65,9 @@ const unitAliases = new Map([
 
 function plain(value) {
   return String(value ?? "")
+    .replace(/[®™©]/g, "")
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[®™©]/g, "")
     .replace(/&/g, " and ")
     .replace(/[’']/g, "")
     .toLowerCase();
@@ -91,17 +93,17 @@ function normalizeQuantity(amount, rawUnit) {
 
 function quantity(text) {
   const value = plain(text).replace(/\b(\d+)ct\b/g, "$1 ct");
-  const slashPack = value.match(/\b(\d+)\s*(?:pack|pk)\s*(?:\/|x|×|-)\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const slashPack = value.match(/\b(\d+)\s*(?:pack|pk)\s*(?:\/|x|×|-)\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fo|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (slashPack) return normalizeQuantity(Number(slashPack[2]) * Number(slashPack[1]), slashPack[3]);
-  const hyphenPack = value.match(/\b(\d+)\s*-\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const hyphenPack = value.match(/\b(\d+)\s*-\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fo|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (hyphenPack) return normalizeQuantity(Number(hyphenPack[2]) * Number(hyphenPack[1]), hyphenPack[3]);
-  const multipack = value.match(/\b(\d+)\s*[x×-]\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const multipack = value.match(/\b(\d+)\s*[x×-]\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fo|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (multipack) return normalizeQuantity(Number(multipack[2]) * Number(multipack[1]), multipack[3]);
-  const packOf = value.match(/\b(\d+)\s*(?:pack|pk)\s*[,/-]?\s*(?:of\s+)?(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
+  const packOf = value.match(/\b(\d+)\s*(?:pack|pk)\s*[,/-]?\s*(?:of\s+)?(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fo|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
   if (packOf) return normalizeQuantity(Number(packOf[1]) * Number(packOf[2]), packOf[3]);
   const count = value.match(/\b(\d+)\s*(?:count|ct|each|ea)\b/);
   if (count) return normalizeQuantity(Number(count[1]), "ct");
-  const matches = [...value.matchAll(/\b(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/g)];
+  const matches = [...value.matchAll(/\b(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fo|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/g)];
   const match = matches.at(-1);
   if (!match) return null;
   return normalizeQuantity(Number(match[1]), match[2]);
@@ -290,7 +292,7 @@ const storeItemMetadata = new Map(storeItems.map((item) => [
     nameTokens: new Set(tokens(item.name)),
     qualifierEvidence: productQualifierEvidence(item),
     sourceExclusive: isSourceExclusiveProduct("instacart", item),
-    variantText: `${item.name} ${item.size ?? ""} ${productUrlVariantHints(item.productUrl)}`,
+    variantText: `${item.name} ${item.size ?? ""} ${item.qualifierText ?? ""} ${productUrlVariantHints(item.productUrl)}`,
   },
 ]));
 
@@ -315,7 +317,7 @@ const directMetadata = new Map(directWithQuantity.map((record) => [
     brandTokens: brandTokens(record.title),
     nameTokens: new Set(tokens(record.title)),
     qualifierEvidence: productQualifierEvidence(record),
-    variantText: `${record.title} ${record.size ?? ""} ${productUrlVariantHints(record.productUrl)}`,
+    variantText: `${record.title} ${record.size ?? ""} ${record.qualifierText ?? ""} ${productUrlVariantHints(record.productUrl)}`,
   },
 ]));
 const directById = new Map(directWithQuantity.map((record) => [record.id, record]));
@@ -377,6 +379,7 @@ function matchingQuantityCandidates(parsed) {
 }
 
 const accepted = [];
+let debugOutput = null;
 for (const item of storeItems) {
   const itemMetadata = storeItemMetadata.get(item.productId);
   const left = {
@@ -441,10 +444,27 @@ for (const item of storeItems) {
       priceDifference: item.instacartPrice == null ? null : Number((item.instacartPrice - record.price).toFixed(2)),
       instacartMarkupPercent: item.instacartPrice == null ? null : Number(((item.instacartPrice / record.price - 1) * 100).toFixed(1)),
     });
+    if (item.productId === debugProductId) {
+      debugOutput = {
+        productId: item.productId,
+        matchPath: "loose_commodity",
+        candidate: { id: record.id, title: record.title },
+      };
+    }
     continue;
   }
-  if (itemMetadata.sourceExclusive) continue;
-  if (!item.quantity) continue;
+  if (itemMetadata.sourceExclusive) {
+    if (item.productId === debugProductId) {
+      debugOutput = { productId: item.productId, rejectedAt: "source_exclusive" };
+    }
+    continue;
+  }
+  if (!item.quantity) {
+    if (item.productId === debugProductId) {
+      debugOutput = { productId: item.productId, rejectedAt: "missing_quantity" };
+    }
+    continue;
+  }
   const expectedQueryKey = queryKey(`${item.name} ${item.size}`.trim());
   const targetedResultIds = resultIdsByProduct.get(item.productId);
   const exactResultIds = targetedResultIds ?? resultIdsByQuery.get(expectedQueryKey);
@@ -454,34 +474,81 @@ for (const item of storeItems) {
   const candidatePool = exactQueryRecords.length
     ? exactQueryRecords.filter((record) => quantitiesAgree(item.quantity, record.quantity))
     : matchingQuantityCandidates(item.quantity);
-  const candidates = candidatePool
+  const debuggingItem = item.productId === debugProductId;
+  const candidateEvaluations = candidatePool
     .map((record) => {
       const metadata = directMetadata.get(record.id);
-      return {
-        record,
-        metadata,
-        score: tokenScoreSets(itemMetadata.nameTokens, metadata.nameTokens),
-      };
-    })
-    .filter(({ record, metadata, score }) => (
-      brandsCompatibleTokens(
+      const score = tokenScoreSets(itemMetadata.nameTokens, metadata.nameTokens);
+      const brandCompatible = brandsCompatibleTokens(
         itemMetadata.brandTokens,
         metadata.brandTokens,
         score,
-      )
-      && directPriceIsPlausible(item, record)
-      && variantsCompatible(
-        item,
+      );
+      const pricePlausible = directPriceIsPlausible(item, record);
+      const scoreEligible = score >= 0.48;
+      const variantChecked = (
+        debuggingItem
+        || (brandCompatible && pricePlausible && scoreEligible)
+      );
+      return {
         record,
-        itemMetadata,
         metadata,
-      )
+        score,
+        brandCompatible,
+        pricePlausible,
+        scoreEligible,
+        variantChecked,
+        variantCompatible: variantChecked
+          ? variantsCompatible(item, record, itemMetadata, metadata)
+          : false,
+      };
+    });
+  const candidates = candidateEvaluations
+    .filter(({
+      brandCompatible,
+      pricePlausible,
+      variantCompatible,
+      scoreEligible,
+    }) => (
+      brandCompatible
+      && pricePlausible
+      && variantCompatible
+      && scoreEligible
     ))
-    .filter(({ score }) => score >= 0.48)
     .sort((a, b) => b.score - a.score || a.record.title.localeCompare(b.record.title));
   const best = candidates[0];
   const next = candidates[1];
-  if (!best) continue;
+  if (!best) {
+    if (item.productId === debugProductId) {
+      debugOutput = {
+        productId: item.productId,
+        item: {
+          name: item.name,
+          size: item.size,
+          quantity: item.quantity,
+          instacartPrice: item.instacartPrice,
+        },
+        targetedResultCount: targetedResultIds?.size ?? 0,
+        exactQueryResultCount: exactQueryRecords.length,
+        quantityCandidateCount: candidatePool.length,
+        rejectedAt: "candidate_guards",
+        candidates: candidateEvaluations.map((candidate) => ({
+          id: candidate.record.id,
+          title: candidate.record.title,
+          size: candidate.record.size,
+          quantity: candidate.record.quantity,
+          price: candidate.record.price,
+          score: Number(candidate.score.toFixed(4)),
+          brandCompatible: candidate.brandCompatible,
+          pricePlausible: candidate.pricePlausible,
+          variantChecked: candidate.variantChecked,
+          variantCompatible: candidate.variantCompatible,
+          scoreEligible: candidate.scoreEligible,
+        })),
+      };
+    }
+    continue;
+  }
   const margin = best.score - (next?.score ?? 0);
   const result = {
     productId: item.productId,
@@ -520,16 +587,66 @@ for (const item of storeItems) {
       ? best.score >= 0.6 && (margin >= 0.05 || best.score >= 0.85)
       : best.score >= 0.78 && (margin >= 0.1 || best.score >= 0.93)
   );
+  if (item.productId === debugProductId) {
+    debugOutput = {
+      productId: item.productId,
+      item: {
+        name: item.name,
+        size: item.size,
+        quantity: item.quantity,
+        instacartPrice: item.instacartPrice,
+      },
+      targetedResultCount: targetedResultIds?.size ?? 0,
+      exactQueryResultCount: exactQueryRecords.length,
+      quantityCandidateCount: candidatePool.length,
+      acceptedCandidateCount: candidates.length,
+      bestCandidate: {
+        id: best.record.id,
+        title: best.record.title,
+        size: best.record.size,
+        quantity: best.record.quantity,
+        price: best.record.price,
+        score: Number(best.score.toFixed(4)),
+        margin: Number(margin.toFixed(4)),
+      },
+      accepted: isAccepted,
+      rejectedAt: isAccepted ? null : "score_or_margin",
+      candidates: candidateEvaluations.map((candidate) => ({
+        id: candidate.record.id,
+        title: candidate.record.title,
+        size: candidate.record.size,
+        quantity: candidate.record.quantity,
+        price: candidate.record.price,
+        score: Number(candidate.score.toFixed(4)),
+        brandCompatible: candidate.brandCompatible,
+        pricePlausible: candidate.pricePlausible,
+        variantChecked: candidate.variantChecked,
+        variantCompatible: candidate.variantCompatible,
+        scoreEligible: candidate.scoreEligible,
+      })),
+    };
+  }
   if (isAccepted) accepted.push(result);
 }
 
-const uniqueAccepted = accepted
-  .sort((a, b) => b.storeCount - a.storeCount || b.matchScore - a.matchScore || b.matchMargin - a.matchMargin)
-  .filter((match, index, matches) => (
-    matches.findIndex((candidate) => candidate.directId === match.directId) === index
-    && matches.findIndex((candidate) => candidate.productId === match.productId) === index
-  ))
-  .sort((a, b) => a.instacartName.localeCompare(b.instacartName));
+const rankedAccepted = accepted
+  .sort((a, b) => (
+    b.storeCount - a.storeCount
+    || b.matchScore - a.matchScore
+    || b.matchMargin - a.matchMargin
+    || a.productId.localeCompare(b.productId, undefined, { numeric: true })
+    || a.directId.localeCompare(b.directId, undefined, { numeric: true })
+  ));
+const usedProductIds = new Set();
+const usedDirectIds = new Set();
+const uniqueAccepted = [];
+for (const match of rankedAccepted) {
+  if (usedProductIds.has(match.productId) || usedDirectIds.has(match.directId)) continue;
+  usedProductIds.add(match.productId);
+  usedDirectIds.add(match.directId);
+  uniqueAccepted.push(match);
+}
+uniqueAccepted.sort((a, b) => a.instacartName.localeCompare(b.instacartName));
 
 const markupMatches = uniqueAccepted.filter((match) => Number.isFinite(match.priceDifference));
 const priceDifferences = markupMatches.map((match) => match.priceDifference).sort((a, b) => a - b);
@@ -537,7 +654,7 @@ const output = {
   generatedAt: new Date().toISOString(),
   storeId,
   source: config.source,
-  methodology: `Fully automatic conservative ${config.displayName} direct-catalog crosswalk requiring equivalent package quantity and numeric variants, agreement on protected product claims, no conflicting packaged-product state, strong normalized product-name agreement, and an unambiguous best candidate. Safeway structured total sizes override title-level serving sizes only when they form a clear integer multipack. Same-retailer direct prices that are both several dollars and more than 2.5 times above the captured Instacart price are retained as raw evidence but excluded from comparisons as likely stale-card, hidden-multipack, or selling-basis anomalies. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Retailer-exclusive house brands are excluded from packaged matching, while exact loose commodity produce and meat may still match after retailer branding is removed. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically without falling back to Instacart.`,
+  methodology: `Fully automatic conservative ${config.displayName} direct-catalog crosswalk requiring equivalent package quantity and numeric variants, agreement on protected product claims, no conflicting packaged-product state, strong normalized product-name agreement, and an unambiguous best candidate. Captured first-party product-detail qualifier evidence supplements abbreviated search-card titles when checking product state; it cannot weaken or bypass a protected-claim conflict. Safeway structured total sizes override title-level serving sizes only when they form a clear integer multipack. Same-retailer direct prices that are both several dollars and more than 2.5 times above the captured Instacart price are retained as raw evidence but excluded from comparisons as likely stale-card, hidden-multipack, or selling-basis anomalies. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Retailer-exclusive house brands are excluded from packaged matching, while exact loose commodity produce and meat may still match after retailer branding is removed. Loose produce may match by exact normalized produce name, organic/variety wording, and selling basis. Loose meat and seafood may match only by exact normalized raw cut, explicitly captured per-pound basis, and agreement on organic, grass-fed, pasture-raised, free-range, air-chilled, wild/farmed, bone, skin, frozen, lean-percentage, grade, Angus, heritage, antibiotic, natural, rib-meat, value-pack, and retained-water claims. Poultry additionally requires product-detail qualifier evidence on both sides. Unmatched or ambiguous candidates are excluded automatically without falling back to Instacart.`,
   counts: {
     instacartStoreProducts: storeItems.length,
     directProductsCaptured: direct.records.length,
@@ -558,4 +675,10 @@ const output = {
 };
 
 await writeFile(config.outputPath, `${JSON.stringify(output, null, 2)}\n`);
+if (debugProductId) {
+  console.error(JSON.stringify({
+    debugProductId,
+    diagnostic: debugOutput ?? { rejectedAt: "product_not_found" },
+  }, null, 2));
+}
 console.log(JSON.stringify({ counts: output.counts, markupSummary: output.markupSummary }, null, 2));
