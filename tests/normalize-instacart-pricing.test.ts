@@ -4,6 +4,7 @@ import test from "node:test";
 
 import {
   createInstacartWeightDetailIndex,
+  isAmbiguousSingleServingBeverageRecord,
   isUnverifiedVariableWeightRecord,
   normalizeDirectStoreRecord,
   normalizeInstacartRecord,
@@ -74,6 +75,50 @@ test("direct-store unit text exposes a comparable weight rate", () => {
   assert.equal(broccoli.pricingMode, "final_cost_by_weight");
 });
 
+test("direct-store prose unit text exposes Safeway weight rates", () => {
+  assert.deepEqual(parseCapturedUnitText("price per Lb $2.49"), {
+    unitPrice: 2.49,
+    sourceUnitPrice: 2.49,
+    sourceUnit: "lb",
+    estimatedItemPrice: null,
+  });
+  assert.deepEqual(parseCapturedUnitText("price per Fl.oz $0.62"), {
+    unitPrice: null,
+    sourceUnitPrice: 0.62,
+    sourceUnit: "fl.oz",
+    estimatedItemPrice: null,
+  });
+
+  const apple = normalizeDirectStoreRecord({
+    title: "Pink Lady Apple",
+    category: "Produce",
+    size: "",
+    price: 1.25,
+    priceBasis: "per item",
+    unitText: "price per Lb $2.49",
+  });
+  assert.equal(apple.price, 2.49);
+  assert.equal(apple.priceBasis, "per lb");
+  assert.equal(apple.estimatedItemPrice, 1.25);
+  assert.equal(apple.pricingMode, "final_cost_by_weight");
+});
+
+test("direct-store estimated each prices cannot override QFC unit rates", () => {
+  const bananas = normalizeDirectStoreRecord({
+    title: "Bananas",
+    category: "Produce",
+    size: "",
+    price: 1.45,
+    priceBasis: "per lb",
+    unitText: "$0.69/lb",
+  });
+  assert.equal(bananas.price, 0.69);
+  assert.equal(bananas.priceBasis, "per lb");
+  assert.equal(bananas.rawCapturedPrice, 1.45);
+  assert.equal(bananas.estimatedItemPrice, 1.45);
+  assert.equal(bananas.pricingMode, "final_cost_by_weight");
+});
+
 test("fixed packages keep their each price despite informational unit text", () => {
   const oranges = normalizeDirectStoreRecord({
     title: "Navel Oranges Prepacked Bag - 4 Lb",
@@ -86,6 +131,20 @@ test("fixed packages keep their each price despite informational unit text", () 
   assert.equal(oranges.price, 6.99);
   assert.equal(oranges.priceBasis, "per item");
   assert.equal(oranges.pricingMode, "fixed_price");
+});
+
+test("fixed packages ignore prose-form informational unit prices", () => {
+  const oil = normalizeDirectStoreRecord({
+    title: "Organic Extra Virgin Olive Oil",
+    category: "Pantry",
+    size: "16.9 fl oz",
+    price: 9.99,
+    priceBasis: "per item",
+    unitText: "price per Fl.oz $0.59",
+  });
+  assert.equal(oil.price, 9.99);
+  assert.equal(oil.priceBasis, "per item");
+  assert.equal(oil.pricingMode, "fixed_price");
 });
 
 test("final-cost records without a captured unit rate are not comparable", () => {
@@ -131,6 +190,49 @@ test("legacy empty-size loose produce is quarantined but packaged goods are not"
     priceBasis: "per item",
     productUrl: "https://www.instacart.com/products/21690060-organic-quick-rolled-oats-per-lb",
   }), true);
+});
+
+test("implausibly expensive single-serving soda sizes are quarantined as ambiguous multipacks", () => {
+  const ambiguous = {
+    name: "Zevia Zero Sugar Ginger Ale Soda",
+    category: "Beverages",
+    size: "12 fl oz",
+    price: 11.99,
+    originalPrice: null,
+    priceBasis: "per item",
+  };
+  assert.equal(isAmbiguousSingleServingBeverageRecord(ambiguous), true);
+  const normalized = normalizeInstacartRecord(ambiguous);
+  assert.equal(normalized.comparisonEligible, false);
+  assert.equal(normalized.pricingMode, "ambiguous_package_count");
+  assert.equal(normalized.exclusionReason, "ambiguous_package_count");
+
+  assert.equal(isAmbiguousSingleServingBeverageRecord({
+    ...ambiguous,
+    size: "6 x 12 fl oz",
+  }), false);
+  assert.equal(isAmbiguousSingleServingBeverageRecord({
+    ...ambiguous,
+    price: 1.99,
+  }), false);
+  assert.equal(isAmbiguousSingleServingBeverageRecord({
+    ...ambiguous,
+    name: "Sparkling Mineral Water",
+    size: "25.3 fl oz",
+    price: 6.49,
+  }), false);
+
+  const direct = normalizeDirectStoreRecord({
+    title: "Red Bull Energy Drink Can",
+    category: "Beverages",
+    size: "12 fl oz",
+    price: 12.49,
+    originalPrice: null,
+    priceBasis: "per item",
+    unitText: "",
+  });
+  assert.equal(direct.comparisonEligible, false);
+  assert.equal(direct.exclusionReason, "ambiguous_package_count");
 });
 
 test("verified detail replaces only the comparison price and retains provenance", () => {

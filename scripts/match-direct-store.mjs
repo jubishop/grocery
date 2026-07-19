@@ -151,9 +151,7 @@ function tokens(text) {
     .map((token) => token.endsWith("s") && token.length > 4 ? token.slice(0, -1) : token);
 }
 
-function tokenScore(leftText, rightText) {
-  const left = new Set(tokens(leftText));
-  const right = new Set(tokens(rightText));
+function tokenScoreSets(left, right) {
   if (!left.size || !right.size) return 0;
   const shared = [...left].filter((token) => right.has(token)).length;
   const containment = shared / Math.min(left.size, right.size);
@@ -185,9 +183,7 @@ function brandTokens(text) {
     });
 }
 
-function brandsCompatible(leftText, rightText, score) {
-  const left = brandTokens(leftText);
-  const right = brandTokens(rightText);
+function brandsCompatibleTokens(left, right, score) {
   const leftLead = left[0];
   const rightLead = right[0];
   if (!leftLead || !rightLead) return true;
@@ -197,14 +193,15 @@ function brandsCompatible(leftText, rightText, score) {
   return score >= 0.9;
 }
 
-function variantsCompatible(left, right) {
-  const leftEvidence = productQualifierEvidence(left);
-  const rightEvidence = productQualifierEvidence(right);
-  if (!crossSourceQualifiersCompatible(leftEvidence, rightEvidence)) return false;
+function variantsCompatible(left, right, leftMetadata, rightMetadata) {
+  if (!crossSourceQualifiersCompatible(
+    leftMetadata.qualifierEvidence,
+    rightMetadata.qualifierEvidence,
+  )) return false;
   if (!numericProductVariantsCompatible(left.name, right.title)) return false;
   return packagedProductVariantsCompatible(
-    `${left.name} ${left.size ?? ""} ${productUrlVariantHints(left.productUrl)}`,
-    `${right.title} ${right.size ?? ""} ${productUrlVariantHints(right.productUrl)}`,
+    leftMetadata.variantText,
+    rightMetadata.variantText,
   );
 }
 
@@ -247,6 +244,16 @@ const storeItems = [...groups.entries()]
       quantity: quantity(representativeRecord.size || representativeRecord.name),
     };
   });
+const storeItemMetadata = new Map(storeItems.map((item) => [
+  item.productId,
+  {
+    brandTokens: brandTokens(item.name),
+    nameTokens: new Set(tokens(item.name)),
+    qualifierEvidence: productQualifierEvidence(item),
+    sourceExclusive: isSourceExclusiveProduct("instacart", item),
+    variantText: `${item.name} ${item.size ?? ""} ${productUrlVariantHints(item.productUrl)}`,
+  },
+]));
 
 const directRecordsWithQuantity = direct.records
   .map((record) => {
@@ -263,7 +270,17 @@ const directRecordsWithQuantity = direct.records
   })
   .filter((record) => record.quantity);
 const directWithQuantity = directRecordsWithQuantity
+  .filter((record) => record.comparisonEligible !== false)
   .filter((record) => !isSourceExclusiveProduct(config.source, record));
+const directMetadata = new Map(directWithQuantity.map((record) => [
+  record.id,
+  {
+    brandTokens: brandTokens(record.title),
+    nameTokens: new Set(tokens(record.title)),
+    qualifierEvidence: productQualifierEvidence(record),
+    variantText: `${record.title} ${record.size ?? ""} ${productUrlVariantHints(record.productUrl)}`,
+  },
+]));
 const directById = new Map(directWithQuantity.map((record) => [record.id, record]));
 const directByQuantity = new Map();
 const directByCapturedQuery = new Map();
@@ -311,9 +328,20 @@ for (const query of direct.queries) {
     resultIdsByProduct.set(query.targetProductId, productIds);
   }
 }
+const directQuantityCandidates = new Map();
+function matchingQuantityCandidates(parsed) {
+  const key = `${parsed.dimension}:${parsed.amount}`;
+  const cached = directQuantityCandidates.get(key);
+  if (cached) return cached;
+  const candidates = quantityBucketCandidates(directByQuantity, parsed)
+    .filter((record) => quantitiesAgree(parsed, record.quantity));
+  directQuantityCandidates.set(key, candidates);
+  return candidates;
+}
 
 const accepted = [];
 for (const item of storeItems) {
+  const itemMetadata = storeItemMetadata.get(item.productId);
   const left = {
     name: item.name,
     size: item.size,
@@ -378,7 +406,7 @@ for (const item of storeItems) {
     });
     continue;
   }
-  if (isSourceExclusiveProduct("instacart", left)) continue;
+  if (itemMetadata.sourceExclusive) continue;
   if (!item.quantity) continue;
   const expectedQueryKey = queryKey(`${item.name} ${item.size}`.trim());
   const targetedResultIds = resultIdsByProduct.get(item.productId);
@@ -387,14 +415,29 @@ for (const item of storeItems) {
     ? [...exactResultIds].map((id) => directById.get(id)).filter(Boolean)
     : directByCapturedQuery.get(expectedQueryKey) ?? [];
   const candidatePool = exactQueryRecords.length
-    ? exactQueryRecords
-    : quantityBucketCandidates(directByQuantity, item.quantity);
+    ? exactQueryRecords.filter((record) => quantitiesAgree(item.quantity, record.quantity))
+    : matchingQuantityCandidates(item.quantity);
   const candidates = candidatePool
-    .filter((record) => quantitiesAgree(item.quantity, record.quantity))
-    .map((record) => ({ record, score: tokenScore(item.name, record.title) }))
-    .filter(({ record, score }) => (
-      brandsCompatible(item.name, record.title, score)
-      && variantsCompatible(item, record)
+    .map((record) => {
+      const metadata = directMetadata.get(record.id);
+      return {
+        record,
+        metadata,
+        score: tokenScoreSets(itemMetadata.nameTokens, metadata.nameTokens),
+      };
+    })
+    .filter(({ record, metadata, score }) => (
+      brandsCompatibleTokens(
+        itemMetadata.brandTokens,
+        metadata.brandTokens,
+        score,
+      )
+      && variantsCompatible(
+        item,
+        record,
+        itemMetadata,
+        metadata,
+      )
     ))
     .filter(({ score }) => score >= 0.48)
     .sort((a, b) => b.score - a.score || a.record.title.localeCompare(b.record.title));
@@ -427,8 +470,12 @@ for (const item of storeItems) {
     matchScore: Number(best.score.toFixed(4)),
     matchMargin: Number(margin.toFixed(4)),
     sizeEvidence: `${item.quantity.display} = ${best.record.quantity.display}`,
-    priceDifference: Number((item.instacartPrice - best.record.price).toFixed(2)),
-    instacartMarkupPercent: Number(((item.instacartPrice / best.record.price - 1) * 100).toFixed(1)),
+    priceDifference: item.instacartPrice == null
+      ? null
+      : Number((item.instacartPrice - best.record.price).toFixed(2)),
+    instacartMarkupPercent: item.instacartPrice == null
+      ? null
+      : Number(((item.instacartPrice / best.record.price - 1) * 100).toFixed(1)),
   };
   const isAccepted = (
     exactQueryRecords.length

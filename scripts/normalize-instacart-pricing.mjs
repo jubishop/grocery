@@ -96,20 +96,26 @@ export function parseInstacartProductDetailText(text) {
 
 export function parseCapturedUnitText(text) {
   const unitText = String(text ?? "");
-  const unitMatch = unitText.match(
-    /\$([\d,]+(?:\.\d{1,2})?)\s*\/\s*(lb|lbs?|pounds?|oz|ounces?|kg|kilograms?|g|grams?)\b/i,
+  const slashUnitMatch = unitText.match(
+    /\$([\d,]+(?:\.\d{1,2})?)\s*(?:\/|per)\s*(lb|lbs?|pounds?|oz|ounces?|kg|kilograms?|g|grams?|fl\.?\s*oz|fluid\s+ounces?)\b/i,
+  );
+  const proseUnitMatch = unitText.match(
+    /\bprice\s+per\s+(lb|lbs?|pounds?|oz|ounces?|kg|kilograms?|g|grams?|fl\.?\s*oz|fluid\s+ounces?)\s*:?\s*\$([\d,]+(?:\.\d{1,2})?)/i,
   );
   const itemMatch = unitText.match(
     /\$([\d,]+(?:\.\d{1,2})?)\s*(?:each|\/\s*ea)\b/i,
   );
-  const sourceUnitPrice = money(unitMatch);
-  const unitPrice = unitMatch
-    ? pricePerPound(sourceUnitPrice, unitMatch[2])
+  const sourceUnitPrice = slashUnitMatch
+    ? money(slashUnitMatch)
+    : positiveNumber(proseUnitMatch?.[2]?.replaceAll(",", ""));
+  const sourceUnit = slashUnitMatch?.[2] ?? proseUnitMatch?.[1] ?? "";
+  const unitPrice = sourceUnitPrice != null
+    ? pricePerPound(sourceUnitPrice, sourceUnit)
     : null;
   return {
     unitPrice,
     sourceUnitPrice,
-    sourceUnit: unitMatch?.[2]?.toLowerCase() ?? "",
+    sourceUnit: sourceUnit.toLowerCase(),
     estimatedItemPrice: money(itemMatch),
   };
 }
@@ -142,6 +148,19 @@ export function isUnverifiedVariableWeightRecord(record) {
   if (/\b(?:meat|seafood)\b/.test(category) && (eachSlug || onePoundSlug)) return true;
   if (/\b(?:deli|prepared)\b/.test(category) && onePoundSlug) return true;
   return false;
+}
+
+export function isAmbiguousSingleServingBeverageRecord(record) {
+  const name = String(record?.name ?? record?.title ?? "");
+  if (!/\b(?:soda|cola|root beer|sparkling water|seltzer|tonic water|energy drink)\b/i.test(name)) return false;
+  const size = String(record?.size ?? "");
+  if (/\b(?:\d+\s*[x×]|pack|pk|count|ct)\b/i.test(size)) return false;
+  const serving = size.match(/\b(\d+(?:\.\d+)?)\s*(?:fl\.?\s*oz|fz|fluid ounces?)\b/i);
+  if (!serving || Number(serving[1]) > 20) return false;
+  const prices = [record?.price, record?.originalPrice]
+    .map(positiveNumber)
+    .filter((price) => price != null);
+  return prices.length > 0 && Math.max(...prices) >= 6;
 }
 
 export function validateInstacartWeightDetail(detail) {
@@ -216,11 +235,20 @@ export function normalizeInstacartRecord(record, detail = null) {
   }
 
   const unverifiedVariableWeight = isUnverifiedVariableWeightRecord(record);
+  const ambiguousPackageCount = isAmbiguousSingleServingBeverageRecord(record);
   return {
     ...record,
-    pricingMode: unverifiedVariableWeight ? "unverified_variable_weight" : "fixed_price",
-    comparisonEligible: !unverifiedVariableWeight,
-    exclusionReason: unverifiedVariableWeight ? "unverified_variable_weight_price" : "",
+    pricingMode: unverifiedVariableWeight
+      ? "unverified_variable_weight"
+      : ambiguousPackageCount
+        ? "ambiguous_package_count"
+        : "fixed_price",
+    comparisonEligible: !unverifiedVariableWeight && !ambiguousPackageCount,
+    exclusionReason: unverifiedVariableWeight
+      ? "unverified_variable_weight_price"
+      : ambiguousPackageCount
+        ? "ambiguous_package_count"
+        : "",
   };
 }
 
@@ -248,7 +276,22 @@ export function isDirectVariableWeightRecord(record) {
 }
 
 export function normalizeDirectStoreRecord(record) {
-  if (String(record?.priceBasis ?? "").toLowerCase() === "per lb") {
+  const rawPerPound = String(record?.priceBasis ?? "").toLowerCase() === "per lb";
+  const parsed = parseCapturedUnitText(record?.unitText);
+  const ambiguousPackageCount = isAmbiguousSingleServingBeverageRecord(record);
+  if (!isDirectVariableWeightRecord(record)) {
+    return {
+      ...record,
+      pricingMode: ambiguousPackageCount ? "ambiguous_package_count" : "fixed_price",
+      comparisonEligible: !ambiguousPackageCount,
+      exclusionReason: ambiguousPackageCount ? "ambiguous_package_count" : "",
+    };
+  }
+
+  // Some direct-store cards label an estimated each total as "per lb" while
+  // exposing the actual unit rate separately (for example, "$0.69/lb"). When
+  // no parseable rate is present, retain an already-canonical per-pound price.
+  if (parsed.unitPrice == null && rawPerPound) {
     return {
       ...record,
       pricingMode: record.pricingMode ?? "unit_price_per_lb",
@@ -256,7 +299,7 @@ export function normalizeDirectStoreRecord(record) {
       exclusionReason: "",
     };
   }
-  if (!isDirectVariableWeightRecord(record)) {
+  if (parsed.unitPrice == null) {
     return {
       ...record,
       pricingMode: "fixed_price",
@@ -265,7 +308,6 @@ export function normalizeDirectStoreRecord(record) {
     };
   }
 
-  const parsed = parseCapturedUnitText(record.unitText);
   const rawCapturedPrice = positiveNumber(record.price);
   const hasEstimatedItemPrice = parsed.estimatedItemPrice != null
     || (

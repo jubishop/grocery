@@ -161,6 +161,8 @@ export function numericProductVariantsCompatible(left, right) {
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
     .replace(/\b100\s*(?:%|percent)\b/g, " ")
+    .replace(/\bno\.?\s*1\s+brand\b/g, " ")
+    .replace(/\b1\s+(?:bag|bottle|box|can|carton|pouch|unit)\b/g, " ")
     .replace(/\b\d+(?:\.\d+)?\s*(?:fl\.?\s*oz\.?|fz|fluid\s*ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|gallons?|gal|kilograms?|kg|grams?|g|count|ct|each|ea|pack|pk)\b/g, " ")
     .replace(/\b(?:pack|case)\s+of\s+\d+\b/g, " ")
     .replace(/[^a-z0-9.]+/g, " ")

@@ -81,9 +81,7 @@ function tokens(text) {
     .filter((token) => token.length > 1 && !stopWords.has(token));
 }
 
-function score(leftText, rightText) {
-  const left = new Set(tokens(leftText));
-  const right = new Set(tokens(rightText));
+function scoreTokenSets(left, right) {
   if (!left.size || !right.size) return 0;
   const shared = [...left].filter((token) => right.has(token)).length;
   const containment = shared / Math.min(left.size, right.size);
@@ -100,6 +98,19 @@ function bucket(record) {
   if (!parsed) return null;
   const rounded = parsed.dimension === "count" ? parsed.amount : Math.round(parsed.amount * 20) / 20;
   return `${brandKey(record.name)}|${parsed.dimension}|${rounded}`;
+}
+
+function pricesPlausiblySamePackage(left, right) {
+  const referencePrice = (record) => {
+    const prices = [record.price, record.originalPrice]
+      .map(Number)
+      .filter((price) => Number.isFinite(price) && price > 0);
+    return prices.length ? Math.max(...prices) : null;
+  };
+  const leftPrice = referencePrice(left);
+  const rightPrice = referencePrice(right);
+  if (!leftPrice || !rightPrice) return true;
+  return Math.max(leftPrice, rightPrice) / Math.min(leftPrice, rightPrice) <= 3.25;
 }
 
 class UnionFind {
@@ -121,52 +132,88 @@ class UnionFind {
 const productIds = [...new Set(records.map((record) => record.id))];
 const unionFind = new UnionFind(productIds);
 const buckets = new Map();
+const recordKey = (record) => `${record.storeId}|${record.id}`;
+const recordMetadata = new Map(records.map((record) => [
+  recordKey(record),
+  {
+    bucketKey: bucket(record),
+    nameTokens: new Set(tokens(record.name)),
+    qualifierEvidence: productQualifierEvidence(record),
+    sourceExclusive: isSourceExclusiveProduct("instacart", record),
+    variantText: `${record.name} ${record.size ?? ""} ${productUrlVariantHints(record.productUrl)}`,
+  },
+]));
 for (const record of records) {
-  const key = bucket(record);
+  const key = recordMetadata.get(recordKey(record)).bucketKey;
   if (!key) continue;
-  const list = buckets.get(key) ?? [];
+  const byStore = buckets.get(key) ?? new Map();
+  const list = byStore.get(record.storeId) ?? [];
   list.push(record);
-  buckets.set(key, list);
+  byStore.set(record.storeId, list);
+  buckets.set(key, byStore);
+}
+
+const pairAnalysisCache = new Map();
+function pairAnalysis(left, right) {
+  const keys = [recordKey(left), recordKey(right)].sort();
+  const key = `${keys[0]}<>${keys[1]}`;
+  const cached = pairAnalysisCache.get(key);
+  if (cached) return cached;
+
+  const leftMetadata = recordMetadata.get(recordKey(left));
+  const rightMetadata = recordMetadata.get(recordKey(right));
+  const looseCommodityMatch = looseProduceMatches(left, right) || looseMeatMatches(left, right);
+  const compatible = (
+    (
+      (!leftMetadata.sourceExclusive && !rightMetadata.sourceExclusive)
+      || looseCommodityMatch
+    )
+    && (looseCommodityMatch || pricesPlausiblySamePackage(left, right))
+    && productQualifiersCompatible(
+      leftMetadata.qualifierEvidence,
+      rightMetadata.qualifierEvidence,
+    )
+    && numericProductVariantsCompatible(left.name, right.name)
+    && packagedProductVariantsCompatible(
+      leftMetadata.variantText,
+      rightMetadata.variantText,
+    )
+  );
+  const result = {
+    compatible,
+    score: compatible
+      ? scoreTokenSets(leftMetadata.nameTokens, rightMetadata.nameTokens)
+      : 0,
+  };
+  pairAnalysisCache.set(key, result);
+  return result;
 }
 
 const bestByRecordAndStore = new Map();
-for (const candidates of buckets.values()) {
-  for (const record of candidates) {
-    for (const targetStore of stores) {
-      if (targetStore === record.storeId) continue;
-      const scored = candidates
-        .filter((candidate) => (
-          candidate.storeId === targetStore
-          && candidate.id !== record.id
-          && (
-            (
-              !isSourceExclusiveProduct("instacart", record)
-              && !isSourceExclusiveProduct("instacart", candidate)
-            )
-            || looseProduceMatches(record, candidate)
-            || looseMeatMatches(record, candidate)
-          )
-          && productQualifiersCompatible(
-            productQualifierEvidence(record),
-            productQualifierEvidence(candidate),
-          )
-          && numericProductVariantsCompatible(record.name, candidate.name)
-          && packagedProductVariantsCompatible(
-            `${record.name} ${record.size ?? ""} ${productUrlVariantHints(record.productUrl)}`,
-            `${candidate.name} ${candidate.size ?? ""} ${productUrlVariantHints(candidate.productUrl)}`,
-          )
-        ))
-        .map((candidate) => ({ candidate, score: score(record.name, candidate.name) }))
-        .filter((candidate) => candidate.score >= 0.82)
-        .sort((a, b) => b.score - a.score || a.candidate.id.localeCompare(b.candidate.id, undefined, { numeric: true }));
-      if (!scored.length) continue;
-      bestByRecordAndStore.set(`${record.storeId}|${record.id}|${targetStore}`, {
-        record,
-        candidate: scored[0].candidate,
-        score: scored[0].score,
-        margin: scored[0].score - (scored[1]?.score ?? 0),
-      });
+for (const record of records) {
+  const byStore = buckets.get(recordMetadata.get(recordKey(record)).bucketKey);
+  if (!byStore) continue;
+  for (const targetStore of stores) {
+    if (targetStore === record.storeId) continue;
+    const scored = [];
+    for (const candidate of byStore.get(targetStore) ?? []) {
+      if (candidate.id === record.id) continue;
+      const analysis = pairAnalysis(record, candidate);
+      if (analysis.compatible && analysis.score >= 0.82) {
+        scored.push({ candidate, score: analysis.score });
+      }
     }
+    scored.sort((a, b) => (
+      b.score - a.score
+      || a.candidate.id.localeCompare(b.candidate.id, undefined, { numeric: true })
+    ));
+    if (!scored.length) continue;
+    bestByRecordAndStore.set(`${record.storeId}|${record.id}|${targetStore}`, {
+      record,
+      candidate: scored[0].candidate,
+      score: scored[0].score,
+      margin: scored[0].score - (scored[1]?.score ?? 0),
+    });
   }
 }
 
@@ -215,7 +262,7 @@ for (const cluster of serializedClusters) for (const productId of cluster.produc
 
 const output = {
   generatedAt: new Date().toISOString(),
-  methodology: "Exact Instacart IDs are preserved, then retailer-specific duplicate IDs are joined automatically only when brand, numeric variant, protected product claims, packaged-product state, and equivalent package size agree and the normalized names are mutually unique high-confidence matches. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Ambiguous candidates are excluded.",
+  methodology: "Exact Instacart IDs are preserved, then retailer-specific duplicate IDs are joined automatically only when brand, numeric variant, protected product claims, packaged-product state, equivalent package size, and a conservative packaged-price sanity check agree and the normalized names are mutually unique high-confidence matches. Captured URL slugs supply rejection-only variant hints and are never sufficient to accept a match. Ambiguous candidates are excluded.",
   counts: {
     records: records.length,
     productIds: productIds.length,

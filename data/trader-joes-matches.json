@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T23:12:26.649Z",
+  "generatedAt": "2026-07-19T00:38:55.847Z",
   "storeId": "traderjoes",
   "source": "traderjoes.com",
   "methodology": "Fully automatic strict Trader Joe's commodity crosswalk. Prepared, seasoned, mixed, novelty, and first-party-exclusive products are rejected before matching. Plain produce requires the same normalized variety, organic status, selling basis, and exact fixed package quantity when packaged. Raw meat and seafood require the same normalized raw cut, an explicit per-pound basis, and exact agreement on all protected production, cut, grade, frozen, and animal-raising claims. Eggs, dairy, baking staples, beans, grains, oils, salt, and plain cheese require an exact controlled commodity signature plus exact package quantity. A candidate is accepted only when it has strictly greater existing store coverage than every other matching canonical group; tied source candidates and duplicate target assignments are excluded automatically.",
@@ -7,9 +7,9 @@
     "capturedProducts": 391,
     "commodityEligible": 151,
     "excludedExclusiveOrPrepared": 240,
-    "accepted": 12,
-    "unmatchedEligible": 139,
-    "ambiguousSourceCandidates": 5,
+    "accepted": 11,
+    "unmatchedEligible": 140,
+    "ambiguousSourceCandidates": 6,
     "ambiguousTargetAssignments": 0,
     "acceptedByFamily": {
       "beans": 1,
@@ -19,7 +19,7 @@
       "flour": 1,
       "milk": 0,
       "oats": 0,
-      "oil-vinegar": 2,
+      "oil-vinegar": 1,
       "pasta": 1,
       "produce": 3,
       "raw-meat": 1,
@@ -202,27 +202,6 @@
       "matchScore": 1,
       "matchMargin": 1,
       "sizeEvidence": "conventional||avocado|||oil; exact package quantity"
-    },
-    {
-      "productId": "85144",
-      "currentStoreCount": 2,
-      "currentStoreIds": [
-        "metro",
-        "pcc"
-      ],
-      "traderJoesId": "058036",
-      "traderJoesTitle": "Balsamic Vinegar of Modena",
-      "traderJoesSize": "16.9 Fl Oz",
-      "traderJoesPrice": 2.79,
-      "traderJoesUrl": "https://www.traderjoes.com/home/products/pdp/balsamic-vinegar-of-modena-058036",
-      "capturedAt": "2026-07-18T20:53:50.847Z",
-      "commodityFamily": "oil-vinegar",
-      "canonicalName": "Bionaturae Balsamic Vinegar of Modena",
-      "canonicalSize": "17 fl oz",
-      "matchMethod": "strict_generic_commodity_signature_size",
-      "matchScore": 1,
-      "matchMargin": 1,
-      "sizeEvidence": "conventional||balsamic|||vinegar; exact package quantity"
     },
     {
       "productId": "35347",
