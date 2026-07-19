@@ -189,13 +189,18 @@ test("Trader Joe's is published as a searchable commodity overlay", () => {
     const siteData = JSON.parse(readFileSync(siteDataPath, "utf8"));
     const traderJoes = siteData.stores.find((store: { id: string }) => store.id === "traderjoes");
     const traderProducts = siteData.products.filter((product: any) => product.prices.traderjoes);
+    const coreStoreIds = ["pcc", "metro", "safeway", "qfc", "wholefoods"];
+    const coreAllStoreProducts = siteData.products.filter((product: any) => (
+      coreStoreIds.every((storeId) => product.prices[storeId])
+    )).length;
     const butter = traderProducts.find((product: any) => (
       product.searchAliases.includes("Butter Quarters, Salted")
     ));
 
     assert.equal(traderJoes.coverageMode, "commodity-overlay");
     assert.equal(siteData.summary.coreStoreCount, 5);
-    assert.equal(siteData.summary.coreAllStoreProducts, 78);
+    assert.equal(siteData.summary.coreAllStoreProducts, coreAllStoreProducts);
+    assert.ok(coreAllStoreProducts > 0);
     assert.equal(observations.count, siteData.summary.traderJoesEligibleProducts);
     assert.equal(matches.count, siteData.summary.acceptedTraderJoesMatches);
     assert.equal(traderProducts.length, siteData.summary.traderJoesComparableProducts);

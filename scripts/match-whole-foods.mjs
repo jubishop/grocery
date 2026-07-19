@@ -77,12 +77,14 @@ const unitAliases = new Map([
 
 function plain(value) {
   return String(value ?? "")
+    .replace(/[®™©]/g, "")
     .normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[®™©]/g, "")
     .replace(/&/g, " and ")
     .replace(/[’']/g, "")
-    .toLowerCase();
+    .toLowerCase()
+    .replace(/\bunsweetned\b/g, "unsweetened")
+    .replace(/\bmilk\s+macadamia\b/g, "milkadamia");
 }
 
 function queryKey(value) {
@@ -91,20 +93,35 @@ function queryKey(value) {
 
 function quantity(text) {
   const value = plain(text).replace(/\b(12ct|18ct|24ct|6ct|8ct|4ct)\b/g, (match) => match.replace("ct", " ct"));
+  const unitForContext = (rawUnit) => (
+    /^(?:ounces?|oz)$/i.test(rawUnit.replace(/\./g, ""))
+    && /\b(?:beverage|broth|coffee|creamer|drink|juice|kombucha|milk|milkadamia|almondmilk|oatmilk|soymilk|coconutmilk|oil|sauce|soda|soup|stock|tea|vinegar|water)\b/.test(value)
+    && !/\b(?:beef|chicken|fish|meat|pork|salmon|shrimp|tuna)\b/.test(value)
+      ? "fl oz"
+      : rawUnit
+  );
   const prefixPack = value.match(/\b(\d+)\s*(?:pack|pk)\s*[,/-]?\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
-  if (prefixPack) return normalizeQuantity(Number(prefixPack[2]) * Number(prefixPack[1]), prefixPack[3]);
+  if (prefixPack) return normalizeQuantity(
+    Number(prefixPack[2]) * Number(prefixPack[1]),
+    unitForContext(prefixPack[3]),
+  );
   const multipack = value.match(/\b(\d+)\s*[x×]\s*(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
-  if (multipack) return normalizeQuantity(Number(multipack[2]) * Number(multipack[1]), multipack[3]);
-
-  const count = value.match(/\b(\d+)\s*(?:count|ct|each|ea)\b/);
-  if (count) return { dimension: "count", amount: Number(count[1]), display: `${count[1]} ct` };
+  if (multipack) return normalizeQuantity(
+    Number(multipack[2]) * Number(multipack[1]),
+    unitForContext(multipack[3]),
+  );
 
   const match = value.match(/\b(\d+(?:\.\d+)?)\s*(fl\.?\s*oz\.?|fz|fluid ounces?|ounces?|oz|pounds?|lbs?|lb|milliliters?|ml|liters?|litres?|l|kilograms?|kg|grams?|g)\b/);
-  if (!match) return null;
+  if (!match) {
+    const count = value.match(/\b(\d+)\s*(?:count|ct|each|ea)\b/);
+    return count
+      ? { dimension: "count", amount: Number(count[1]), display: `${count[1]} ct` }
+      : null;
+  }
   const packSuffix = value.slice(match.index + match[0].length);
   const packMatch = packSuffix.match(/\b(?:(\d+)\s*pack|pack\s+of\s+(\d+))\b/);
   const multiplier = Number(packMatch?.[1] ?? packMatch?.[2] ?? 1);
-  return normalizeQuantity(Number(match[1]) * multiplier, match[2]);
+  return normalizeQuantity(Number(match[1]) * multiplier, unitForContext(match[2]));
 }
 
 function normalizeQuantity(amount, rawUnit) {
@@ -175,12 +192,19 @@ function tokenScore(leftText, rightText) {
   return 0.7 * containment + 0.3 * jaccard;
 }
 
-function brandAgrees(instacartName, amazonBrand) {
+const genericBrandWords = new Set([
+  "classic", "fresh", "natural", "organic", "original", "premium", "traditional",
+]);
+
+function brandAgrees(instacartName, amazonBrand, amazonTitle) {
   const brandTokens = tokens(amazonBrand);
   const nameTokens = new Set(tokens(instacartName));
-  if (!brandTokens.length) return false;
-  if (brandTokens.every((token) => nameTokens.has(token))) return true;
-  return brandTokens.length === 1 && nameTokens.has(brandTokens[0]);
+  if (brandTokens.length) {
+    if (brandTokens.every((token) => nameTokens.has(token))) return true;
+    return brandTokens.length === 1 && nameTokens.has(brandTokens[0]);
+  }
+  const titleLead = tokens(amazonTitle).find((token) => !genericBrandWords.has(token));
+  return Boolean(titleLead && nameTokens.has(titleLead));
 }
 
 const wholeFoodsRecords = wholeFoods.records
@@ -298,14 +322,14 @@ for (const item of allInstacart) {
     .map((candidate) => {
       const candidateQuantity = candidate.quantity;
       if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
-      if (!brandAgrees(item.name, candidate.brand)) return null;
+      if (!brandAgrees(item.name, candidate.brand, candidate.title)) return null;
       if (!crossSourceQualifiersCompatible(productQualifierEvidence(item), productQualifierEvidence(candidate))) return null;
       if (!numericProductVariantsCompatible(item.name, candidate.title)) return null;
       if (!packagedProductVariantsCompatible(
         `${item.name} ${item.size} ${productUrlVariantHints(item.productUrl)}`,
         `${candidate.title} ${candidate.detailSize ?? ""} ${productUrlVariantHints(candidate.productUrl)}`,
       )) return null;
-      const score = tokenScore(item.name, candidate.title);
+      const score = tokenScore(item.name, `${candidate.brand ?? ""} ${candidate.title}`);
       return {
         candidate,
         candidateQuantity,
@@ -324,14 +348,14 @@ for (const item of allInstacart) {
       .map((candidate) => {
         const candidateQuantity = candidate.quantity;
         if (!quantitiesAgree(itemQuantity, candidateQuantity)) return null;
-        if (!brandAgrees(item.name, candidate.brand)) return null;
+        if (!brandAgrees(item.name, candidate.brand, candidate.title)) return null;
         if (!crossSourceQualifiersCompatible(productQualifierEvidence(item), productQualifierEvidence(candidate))) return null;
         if (!numericProductVariantsCompatible(item.name, candidate.title)) return null;
         if (!packagedProductVariantsCompatible(
           `${item.name} ${item.size} ${productUrlVariantHints(item.productUrl)}`,
           `${candidate.title} ${candidate.detailSize ?? ""} ${productUrlVariantHints(candidate.productUrl)}`,
         )) return null;
-        const score = tokenScore(item.name, candidate.title);
+        const score = tokenScore(item.name, `${candidate.brand ?? ""} ${candidate.title}`);
         return {
           candidate,
           candidateQuantity,
@@ -372,7 +396,7 @@ for (const item of allInstacart) {
   };
   const acceptedByTargetedQuery = Boolean(
     targetedQuery
-    && best.queryRank === 1
+    && exactAsins.has(best.candidate.asin)
     && best.score >= 0.58
   );
   const acceptedByGeneralMatch = !targetedQuery

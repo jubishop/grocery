@@ -154,6 +154,22 @@ test("ingredient-level organic wording is not promoted to a whole-product organi
     protectedQualifierClaims("Amy's Organic Macaroni and Cheese").organic,
     true,
   );
+  assert.equal(
+    protectedQualifierClaims("Organic Girl Baby Arugula").organic,
+    false,
+  );
+  assert.equal(
+    protectedQualifierClaims("Organic Girl Organic Baby Spinach").organic,
+    true,
+  );
+  assert.equal(
+    protectedQualifierClaims("Field Roast Smoked Apple Sage Sausage - 12.9 Oz").leanPercent,
+    null,
+  );
+  assert.equal(
+    protectedQualifierClaims("80/20 Ground Beef").leanPercent,
+    "80",
+  );
 });
 
 test("cross-source matching protects dietary and formulation variants", () => {
@@ -237,6 +253,288 @@ test("packaged product variants reject flavor, protein, format, and preparation 
     ),
     false,
   );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Muir Glen Organic Diced Tomatoes",
+      "Muir Glen Organic Diced Fire Roasted Tomatoes",
+    ),
+    false,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Muir Glen Organic Diced Tomatoes",
+      "Muir Glen Organic Crushed Tomatoes",
+    ),
+    false,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Cento All Purpose Crushed Tomatoes",
+      "Cento Tomatoes Crushed All Purpose",
+    ),
+    true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Eden Foods Cannellini White Kidney Beans",
+      "Eden Foods Organic White Kidney Beans",
+    ),
+    true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Muir Glen Organic Diced Tomatoes",
+      "Muir Glen Organic Petite Diced Tomatoes",
+    ),
+    false,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Imagine Organic Tomato Creamy Soup",
+      "Imagine Organic Tomato Basil Creamy Soup",
+    ),
+    false,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Las Palmas Medium Enchilada Sauce",
+      "Las Palmas Medium Green Chile Enchilada Sauce",
+    ),
+    false,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Pacific Foods Organic Free Range Chicken Stock",
+      "Pacific Foods Organic Free Range Chicken Broth",
+    ),
+    false,
+  );
+  for (const [left, right] of [
+    [
+      "Annie's Gluten Free Rice Pasta and Cheddar Cheese",
+      "Annie's Gluten Free Rice Pasta and White Cheddar Cheese",
+    ],
+    ["Chobani Vanilla Greek Nonfat Yogurt", "Chobani Zero Sugar Vanilla Greek Nonfat Yogurt"],
+    ["Wildwood Organic Firm Tofu", "Wildwood Extra Firm Organic Tofu"],
+    ["Bobo's Chocolate Chip Oat Bar", "Bobo's Peanut Butter Chocolate Chip Oat Bar"],
+    ["Kettle & Fire Organic Chicken Broth", "Kettle & Fire Organic Chicken Bone Broth"],
+    ["Darigold Reduced Fat Ultra Filtered Milk", "Darigold Chocolate Reduced Fat Ultra Filtered Milk"],
+    ["Silk Original Almond Milk", "Silk Unsweetened Almond Milk"],
+    ["Chef Boyardee Beef Ravioli", "Chef Boyardee Mini Beef Ravioli"],
+    ["Spindrift Lime Sparkling Water", "Spindrift Raspberry Lime Sparkling Water"],
+    ["Oroweat Country Style White Bread", "Oroweat Country Style Buttermilk White Bread"],
+    ["Ball Park Beef Hot Dogs", "Ball Park Bun Length Beef Hot Dogs"],
+    ["Oscar Mayer Naturally Hardwood Smoked Bacon", "Oscar Mayer Naturally Hardwood Smoked Thick Cut Bacon"],
+    ["Bundaberg Ginger Beer", "Bundaberg Diet Ginger Beer"],
+    ["Gold Medal All Purpose Flour", "Gold Medal Unbleached All Purpose Flour"],
+    ["Bragg Organic Apple Cider Vinegar", "Bragg Organic Raw Unfiltered Apple Cider Vinegar"],
+    ["Siete Kettle Cooked Sea Salt Potato Chips", "Siete Kettle Cooked Sea Salt Vinegar Potato Chips"],
+    ["Eggland's Best Cage Free Large White Eggs", "Eggland's Best Cage Free Extra Large White Eggs"],
+    ["Almond Breeze Vanilla Almondmilk", "Almond Breeze Unsweetened Vanilla Almondmilk"],
+    ["Polar Lime Seltzer", "Polar Cranberry Lime Seltzer"],
+    ["Häagen-Dazs Vanilla Ice Cream", "Häagen-Dazs Vanilla Bean Ice Cream"],
+    ["Mission Soft Taco Flour Tortillas", "Mission Spinach and Herb Soft Taco Flour Tortillas"],
+    ["Jimmy Dean Sausage Egg and Cheese Breakfast Sandwiches", "Jimmy Dean Turkey Sausage Egg White and Cheese Breakfast Sandwiches"],
+    ["Happy Snacks Animal Crackers", "Happy Snacks Chocolate Animal Crackers"],
+    ["Follow Your Heart Feta Cheese Crumbles", "Follow Your Heart Bleu Cheese Crumbles"],
+    ["House Foods Firm Tofu", "House Foods Medium Firm Tofu"],
+    ["Morton and Bassett Paprika", "Morton and Bassett Smoked Paprika"],
+    ["Planet Oat Original Oatmilk", "Planet Oat Extra Creamy Original Oatmilk"],
+    ["NILLA Vanilla Wafers", "NILLA Mini Vanilla Wafers"],
+    ["Häagen-Dazs Coffee Ice Cream", "Häagen-Dazs Coffee Chip Ice Cream"],
+    ["Hormel Chili with Beans", "Hormel Turkey Chili with Beans"],
+    ["Wendy's Baconator Chili With Beans, Beef & Bacon", "Wendy's Chili With Beans"],
+    ["Kettle & Fire Classic Chicken Bone Broth", "Kettle & Fire Butter Chicken Bone Broth"],
+    ["S&W White Chili Beans", "S&W Premium Chili Beans"],
+    ["S&W Black Chili Beans", "S&W White Chili Beans"],
+    ["BelGioioso Fresh Mozzarella Cheese Ball", "BelGioioso Smoked Fresh Mozzarella Cheese Ball"],
+    ["Organic Girl Baby Spinach & Arugula", "Organic Girl Baby Arugula"],
+    ["SunButter Original Sunflower Seed Butter", "SunButter Natural Sunflower Butter"],
+    ["Fresh Express Caesar Supreme Salad Kit", "Fresh Express Chopped Caesar Salad Kit"],
+    ["Celestial Seasonings Throat Coat Tea", "Celestial Seasonings Eucalyptus Throat Coat Tea"],
+    ["Jell-O Vanilla Pudding", "Jell-O French Vanilla Pudding"],
+    ["Betty Crocker Chocolate Chip Cookie Mix", "Betty Crocker Oatmeal Chocolate Chip Cookie Mix"],
+    ["Mountain Dew Zero Sugar Soda", "Mountain Dew Baja Blast Zero Sugar Soda"],
+    ["Eden Foods Organic Pumpkin Seeds", "Eden Foods Organic Spicy Pumpkin Seeds"],
+    ["Dandies Vegan Vanilla Marshmallows", "Dandies Vegan Vanilla Mini Marshmallows"],
+    ["Tate's Butter Crunch Cookies", "Tate's Snickerdoodle Cookies"],
+    ["Ortega Fire Roasted Hot Diced Green Chiles", "Ortega Fire Roasted Diced Green Chiles"],
+    ["Gerber Very Berry Fruit and Veggie Melts", "Gerber Fruit and Veggie Melts"],
+    ["Bumble Bee Solid White Albacore Tuna", "Bumble Bee Solid White Albacore Tuna in Vegetable Oil"],
+    ["Häagen-Dazs Chocolate Chip Ice Cream", "Häagen-Dazs Chocolate Chip Cookie Dough Ice Cream"],
+    ["Yogi Egyptian Licorice Tea", "Yogi Egyptian Licorice Mint Tea"],
+    ["North Coast Organic Apple Juice", "North Coast Organic Honeycrisp Apple Juice"],
+    [
+      "Hu Organic Hazelnut Butter Dark Chocolate Bar",
+      "Hu Kitchen Organic Cashew Butter Filled Dark Chocolate Bar",
+    ],
+    [
+      "Kettle Brand Salt & Ground Pepper Potato Chips",
+      "Kettle Brand Sea Salt Potato Chips",
+    ],
+    [
+      "Organic Valley 3 Cheese Organic Finely Shredded Mexican Cheese Blend",
+      "Organic Valley 3 Cheese Organic Thick Cut Shredded Mexican Cheese Blend",
+    ],
+    [
+      "Birch Benders Organic Buttermilk Pancake & Waffle Mix",
+      "Birch Benders Classic Organic Pancake & Waffle Mix",
+    ],
+    [
+      "Perfect Bar Dark Chocolate Chip Peanut Butter Protein Bar 2.3 oz",
+      "Perfect Bar Dark Chocolate Chip Peanut Butter Protein Bar 4 count, 2.3 oz",
+    ],
+    [
+      "Annie's Organic Birthday Cake Bunny Grahams",
+      "Annie's Organic Neapolitan Bunny Grahams",
+    ],
+    [
+      "Annie's Star Pasta & Chicken Soup",
+      "Annie's Bunny Pasta & Chicken Broth Soup",
+    ],
+    [
+      "Ben & Jerry's Milk & Cookies Ice Cream",
+      "Ben & Jerry's Vanilla Ice Cream",
+    ],
+    [
+      "Traditional Medicinals Peppermint Delight Probiotic Tea",
+      "Traditional Medicinals Organic Peppermint Tea",
+    ],
+    [
+      "Traditional Medicinals Organic Eater's Digest, Peppermint",
+      "Traditional Medicinals Organic Peppermint Tea",
+    ],
+    [
+      "Horizon Organic Reduced Fat Organic Milk",
+      "Horizon Organic DHA Reduced Fat Organic Milk",
+    ],
+    [
+      "Organic Valley Organic Mozzarella Cheese Block 8 oz",
+      "Organic Valley Stringles Mozzarella String Cheese Sticks 8 Count (8 oz)",
+    ],
+    [
+      "Country Archer Beef & Cheese Minis Beef Sticks 16 x 0.5 oz",
+      "Country Archer Mini Beef Original Sticks 16 Count, 8 oz",
+    ],
+    [
+      "Near East Original Rice Pilaf Mix 6.09 oz",
+      "Near East Original Rice Pilaf Mix 3 Count, 6 oz",
+    ],
+    [
+      "Mineragua Sparkling Water 12.5 fl oz",
+      "Mineragua Sparkling Water 9 Count, 12.5 fl oz",
+    ],
+    [
+      "Chomps Original Turkey Stick 1.15 oz",
+      "Chomps Original Turkey Sticks 8 Count, 1.15 oz",
+    ],
+    ["Matiz Paella Rice", "Matiz Bomba Paella Rice"],
+    [
+      "Almond Breeze Unsweetened Vanilla Almondmilk",
+      "Almond Breeze Shelf-Stable Unsweetened Vanilla Almondmilk",
+    ],
+    [
+      "Fishwife Albacore Tuna in Olive Oil",
+      "Fishwife Albacore Tuna in Spicy Olive Oil",
+    ],
+    [
+      "Bumble Bee Solid White Albacore Tuna in Water",
+      "Bumble Bee Gourmet Solid White Albacore Tuna in Water",
+    ],
+    [
+      "Lucini Italia Extra Virgin Olive Oil",
+      "Lucini Italia Premium Select Extra Virgin Olive Oil",
+    ],
+    [
+      "California Olive Ranch California Grown Extra Virgin Olive Oil",
+      "California Olive Ranch Everyday Extra Virgin Olive Oil",
+    ],
+    [
+      `La Tourangelle Organic Extra Virgin Olive Oil ${productUrlVariantHints(
+        "https://www.instacart.com/products/1704540-la-tourangelle-olive-oil-extra-virgin-early-harvest-25-4-oz",
+      )}`,
+      `La Tourangelle Organic Extra Virgin Olive Oil ${productUrlVariantHints(
+        "https://www.instacart.com/products/30021143-la-tourangelle-fruity-extra-virgin-olive-oil-25-4-fl-oz",
+      )}`,
+    ],
+    [
+      `Bragg Organic Raw Unfiltered Apple Cider Vinegar ${productUrlVariantHints(
+        "https://www.instacart.com/products/32676672-bragg-organic-apple-cider-vinegar-honey-cayenne-wellness-cleanse-16-fl-oz",
+      )}`,
+      "Bragg Organic Raw Unfiltered Apple Cider Vinegar",
+    ],
+    [
+      "Dave's Killer Bread Organic Plain Awesome Bagels",
+      "Dave's Killer Bread Summer Berry Limited Edition Organic Bagels",
+    ],
+    [
+      "Chobani Flip Low-Fat Greek Yogurt S'mores",
+      "Chobani Flip Cookies & Cream Low-Fat Greek Yogurt",
+    ],
+    [
+      "Pam Non-Stick Olive Oil Cooking Spray",
+      "Pam Avocado Oil Non-Stick Cooking Spray",
+    ],
+    [
+      "Suja Organic Probiotic Watermelon Wellness Shot",
+      "Suja Organic Digestion Watermelon Wellness Shot",
+    ],
+    [
+      "Ben & Jerry's Peanut Butter Cup Ice Cream",
+      "Ben & Jerry's Peanut Butter Half Baked Ice Cream",
+    ],
+    [
+      "Ben & Jerry's Peanut Butter Half Baked Ice Cream",
+      "Ben & Jerry's Chocolate Peanut Butter Split Ice Cream",
+    ],
+    [
+      "Starbucks Almondmilk & Oatmilk Pumpkin Spice Coffee Creamer",
+      "Starbucks Almondmilk & Oatmilk Caramel Coffee Creamer",
+    ],
+    [
+      "Pop-Tarts Frosted Strawberry Toaster Pastries",
+      "Pop-Tarts Frosted Strawberry Cheesecake Toaster Pastries",
+    ],
+    ["Gold Peak Sweet Tea", "Gold Peak Slightly Sweet Tea"],
+    [
+      "Celestial Seasonings Sleepytime Herbal Tea",
+      "Celestial Seasonings Sleepytime Extra Herbal Tea",
+    ],
+    [
+      "Franz Original Whole Grain English Muffins",
+      "Franz Original English Muffins",
+    ],
+    [
+      "Quaker Oats Honey Raisins & Almonds Granola",
+      "Quaker Oats Honey Raisins Granola",
+    ],
+    [
+      "BelGioioso Fresh Mozzarella Cheese Ball",
+      "BelGioioso Ciliegine Fresh Mozzarella Cheese Ball",
+    ],
+    [
+      "Taylor Farms Protein Caesar Chopped Salad Kit",
+      "Taylor Farms Caesar Chopped Salad Kit",
+    ],
+    [
+      "Marie Callender's Creamy Mushroom Chicken Pot Pie",
+      "Marie Callender's Chicken Pot Pie",
+    ],
+    [
+      "Hidden Valley Ranch Salad Dressing",
+      "Hidden Valley Coleslaw Ranch Salad Dressing",
+    ],
+    [
+      "Pillsbury Funfetti Yellow Cake Mix with Candy Bits",
+      "Pillsbury Spring Funfetti Cake Mix with Candy Bits",
+    ],
+  ]) {
+    assert.equal(
+      packagedProductVariantsCompatible(left, right),
+      false,
+      `${left} must not match ${right}`,
+    );
+  }
   assert.equal(
     packagedProductVariantsCompatible(
       "Califia Farms Unsweetened Almond Milk",
@@ -444,6 +742,10 @@ test("packaged product variants reject flavor, protein, format, and preparation 
       "ALOHA Chocolate Chip Cookie Dough Protein Bar 5pk 1.98 oz",
       "ALOHA Chocolate Chip Cookie Dough Protein Bar 1.98 oz",
     ],
+    [
+      "Organic English Seedless Cucumber 1 ct",
+      "Organic Cucumber 1 ct",
+    ],
   ]) {
     assert.equal(
       packagedProductVariantsCompatible(left, right),
@@ -467,6 +769,13 @@ test("packaged product variants reject flavor, protein, format, and preparation 
   );
   assert.equal(
     packagedProductVariantsCompatible(
+      "Nature's Path Organic Frosted Wildberry Acai Toaster Pastries 11 oz",
+      "Nature's Path Organic Frosted Wildberry Acai Toaster Pastries 6 Count, 11 oz",
+    ),
+    true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
       "Quaker Chocolate Chip Granola Bars 8 ct",
       "Quaker Chocolate Chip Granola Bars 8 x 0.84 oz",
     ),
@@ -485,6 +794,34 @@ test("packaged product variants reject flavor, protein, format, and preparation 
       "Marie Callender's Buffalo-Style Mac and Cheese",
     ),
     true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Poppi Prebiotic Soda Strawberry Lemon",
+      "Poppi Sparkling Prebiotic Soda with Apple Cider Vinegar and Fruit Juice, Strawberry Lemon Flavor",
+    ),
+    true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Milkadamia Unsweetened Macadamia Milk",
+      "Milkadamia Milk Macadamia Unsweetned",
+    ),
+    true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Wild Planet Solid Wild Albacore Tuna in Extra Virgin Olive Oil",
+      "Wild Planet Wild Albacore Tuna in Olive Oil",
+    ),
+    true,
+  );
+  assert.equal(
+    packagedProductVariantsCompatible(
+      "Wild Planet Solid Wild Albacore Tuna in Extra Virgin Olive Oil",
+      "Wild Planet Wild Albacore Tuna in Water",
+    ),
+    false,
   );
 });
 
@@ -645,6 +982,20 @@ test("numeric product formulas must agree after package quantities are removed",
   );
   assert.equal(
     numericProductVariantsCompatible(
+      "Kettle Brand Party Size Backyard Barbeque Potato Chips",
+      "Kettle Brand Backyard Barbeque Potato Chips, 13 Oz 1 bag",
+    ),
+    true,
+  );
+  assert.equal(
+    numericProductVariantsCompatible(
+      "Silk Vanilla Soy Creamer",
+      "Silk Vanilla Soy Creamer From the No. 1 Brand, 32 fl oz",
+    ),
+    true,
+  );
+  assert.equal(
+    numericProductVariantsCompatible(
       "2% Reduced Fat Milk, 64 fl oz",
       "Whole Milk, 64 fl oz",
     ),
@@ -674,6 +1025,10 @@ test("generated aliases keep protected product variants separate", async () => {
   assert.notEqual(aliases.aliases["192190"], aliases.aliases["29132"]);
   assert.notEqual(aliases.aliases["28123038"], aliases.aliases["27638690"]);
   assert.notEqual(aliases.aliases["27638690"], aliases.aliases["25153011"]);
+  assert.notEqual(aliases.aliases["27263236"], aliases.aliases["25654917"]);
+  assert.notEqual(aliases.aliases["27261977"], aliases.aliases["25654920"]);
+  assert.notEqual(aliases.aliases["27262004"], aliases.aliases["25654919"]);
+  assert.notEqual(aliases.aliases["27261978"], aliases.aliases["25654921"]);
 
   const recordsById = new Map<string, Array<{
     name: string;
